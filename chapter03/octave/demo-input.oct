@@ -1,0 +1,3 @@
+M=rand(300,300);
+k=svd(M);
+save -ascii demo-result.txt k;

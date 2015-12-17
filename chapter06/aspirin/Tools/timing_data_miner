@@ -1,0 +1,8 @@
+#! /bin/bash
+
+# This script is used to extract timing detail of a NAMD simulation 
+
+echo "$1 ";
+grep "days/ns" $1;
+egrep "^TIMING:"  $1  | tail -n3 | awk 'BEGIN{ FS="[ /]"}{t=t+$6}END{printf "\t %.5f seconds/step \n" , t/3}' ;
+

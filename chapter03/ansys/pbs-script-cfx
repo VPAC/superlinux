@@ -1,0 +1,44 @@
+#!/bin/bash
+
+# ------------------------------------
+#       ANSYS - CFX FSI script.
+#       All you need change is wall time and name of input files.
+#       And possibly the job name.
+# -----------------------------------
+
+# 	pbs launching script example for ANSYS job:
+
+#     	job name: --- Change this if you like
+#PBS -N ansys_job_01
+
+#     	how many cpus? --- Probably best choice.
+#PBS -l nodes=8
+
+#     	How long to run the job? (hours:minutes:seconds)
+#       You will almost certainly need to change this.
+#PBS -l walltime=00:30:00
+
+#     	Name of output file:
+# PBS -o ansys_test_job_02.txt
+
+#       Wait for license file
+#       Please leave this as it is, makes it a lot safer.
+# PBS -l software=aa_r+1
+#PBS -W x=GRES:aa_r+1%aa_r_hpc+2
+
+#	For CFX use only
+# PBS -l software=cfx_par_proc+8
+
+#     	Environmental varibles to make it work:
+
+  module load ansys/145
+
+  cd $PBS_O_WORKDIR
+ 
+#     	Launching the job!
+
+NODES=$(cat $PBS_NODEFILE | sort | uniq -c | awk '{print $2 "*" $1}' | tr '\n' ',' | sed 's/,$//')
+
+echo "This job is allocated on $NODES"
+
+cfx5solve  -def  OscillatingPlate.def -ansys-input  OscillatingPlate.inp -parallel -par-dist $NODES

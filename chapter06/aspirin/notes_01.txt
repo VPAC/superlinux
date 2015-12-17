@@ -1,0 +1,39 @@
+
+MD Drug Docking experiment,  August 2010  
+-------------------------------------------
+MD3 - 
+Aspirin to A2 phospholipase.  
+
+
+Using the 1OXR phospholipase structure as a target, 4 aspirin molecules (parameterized at swissparam) 
+were added to a solvated 64x64x64A system. 
+
+In addition, to aspirin, the 1oxr system  also contains a calcium ion in the crystallographically 
+determined binding position plus 0.15M NaCl. 
+
+The system is originally optimized and equilibrated at 310K for 0.2 nano seconds under NPT conditions, 
+before switching to NVT ensemble for 10 sequential loops of 10ns each. 
+
+The aim of this experiment is to collect enough MD data to see if the aspirin molecules can associate 
+into the crystallographically determined binding pocket. 
+
+The first step requires RMSD fitting of the simulation trajectory so that the
+protein structure is relative to the original starting position. 
+-Next we require to vol-map the density of the ligand molecule, (aspirin in
+this case).  (using vmd!).  
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+

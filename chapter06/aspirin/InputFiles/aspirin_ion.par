@@ -1,0 +1,74 @@
+* ---- 
+* Built parameters for aspirin_ion.mol2 
+*    by user vzoete     Wed Nov 10 04:11:06 CET 2010 
+* ---- 
+*
+
+BONDS
+CO2M O2CM  702.103     1.2610 
+CB   HCMM  381.853     1.0840 
+CB   CB    401.068     1.3740 
+CB   OR    404.019     1.3760 
+C=O  OR    417.476     1.3550 
+C=O  CR    301.539     1.4920 
+HCMM CR    342.991     1.0930 
+C=O  O=C   931.963     1.2220 
+CB   CO2M  326.511     1.4680 
+
+ANGLES
+CB   CB   CB     48.145    119.9770 
+CB   CB   HCMM   40.517    120.5710 
+CB   CB   CO2M   64.193    119.5720 
+CB   CB   OR     69.663    116.4950 
+CB   CO2M O2CM   81.753    118.8710 
+O2CM CO2M O2CM   84.991    130.6000 
+CB   OR   C=O    44.187    95.3000 
+OR   C=O  O=C    83.120    124.4250 
+OR   C=O  CR     75.060    109.7160 
+O=C  C=O  CR     67.504    124.4100 
+C=O  CR   HCMM   46.778    108.3850 
+HCMM CR   HCMM   37.134    108.8360 
+
+DIHEDRALS
+CB   CB   CB   CB       3.500  2   180.00 
+CB   CB   CB   CO2M     3.500  2   180.00 
+CB   CB   CB   HCMM     3.500  2   180.00 
+CB   CB   CB   OR       3.500  2   180.00 
+CB   CB   CO2M O2CM     0.900  2   180.00 
+CB   CB   OR   C=O      1.288  2   180.00 
+CB   OR   C=O  O=C      0.318  1     0.00 
+CB   OR   C=O  O=C      2.945  2   180.00 
+CB   OR   C=O  O=C     -0.223  3     0.00 
+CB   OR   C=O  CR      -0.339  1     0.00 
+CB   OR   C=O  CR       2.927  2   180.00 
+CB   OR   C=O  CR       0.261  3     0.00 
+CO2M CB   CB   HCMM     3.500  2   180.00 
+CO2M CB   CB   OR       3.500  2   180.00 
+OR   CB   CB   HCMM     3.500  2   180.00 
+OR   C=O  CR   HCMM    -0.312  2   180.00 
+OR   C=O  CR   HCMM     0.165  3     0.00 
+O=C  C=O  CR   HCMM     0.330  1     0.00 
+O=C  C=O  CR   HCMM    -0.704  2   180.00 
+O=C  C=O  CR   HCMM     0.154  3     0.00 
+HCMM CB   CB   HCMM     3.500  2   180.00 
+
+IMPROPER
+CB   CB   CB   HCMM     1.079  0     0.00 
+CB   CB   CB   CO2M     2.519  0     0.00 
+CO2M O2CM CB   O2CM    12.954  0     0.00 
+CB   CB   CB   OR       3.454  0     0.00 
+C=O  O=C  OR   CR      10.147  0     0.00 
+CR   HCMM C=O  HCMM     0.000  0     0.00 
+
+NONBONDED nbxmod  5 atom cdiel shift vatom vdistance vswitch - 
+cutnb 14.0 ctofnb 12.0 ctonnb 10.0 eps 1.0 e14fac 1.0 wmin 1.5 
+CB      0.000000  -0.070000     1.992400    
+CO2M    0.000000  -0.070000     2.000000    
+O2CM    0.000000  -0.120000     1.700000    
+OR      0.000000  -0.152100     1.770000    
+C=O     0.000000  -0.110000     2.000000    
+O=C     0.000000  -0.120000     1.700000   0.000000  -0.120000     1.400000    
+CR      0.000000  -0.055000     2.175000   0.000000  -0.010000     1.900000    
+HCMM    0.000000  -0.022000     1.320000    
+
+

@@ -1,0 +1,17 @@
+#!/bin/bash
+#PBS -N R-parallel
+
+#PBS -l nodes=4
+#PBS -l walltime=00:10:00
+
+#  Include the next three lines always
+if [ "x${PBS_NODEFILE}" != "x" ] ; then
+   cat $PBS_NODEFILE   # contains a list of the CPUs you were using if run with PBS
+fi
+#  Put your job commands after this line
+
+cd $PBS_O_WORKDIR
+module load openmpi-gcc
+module load R
+
+R CMD BATCH --vanilla xvalidate.R xvalidate.out

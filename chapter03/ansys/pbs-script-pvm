@@ -1,0 +1,31 @@
+#!/bin/bash
+# Usage : qsub pbs-script <enter>
+
+#       how many cpus in SMP mode ?
+# PBS -l nodes=1:ppn=4
+
+#       how many cpus in Parallel  mode ?
+#PBS -l nodes=4
+
+#	You'll need licenses
+
+#PBS -W x=GRES:aa_r+1%aa_r_hpc+4
+
+#       How long to run the job? (hours:minutes:seconds)
+#PBS -l walltime=00:30:00
+
+module load ansys/145
+
+cd $PBS_O_WORKDIR
+
+# Proper prallel - cannot find hosts, need to provide names in comma sep format to -par-dist <host-list>
+# cfx5solve  -def  OscillatingPlate.def  -ansys-input  OscillatingPlate.inp -part 2 -start-method "MPICH Distributed Parallel"
+
+# This is the SMP version, relies on running on one host
+# cfx5solve  -def  OscillatingPlate.def  -ansys-input  OscillatingPlate.inp -part 4 -start-method "MPICH Local Parallel"
+
+# This seems to call PVM.
+cfx5solve  -def  OscillatingPlate.def  -ansys-input  OscillatingPlate.inp -part 4 -par-local
+
+# This runs a single CPU, about 20 minutes from memory.
+# cfx5solve  -def  OscillatingPlate.def  -ansys-input  OscillatingPlate.inp

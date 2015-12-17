@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# To give your job a name, replace "MyJob" with an appropriate name
+#PBS -N MyJob
+
+# For R need to run on single CPU
+#PBS -l nodes=1:ppn=1
+
+# set your minimum acceptable walltime=hours:minutes:seconds
+#PBS -l walltime=0:10:00
+
+# Specify your email address to be notified of progress.
+# PBS -M yourname@domain
+# To receive an email:
+#       - job is aborted: 'a' 
+#       - job begins execution: 'b'
+#       - job terminates: 'e'
+#       Note: Please ensure that the PBS -M option above is set.
+#
+# PBS -m abe
+
+# Changes directory to your execution directory (Leave as is)
+cd $PBS_O_WORKDIR
+
+# Load the environment variables for R
+module load R
+
+# The command to actually run the job
+R --vanilla < tutorial.R 

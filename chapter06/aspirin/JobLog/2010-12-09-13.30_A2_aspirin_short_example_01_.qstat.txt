@@ -1,0 +1,42 @@
+Job Id: 1229313.tango-m.vpac.org
+    Job_Name = pbs_script_sequential
+    Job_Owner = mike@tango.vpac.org
+    job_state = R
+    queue = run_1_week
+    server = tango-m.vpac.org
+    Account_Name = VPAC_Sys
+    Checkpoint = u
+    ctime = Thu Dec  9 13:29:49 2010
+    Error_Path = tango.vpac.org:/home/mike/Aspirin_course_01/pbs_script_sequen
+	tial.e1229313
+    exec_host = tango091/2+tango088/5+tango088/0+tango087/6+tango087/1+tango05
+	8/6+tango057/1+tango057/0
+    Hold_Types = n
+    Join_Path = n
+    Keep_Files = n
+    Mail_Points = a
+    Mail_Users = mike@vpac.org
+    mtime = Thu Dec  9 13:30:33 2010
+    Output_Path = tango.vpac.org:/home/mike/Aspirin_course_01/pbs_script_seque
+	ntial.o1229313
+    Priority = 0
+    qtime = Thu Dec  9 13:29:49 2010
+    Rerunable = True
+    Resource_List.nodect = 8
+    Resource_List.nodes = 8
+    Resource_List.pmem = 4000mb
+    Resource_List.walltime = 24:00:00
+    Variable_List = PBS_O_HOME=/home/mike,PBS_O_LANG=en_US.UTF-8,
+	PBS_O_LOGNAME=mike,
+	PBS_O_PATH=/usr/local/openmpi/1.4.3-pgi/bin:/usr/local/intel/Compiler
+	/11.1/069/bin/intel64/:/usr/local/gcc/4.4.5/bin:/usr/local/pgi/linux86
+	-64/10.9/bin:/usr/local/Modules/3.2.8/bin:/home/mike/bin:/usr/lib64/qt
+	-3.3/bin:/usr/kerberos/bin:/usr/local/bin:/bin:/usr/bin:/home/mike/bin
+	:/usr/local/bin,PBS_O_MAIL=/var/spool/mail/mike,PBS_O_SHELL=/bin/bash,
+	PBS_O_HOST=tango.vpac.org,PBS_SERVER=tango-m.vpac.org,
+	PBS_O_WORKDIR=/home/mike/Aspirin_course_01,PBS_O_QUEUE=run_1_week
+    etime = Thu Dec  9 13:29:49 2010
+    submit_args = pbs_script_sequential
+    start_time = Thu Dec  9 13:30:33 2010
+    start_count = 1
+

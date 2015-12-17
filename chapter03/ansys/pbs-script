@@ -1,0 +1,11 @@
+#!/bin/bash
+#PBS -l nodes=16
+#PBS -l walltime=00:15:00
+#PBS -o ansystestjob.txt
+# next line is a phrase:
+echo The Working directory is $PBS_O_WORKDIR
+# change the working dir
+#PBS -W x=GRES:aa_r+1%aa_r_hpc+12
+module load ansys/145
+cd $PBS_O_WORKDIR
+ansys145 -b < OscillatingPlate.inp > OscillatingPlate.db

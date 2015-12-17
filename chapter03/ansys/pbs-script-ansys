@@ -1,0 +1,16 @@
+#!/bin/bash
+#PBS -l nodes=1
+#PBS -l walltime=0:15:00   
+#PBS -o ansystestjob.txt
+# next line is a phrase:             
+echo The Working directory is $PBS_O_WORKDIR
+# Change the working dir
+#PBS -l software=aa_r+1
+module load ansys/145
+cd $PBS_O_WORKDIR
+# load fluent
+# submit job
+# ansys110 -b -p aa_r < solve.inp > hypervpac.db
+# ansys110 -b -p aa_r <OscillatingPlate.inp >ansysjin.db
+ansys145 -b < OscillatingPlate.inp > ansystest.db
+

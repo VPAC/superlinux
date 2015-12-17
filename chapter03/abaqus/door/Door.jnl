@@ -1,0 +1,5 @@
+# Save by mattw on Mon Oct  1 11:29:26 2012
+from abaqus import *
+upgradeMdb('/home/mattw/door/Door-6.6-1.cae', '/home/mattw/door/Door.cae')
+# Save by mattw on Mon Oct  1 11:29:26 2012
+# Save by mattw on Mon Oct  1 11:31:04 2012

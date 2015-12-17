@@ -1,0 +1,30 @@
+#!/bin/bash
+
+#     	job name:
+#PBS -N ansys_benchmark
+
+#     	how many cpus?
+#PBS -l nodes=1:ppn=2
+
+#     	How long to run the job? (hours:minutes:seconds)
+#       You will almost certainly need to change this.
+#PBS -l walltime=00:15:00
+
+#       Wait for license file
+#       Please leave this as it is, makes it a lot safer.
+# PBS -W x=gres:aa_r+1
+#PBS -W x=GRES:aa_r+1%aa_r_hpc+2
+
+#     	Environmental varibles to make it work:
+
+module load ansys/145
+
+cd $PBS_O_WORKDIR
+ 
+# Launching the job!
+
+NODES=$(cat $PBS_NODEFILE | sort | uniq -c | awk '{print $2 "*" $1}' | tr '\n' ',' | sed 's/,$//')
+
+echo "This job is allocated on $NODES"
+
+cfx5solve  -def Benchmark.def -parallel -par-dist $NODES

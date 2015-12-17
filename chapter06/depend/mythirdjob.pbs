@@ -1,0 +1,8 @@
+#!/bin/bash
+#PBS -N mythirdjob
+#PBS -l walltime=000:02:00,nodes=1:ppn=1
+#PBS -W x=depend:afterok:mysecondjob
+cd $PBS_O_WORKDIR
+echo `hostname ` $PBS_JOBNAME running $PBS_JOBID >> hostname.txt
+sleep 60
+

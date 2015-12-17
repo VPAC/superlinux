@@ -1,0 +1,36 @@
+REMARK ****************************************************************               
+REMARK  TEST RTF AND PARAM FILES MADE FOR LIGANDS                                     
+REMARK  -------------------------------------------* FOR INFORMATIONS, PLEASE CONTACT:
+REMARK  ZOETE VINCENT                                                                 
+REMARK  VINCENT.ZOETE_AT_ISB-SIB.CH                                                   
+REMARK  SWISS INSTITUTE OF BIOINFORMATICS                                             
+REMARK  MOLECULAR MODELING GROUP                                                      
+REMARK  QUARTIER SORGE - BATIMENT GENOPODE                                            
+REMARK  CH-1015 LAUSANNE                                                              
+REMARK  SWITZERLAND                                                                   
+REMARK  T: +41 21 692 4082                                                            
+REMARK ****************************************************************               
+REMARK   DATE:     7/27/10      3:24:43      CREATED BY USER: vzoete                  
+ATOM      1  C1  LIG     1       0.940   0.117   0.208  1.00  0.00      LIG 
+ATOM      2  C2  LIG     1       1.825   1.180   0.397  1.00  0.00      LIG 
+ATOM      3  C3  LIG     1       3.178   1.048   0.032  1.00  0.00      LIG 
+ATOM      4  C4  LIG     1       3.628  -0.172  -0.532  1.00  0.00      LIG 
+ATOM      5  C5  LIG     1       2.719  -1.220  -0.741  1.00  0.00      LIG 
+ATOM      6  C6  LIG     1       1.384  -1.076  -0.361  1.00  0.00      LIG 
+ATOM      7  C7  LIG     1       4.083   2.223   0.168  1.00  0.00      LIG 
+ATOM      8  O8  LIG     1       4.998   2.468  -0.605  1.00  0.00      LIG 
+ATOM      9  O9  LIG     1       3.949   2.765   1.409  1.00  0.00      LIG 
+ATOM     10  O10 LIG     1       4.942  -0.366  -0.967  1.00  0.00      LIG 
+ATOM     11  C11 LIG     1       5.696  -0.846   0.080  1.00  0.00      LIG 
+ATOM     12  O12 LIG     1       5.315  -1.073   1.222  1.00  0.00      LIG 
+ATOM     13  C13 LIG     1       7.109  -1.038  -0.368  1.00  0.00      LIG 
+ATOM     14  H14 LIG     1      -0.100   0.224   0.494  1.00  0.00      LIG 
+ATOM     15  H15 LIG     1       1.453   2.104   0.824  1.00  0.00      LIG 
+ATOM     16  H16 LIG     1       3.049  -2.150  -1.191  1.00  0.00      LIG 
+ATOM     17  H17 LIG     1       0.688  -1.893  -0.516  1.00  0.00      LIG 
+ATOM     18  H18 LIG     1       4.631   3.449   1.583  1.00  0.00      LIG 
+ATOM     19  H19 LIG     1       7.141  -1.745  -1.202  1.00  0.00      LIG 
+ATOM     20  H20 LIG     1       7.686  -1.449   0.465  1.00  0.00      LIG 
+ATOM     21  H21 LIG     1       7.539  -0.075  -0.659  1.00  0.00      LIG 
+TER      22      LIG     1 
+END
