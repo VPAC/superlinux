@@ -49,13 +49,13 @@ Introduction
 3.1 Environment Modules
 3.2 Portable Batch System
 3.3 Frequently Used PBS and Scheduler Commands
-3.5 Standard Job DLPOLY: Molecullar Modelling
-3.6 Two Standard Jobs with Graphic Output: GNU Octave and MATLAB(R)
-3.7 Standard Job with PDF Output: R, A Statistical Package
-3.8 Extended Application for Parallel Processing: R: A Statistical Package
-3.9 Parallel Job with License : ANSYS Finite Element Analysis
-3.10 Standard Job with License : Abaqus Finite Element Analysis
-3.11 Standard Job With Local Visualisation : NAMD and VMD
+3.4 Standard Job DLPOLY: Molecullar Modelling
+3.5 Two Standard Jobs with Graphic Output: GNU Octave and MATLAB(R)
+3.6 Standard Job with PDF Output: R, A Statistical Package
+3.7 Extended Application for Parallel Processing: R: A Statistical Package
+3.8 Parallel Job with License : ANSYS Finite Element Analysis
+3.9 Standard Job with License : Abaqus Finite Element Analysis
+3.10 Standard Job With Local Visualisation : NAMD and VMD
 4.0 Intermediate Linux
 4.1 Login Files
 4.2 Editing With Vim
@@ -282,171 +282,341 @@ There is close to four hundred scientific software applications and versions ins
 
 The following is a non-comprehensive list of the software that's generally available on on HPC clusters:
 
-Abaqus: Abaqus is a package for finite element analysis, usually applied in mechanical engineering. 
+Abaqus: Abaqus is a package for finite element analysis, usually applied in mechanical engineering.
+
 ABWT: The AB WT Analysis Pipeline is an off-instrument SOLiD data analysis software package for the analysis of experiments run. It maps reads from a transcript sample to a reference genome and assigning tag counts to features of the reference genome. 
+
 ACML: The AMD Core Math Library (ACML) is a set of optimised and threaded math routines, especially useful for computational-intensive tasks. 
+
 AFNI: AFNI is a set of C programs for processing, analyzing, and displaying functional MRI (FMRI) data - a technique for mapping human brain activity. 
+
 AMBER: Assisted Model Building with Energy Refinement (AMBER) is a family of force fields for molecular dynamics of biomolecules. AMBER is also the name for the molecular dynamics software package that simulates these force fields. 
+
 ANSYS: ANSYS is an engineering simulation for general-purpose finite element analysis and computational fluid dynamics. 
+
 Ant: Apache Ant as an automated software build processes, like Make etc, but is implemented using the Java language, requiring the Java platform, and best suited to building Java projects. 
+
 Armadillo: Armadillo is a C++ linear algebra library (matrix maths) that supports integer, floating point and complex numbers, as well as a subset of trigonometric and statistics functions. 
+
 Atlas: Automatically Tuned Linear Algebra Software (ATLAS) is a software library for linear algebra, providing an open source implementation of BLAS APIs for C and Fortran77. 
+
 Autodock: AutoDock is a suite of docking tools designed to predict how small molecules, such as substrates or drug candidates, bind to a receptor of known 3D structure. 
+
 AutoGrow: AutoGrow uses AutoDock as the selection operator. For each generation, all ligand files are docked to the target protein, and for each dock, AutoDock returns a predicted binding affinity. AutoGrow (Java DOCK), uses fragment-based growing, docking, and evolutionary techniques. 
+
 BEAM: BEAMnrc is a general purpose Monte Carlo simulation system for modelling radiotherapy sources which is based on the EGSnrcMP code system for modelling coupled electron and photon transport. 
+
 BigDFT: BigDFT is a Density Functional Theory (DFT) parallel electronic structure code using a wavelet basis set. Wavelets form a real space basis set distributed on an adaptive mesh. Surfaces and isolated systems can be simulated with the proper boundary conditions and GTH or HGH pseudopotentials are used to remove the core electrons. 
+
 binutils: The GNU Binary Utilities, or binutils, is a collection of programming tools for the manipulation of object code in various object file formats. They are typically used in conjunction with GNU Compiler Collection, make, and GDB. 
+
 BLAST: The NCBI Basic Local Alignment Search Tool (BLAST) finds regions of local similarity between DNA sequences sequences and can be used to infer functional and evolutionary relationships between sequences as well as help identify members of gene families. 
+
 Blender: Blender is a 3D graphics application used for modeling, UV unwrapping, texturing, rigging, water simulations, skinning, animating, rendering, particle, and other simulations, non-linear editing, compositing, and creating interactive 3D applications. The image (right) was created with Blender. 
+
 BLT: The BLT library is an extension to Tcl/Tk. that adds plotting widgets, a geometry manager, a canvas item, and several new commands to Tk. 
+
 Bonnie++: Bonnie++ is a benchmark suite that is aimed at performing a number of simple tests of hard drive and file system performance. 
+
 Boost: The Boost C++ libraries are a collection of open source libraries that extend the functionality of C++. They range from general-purpose libraries like the smart_ptr library to libraries primarily aimed at other library developers and advanced C++ users, like the metaprogramming template (MPL) and DSL creation (Proto). 
+
 BWA: The Burrows-Wheeler Alignment (BWA) Tool is a fast light-weight tool that aligns short sequences to a sequence database, such as the human reference genome. 
+
 CGAL: CGAL (Computational Geometry Algorithms Library) provides efficient and reliable geometric algorithms in the form of a C++ library data structures and algorithms for triangulations, Voronoi diagrams, polygons and polyhedra, arrangements of curves and their applications, mesh generation, geometry processing, subdivision and parameterization, as well as estimation of local differential properties, and approximation of ridges and umbilics, alpha shapes, convex hull algorithms, search structures , interpolation, shape analysis, fitting, and distances, and kinetic data structures. 
+
 Circuitscape: Circuitscape is a free, open-source program which borrows algorithms from electronic circuit theory to predict patterns of movement, gene flow, and genetic differentiation among plant and animal populations in heterogeneous landscapes. 
- CDAT: The Climate Data Analysis Tools (CDAT) is a software infrastructure that uses Python. The CDAT subsystems, implemented as Python modules, provide access to and management of gridded data (Climate Data Management System or CDMS); large-array numerical operations (Numerical Python); and visualization (Visualization and Control System or VCS). The image (left) is a composite of CDAT windows. 
+
+CDAT: The Climate Data Analysis Tools (CDAT) is a software infrastructure that uses Python. The CDAT subsystems, implemented as Python modules, provide access to and management of gridded data (Climate Data Management System or CDMS); large-array numerical operations (Numerical Python); and visualization (Visualization and Control System or VCS). The image (left) is a composite of CDAT windows. 
+
 CDO: The Climate Data Operators (CDO) software is a collection of many operators for standard processing of climate and NWP model output. 
+
 CPMD: The Car-Parrinello Molecular Dynamics code is a parallelized plane wave/pseudopotential implementation of Density Functional Theory, particularly designed for ab-initio molecular dynamics. 
+
 CUDA: The NVIDIA CUDA Toolkit includes accelerated BLAS and FFT implementations, parallel thread execution and CUDA command line compiler. CUDA (an acronym for Compute Unified Device Architecture) is a parallel computing architecture developed by NVIDIA, the computing engine in NVIDIA graphics processing units (GPUs). 
+
 DAWN: Drawer for Academic WritiNgs (DAWN) is a renderer which reads 3D geometrical data and visualizes with a vectorized 3D PostScript processor with analytical hidden line/surface removal. 
 Desmond: Desmond is a software package developed at D.E. Shaw Research to perform high-speed molecular dynamics simulations of biological systems on parallel systems that is available as part of Schrodinger or as a stand-alone package. 
+
 DeMon: DeMon (Density of Montréal) is a software package for density functional theory (DFT) calculations. It uses the linear combination of Gaussian-type orbital (LCGTO) approach for the self-consistent solution of the Kohn-Sham (KS) DFT equations. The calculation of the four-center electron repulsion integrals is avoided by introducing an auxiliary function basis for the variational fitting of the Coulomb potential. 
+
 DL POLY: DL_POLY is a general purpose classical molecular dynamics (MD) simulation software developed at Daresbury Laboratory by I.T. Todorov and W. Smith. 
+
 DOCK: DOCK simulates the problem of docking molecules to each other. In the field of molecular modeling, docking is a method which predicts the preferred orientation of one molecule to a second when bound to each other to form a stable complex. 
+
 Ecat: Comprehensive C Library and utilities to handle Ecat, Interfile and Analyze datasets. Allows conversion, and access to file internals. 
+
 EGSnrc: EGSnrc is a package for the Monte Carlo simulation of coupled electron-photon transport. 
+
 EM3D: EM3D is an integrated software application designed to facilitate the analysis and visualization of electron microscope (EM) tomography data by cellular and molecular biologists. 
+
 Espresso: Molecular dynamics simulation of "coarse-grained" bead-spring models as they are used in soft-matter research in physics, chemistry and molecular biology. 
+
 EMBOSS: The European Molecular Biology Open Software Suite (EMBOSS) is a molecular biology tool which copes with data in a variety of formats and even allows transparent retrieval of sequence data from the web. 
+
 FDS: Fire Dynamics Simulator (FDS) is a computational fluid dynamics model of fire-driven fluid flow. The software solves numerically a form of the Navier-Stokes equations appropriate for low-speed, thermally-driven flow, with an emphasis on smoke and heat transport from fires.
+
 FFTW: "Fastest Fourier Transform in the West" (FFTW) is a C subroutine library for computing the discrete Fourier transform (DFT) in one or more dimensions, of arbitrary input size, and of both real and complex data (as well as of even/odd data, i.e. the discrete cosine/sine transforms or DCT/DST). 
+
 FLUENT: FLUENT is a flexible general-purpose computational fluid dynamics package used for engineering simulations of all levels of complexity. 
+
 Freeglut: freeglut is a completely opensource alternative to the OpenGL Utility Toolkit (GLUT) library. 
+
 FreeSurfer: FreeSurfer is a set of automated tools for reconstruction of the brain’s cortical surface from structural MRI data, and overlay of functional MRI data onto the reconstructed surface. 
+
 FSL: FSL is a comprehensive library of analysis tools for FMRI, MRI and DTI brain imaging data. 
+
 G4beamline: G4Beamline is a particle tracking and simulation program based on the Geant4 toolkit that is specifically designed to easily simulate beamlines and other systems using single-particle tracking. 
+
 GAMESS: General Atomic and Molecular Electronic Structure System (GAMESS) is a program for ab initio molecular quantum chemistry. A variety of molecular properties, ranging from simple dipole moments to frequency dependent hyperpolarizabilities may be computed. 
+
 GATE: The Geant4 Application for Emission Tomography (GATE) provides comprehensive physics modeling abilities of the general purpose codes while making it possible to intuitively configurate an Emission Tomography simulation. GATE allows the accurate description of time-dependent phenomena such as source or detector movement and source decay kinetics. 
+
 Gaussian: Gaussian provides electronic structure modeling which can be applied to both stable species and compounds which are difficult or impossible to observe experimentally. Gaussian can be used for comprehensive investigations of molecules and reactions, predicting and interpreting spectra, exploring diverse chemical arenas, and complex modelling. 
+
 GCC: The GNU Compiler Collection (GCC) is a compiler system produced by the GNU Project supporting various programming languages including C and C++ with front ends for Fortran, Pascal, Objective-C, Java, Ada and others. 
+
 GD: The Graphics Draw (GD) Library is a graphics software library for dynamically manipulating images. Its native programming language is ANSI C, but it has interfaces for many other programming languages. 
+
 GDB: The GNU Debugger (GDB) is the standard debugger for the GNU software system. It is a portable debugger that runs on many Unix-like systems and works for many programming languages, including Ada, C, C++, FreeBASIC, FreePascal and Fortran. 
+
 GEANT: GEometry ANd Tracking (GEANT) is a simulation software designed to describe the passage of elementary particles through matter, using Monte Carlo methods. 
+
 GENREG: Generator fuer regulaere Graphen (GENREG) generates regular graphs for the chosen parameters and constructs them. 
+
 GEOS: GEOS (Geometry Engine - Open Source) is a C++ port of the Java Topology Suite (JTS). As such, it aims to contain the complete functionality of JTS in C++. This includes all the OpenGIS Simple Features for SQL spatial predicate functions and spatial operators, as well as specific JTS enhanced topology functions. 
+
 GLUE: Grid LSC User Environment (GLUE) is a collection of utilities for running data analysis pipelines for online and offline analysis as well as accessing various grid utilities. It also provides the infrastructure for the segment database. 
+
 GMP: GNU MP (GMP) is a library for arbitrary precision arithmetic, operating on signed integers, rational numbers, and floating point numbers. It has a rich set of functions, and the functions have a regular interface. It is particularly designed for speed. 
+
 GotoBLAS: The GotoBLAS codes are a fast implementation of the Basic Linear Algebra Subroutines. The advantage is fast calculation which makes use of all instruction sets of modern processors. 
+
 Grace: Grace is a tool to make two-dimensional plots of numerical data. It combines the convenience of a graphical user interface with the power of a scripting language which enables it to do sophisticated calculations or perform automated tasks. 
+
 Graphviz: Graphviz is open source graph visualization software with several main graph layout programs, interactive graphical interfaces, auxiliary tools, libraries, and language bindings. 
+
 GROMACS: The GROningen MAchine for Chemical Simulations (GROMACS) is a molecular dynamics simulation package that is very fast and has support for different force fields. It is notable for being used for protein folding at Folding@Home. 
+
 Gridpro: Gridpro is an object-oriented, multiblock grid generator that provides users the capability to build topology, edit surfaces, set CFD boundary conditions, and view grids. 
+
 GSL: The GNU Scientific Library (GSL), is a collection of numerical routines for scientific computing. The library provides a wide range of mathematical routines such as random number generators, special functions and least-squares fitting. 
-H5utils: The package h5utils is a set of utilities for visualization and conversion of scientific data in the free, portable HDF5 format along with programs to convert HDF5 datasets into the formats required by other free visualization software (e.g. plain text, Vis5d, and VTK). 
+
+H5utils: The package h5utils is a set of utilities for visualization and conversion of scientific data in the free, portable 
+
+HDF5 format along with programs to convert HDF5 datasets into the formats required by other free visualization software (e.g. 
+plain text, Vis5d, and VTK). 
+
 Harminv: Harminv is used to solve problems of harmonic inversion - given a discrete-time, finite-length signal that consists of a sum of finitely-many sinusoids (possibly exponentially decaying) in a given bandwidth, it determines the frequencies, decay constants, amplitudes, and phases of those sinusoids. It can, in principle, provide much better accuracy than straightforwardly extracting FFT peaks. 
+
 HDF5: HDF5 is a data model, library, and file format for storing and managing data. It supports an unlimited variety of datatypes, and is designed for flexible and efficient I/O and for high volume and complex data. 
+
 Hadoop: Apache Hadoop is a framework for running applications on large clusters built of commodity hardware. The Hadoop framework transparently provides applications both reliability and data motion. 
+
 HyperWorks: Altair HyperWorks is a computer-aided engineering simulation software platform that includes modeling, analysis, visualization and data management solutions for linear, nonlinear, structural optimization, fluid-structure interaction, and multi-body dynamics applications. 
+
 Hypre: Hypre is a library of high performance preconditioners that features parallel multigrid methods for both structured and unstructured grid problems. 
+
 IDL: Interactive Data Language (IDL) is a programming language used for data analysis. IDL is vectorized, numerical, and interactive, and is commonly used for interactive processing of large amounts of data (including image processing). 
+
 IMOD: IMOD is a set of image processing, modeling and display programs used for tomographic reconstruction and for 3D reconstruction of EM serial sections and optical sections. 
+
 Intel Compilers: Intel compilers are optimised for its hardware platforms to minimise stalls and produce code that executes in the fewest number of cycles. Intel's suite of compilers has front ends for C, C++, and Fortran. 
-IPRSCAN: IntroProScan (iprscan) is a tool that combines different protein signature recognition methods into one resource. InterProScan is more than a simple wrapping of sequence analysis applications since it requires performing a considerable data look-ups from some databases and program outputs. 
+
+IPRSCAN: IntroProScan (iprscan) is a tool that combines different protein signature recognition methods into one resource. 
+
+InterProScan is more than a simple wrapping of sequence analysis applications since it requires performing a considerable data look-ups from some databases and program outputs. 
+
 ISP: In-situ Partial Order (ISP) is a dynamic verifier for MPI Programs. ISP will help you debug your programs, and graphically show you all the possible send/receive matches, barrier synchronizations, etc. 
+
 ITKSNAP: ITK-SNAP is used to segment structures in 3D medical images, providing semi-automatic segmentation using active contour methods, as well as manual delineation and image navigation. 
+
 JAIDA: JAIDA is a Java (J) implementation of the Abstract Interfaces for Data Analysis (AIDA). JAIDA allows Java programmers to create histograms, scatter plots and tuples, perform fits, view plots and store and retrieve analysis objects from files. 
+
 JAS3: JAS3 is a follow on from Java Analysis Studio (JAS), a general purpose data analysis tool for histograms, XY plots, scatterplots, export of plots in a variety of formats, and AIDA compliant analysis system. 
+
 JasPer: JasPer is a collection of software (i.e., a library and application programs) for the coding and manipulation of images. 
+
 Java: The Java programming language is an object-orientated language similar to C and C++ in syntax, but with a simpler object model and fewer low-level facilities. It is designed for developing cross-playment applications. 
+
 KOBAS: KEGG Orthology Based Annotation System (KOBAS) is a bioinformatics Python application. KOBAS can assign appropriate KO terms for queried sequences based on similarity search, and it can further discover enriched KO terms among the annotation results by frequency of pathways or statistical significance of pathways. 
+
 LAL: The LSC Algorithm Library (LAL) is a collection of routines written in ANSI C99 for gravitational wave data analysis. 
+
 LAMMPS: Large-scale Atomic/Molecular Massively Parallel Simulator (LAMMPS) has potentials for soft materials and solid-state materials (metals, semiconductors) and coarse-grained or mesoscopic systems. It can be used to model atoms or as a parallel particle simulator at the atomic, meso, or continuum scale. The image (left) is atom-to-continuum coupling using LAMMPS. 
+
 LatentGOLD: Latent GOLD is a latent class and finite mixture program. Latent GOLD contains separate modules for estimating three different model structures; LC Cluster models, DFactor models, and LC Regression models. 
-LMF: The Local Maximum Fitting (LMF) algorithm firstly finds local maximums within a certain time window, and regenerate the time series data as a sum of harmonic curves. The number of harmonic curves is limited by AIC ( Akaike Information Criterion ) to avoid over-fitting. 
+
+LMF: The Local Maximum Fitting (LMF) algorithm firstly finds local maximums within a certain time window, and regenerate the time series data as a sum of harmonic curves. The number of harmonic curves is limited by AIC (Akaike Information Criterion) to avoid over-fitting. 
+
 LP_SOLVE: LP_SOLVE is a linear programming code written in ANSI C, which has solved problems as large as 30,000 variables and 50,000 constraints. Lp_solve can also handle (smaller) integer and mixed-integer problems. 
+
 MADYMO: MAthematical DYnamic MOdels (MADYMO) is a multibody dynamics solver and frequently used for automobile occupant safety/injury calculations. 
+
 Maq: Maq builds mapping assemblies from short reads generated by the next-generation sequencing machines. It is particularly designed for Illumina-Solexa 1G Genetic Analyzer, and has preliminary functions to handle ABI SOLiD data. 
+
 Marmot: Marmot is a library written in C++, which has to be linked to your application in addition to the existing MPI library. It will check if your application conforms to the MPI standard and will issue warnings if there are errors or non-portable constructs. 
+
 Mash: Mash is a toolkit for multimedia using IP multicast. The Mash toolkit is an outgrowth of the MBone tools (e.g.--sdr, vic, vat) developed to support streaming audio and video applications. 
+
 Matio: Libmatio is an open-source library for reading/writing Matlab MAT files. This library is designed for use by programs/libraries that do not have access or do not want to rely on Matlab's libmat shared library. 
-MATLAB: MATLAB is a numerical computing environment allowing matrix manipulation, plotting of functions and data, implementation of algorithms etc. 
+
+MATLAB: MATLAB (R) is a numerical computing environment allowing matrix manipulation, plotting of functions and data, implementation of algorithms etc. 
+
 MEEP: MIT Electromagnetic Equation Propagation (MEEP) is a finite-difference time-domain (FDTD) simulation software package developed at MIT to model electromagnetic systems. 
+
 MEME: MEME provides tools for discovering and using protein and DNA sequence motifs, a pattern of nucleotides or amino acids that appears repeatedly in a group of related DNA or protein sequences. 
+
 Mesa: Mesa is an implementation of the OpenGL specification for rendering interactive 3D graphics, usable in a variety of environments from software emulation to GPUs. 
+
 Metaio: Metaio contains a library for parsing LIGO_LW Table files and can read XML files compressed with the gzip compression algorithm. 
+
 MFIX: MFIX (Multiphase Flow With Interphase Exchanges) has been developed by the U.S. National Energy Technology Laborartory, providing transient data on the three-dimensional distribution of pressure, velocity, temperature, and species mass fractions. 
+
 MGLTools: Developed by the Molecular Graphics Laboratory (MGL) MGLTools, is used for visualization and analysis of molecular structures. It includes AutoDockTools (ADT), Python Molecular Viewer (PMV) and Vision, a visual-based programming environment. 
+
 Minibaum: Minibaum3 is a small C program which has been used for hypohamilton graphs and angular momentum graphs. 
+
 Modules (Environment): The environment modules package package provides for the dynamic modification of a user's environment. 
+
 Molden: Molden displays molecular density from the ab initio packages GAMESS and GAUSSIAN and others. Molden reads all the required information from the GAMESS / GAUSSIAN outputfile. Molden is capable of displaying molecular orbitals, electron density and molecular minus atomic density. 
+
 Molekel: Molekel is a molecular visualization program that import and exports data using OpenBabel and displays molecules with different rendering styles, generates iosurfaces, and animates. 
+
 Mono: Mono is used to develop an Ecma standard compliant, .NET-compatible set of tools, including a C# compiler and a Common Language Runtime. 
+
 MOPAC: Molecular Orbital PACkage (MOPAC) is a semiempirical quantum chemistry program based on Dewar and Thiel's NDDO approximation. 
+
 MPFR: The GNU MPFR library is a C library for multiple-precision floating-point computations with correct rounding. 
+
 mpiBLAST: mpiBLAST is an implementation of the bioinformatics software NCBI BLAST, which finds regions of local similarity between sequences. Through database fragmentation, query segmentation, intelligent scheduling, and parallel I/O, it improves performance by several orders of magnitude. 
+
 MPICH: MPICH is a free and portable implementation of MPI, a standard for message-passing for distributed-memory applications used in parallel computing. 
+
 MVAPICH and MVAPICH2: MVAPICH/MVAPICH2 are implementations of MPI for computing systems and servers using InfiniBand, 10GigE/iWARP and RoCE & etc networking technologies. 
+
 Mpiexec: Mpiexec is a replacement program for the script mpirun, which is part of the mpich package. It is used to initialize a parallel job from within a PBS batch or interactive environment. 
+
 MrBayes: MrBayes conducts Bayesian estimation of phylogeny based on the posterior probability distribution of trees, which is the probability of a tree conditioned on the observations. 
+
 MUMmer: MUMmer is rapidly aligns entire genomes, including incomplete genomes and contigs from a shotgun sequencing program. 
+
 MVAPICH: MVAPICH implements MPI over InfiniBand, 10GigE/iWARP and RDMA over Ethernet. 
+
 NAMD: NAnoscale Molecular Dynamics (NAMD) is a molecular dynamics simulation package written using the Charm++ parallel programming model, often used to simulate large systems (e.g., millions of atoms). 
+
 Nauty: nauty is a LAMMPS (Large-scale Atomic/Molecular Massively Parallel Simulator) program for computing automorphism groups of graphs, digraphs and can also produce a canonical labelling. 
+
 NCARG-NCL: NCAR is the National Centre for Atmospheric Research, NCARG is a graphics library, maps database and applications for the same, and NCAR Command Language (NCL) is interpreted language for the above. 
+
 NEI Nastran: NEi Nastran is a finite element analysis (FEA) solver used to generate 1.5 VPAC's Software solutions for linear and nonlinear stress, dynamics, and heat transfer characteristics of structures and mechanical components. The image (right) is a Nastran model. 
+
 netCDF: The Unidata network Common Data Form (netCDF) is an interface for scientific data access and a library that provides an implementation of the interface. The netCDF library also defines a machine-independent format for representing scientific data. Together, the interface, library, and format support the creation, access, and sharing of scientific data. 
+
 NS: Network Simulator (NS) is a discrete event simulator targeted at networking research. Ns provides substantial support for simulation of TCP, routing, and multicast protocols over wired and wireless (local and satellite) networks. 
+
 NUMPY: NumPy is numerical package for scientific computing with Python. It provides numerical array objects, linear algebra and other capabilities. 
+
 Octave: GNU Octave is a high-level language, primarily intended for numerical computations and is highly compatible with MATLAB. 
+
 Open Babel: Open Babel is a chemical toolbox which can read, write and convert over 90 chemical file formats, and filter and search molecular files using SMARTS and other methods. 
+
 OpenFOAM: Open Field Operation and Manipulation (OpenFOAM) is primarily a C++ toolbox for the customisation and extension of numerical solvers for continuum mechanics problems, including computational fluid dynamics. 
+
 OpenMPI: Open MPI is a message passing interface that combines the merger of three major MPI implementations (FT-MPI, LA-MPI, and LAM/MPI) to create a complete MPI-2 implementation. MPI is a language-independent communications protocol used to program parallel computers. 
+
 Padb: Padb works as a parallel front end to gdb allowing it to target parallel applications. 
+
 Pahole: Analyzes your code and identifies unused memory holes in data structures, and suggests re-ordering to improve memory usage and speed. 
+
 Paraview: ParaView is a data analysis and visualisation application. The data exploration can be done interactively in 3D or programmatically using ParaView's batch processing capabilities. ParaView was developed to analyze extremely large datasets. 
+
 PBSssh: PBSssh: Is a Bourne-Again shell executable for Portable Batch Script. 
+
 PHYLIP: PHYLIP (the PHYLogeny Inference Package) is a package of programs for inferring phylogenies (evolutionary trees). 
+
 PCRE: Perl-Compatible Regular Expression (PCRE) library is a set of functions that implement regular expression pattern matching using the same syntax and semantics as Perl 5. 
- Perl: Perl is a high-level, general-purpose, interpreted, dynamic programming language designed as a a general-purpose Unix scripting language to make report processing easier. 
+
+Perl: Perl is a high-level, general-purpose, interpreted, dynamic programming language designed as a a general-purpose Unix scripting language to make report processing easier. 
+
 PETSc: PETSc is a suite of data structures and routines for solution of scientific applications modeled by partial differential equations. 
+
 PGI compilers: PGI compilers are a set of Fortran, C and C++ compilers for High Performance Computing Systems from Portland Group. 
+
 Phaser: Phaser consists of CCP4 and BLT. The former is used to determine macromolecular structures by X-ray crystallography, and other biophysical techniques. BLT has been previously described. 
+
 POV-Ray: Persistence of Vision Raytracer (POV-RAY) is a high-quality for creating three-dimensional graphics. Features include radiosity, photon mapping, focal blur, and other photorealistic capabilities. 
+
 Parallel NETCDF : Parallel NETCDF is an implementation of the Network Common Data Form which supports parallel I/O.  
+
 Python: Python is a general-purpose high-level programming language that aims for high levels of readability. It features a fully dynamic type system and automatic memory management. Like other dynamic languages it is often used as a scripting language. 
+
 Quilt: Quilt is a tool to manage large sets of patches by keeping track of the changes each patch makes. Patches can be applied, unapplied, refreshed, etc. 
+
 R: R is a programming language and software environment for statistical computing, where it is a defacto standard, and graphics. 
+
 Rosetta: Rosetta is a molecular modeling software package for understanding protein structures, protein design, protein docking, protein-DNA and protein-protein interactions. 
+
 rysnc: Rsync copies files either to or from a remote host, or locally on the current host. It is quick because it only copies changed files. 
+
 SABRE: Software for the Analysis of Recurrent Events (SABRE) is a program for the statistical analysis of multi-process random effect response data. These responses can take the form of binary, ordinal, count and linear recurrent events. 
+
 Schrodinger: Schrodinger is a suite of molecular modelling and simulation, lead discovery, and optimisation applications that support basic modelling through advanced pharmaceutical research. The image (left) is Schrodinger Maestro.
+
 Scilab: Scilab is a scientific software package for numerical computations which includes hundreds of mathematical functions, sophisticated data structures (including lists, polynomials, rational functions, linear systems), an interpreter and a high level programming language. 
+
 SCons: SCons is a software construction tool (build tool, or make tool) implemented in Python, that uses Python scripts as "configuration files" for software builds. 
+
 Semtex: Semtex is a family of spectral element simulation codes. The spectral element method is a high-order finite element technique that combines the geometric flexibility of finite elements with the high accuracy of spectral methods. 
+
 smem: smem is a memory reporting tool, notable for its ability to report proportional set size (PSS), which is a more meaningful representation of the amount of memory used by libraries and applications in a virtual memory system. 
+
 SPEC CPU2006: The Standard Performance Evaluation Corporation (SPEC) that has a standard set of relevant benchmarks for computer systems. SPEC CPU2006 measures the performance of the processor, memory architecture, and compilers. 
+
 Spinner: Spinner is an anti-idle program that displays a little "spinning" ASCII character in the top left corner of your terminal. Spinner is useful for keeping ssh links from dropping due to inactivity. 
+
 SRB: Storage Resource Broker (SRB) is a Data Grid Management System (DGMS) or simply a logical distributed file system based on a client-server architecture which presents the user with a single global logical namespace or file hierarchy. 
+
 Stata: Stata is a integrated statistical package that provides data analysis, data management, and graphics that includes linear mixed models, multivariate methods, multinominal probit and Mata, a matrix language. 
+
 SVMperf: Support Vector Machine for Multivariate Performance Measures (SVMperf) is an implementation of the Support Vector Machine (SVM) formulation for optimizing multivariate performance measures and implements alternative structural formulation of the SVM optimization problem for conventional binary classification with error rate and ordinal regression. 
+
 Szlib: Szip is a freeware portable general purpose lossless compression program. 
+
 TAU: Tuning and Analysis Utilities (TAU) is a program and performance analysis tool for high-performance parallel and distributed computing with a suite of tools for static and dynamic analysis of programs written in C, C++, FORTRAN 77/90, Python, High Performance FORTRAN, and Java. 
+
 Tcl: Tool command language (Tcl) is a scripting language commonly used for rapid prototyping, scripted applications, GUIs and testing. 
+
 Tk: Tk is an a library of basic elements ("widgits") for building a graphical user interface. It is typically used with Tcl. 
+
 tkcon: tkcon is a replacement for the standard console that comes with Tk which provides many more features than the standard console. 
+
 TORQUE: Terascale Open-Source Resource and QUEue Manager (TORQUE) is a distributed resource manager with notable fault tolerance, scalability and a useful scheduling interface. 
+
 UltraScan: UltraScan is used for the analysis of ultracentrifugation data. The software features an integrated data editing and analysis environment in graphical user interface, popular sedimentation and equilibrium analysis methods with support for velocity and equilibrium experiments, single and multi-channel centerpieces, absorbance and interference optics. 
+
 Underworld: Underworld is a 3D-parallel geodynamic modelling framework capable of deriving viscous / viscoplastic thermal, chemical and thermochemical models consistent with tectonic processes, such as mantle convection and lithospheric deformation over long time scales. 
+
 Valgrind: Valgrind is an instrumentation framework for building dynamic analysis tools. 
+
 VASP: VAMP/VASP [Vienna Ab-initio Simulation Package] is a package for performing ab-initio quantum-mechanical molecular dynamics (MD) using pseudopotentials and a plane wave basis set. 
+
 Velvet: Velvet is a set of algorithms manipulating de Bruijn graphs for genomic Sequence assembly. It was designed for short read sequencing technologies, such as Solexa or 454 Sequencing. The tool takes in short read sequences, removes errors then produces high quality unique contigs. 
+
 VisualDOC: VisualDOC is a general-purpose optimization tool that allows the user to quickly add design optimization capabilities to almost any analysis program. 
+
 VMD: Visual molecular dynamics (VMD) is a molecular modelling and visualization computer program. VMD is primarily developed as a tool for viewing and analyzing the results of molecular dynamics simulations. 
+
 WIEN2k: WIEN2k performs quantum mechanical calculations on periodic solids. It uses the full-potential (linearized) augmented plane-wave and local-orbitals basis set to solve the Kohn–Sham equations of density functional theory. 
+
 Wine: Wine Is Not an Emulator (Wine) allows Unix-like computer operating systems to execute programs written for Microsoft Windows. 
- WRF: WRF (The Weather Research and Forecasting Model) is a mesoscale numerical weather prediction system designed to serve both operational forecasting and atmospheric research needs. The image (right) is a case study used in WRF from the data of the the U.S. East Coast storm of January 2000.
+
+WRF: WRF (The Weather Research and Forecasting Model) is a mesoscale numerical weather prediction system designed to serve both operational forecasting and atmospheric research needs. The image (right) is a case study used in WRF from the data of the the U.S. East Coast storm of January 2000.
+
 XFOIL: XFOIL is an interactive program for the design and analysis of subsonic isolated airfoils. 
-XMDS: eXtensible Multi Dimensional Simulator (XMDS) is a numerical simulation package that integrates equation that converts XML files to a C++ program that integrates the equations. 
+
+XMDS: eXtensible Multi Dimensional Simulator (XMDS) is a numerical simulation package that integrates equation that converts 
+
+XML files to a C++ program that integrates the equations. 
 
 1.7 Accounts, Licensed Software, and Helpdesk
 ---------------------------------------------
@@ -1098,7 +1268,7 @@ Node is reporting status, currently is not executing workload, and cannot accept
 Draining 
 Node is reporting status, currently is executing workload, and cannot accept additional workload due to administrative action.
 
-3.5 Standard Job DLPOLY: Molecullar Modelling
+3.4 Standard Job DLPOLY: Molecullar Modelling
 ---------------------------------------------
 
 DL_POLY is a general purpose classical molecular dynamics (MD) simulation software developed at Daresbury Laboratory by I.T. Todorov and W. Smith. Note that it is licensed software, but with a permissive academic license. Confirm with the developer (Dr Ilian Todorov) that a cluster installation is acceptable (e.g., possibly through a restricted group and agreement of license) and register at their website. 
@@ -1131,7 +1301,7 @@ Once having written up the script, submit it according to the scheduler used (e.
 
 Assuming all goes well, DLPOLY will read in the CONFIG, CONTROL, and FIELD data, and wait for the output. If successful the job will create OUTPUT, RDFDAT, REVCON, REVIVE, and STATIS files. 
 
-3.6 Two Standard Jobs with Graphic Output: GNU Octave and MATLAB(R)
+3.5 Two Standard Jobs with Graphic Output: GNU Octave and MATLAB(R)
 -------------------------------------------------------------------
 
 GNU Octave is a mathematical application and programming language that is highly compatible with  MATLAB(R) but without the licensing restrictions. The following compares (using TORQUE examples) two job scripts written for the respective languages that generate the same result. 
@@ -1162,7 +1332,7 @@ quit;
 
 Simply put the PBS job is submitted, which calls the polar-plot.m file, which runs it's own script, which then generates a polar-plot.ps file which can be downloaded and viewed.
 
-3.7 Standard Job with PDF Output: R, A Statistical Package
+3.6 Standard Job with PDF Output: R, A Statistical Package
 ----------------------------------------------------------
 
 The data is used to indicate an estimate of biomass of ponderosa pine in a study performed by Dale W. Johnson, J. Timothy Ball, and Roger F. Walker who are associated with the Biological Sciences Center, Desert Research Institute, University of Nevada. The tutorial is partially derived from material by Kelly Black of Clarkson University.
@@ -1178,7 +1348,7 @@ MyJob.e32933  MyJob.o32933  pbs-script  Rplots.pdf  trees91.csv  tutorial.R  w1.
 
 The two files MyJob.e32933 and MyJob.o32933 are the job error and output files, respectively. The error file in this case is empty, but can be useful for debugging purposes if a job fails. The output file in this instance documents the actions of the program, including the significant correlation result. The real output is Rplots.pdf, which can be copied from the cluster to the desktop and then displayed using the command evince Rplots.pdf. 
 
-3.8 Extended Application for Parallel Processing: R: A Statistical Package
+3.7 Extended Application for Parallel Processing: R: A Statistical Package
 --------------------------------------------------------------------------
 
 Many applications assume single-core usage and don't take advantage of parallel systems for tasks. That doesn't mean that HPC systems are not useful for such applications, as multiple single-core jobs can be launched, often far in excess of a single system unit. For example, dozens and even hundreds variant instances of the previous R job could be all launched simultaneously on an HPC system. Later examples of such job arrays are provided that make such submissions easier.
@@ -1193,7 +1363,7 @@ In the file xvalidate.R, the R script calls the special library extension snow t
 
 This example of parallel processing with R is taken from Eugster and Knaus (2011).
 
-3.9 Parallel Job with License : ANSYS Finite Element Analysis
+3.8 Parallel Job with License : ANSYS Finite Element Analysis
 -------------------------------------------------------------
 
 ANSYS is an engineering simulation for general-purpose finite element analysis and computational fluid dynamics. The following example is an Oscillating Plate with Two-Way Fluid-Structure Interaction from the ANSYS tutorials, but modified as a task for parallel computation. 
@@ -1225,8 +1395,8 @@ You should be now able to check your output file, OscillatingPlate.db.
 
 Two other ANSYS jobs you can launch and view results include pbs-script-pvm and pbs-cfx-benchmark. 
 
-3.10 Standard Job with License : Abaqus Finite Element Analysis
----------------------------------------------------------------
+3.9 Standard Job with License : Abaqus Finite Element Analysis
+--------------------------------------------------------------
 
 The Abaqus FEA suite is commonly used in automatic engineering problems using a common model data structure and integrated solver technology. As licensed software it requires a number of license tokens based on the number of cores required, which can be calculated by the simple formula int(5 x N^0.422), where N is the number of cores. Device Analytics offers an online calculator at http://deviceanalytics.com/abaqus-token-calculator .
 
@@ -1270,7 +1440,7 @@ The following procedure can be used to plot the crash models deformed shape:
  * Select [Plot Deformed Shape] in the Toolbox area. By default, the final step is displayed. It should be noted that the Deformation Scale Factor is 1 by default in explicit analyses.
 * Select [Animate: Time History] to animate the crash event. The frame rate can be adjusted by clicking [Animation Options] and moving the slider in the Player tab to the desired speed.
 
-3.11 Standard Job With Local Visualisation : NAMD and VMD
+3.10 Standard Job With Local Visualisation : NAMD and VMD
 ---------------------------------------------------------
 
 NAMD is a parallel, molecular dynamics simulation program used to model large biomolecular systems using high performance computing clusters which is freely available for academic work.  If you are interested in running NAMD simulations you should also install a local copy of VMD on your own computer.  VMD is a molecular viewer program that can be used to help set up NAMD simulation and to help analyse and visualize NAMD output. 
