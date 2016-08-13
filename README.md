@@ -17,3 +17,7 @@ The Repository
 --------------
 
 The top-level directory of this repository includes the book, "Supercomputing with Linux" (ISBN 978-0-9943373-0-6). PBS scripts and other associated files are included in each directory according to the chapter number.
+
+
+![ISBN Barcode](https://github.com/VPAC/superlinux/blob/master/isbn-978-0-9943373-0-6.png)
+
