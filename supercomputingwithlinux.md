@@ -2,14 +2,11 @@
 Supercomputing with Linux
 =========================
 
-
 by Lev Lafayette
-
 
 ISBN-10: 0-9943373-0-2
 
 ISBN-13: 978-0-9943373-0-6
-
 
 Supercomputing with Linux by Lev Lafayette, 2015
 
@@ -18,8 +15,6 @@ Published by the Victorian Partnership for Advanced Computing (trading as V3 All
 Cover art composed by Michael D'Silva, featuring several clusters operated by the Victorian Partnership for Advanced Computing.
 
 Supercomputing with Linux, is licensed under a Creative Commons Attribution 4.0 International License. 
-
-
 
 All trademarks are property of their respective owners.
 
@@ -95,13 +90,8 @@ While universities could acquire small/medium computers (which progressively inc
 
 It became apparent that many research staff in Victorian universities, whose projects required large scale computing resources, but which could not gain access to the national facility, would be better served by a local computer facility. I raised this issue at a VVCC (Victorian Vice-Chancellors Committee) meeting and six universities indicated that they would wish to participate in a co-operative facility.  Thus the Victorian Partnership for Advanced Computing, VPAC was formed in 1999 and I was also requested to be its initial chair. Financial commitment was subsequently given by RMIT, Melbourne, Swinburne, Monash, Latrobe and Deakin Universities to enable the purchase of a suitable computer, to establish facilities and to employ support staff. RMIT had an excellent visualisation system and adjacent space in Building 91 which provided a convenient location for VPAC. The focus was on academic, scientific and industrial problems and Dr Bill Applebe was selected as the first CEO. In an exciting period of computer technology development, VPAC facilitated the rapid growth of computer technology applications to the diverse research problems being explored by university staff in Victoria. This book explores these important, complex and rapidly developing technologies, to assist researchers in this field. It will contribute to the continuation of the development of this central, and widely applicable, field of technological endeavour as it progresses into the next phase of its realisation and impact. 
 
-
-
-
 Emeritus Professor David Beanland, AO, FTSE, FIEAust 
 Foundation Vice-Chancellor RMIT University 
-
-
 
 Introduction
 ============
@@ -282,33 +272,33 @@ There is close to four hundred scientific software applications and versions ins
 
 The following is a non-comprehensive list of the software that's generally available on on HPC clusters:
 
-Abaqus: Abaqus is a package for finite element analysis, usually applied in mechanical engineering.
+Abaqus: Abaqus is a package for finite element analysis, usually applied in mechanical engineering. Abaqus is available at the following URL : http://www.3ds.com/products-services/simulia/products/abaqus/
 
-ABWT: The AB WT Analysis Pipeline is an off-instrument SOLiD data analysis software package for the analysis of experiments run. It maps reads from a transcript sample to a reference genome and assigning tag counts to features of the reference genome. 
+ABWT: The AB WT (Whole Transcriptome) Analysis Pipeline is an off-instrument SOLiD data analysis software package for the analysis of experiments run. It maps reads from a transcript sample to a reference genome and assigning tag counts to features of the reference genome. ABWT is available at the following URL: http://solidsoftwaretools.com/gf/project/transcriptome/
 
-ACML: The AMD Core Math Library (ACML) is a set of optimised and threaded math routines, especially useful for computational-intensive tasks. 
+ACML: The AMD Core Math Library (ACML) is a set of optimised and threaded math routines, especially useful for computational-intensive tasks. The AMD Core Math Library is available at the following URL: http://developer.amd.com/tools-and-sdks/archive/amd-core-math-library-acml/
 
-AFNI: AFNI is a set of C programs for processing, analyzing, and displaying functional MRI (FMRI) data - a technique for mapping human brain activity. 
+AFNI: AFNI (Analysis of Functional NeuroImages) is a set of C programs for processing, analyzing, and displaying functional MRI (FMRI) data - a technique for mapping human brain activity. AFNI is available at the following URL: https://afni.nimh.nih.gov/afni/
 
-AMBER: Assisted Model Building with Energy Refinement (AMBER) is a family of force fields for molecular dynamics of biomolecules. AMBER is also the name for the molecular dynamics software package that simulates these force fields. 
+AMBER: Assisted Model Building with Energy Refinement (AMBER) is a family of force fields for molecular dynamics of biomolecules. AMBER is also the name for the molecular dynamics software package that simulates these force fields. AMBER is available at the following URL: http://ambermd.org/
 
-ANSYS: ANSYS is an engineering simulation for general-purpose finite element analysis and computational fluid dynamics. 
+ANSYS: ANSYS is an engineering simulation for general-purpose finite element analysis and computational fluid dynamics. ANSYS can be found at the following URL: http://www.ansys.com/
 
-Ant: Apache Ant as an automated software build processes, like Make etc, but is implemented using the Java language, requiring the Java platform, and best suited to building Java projects. 
+Ant: Apache Ant as an automated software build processes, like Make etc, but is implemented using the Java language, requiring the Java platform, and best suited to building Java projects. Ant can be found at the following URL: http://ant.apache.org/
 
-Armadillo: Armadillo is a C++ linear algebra library (matrix maths) that supports integer, floating point and complex numbers, as well as a subset of trigonometric and statistics functions. 
+Armadillo: Armadillo is a C++ linear algebra library (matrix maths) that supports integer, floating point and complex numbers, as well as a subset of trigonometric and statistics functions. Armadillo can be found at the following URL: http://arma.sourceforge.net/
 
-Atlas: Automatically Tuned Linear Algebra Software (ATLAS) is a software library for linear algebra, providing an open source implementation of BLAS APIs for C and Fortran77. 
+Atlas: Automatically Tuned Linear Algebra Software (ATLAS) is a software library for linear algebra, providing an open source implementation of BLAS APIs for C and Fortran77. ATLAS is available at the following URL: http://math-atlas.sourceforge.net/
 
-Autodock: AutoDock is a suite of docking tools designed to predict how small molecules, such as substrates or drug candidates, bind to a receptor of known 3D structure. 
+Autodock: AutoDock is a suite of docking tools designed to predict how small molecules, such as substrates or drug candidates, bind to a receptor of known 3D structure. AutoDock is available at the following URL: http://autodock.scripps.edu/
 
-AutoGrow: AutoGrow uses AutoDock as the selection operator. For each generation, all ligand files are docked to the target protein, and for each dock, AutoDock returns a predicted binding affinity. AutoGrow (Java DOCK), uses fragment-based growing, docking, and evolutionary techniques. 
+AutoGrow: AutoGrow uses AutoDock as the selection operator. For each generation, all ligand files are docked to the target protein, and for each dock, AutoDock returns a predicted binding affinity. AutoGrow (Java DOCK), uses fragment-based growing, docking, and evolutionary techniques. AutoGrow is available from the following URL: http://autogrow.ucsd.edu/
 
-BEAM: BEAMnrc is a general purpose Monte Carlo simulation system for modelling radiotherapy sources which is based on the EGSnrcMP code system for modelling coupled electron and photon transport. 
+BEAM: BEAMnrc is a general purpose Monte Carlo simulation system for modelling radiotherapy sources which is based on the EGSnrcMP code system for modelling coupled electron and photon transport. BEAMnrc is available at the following URL: http://www.nrc-cnrc.gc.ca/eng/solutions/advisory/beam_index.html
 
-BigDFT: BigDFT is a Density Functional Theory (DFT) parallel electronic structure code using a wavelet basis set. Wavelets form a real space basis set distributed on an adaptive mesh. Surfaces and isolated systems can be simulated with the proper boundary conditions and GTH or HGH pseudopotentials are used to remove the core electrons. 
+BigDFT: BigDFT is a Density Functional Theory (DFT) parallel electronic structure code using a wavelet basis set. Wavelets form a real space basis set distributed on an adaptive mesh. Surfaces and isolated systems can be simulated with the proper boundary conditions and GTH or HGH pseudopotentials are used to remove the core electrons. BigDFT is available at the following URL: http://bigdft.org/
 
-binutils: The GNU Binary Utilities, or binutils, is a collection of programming tools for the manipulation of object code in various object file formats. They are typically used in conjunction with GNU Compiler Collection, make, and GDB. 
+Binutils: The GNU Binary Utilities, or binutils, is a collection of programming tools for the manipulation of object code in various object file formats. They are typically used in conjunction with GNU Compiler Collection, make, and GDB. The GNU Binutils are available from the following URL: https://www.gnu.org/software/binutils/
 
 BLAST: The NCBI Basic Local Alignment Search Tool (BLAST) finds regions of local similarity between DNA sequences sequences and can be used to infer functional and evolutionary relationships between sequences as well as help identify members of gene families. 
 
@@ -3240,7 +3230,7 @@ qsub -l walltime=1:0:0,select=1:ncpus=2 -I
 
 For SLURM a number of institutions have sinteractive installed. This would take the following form for the same expressions:
 
-sinteractive --time=00:00:00 --N=1 --n=2
+sinteractive --time=00:00:00 --nodes=1 --ntasks=2
 
 Take the opportunity to review the demo script for Gromacs; one will note ample use of the heredoc method to present text information and prompts to the user. It makes use of a variety of Gromacs commands and configuration statements that would usually be part of a normal submission script or called from external files, but are presented in a step-by-step fashion. 
 

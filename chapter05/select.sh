@@ -8,7 +8,6 @@ select opt in $OPTIONS; do
 	echo "Sedimentary rocks are formed by sedminentation of particles at or near the Earth's surface and within bodies of water." 
 	elif [ "$opt" = "Igneous" ]; then 
 	echo "Igneous rock forms through the cooling and solidification of magma or lava." 
-	else 
 	elif [ "$opt" = "Metamorphic" ]; then 
 	echo "Metamorphic rocks are formed by subjecting any rock type -sedimentary rock, igneous rock or another older metamorphic rock - to different temperature and pressure conditions than those in which the original rock was formed." 
 	else 
