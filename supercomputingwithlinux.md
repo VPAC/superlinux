@@ -1,6 +1,3 @@
-=========================
-Supercomputing with Linux
-=========================
 
 by Lev Lafayette
 
@@ -18,11 +15,12 @@ Supercomputing with Linux, is licensed under a Creative Commons Attribution 4.0 
 
 All trademarks are property of their respective owners.
 
-Table of Contents
-=================
+# Table of Contents
 
-Forward
-Introduction
+0.0 Introduction
+0.1 Forward
+0.2 Preface
+
 1.0 The Victorian Partnership for Advanced Computing and Supercomputing
 1.1 About VPAC
 1.2 VPAC Case Studies
@@ -31,6 +29,7 @@ Introduction
 1.5 Supercomputers and FOSS
 1.6 System Specification and Software
 1.7 Accounts, Licensed Software, and Helpdesk
+
 2.0 The Linux Environment
 2.1 Logging On
 2.2 Exploring The Environment
@@ -40,6 +39,7 @@ Introduction
 2.6 Files Differences
 2.7 Searches and Wildcards
 2.8 Deletions
+
 3.0 Modules, PBS, and Example Jobs
 3.1 Environment Modules
 3.2 Portable Batch System
@@ -51,6 +51,7 @@ Introduction
 3.8 Parallel Job with License : ANSYS Finite Element Analysis
 3.9 Standard Job with License : Abaqus Finite Element Analysis
 3.10 Standard Job With Local Visualisation : NAMD and VMD
+
 4.0 Intermediate Linux
 4.1 Login Files
 4.2 Editing With Vim
@@ -62,16 +63,19 @@ Introduction
 4.8 File Manipulation Commands
 4.9 System Information Commands
 4.10 Program Manipulation Commands
+
 5.0 Regular Expressions, Shells, and Scripting
 5.1 Regular Expressions with grep and sed
 5.2 Reports with awk
 5.3 Shells
 5.4 Shell Scripting with bash
 5.5 Better Bash Scripting
+
 6.0 Alternative Job Submission Options
 6.1 Job Scripts with Shell Scripting
 6.2 Autogenerating PBS Scripts with a Heredoc
 6.3 PBS Job Arrays, Dependencies, and Interactive Jobs
+
 7.0 Command Summary
 7.1 Linux Commands
 7.2 File System
@@ -79,8 +83,9 @@ Introduction
 7.4 References
 
 
-Forward
-=======
+# 0.0 Introduction
+
+## 0.1 Foreword
 
 Our era has been defined by the ever-increasing scale and performance of information technology and its impact on many facets of society. Information technology has been made possible by the rapid, and continuing, development of semiconductor technology which enables high speed electronic processing and storage of data. These advances have continued unabated over more than six decades, enabling the realisation of computers with increasing speeds, sophistication and capability to facilitate the solution of complex problems of larger scale, more rapidly and with increased detail. Our society is now dependent upon the availability of the increasingly massive computing capability which is available to researchers for the exploration of the frontiers of knowledge, with the consequent provision to society of the benefits of their expertise. 
 
@@ -93,12 +98,11 @@ It became apparent that many research staff in Victorian universities, whose pro
 Emeritus Professor David Beanland, AO, FTSE, FIEAust 
 Foundation Vice-Chancellor RMIT University 
 
-Introduction
-============
+## 0.2 Preface
 
 The electronic networked computer is the single most important technology of the contemporary age. From their earliest days, it has been observed that computational devices are becoming more powerful (roughly doubling in processing and storage capacity every two years), an observation that has been true since 1958 (G.E. Moore, 1965), and extended to other metrics. In addition to this, computing is becoming increasingly ubiquitous; there is the "the Internet of things" an expansion of machine-to-machine communication, and expansion of computational devices (e.g., 3D printing). 
 
-There is also an expansion of data collection, which in turn leads to a  need for increased data storage, and therefore increased data processing. The increase in the volume, velocity, and variety of datasets has become a well recognised issue. The rate of dataset increase has also been well-researched (Hilbert and López 2011) with a reported increase of 23% per annum increase in information storage from 1986 to 2007, and a 28% increase in bidirectional telecommunications.  
+There is also an expansion of data collection, which in turn leads to a  need for increased data storage, and therefore increased data processing. The increase in the volume, velocity, and variety of datasets has become a well recognised issue. The rate of dataset increase has also been well-researched (Hilbert and López 2011) with a reported increase of 23% per annum increase in information storage from 1986 to 2007, and a 28% increase in bidirectional telecommunications. 
 
 Storage issues are, of course, only part of the problem of the increasing deluge of data. It can be reasonably assumed that datasets are stored for a purpose, which means that they must be manipulated or modified in some way. As can be expected with processing of large data a high performance computing system would be necessary. Distributed or loosely coupled computational systems, such as various grid computing architectures is arguably not the solution for large datasets except in cases where the dataset can be broken up, in which case it is a large collection of smaller datasets. There is, of course, the significant issue of data transfer in such situations. As an alternative tightly-coupled computer clusters, which make up the world's supercomputers, are an increasingly important (if mature) technology.
 
@@ -130,11 +134,9 @@ Thanks are given to the Victorian Partnership of Advanced Computing for the time
 
 Lev Lafayette, Victorian Partnership for Advanced Computing, Melbourne, 2015
 
-1.0 The Victorian Partnership for Advanced Computing and Supercomputing
-=======================================================================
+# 1.0 The Victorian Partnership for Advanced Computing and Supercomputing
 
-1.1 About VPAC
----------------
+## 1.1 About VPAC
 
 In the late 1990s the various universities in Victoria were confronted with the problem that in aggregate they needed HPC facilities, but individually they could not justify the expense relative to demand at the time. In response a consortium of the six universities (La Trobe, Monash, RMIT, Swinburne, Ballarat and Melbourne) joined together to form a new company in 2000, the Victorian Partnership for Advanced Computing. The new company provided high performance compute clusters and programming support for the research community member universities. At a later date Deakin University and Victoria University also joined with CSIRO as an associate member.
 
@@ -144,14 +146,14 @@ In 2013, VPAC and VeRSI merged to become the V3 Alliance with a spin-off commerc
 
 In late 2015 the VPAC Board made a decision not to continue the organisation after the end of the 2016 financial year, which would coincide with the contractual end of the Trifid cluster.  This book is part of a series of publications produced by the Victorian Partnership of Advanced Computing in its last months, a decision to return to the computational community the opportunities for new minds and hands to take advantage of the knowledge developed and to contribute further in improving our collective intelligence.
 
-1.2 VPAC Case Studies
----------------------
+## 1.2 VPAC Case Studies
 
-VPAC has a number of commercial and academic case studies of which three are described here in summary for interest's sake. A more complete description of these projects and other case studies is available at: http://www.vpac.org/services and http://www.v3.org.au/case_studies
+VPAC had a number of commercial and academic case studies of which three are described here in summary for interest's sake. A more complete description of these projects and other case studies is available at: http://www.vpac.org/services and http://www.v3.org.au/case_studies
 
 Marine Benthic Habitat Mapping
 
 The project objective focused on developing a better understanding of geophysical characteristics and benthic communities in coastal Victoria, Australia.
+
 V3 Alliance’s participation involved the development of an automated procedure to process large volumes of multibeam sonar data coupled with georeferenced video “ground truth” data collected off the cost of Victoria.
 
 An automated decision tree classification system was used to classify substrata and dominant biota communities based on georeferenced underwater video ground truth data. 
@@ -187,8 +189,7 @@ VisLab12, the new Social Technologies Lab developed for the CCDW by V3 Alliance,
 
 VisLab12 is one of a series of visualisation laboratories developed and custom-built by V3 in conjunction with La Trobe University and Victoria University, to meet the needs of researchers in specific disciplines.
 
-1.3 VPAC's Supercomputer Systems
---------------------------------
+## 1.3 VPAC's Supercomputer Systems
 
 In the course of its history, V3 Alliance (through VPAC) provided internal HPC systems for Victoria's research community along with deployment and maintenance of external systems. Internal systems named Grendel, Brecca, Edda, Wexstan, Tango, and lastly Trifid. Some of the earlier machines were ranked in the Top 500 as the most powerful systems at the time. For example, in June, 2001, VPAC's AlphaServer SC40 (Grendel), was ranked 150 in the world Top 500 list with a peak peformance of 0.21 Tflops. In June 2003 the Xeon xSeries (Brecca) ranked 124th position 1.075 TFlops. 
 
@@ -201,8 +202,7 @@ http://www.top500.org/site/49239
 http://www.top500.org/system/173431
 http://www.top500.org/system/166873
 
-1.4 Some Supercomputing Definitions
------------------------------------ 
+#1.4 Some Supercomputing Definitions
 
 A supercomputer is a rather nebulous term for any computer system that is at the frontline of current processing capacity, particularly speed of calculation. High-performance computing (HPC), as the name indicates, is any computer system whose architecture allows for above average performance. In general however the two terms are treated as if they were synonymous; when one talks about a "supercomputer" they could easily mean a "high performance computer", despite the fact that even a single desktop system, with sufficient optimisation, could be considered "high performance", and a system that is one of the most powerful in the world, but is poorly designed, could be a "supercomputer". 
 
@@ -232,8 +232,7 @@ In contrast, scientific computing is the software applications used by the scien
 
 The following image displays a simplified version of a high-performance compute cluster. There are two "head" nodes, the login node for users and the management node for system administrators. Smaller clusters may only have one head node which combines user logins and management. In this particular schema however, two are assumed. The management node includes the job scheduler which decides when and where jobs will run. It receives updates from a resource manager which keeps track of what's being used and typically has a daemon process on each compute node. Users connect to the login node and submit their jobs which makes resource requests and is then sent to the scheduler. When the scheduler. decides the job can run it is submitted to one or more compute nodes, which can communicate to each other within each node or between each other through the switching fabric. Depending on the configuration, they may also be connecting to network attached storage devices for data. 
 
-1.5 Supercomputers and FOSS
----------------------------
+## 1.5 Supercomputers and FOSS
 
 Free and open-source software (FOSS) means that anyone is freely licensed to use, copy, and change the software in any way. This implies that the source code is available. It contrasts with various forms of proprietary software, where the software is under restrictive copyright and the source code is usually hidden from the users as a binary file. In many respects this means treating software development like an academic project ensuring that there is the potential for peer review.
 
@@ -251,8 +250,7 @@ Thirdly, the operating system and many applications are provided as "free and op
 
 Finally, there is the command line. For most users a Graphic User Interface (GUI) is how they interact with a computer system, and there are some advantages with this, not the least being a usually intuitive visual representation for actions. However this takes up significant computer resources. In contrast a command-line interface provides a great deal more power and is very resource efficient. Running supercomputers with a GUI as the foundation is not a sound policy.
 
-1.6 System Specification and Software
--------------------------------------
+## 1.6 System Specification and Software
 
 It is valuable for any user to have recorded the system specifications of the high performance compute cluster that they will be using. Many clusters will have a heterogeneous collection of processors, often partitioned into different queues, different interconnect systems, and different methods of storing data, along with different core distributions of the Linux operating system.
 
@@ -608,8 +606,7 @@ XMDS: eXtensible Multi Dimensional Simulator (XMDS) is a numerical simulation pa
 
 XML files to a C++ program that integrates the equations. 
 
-1.7 Accounts, Licensed Software, and Helpdesk
----------------------------------------------
+## 1.7 Accounts, Licensed Software, and Helpdesk
 
 Invariably there will be  process for users to gain an account and access to a HPC cluster. They are relatively rare and expensive creatures, so the institutions that own them want to ensure some degree over control over who has access, and the systems administrators who manage it will have various technologies at their disposal. As a general rule, the degree of bureaucracy that one has to deal with will depend on a number of metrics, including security concerns, the relative expense of the cluster, demand and so forth.
 
@@ -638,15 +635,13 @@ When submitting a ticket be as clear and as informative as possible in the ticke
 
 The other request we have is please be patient and accepting. Diagnosing failures in high performance and parallel computing is somewhat far from trivial. Whilst system administrators have a wide range of experience in operations and network administration, resource and cluster management, and scientific programming, they are not experts on all scientific disciplines or even all applications - not even collectively. Often users will have great familiarity and expertise in the application that they're using and almost invariably, the will have greater expertise in the discipline in question. 	  
 
-2.0 The Linux Environment
-=========================
+# 2.0 The Linux Environment
 
 In this introduction to Linux part of the course we will engage in several tasks. The first will be to log into a Linux system and familiarise ourselves with the environment. We will then create some files on the local machine and copy those files to the supercomputer. We will then log on to the supercomputer, modify those files and copy them back the local computer. Back on the local computer we'll create a directory, move the files to that directory and run some very basic search functions.
 
 For users who are familiar with the command line, this chapter may seem a little trivial. However for those who do not have this necessary background, it is essential. More and more researchers are reaching the postgraduate level with very little exposure to the command line, simply because of extensive GUI developments in general use operating systems. However, in order to use HPC clusters effectively, this knowledge is required. Best of all, it's knowledge that can remain for the rest of your computing life - many of the core commands illustrated here date from the 1970s and show no sign of being replaced any time soon.
 
-2.1 Logging On
---------------
+## 2.1 Logging On
 
 To log on to a HPC system, you will need a user account and password and a Secure Shell (ssh) client. Most HPC cluster administrators do not allow connections with protocols such as Telnet, FTP or RSH as they insecurely send passwords in plain-text  over the network, which is easily captured by packet analyser tools (e.g., Wireshark). 
 
@@ -664,15 +659,17 @@ However, if you do need to do remote visualisation, you will also need some sort
 
 With Mac or Linux simply open the terminal client and enter your username and the machine you wish to connect to, followed by the password when connected. For example; 
 
+```
 ssh <your username>@trifid.vpac.org
+```
+
 Secure shell opens a connection to a remote system. Replace trifid.vpac.org with the HPC cluster that you are connecting to.
 	
 If you want to enable graphic enabling you can use the -X or -Y (secure) options e.g., ssh -Y <your username>@trifid.vpac.org
 
 Open up two terminal windows. In the first terminal window we'll explore some of the basic commands on the local machine In the second terminal window we'll do the same, but on the supercomputer.
 
-2.2 Exploring The Environment
------------------------------
+## 2.2 Exploring The Environment
 
 The first thing we'll do is explore the environment of the command-line on both our local machine and the supercomputer. On both these systems, run the following commands.
 
@@ -680,7 +677,6 @@ whoami
 "Who Am I?; prints the effective user id.
 pwd
 "Print working directory";  prints the directory where you're currently in.
-	
 
 Now you know who you are (useful if you are logged on to several machines at the same time with different user names) and where you are.
 
@@ -745,8 +741,7 @@ The command 'w' acts like a combination of who, uptime and ps -a. This is redire
 
 This command lists the  current  time, how  long  the  system  has been running, how many users are currently logged on, and the system load averages for the past 1, 5, and 15  minutes and redirects this information to the file list.txt
 
-2.3 Files and Text Editing
---------------------------
+## 2.3 Files and Text Editing
 
 Linux expresses its files as words made up of pretty much any characters, excepting the slash (/) which is used for directory navigation. In general however it is a good idea to avoid filenames with punctuation marks, non-printing characters (including spaces, tabs etc) as these can lead to some difficulties and annoyances, especially on the command-line level. It is a convention to use underscores instead of spaces or CamelCase e.g., this_is_a_long_name.txt or ThisIsALongFileName.txt
 
@@ -766,15 +761,13 @@ With nano editing is very intuitive. Start with nano <filename> on the command p
 
 The most commonly used key combinations are available on the bottom of the screen, including cutting (^K) and pasting ("uncutting", ^U) lines of text, searching ("where is", ^W), opening ("read a file", ^R), saving files ("write out", ^O), scrolling up and down the text (^Y, ^V).  Further commands can be displayed through invoking help ("get help", ^G) such as search and replace (M-R, ie., meta key, usually Esc and 'R'). 
 
-2.4 Copying and Transferring Files
-----------------------------------
+## 2.4 Copying and Transferring Files
 
 All files used in this course are available on from https://github.com/levlafayette/superlinux
 
 To get a copy of all these files (including this book, in plain-text format) use the following command:
 
 git clone https://github.com/levlafayette/superlinux
-
 
 To copy a file from within a system use the cp command. The following is an example: 
 
@@ -842,8 +835,7 @@ Fugu is available from: http://rsug.itd.umich.edu/software/fugu/
 Cyberduck is available from:  http://cyberduck.ch/
 OpenSSH is available from: http://www.openssh.com/ 
 
-2.5 Creating Directories, Moving Files
---------------------------------------
+## 2.5 Creating Directories, Moving Files
 
 We are going to copy the file gattaca.txt from the supercomputer to the local machine. From the local machine enter the following command:
 
@@ -864,8 +856,7 @@ mv gattaca.txt braf/
 
 Change to the braf directory and check the contents of the directory. The output should be the gatta.txt file from the ls command and /home/<user>/braf from the pwd command.
 
-2.6 Files Differences
----------------------
+## 2.6 Files Differences
 
 The next step will be to copy the directory and its contents from the local computer to the supercomputer. This uses the scp command again, but this time with the -r (recursive) option, which will copy the directory and all sub-directories and files within it. On the local computer enter the following commands:
 
@@ -886,11 +877,13 @@ diff gattaca.txt braf/gattaca.txt
 	
 The output should be something like the following:
 
+```
 [lev@trifid ~]$ diff gattaca.txt braf/gattaca.txt 
 4c4 
 < ATVKSRWSGS HQFEQLSGSI LWMAPEVIRM QDKNPYSFQS DVYAFGIVLY 
 --- 
 > ATEKSRWSGS HQFEQLSGSI LWMAPEVIRM QDKNPYSFQS DVYAFGIVLY 
+```
 
 For a side-by-side representation use the command sdiff instead.
 
@@ -901,15 +894,19 @@ diff -u gattaca.txt braf/gattaca.txt > gattaca.patch
 
 Often you will want to search for files or search within files for a particular phrase. The find command, which will find files according to the directory and sub-directories offered, by name, modification time, size etc, and with filter operations, all of which are available through man find. To find all files with the suffix .txt on your supercomputer account use the following command:
 
+```
 cd ~
 find . -name '*.txt'
+```
 
 Note that the filter is within quotes, to ensure that the command is not expanded due to the wildcard. 
 	
 To search within a collection of files use the grep command. It originally an abbreviation of "global search for a regular expression and print to standard output". The command searches the named input files for lines containing a match to the given pattern, including regular expressions, and prints the matching lines. As usual there are a variety of options available through man grep. The following command will search for the pattern 'ATEKSRWSGS', ignoring case, within the directory braf. Enter the following on the supercomputer:
 
+```
 cd ~
 grep -i ATEK braf/*
+```
 
 Note that the files being searched must be specified, even with a wildcard character. Simply stating a directory is insufficient. Where there are multiple results, grep will also display the filename. Compressed or gzipped files can be searched with zgrep. 
 
@@ -928,24 +925,27 @@ Either a or b
 [a-z]
 any character between a and z, inclusive 
 
-2.8 Deletions
---------------
+## 2.8 Deletions
 
 Sometimes you'll want to remove files and directories from your account. Be very careful and very selective with this because when you're operating on the command line there's no "trashcan" to easily undelete files. Somewhere, delete really means what it says, and that somewhere is here.
 
 On the supercomputer we'll carefully delete the file in the home directory and then change the directory to braf and delete the file there. We'll delete the file in that directory, change out of that directory and delete the directory.
 
+```
 cd ~
 rm gattaca.txt
 cd braf
 rm gattaca.txt
 cd ~
 rmdir braf
+```
 
 Then on the local computer we'll use a shortcut; a command which deletes the entire directory, all sub-directories and all files within the directory tree. This is remove with the recursive and force options.
 
+```
 cd ~
 rm -rf braf
+```
 
 Be very careful with rm, especially with the -rf option and especially with wildcards. Consider what would happen to someone who wishes to delete all their backup files in a directory with the helpful suffix .BAK. Choosing a wildcard and the suffix they intend to type rm *.BAK but instead, they mistype the command and type rm * .BAK. The result of this typing error is that they have just deleted everything in that directory. Worse still imagine a user running as root thinking that they are about to delete a directory and instead types rm -rf / ; a command that will delete everything or, more commonly rm -rf ./ ; a command which deletes the current directory and all sub-directories. 
 
@@ -955,13 +955,9 @@ BRAF is a human gene that makes a protein (imaginatively) named B-Raf. This prot
 
 In particular the difference that between the two files "ATVKSRWSGS" and "ATEKSRWSGS" is the difference which leads to susceptibility to metastatic melanoma. Fortunately, because of high performance computing, massive databases, and molecular modelling applications, science has begun to develop specific inhibitors of mutated B-raf protein for anticancer treatments.
 
-3.0 Modules, PBS, and Example Jobs
-==================================
+# 3.0 Modules, PBS, and Example Jobs
 
-3.1 Environment Modules
------------------------
-
-Environment modules (not to be confused with kernel modules - another topic for another day) provide for the dynamic modification of the user's environment via module files.  Each module contains the necessary configuration information for the user's session to operate according according to the modules loaded, such as the location of the application's executables, its manual path, the library path, and so forth - it is a lot easier that having to set these every time an application is used! 
+## 3.1 Environment Modules
 
 Modulefiles also have the advantages of being shared on many users on a system (such as an HPC system) and easily allowing multiple installations of the same application but with different versions and compilation options. Sometimes users want the latest and greatest of a particular version of an application for the feature-set they offer. In other cases, such as someone who is participating in a research project, a consistent version of an application is desired. Having multiple version of applications available on a system is essential in research computing.
 
@@ -969,88 +965,95 @@ Module commands
 
 Some basic module commands include the following:
 
-module help 
+`module help` 
 The command module help , by itself, provides a list of the switches, subcommands, and subcommand arguments that are available through the environment modules package. Note that one of the subcommands is module help [modulefile]. If, and only if, a help file has been associated with a particular module (and not the program itself), this command will generate any action. This is not the case with any of the modules installed on trifid - instead, use module whatis [modulefile] or module display [modulefile].
 
-module avail
+`module avail`
 This option lists all the modules which are available to be loaded. Notice that many of them have version numbers associated with them. Modules makes it easy to switch compiler application versions. The module name without a version number is the production default. 
 
 One particular nuissance is that the output of a module avail is treated as a standard error, rather than standard output. Thus to pipe the output of module avail to less, one has to redirect standard error to standard output. This can also be used for providing an output of module whatis  i.e.,
 
+```
 module avail 2>&1 | less
 module avail -l 2>&1 | less
 module whatis 2>&1 | less
+```
 
-module whatis <modulefile>
+`module whatis <modulefile>`
 This option provides a description of the module listed. 
 
-module display <modulefile>
+`module display <modulefile>`
 Use this command to see exactly what a given modulefile will do to your environment, such as what will be added to the PATH, MANPATH, etc. environment variables. 
 
 For example the command: module display freesurfer displays the following results:
 
+```
 /usr/local/Modules/modulefiles/freesurfer/4.5.0: 
 module-whatis	 Set environment variables to use freesurfer version 4.5.0 
 prepend-path	 PATH /usr/local/freesurfer/4.5.0/bin 
 prepend-path	 FREESURFER_HOME /usr/local/freesurfer/4.5.0 
 prepend-path	 SUBJECTS_DIR /usr/local/freesurfer/4.5.0/subjects 
+```
 
-module load <modulefile>
+`module load <modulefile>`
 This adds one or more modulefiles to the user's current environment (some modulefiles load other modulefiles, e.g., module load vpac or module load gcc). You can load multiple modules simultaneously.
 
 For example, to load NAMD one would use the command: module load namd
 
 If you load the generic name of a module, you will get the default version. To load a specific version, load the module using its full specification. for example;
 
-	module load gcc/4.8.2
+`module load gcc/4.8.2`
 
-module list
+`module list`
 This lists all the modules which are currently loaded into the users environment. 
 
-module unload <modulefile>
+`module unload <modulefile>`
 This removes any listed modules from the user's current environment. Multiple modules can be unloaded simultaneously.
 
-e.g., module unload gcc namd
+e.g., `module unload gcc namd`
 	
-Note that unloading a module does not remove additional modules loaded by the original module file. For example;
+Note that unloading a module does not automatically remove additional modules loaded by the original module file. For example;
 
+```
 module load gcc
 module list
 module unload gcc
 module list
+```
 
-module switch <modulefile1> <modulefile2> 
+`module switch <modulefile1> <modulefile2>` 
 This unloads one modulefile (modulefile1) and loads another (modulefile2). This is very handy for testing behavior across different versions of the same program. 
 
 For example, the following loads Octave v3.2.0, but the user then discovers that an earlier version better suits their needs. Rather than loading and unloading the different versions they can simply use module switch instead.
 
+```
 module load octave/3.2.0
 module switch octave/3.2.0 octave/3.0.3 
+```
 
-module purge
+`module purge`
 This removes all modules from the user's environment.
 
-module initadd <modulename>
+`module initadd <modulename>`
 The 'module initadd' command can be used to have a module automatically loaded each time a user logs into the system.
 
 Depending on the user's shell preferred shell, the initadd command searches a range of initialisation files in the user's home directory for a 'module load' and appends as appropriate. 
 
-If the ’module load’ line is found in multiple shell initialization files, all of the lines are changed. 
+If the `module load` line is found in multiple shell initialization files, all of the lines are changed. 
 
-initrm <modulefile> 
+`initrm <modulefile>` 
 Remove a module file from the initialisation files.
 
-initswitch <modulefile1> <modulefile2 >
+`initswitch <modulefile1> <modulefile2 >`
 Switch one modulefile to another in the initialisation file.
 
-initlist
+`initlist`
 List all the modulefiles loaded from the shell initialisation files.
 
-initclear
+`initclear`
 Clear all the modulefiles from the shell's initialisation files.
 
-3.2 Portable Batch System
--------------------------
+## 3.2 Portable Batch System
 
 The Portable Batch System (or simply PBS) is the name of a utility software that performs job scheduling by assigning unattended background tasks expressed as batch jobs, among the available resources. The scheduler provides for paramterisation of computer resources, an automatic submission of execution tasks, and a notification system for incidents.
 
@@ -1087,10 +1090,10 @@ When uploading files in preparation for launching a HPC job it is good practice 
 A pbs script allocates the compute nodes and time requested by the user 
 The user can edit this script to change the number of preferences including the number of cpus to use, the length of time to run the job and the name of the program executable.  
 
-Lines that start with  #PBS   pass a PBS command,  while adding a white space does not.   For example, compare the lines:
+Lines that start with  `#PBS` pass a PBS command,  while adding a white space does not.   For example, compare the lines:
 
-	#PBS -l walltime=24:0:0         		<- works!
-	# PBS -l walltime=24:0:0       		<- doesn't work. 
+`	#PBS -l walltime=24:0:0`         		
+`	# PBS -l walltime=24:0:0`       		 
 
 The following is a sample PBS script for TORQUE and with comments for script for PBSPro and SLURM. Note that PBS job script directives should be declared first.
 
@@ -1192,8 +1195,7 @@ Memory:
 
 Sometimes you will require more or less memory that is typical for a job. In these cases the resource requests memory for the total job (mem for TORQUE and PBSPro), or more commonly, for each processing task (pmem), may be useful. A standard resource request is used e.g., #PBS -l pmem=2000mb for TORQUE and PBS or #SBATCH --mem=20000 for SLURM.
 
-3.3 Frequently Used PBS and Scheduler Commands
-----------------------------------------------
+## 3.3 Frequently Used PBS and Scheduler Commands
 
 TORQUE/PBSPro
 SLURM
@@ -1258,8 +1260,7 @@ Node is reporting status, currently is not executing workload, and cannot accept
 Draining 
 Node is reporting status, currently is executing workload, and cannot accept additional workload due to administrative action.
 
-3.4 Standard Job DLPOLY: Molecullar Modelling
----------------------------------------------
+## 3.4 Standard Job DLPOLY: Molecullar Modelling
 
 DL_POLY is a general purpose classical molecular dynamics (MD) simulation software developed at Daresbury Laboratory by I.T. Todorov and W. Smith. Note that it is licensed software, but with a permissive academic license. Confirm with the developer (Dr Ilian Todorov) that a cluster installation is acceptable (e.g., possibly through a restricted group and agreement of license) and register at their website. 
 
@@ -1291,27 +1292,32 @@ Once having written up the script, submit it according to the scheduler used (e.
 
 Assuming all goes well, DLPOLY will read in the CONFIG, CONTROL, and FIELD data, and wait for the output. If successful the job will create OUTPUT, RDFDAT, REVCON, REVIVE, and STATIS files. 
 
-3.5 Two Standard Jobs with Graphic Output: GNU Octave and MATLAB(R)
--------------------------------------------------------------------
+## 3.5 Two Standard Jobs with Graphic Output: GNU Octave and MATLAB(R)
 
 GNU Octave is a mathematical application and programming language that is highly compatible with  MATLAB(R) but without the licensing restrictions. The following compares (using TORQUE examples) two job scripts written for the respective languages that generate the same result. 
 
+```
 #!/bin/sh 
 #PBS -l nodes=1:ppn=1
 #PBS -l walltime=00:10:00 
 module load matlab
 cd $PBS_O_WORKDIR 
 matlab -nodesktop -nodisplay -nosplash< polar-plot.m 
+```
 
+```
 #!/bin/sh 
 #PBS -l nodes=1:ppn=1 
 #PBS -l walltime=00:10:00 
 module load octave
 cd $PBS_O_WORKDIR 
 octave polar-plot.m 
+```
 
 The Matlab example, more designed for a graphical interface, requires parameters to be passed to the executable to ensure that the output is conducted on the file itself. In both cases the .m file is polar-plot.m i.e.,
 
+
+```
 angle = 0:.1*pi:3*pi; 
              radius = exp(angle/20); 
              polar(angle,radius),... 
@@ -1319,11 +1325,11 @@ angle = 0:.1*pi:3*pi;
              grid 
 print -deps polar-plot.ps; 
 quit; 
+```
 
 Simply put the PBS job is submitted, which calls the polar-plot.m file, which runs it's own script, which then generates a polar-plot.ps file which can be downloaded and viewed.
 
-3.6 Standard Job with PDF Output: R, A Statistical Package
-----------------------------------------------------------
+## 3.6 Standard Job with PDF Output: R, A Statistical Package
 
 The data is used to indicate an estimate of biomass of ponderosa pine in a study performed by Dale W. Johnson, J. Timothy Ball, and Roger F. Walker who are associated with the Biological Sciences Center, Desert Research Institute, University of Nevada. The tutorial is partially derived from material by Kelly Black of Clarkson University.
 
@@ -1333,13 +1339,14 @@ A collection of files is available in the introductory directory, so change to t
 
 Submit the job with: qsub pbs-script, check the status of the job (qstat -u [username]) until the job is completed. When it is complete note the directory listing (ls). You should have something like the following: 
 
+```
 [lev@trifid R]$ ls 
 MyJob.e32933  MyJob.o32933  pbs-script  Rplots.pdf  trees91.csv  tutorial.R  w1.dat 
+```
 
 The two files MyJob.e32933 and MyJob.o32933 are the job error and output files, respectively. The error file in this case is empty, but can be useful for debugging purposes if a job fails. The output file in this instance documents the actions of the program, including the significant correlation result. The real output is Rplots.pdf, which can be copied from the cluster to the desktop and then displayed using the command evince Rplots.pdf. 
 
-3.7 Extended Application for Parallel Processing: R: A Statistical Package
---------------------------------------------------------------------------
+# 3.7 Extended Application for Parallel Processing: R: A Statistical Package
 
 Many applications assume single-core usage and don't take advantage of parallel systems for tasks. That doesn't mean that HPC systems are not useful for such applications, as multiple single-core jobs can be launched, often far in excess of a single system unit. For example, dozens and even hundreds variant instances of the previous R job could be all launched simultaneously on an HPC system. Later examples of such job arrays are provided that make such submissions easier.
 
@@ -1353,8 +1360,7 @@ In the file xvalidate.R, the R script calls the special library extension snow t
 
 This example of parallel processing with R is taken from Eugster and Knaus (2011).
 
-3.8 Parallel Job with License : ANSYS Finite Element Analysis
--------------------------------------------------------------
+## 3.8 Parallel Job with License : ANSYS Finite Element Analysis
 
 ANSYS is an engineering simulation for general-purpose finite element analysis and computational fluid dynamics. The following example is an Oscillating Plate with Two-Way Fluid-Structure Interaction from the ANSYS tutorials, but modified as a task for parallel computation. 
 
@@ -1367,6 +1373,7 @@ This is a quick start that bypasses the building of input files by copying them 
 The input file, OscillatingPlate.inp, is a the step-by-step instructions that is sent to ansys. Normally this file has to be created from the Ansys Workbench, and the .def file is create the cfx.  
 
 Under the standard tutorial there is the conclusion concludes with "Obtaining A Solution Using ANSYS CFX-Solver"; contrary to what the tutorial suggests don't press the "Start Run" button. 
+
 There are two reasons for this: 
 
 * The job will run on only one cpu on the head node. That cpu will be shared with lots of other users so your job will run very badly. 
@@ -1376,8 +1383,7 @@ DON'T RUN JOBS ON THE HEAD NODE.
 
 Instead, edit your pbs-script to reflect the .inp and .def files you have just created, adjust the number of CPUs and licenses.  Another file to check is the PBS script. In it you will notice the line:
 
-
-#PBS -W x=GRES:aa_r+1%aa_r_hpc+12 
+`#PBS -W x=GRES:aa_r+1%aa_r_hpc+12` 
 
 This is what sets the resources for an ANSYS job. It will not run without it. For the first 4 processors you only need to ask for aa_r+1, for every additional processor over 4 you need to ask for a single aa_r_hpc license as well.
 
@@ -1385,23 +1391,22 @@ You should be now able to check your output file, OscillatingPlate.db.
 
 Two other ANSYS jobs you can launch and view results include pbs-script-pvm and pbs-cfx-benchmark. 
 
-3.9 Standard Job with License : Abaqus Finite Element Analysis
---------------------------------------------------------------
+## 3.9 Standard Job with License : Abaqus Finite Element Analysis
 
 The Abaqus FEA suite is commonly used in automatic engineering problems using a common model data structure and integrated solver technology. As licensed software it requires a number of license tokens based on the number of cores required, which can be calculated by the simple formula int(5 x N^0.422), where N is the number of cores. Device Analytics offers an online calculator at http://deviceanalytics.com/abaqus-token-calculator .
 
 The case study here is a car door being propelled into a pole. This is analogous to the EURONCAP pole test, in which a car is propelled sideways into a rigid pole of diameter 254 mm at 29 km/h. While a crash event generally lasts for around 100 milliseconds, the time step of the case study has been reduced to 10 milliseconds to reduce the job time.
 
-Door.cae  Door.inp  pbs-abaqus  pbs-abaqus-mpi
+`Door.cae  Door.inp  pbs-abaqus  pbs-abaqus-mpi`
 
 The cae file is "complete abaqus environment", the inp file is for input. The output files will be Door.odb and Door.jnl ("output database" and "journal")
 
 Submit the job using the following command:
-qsub pbs-abaqus 
+`qsub pbs-abaqus` 
 
 The status of the job can be queried using the following command:
 
-tail -f door.sta 
+`tail -f door.sta` 
 
 Once the job has completed, all files, with the exception of the output database (.ODB) file can be deleted. By default, ABAQUS/CAE writes the results of the analysis to the ODB file. When you create a step, ABAQUS/CAE generates a default output request for the step, which in the case of this analysis is Energy Output. Check the output files for the job to ensure it has run correctly.
 
@@ -1411,7 +1416,7 @@ The results will be visualised using ABAQUS/CAE. It should be noted that ABAQUS/
 
 It is almost always better do conduct computational intensive tasks on the cluster, and visualisation locally.
 
-From the local command: abaqus cae 
+From the local command: `abaqus cae`
 
 The following procedure is used to open the ODB file;
 
@@ -1430,8 +1435,7 @@ The following procedure can be used to plot the crash models deformed shape:
  * Select [Plot Deformed Shape] in the Toolbox area. By default, the final step is displayed. It should be noted that the Deformation Scale Factor is 1 by default in explicit analyses.
 * Select [Animate: Time History] to animate the crash event. The frame rate can be adjusted by clicking [Animation Options] and moving the slider in the Player tab to the desired speed.
 
-3.10 Standard Job With Local Visualisation : NAMD and VMD
----------------------------------------------------------
+## 3.10 Standard Job With Local Visualisation : NAMD and VMD
 
 NAMD is a parallel, molecular dynamics simulation program used to model large biomolecular systems using high performance computing clusters which is freely available for academic work.  If you are interested in running NAMD simulations you should also install a local copy of VMD on your own computer.  VMD is a molecular viewer program that can be used to help set up NAMD simulation and to help analyse and visualize NAMD output. 
 
@@ -1456,29 +1460,36 @@ This is saying use the program "mpiexec" to launch the parallel program "namd2" 
 
 Let's have a look at the NAMD configuration script: 
 
-less Ubiquitin_example.conf    
+`less Ubiquitin_example.conf`   
 
 The lines near the top define the input files, (the protein structure file .psf, and the coordinate file, .pdb) and also the name of the output files.:
 
+```
 structure		1ubq_example.psf
 coordinates		1ubq_example.pdb
 outputName		1ubq_example_output_01
+```
 
  Further down you will see: 
 
+```
 set temp           310
 temperature      $temp
+```
 
 Which is setting the temperature to 310 K ( 37 C) while below that we have:
 
+```
 ## Parameter file:
 paraTypeCharmm      	on
 parameters			par_all27_prot_na.inp 
+```
 
 This tells NAMD which parameter file to use; you'll see a copy of the parameter file in the NAMD_example directory.  Depending on what molecules you have in you simulation, you may need to use a more detailed parameter file.
 
 Somewhere in the middle you will see these lines: 
 
+```
 ## Periodic Boundary Conditions
 cellBasisVector1    42.      0.       0.
 cellBasisVector2     0.     42.       0.
@@ -1486,31 +1497,37 @@ cellBasisVector3     0.       0.     42.
 cellOrigin           0        0        0
 wrapAll              on
 wrapWater            on
+```
 
 This defines the boundary conditions, a trick to simulate an infinite system, where a molecule coming off one side of the boundary will reappear on the other. 
 
 Near the bottom we have the lines: 
 
+```
 ## Output files:
 restartfreq         20000 
 dcdfreq             50
 xstFreq             20000
 outputEnergies      20000
 outputPressure      20000
+```
 
 These lines tell us how often to write out to the output files.  The most important is the dcdfreq, (here set to 50), or how often to save a frame of the dynamics trajectory.  Usually this is set around 5,000 to 10,000. 
 
 The last few line in the configuration file: 
 
+```
 ## Minimize, reinitialize velocities,  run dynamics:
 minimize           100
 reinitvels         $temp
 run                5000 
+```
 
 These tell us that the simulation is first minimized for 100 steps,  (a good idea to iron out bad contacts and steric clashes, but usually set to 1000 steps or more), followed by resetting the velocities to $temp, (310 K, remember?), and then told to run only a mere 1000 steps.  This is a very short example; typically you might set "run" to  10000000 or more!
 
 When the job finishes, the output directory should have something like the following:
 
+```
 ls -lrt    
 -rw-r--r-- 1 joe vpac  199275 Feb 20 12:54 par_all27_prot_na.inp 
 -rw-r--r-- 1 joe vpac   97324 Feb 20 12:54 1ubq_example.pdb 
@@ -1524,6 +1541,7 @@ ls -lrt
 -rw------- 1 joe vpac   29548 Feb 20 13:03 1ubq_example_output_01.coor 
 -rw------- 1 joe vpac   29548 Feb 20 13:03 1ubq_example_output_01.vel 
 -rw------- 1 joe vpac 1515180 Feb 20 13:03 1ubq_example_output_01.dcd 
+```
 
 The main output file is .dcd while the .xsc, .coor, .vel files all have to do with being able to restart the simulation at a later date, while the Namd_1ubq_example_output.txt file contains the text output from the simulation. 
 
@@ -1535,7 +1553,7 @@ In part 2 of this tutorial, you will be using the molecular visualization progra
 
 Download the entire NAMD example directory back to your local computer. For example:
 
-scp  -r [your account name]@trifid.vpac.org:namd .    
+`scp  -r [your account name]@trifid.vpac.org:namd .`    
 
 You can now start VMD and load up the trajectory data.  In a new terminal type: 
  vmd 
@@ -1602,15 +1620,13 @@ All parallel tasks have some sequential overhead which means that doubling the n
 
 Overall, when submitting jobs it really is a case of trial and error initially for the researcher until they can discover what is the most optimal fit for the tasks that they have at hand.
 
-4.0 Intermediate Linux
-======================
+# 4.0 Intermediate Linux
 
-4.1 Login Files
----------------
+## 4.1 Login Files
 
 One of the first commands introduced was how to generate directory listing when a user logged in on the command line i.e., ls. We also learned how to get a more complete directory listing by applying options to a basic command, for example one which is ls -lart (list with long format, including file permissions (l), all files (a), sorted in reverse order (r), by modification time (t). Start up a terminal window, login to the supercomputer and run a long directory listing:  
 
-ls -lart 
+`ls -lart` 
 
 Two of the hidden files are .bash_profile and .bashrc . These are startup files for the Bash shell (Bourne-again shell). The shell is a program that acts as command interpreter between the user and the operating system. 
 
@@ -1629,10 +1645,11 @@ When an interactive shell that is not a login shell is started (for example, a p
 
 Usually a ~/.bash_profile contains a line to ensure that options in .bashrc are included with an interactive login; but not the other way around. For example, if one checks bash_profile they should see the line: 
 
-if  [ -f ~/.bashrc ]; then . ~/.bashrc; fi 
+`if  [ -f ~/.bashrc ]; then . ~/.bashrc; fi` 
 
 What else is there? 
 
+```
 [root@trifid-m train01]# cat .bash_profile 
 # .bash_profile 
 # This file can be edited by the user to set up their system as they like. 
@@ -1658,9 +1675,11 @@ alias cp='cp -i'
 PATH=$PATH:$HOME/bin 
 export PATH 
 unset USERNAME 
+```
 
 Once you get past the comments (which are always a good idea) there isn't too much in .bash_profile; the most important things are loading a set of default environment variables (module load vpac), two cautious aliases for the rm and cp commands and setting some paths. Any aliases can be added there according to whatever the individual user wants. Some people, who are familiar working alongside MS-DOS machines, will add an alias that "dir='ls'" for example. The following is a snippet from the author's .bash_profile:
 
+```
 alias ls='ls -F' 
 alias cp='cp -i' 
 alias ll='ls -laxp' 
@@ -1677,6 +1696,7 @@ export HISTFILE=~/.bash_eternal_history
 # Force prompt to write history after every command. 
 # http://superuser.com/questions/20900/bash-history-loss 
 PROMPT_COMMAND="history -a; $PROMPT_COMMAND" 
+```
 
 Apart from some extra aliases, this bash_profile also adds commands to a .bash_eternal_history file, so that there is a record of every command typed, dating back years.  Given that quite often a complex command desired is often similar to a command that has been typed in the past, the eternal history allows for a search for this archive. It will grow over time of course, but as a pure text document, it's going to be a long time before the space it takes up is too much.
 
@@ -1684,44 +1704,53 @@ The search path is stored in the environment variable PATH; in addition to the e
 
 The default environment variables are for the following:
 
+```
 [lev@trifid ~]$ module list 
 Currently Loaded Modulefiles: 
 1) intel/12.1.3          3) modules               5) gmp/5.0.5             7) mpc/1.0               9) vpac/config 
 2) openmpi-intel/1.6.3   4) pgi/12.10             6) mpfr/3.1.1            8) gcc/4.7.2 
+```
 
 What about .bashrc?
 
+```
 [root@trifid-m train01]# cat .bashrc# .bashrc 
 # User specific aliases and functions 
 # Source global definitions 
 if [ -f /etc/bashrc ]; then 
 	. /etc/bashrc 
 fi 
+```
 
 Even less! But there's a another link in the home directory for .bashrc for global definitions sourced in /etc/bashrc! So what's in there? Apparently, quite a lot!
 
+```
 $ less /etc/bashrc 
 $ /etc/bashrc 
 <output snipped>
 ...
+```
 
 There's also a reference to /etc/profile. What's there?
 
+```
 $ less /etc/profile
 <output snipped>
+```
 
 When a login shell exits, Bash reads and executes commands from the file ~/.bash_logout, if it exists. 
 
+```
 $ more .bash_logout 
 $ ~/.bash_logout 
 /usr/bin/clear 
+```
 
 This command simply clears the terminal screen. Why do we have this? So that when a user exits the terminal in a public environment their work isn't left behind for anyone to see. Certainly this is less of an issue these days given that most systems use virtual terminals, but nevertheless anything could be placed in the .bash_logout, according to what the individual wants. It's about users having the opportunity to control their environment, and to script activities for that environment.
 
 The name of the shell, by the way, is a bit of a pun (as are quite a few commands). In part is recognition of the popular early Unix shells (authored by Stephen Bourne in 1977). Over time a number of other shells were developed, some with some excellent features. Bash took up these features to create a superset of the original Bourne shell (they were "bashed together"). Also, indicating the popularity and joy from using this new shell, it is expressed in the full name – the Bourne-again shell.
 
-4.2 Editing With Vim
----------------------
+## 4.2 Editing With Vim
 
 In the early part of this book the editor nano was recommended to write PBS scripts and edit text files. As mentioned at that point, there are other advanced editors available, including vim and Emacs. At this point vim is explored. This is not meant to be complete tutorial on the extensive capabilities of vim but rather a very brief introduction to its core features. If one wishes, they can continue to use nano for the purposes of working with an HPC cluster, but do consider returning to review vim as it is a very efficient and effective editor. It does however have a steep learning curve, which even its most ardent advocates will acknowledge, and as such is not necessarily recommended for beginners. 
 
@@ -1861,8 +1890,7 @@ An interactive tutorial is typically installed alongside vim and can be invoked 
 
 A lot of the vim attitude is about saving keystrokes and becoming incredibly efficient at making changes to text files.  It is recommended that you visit sites like vimgolf (http://vimgolf.com) to see how some challenges on how major changes to files can be achieved with minimal effort. Whilst some of the examples may seem short and even contrived, consider the same sort of changes being required over files that are tens of thousands of lines – the fact that such editing can be carried out with a handful of keystrokes should illustrate the power of vim.
 
-4.3 Editing with Emacs
-----------------------
+## 4.3 Editing with Emacs
 
 Emacs is one of the oldest continuous software applications available, first written in 1976 by Richard Stallman, founder of the GNU free software movement. At the time of writing it was up to version 24, with a substantial number of forks and clones developed during its history. 
 
@@ -1985,8 +2013,7 @@ Emacs can make it easier to read C and C++  by colour-coding such files, through
 
 Programmers also find the feature on being able to run the GNU debugger (GDB) from within Emacs as well. The command M-x gdb will start up gdb. If there’s a breakpoint, Emacs automatically pulls up the appropriate source file, which gives a better context than the standard GDB. 
 
-4.4 Archiving Files
--------------------
+## 4.4 Archiving Files
 
 As you've probably guessed by now there are a number of utilities available to archive and compress files in Linux and often they can be combined. Here we'll have a look at some of the most common such as tar, gz and bz, along with brief mention (and script) of some of the others. 
 
@@ -2027,8 +2054,7 @@ tar -tjf class.tar.gz
 tar cvfj class.tar.bz2 *.class
 tar cvfj homeuser.tar.bz2 /home/user
 
-4.5 Redirection and Tee
------------------------
+## 4.5 Redirection and Tee
 
 Earlier, we learned the basic commands for redirection and piping. To redirect output use the '>' symbol. To redirect input (for example, to feed data to a command) use the '<'. Concatenation is achieved through the use of '>>' symbol. Like other Linux commands, redirects can be used multiple times for useful effects. 
 
@@ -2123,8 +2149,7 @@ command | command2
 Pipe standard output and standard error to a second command
 command 2>&1 | command2
 
-4.6 Attributes, Types, Ownership
---------------------------------
+## 4.6 Attributes, Types, Ownership
 
 The command chmod (change mode) changes the file system modes of files and directories. It is normally executed on permissions, but can also include special modes. The command uses either an octal reference or a symbolic reference for notation. To see what permissions currently exist, use the ls -l command. Among others there should be a file something like the following;
 
@@ -2218,8 +2243,7 @@ fi
 
 What this command does is sets a file mode creation mask, limiting the permission modes for files and directories created by a process. When a program or script creates a file or directory, it specifies  permissions. The operating system then removes from those the permissions that the file mode creation mask does not allow. Typical umask values are 022 (removing the write permission for the group and others) and 002 (removing the write permission for others). 
 
-4.7 Hard and Symbolic Links
----------------------------
+## 4.7 Hard and Symbolic Links
 
 The ln command creates a link, associating one file with another. There are two basic types; a hard link (the default) and a symbolic link. The core difference is that a hard link is a specific location of physical data, whereas a symbolic link is an abstract location of another file. Hard links cannot link directories and nor can they cross system boundaries; soft links can do both of these. Hard links always refer to the source, even if moved or deleted, whereas symbolic links are never updated. 
 
@@ -2273,8 +2297,7 @@ ls -l
 
 One example use of symbolic links in a HPC cluster environment is storing home directories on an attached storage device with an NFS (network file system) mount from the cluster itself. When users of the cluster "tango" logged into their home directories, they were actually working with symbolic links. When the new cluster with a similar architecture ("trifid") was introduced, users were able to login and access the same files on both systems. When the older cluster was turned off, there was no outage or need for users to transfer their files between the two systems.
 
-4.8 File Manipulation Commands
-------------------------------
+## 4.8 File Manipulation Commands
 
 Earlier we introduced some fairly simple file manipulation commands such as copying files (cp), moving files (mv) and deleting files (rm). Now there will give examples of a range of different commands such as rename, split, sort, and uniq. The scripting commands, awk and sed, will be discussed in the next chapter. We shall also provide some examples based around regular expressions which are also explored further in the next chapter.
 
@@ -2297,8 +2320,7 @@ Again with a descriptive name, sort will organise a text file into an order spec
 
 To filter repeated lines in a text file use uniq. The standard syntax is uniq [options] [input file] [output file]. A simple example is uniq repeats.txt unique.txt. It is often combined with sort to create a sorted file of unique lines, e.g., sort repeats.txt | uniq > sortuniq.txt
 
-4.9 System Information Commands
--------------------------------
+## 4.9 System Information Commands
 
 In the introductory course we did not spend much time on system information commands (an exception was the 'who' command). In this intermediate course, we will briefly cover some general commands of this nature, such as du (disk usage), head and tail, uname and the information found under the /proc directory.
 
@@ -2346,8 +2368,7 @@ Table of partitions known to the system
 
 The command lscpu will provide information about the processor architecture as well gathered from /proc/cpuinfo including the number of CPUs, threads, cores, and sockets. 
 
-4.10 Program Manipulation Commands
-----------------------------------
+## 4.10 Program Manipulation Commands
 
 In the previous course we did not include any program manipulation commands. In this course we'll introduce a few; at, fg, bg, kill and nice. 
 
@@ -2381,11 +2402,9 @@ Ctrl-Z
 [train01@trifid ~]$ kill %3 
 [train01@trifid ~]$ cat rocks.txt
 
-5.0 Regular Expressions, Shells, and Scripting
-==============================================
+# 5.0 Regular Expressions, Shells, and Scripting
 
-5.1 Regular Expressions with grep and sed
-------------------------------------------
+## 5.1 Regular Expressions with grep and sed
 
 In order to make the best use of these scripting languages knowledge of regular expressions, also known as regex or regexp, is a powerful tool. Scripts and utility commands search strings of text for regular expressions of characters which then can be expressed or manipulated. 
 
@@ -2479,7 +2498,7 @@ Delete all blank lines.
 sed s/ *$//
 Delete all spaces at the end of every line. 
 
-Due to competing standards many decades ago, various forms of *nix (Linux, MacOS X+) use a "line-feed" character for new lines, whereas others (e.g., MS-Windows) use a carriage return and a line feed. Whilst better text editors, web-browsers etc are capable of recognising this problem and displaying files as expected this is not always the case. Files originating on Unix or Apple Macintosh systems may appear as a single long line on some MS-Windows applications because it lacks the carriage return. When viewing a file originating from a MS-Windows computer on a *nix system, the extra CR may be displayed as ^M at the end of each line or as a second line break. Again, sed can help here by adding a carriage return for MS-Windows files and removing it in reverse. 
+Due to competing standards many decades ago, various forms of *nix (Linux, MacOS X+) use a "line-feed" character for new lines, as does XML, whereas MS-Windows use a carriage return and a line feed, whilst MacClassic used the CR. Whilst better text editors, web-browsers etc are capable of recognising this problem and displaying files as expected this is not always the case. Files originating on Unix or Apple Macintosh systems may appear as a single long line on some MS-Windows applications because it lacks the carriage return. When viewing a file originating from a MS-Windows computer on a *nix system, the extra CR may be displayed as ^M at the end of each line or as a second line break. Again, sed can help here by adding a carriage return for MS-Windows files and removing it in reverse. 
 
 sed -i 's/$/\r/g' filename 	# *nix to MS-Windows, adds CR. 
 sed -i 's/\r$//g' filename	# MS-Windows to *nix, removes CR 
@@ -2488,8 +2507,7 @@ A popular list of one-line sed commands can be found at the following URL
 
 http://sed.sourceforge.net/sed1line.txt
 
-5.2 Reports with awk
---------------------
+## 5.2 Reports with awk
 
 Awk is a data driven programming language designed for processing text-based data, either in files or data streams, its name derived from the surname initial of the designers (Alfred Aho, Peter Weinberger, and Brian Kernighan). Whilst AWK has an enormous range of capabilities, in this tutorial we will concentrate on those which are appropriate to illustrate text-manipulation and regular expressions useful for scripting. 
 
@@ -2501,9 +2519,11 @@ But if the internal field separator is not specified, AWK can get confused as it
 
 To fix this specify the field separator as a comma e.g., 
 
+```
 awk -F"," '{print $3}' quakes.csv
 awk -F"," '{print $2}' quakes.csv
 awk -F"," '{print $1}' quakes.csv
+```
 
 The most common field separators are a space, a comma, a tab and a colon, represented as -F" ", -F",", -F"\t" and -F":", respectively. Adding new separators to the standard output print of multiple fields is also recommended - otherwise AWK will print without any separators. For example; 
 
