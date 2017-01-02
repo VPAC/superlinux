@@ -1,4 +1,3 @@
-
 by Lev Lafayette
 
 ISBN-10: 0-9943373-0-2
@@ -120,7 +119,7 @@ This book is designed for scientific researchers who have had minimal exposure t
 
 Following this, a wider range of Linux commands are provided, giving the user a more thorough grounding in the range of options that are available to them, especially in terms of configuration, archiving, regular expressions, and scripting. All of this can, of course, be added in PBS job submissions themselves, and several examples are provided on how to this along with the more advanced job submission procedures, such as job arrays, job dependencies, and interactive jobs. 
 
-In part this book has been written as a reference guide for user researchers and in part as workbook which is meant to studied from beginning to end. It takes into account some of the main features of advanced learning techniques insofar that it provides content in a structured manner. However other disciplinary learning style methods can only be provided by the educator (including autodidactics). In the field of computer science both collaborative approaches (such as "paired programming") and active learning ("yield to the hands-on imperative") are most useful. One can only encourage the learner to work their way through the examples and make plenty of mistakes as that will be the most effective way to learn. Don't just read the text as given.   
+In part this book has been written as a reference guide for user researchers and in part as workbook which is meant to studied from beginning to end. It takes into account some of the main features of advanced learning techniques insofar that it provides content in a structured manner. However other disciplinary learning style methods can only be provided by the educator (including autodidactics). In the field of computer science both collaborative approaches (such as "paired programming") and active learning ("yield to the hands-on imperative") are most useful. One can only encourage the learner to work their way through the examples and make plenty of mistakes as that will be the most effective way to learn. Don't just read the text as given.
 
 Obviously a book like this is at least in part derived from a variety of sources. The most important in terms of the Linux point of view is actually the manual and info pages built into the operating system, and the online resources at the Linux Documentation Project (https://tldp.org), especially Bash Guide for Beginners (Machtelt Garrels, 2008) and Advanced Bash-Scripting Guide (Mendel Cooper, 2014), Rute User's Tutorial and Exposition (Paul Sheer, 2004), along with a hat-tip to the bash Cookbook (lower-case intentional; Carl Albing, et. al., 2007). In terms of the job submission, the official manuals from such as PBS Pro 12.0 Reference Guide (Altair, 2013)  and TORQUE Administrator Guide (Adaptive Computing, 2015).
 
@@ -236,7 +235,7 @@ The following image displays a simplified version of a high-performance compute 
 
 Free and open-source software (FOSS) means that anyone is freely licensed to use, copy, and change the software in any way. This implies that the source code is available. It contrasts with various forms of proprietary software, where the software is under restrictive copyright and the source code is usually hidden from the users as a binary file. In many respects this means treating software development like an academic project ensuring that there is the potential for peer review.
 
-The first thing that must be accepted is that FOSS operating systems and applications dominates supercomputing and has done so for some time. As of November 2015, Linux systems made up 494 of the top 500 (98.8%), various forms of UNIX another 6 (1.2%), MS-Windows 1 (0.2%), with 1 mixed system (which is why the numbers equal 100.2%). If one goes several years into the past to June 2009 the distribution was 88% Linux, 5.8% mixed, 4.8% UNIX, and 0.8% MS-Windows. In June 2004 it was 58.2% Linux, 36.4% UNIX, 2% BSD-based, and a handy 3.2% Not Available. One has to go back into the last century (e.g., June 1999) to where Linux was not dominant – and then it was the various proprietary UNIXes that had the majority (UNIX 96.4%, Linux 3.4%). 
+The first thing that must be accepted is that FOSS operating systems and applications dominates supercomputing and has done so for some time. As of November 2015, Linux systems made up 494 of the top 500 (98.8%), and various forms of UNIX another 6 (1.2%). If one goes several years into the past to June 2009 the distribution was 88% Linux, 5.8% mixed, 4.8% UNIX, and 0.8% MS-Windows. In June 2004 it was 58.2% Linux, 36.4% UNIX, 2% BSD-based, and a handy 3.2% Not Available. One has to go back into the last century (e.g., June 1999) to where Linux was not dominant – and then it was the various proprietary UNIXes that had the majority (UNIX 96.4%, Linux 3.4%). 
 
 Today, whether measured by the total number of systems, the performance of the systems, or the highest ranking systems, it is Linux, Linux, and Linux in the high performance computing world.
 
@@ -908,7 +907,7 @@ cd ~
 grep -i ATEK braf/*
 ```
 
-Note that the files being searched must be specified, even with a wildcard character. Simply stating a directory is insufficient. Where there are multiple results, grep will also display the filename. Compressed or gzipped files can be searched with zgrep. 
+Note that the files being searched must be specified, even with a wildcard character. Simply stating a directory is insufficient. Where there are multiple results, grep will also display the filename. Compressed or gzipped files can be searched with `zgrep`. If one wants to search a PDF file, then either the `poppler-utils` needs to be installed, or `pdfgrep`.
 
 The wildcard you see most often is * (asterisk), but we'll start with something simpler: ? (question mark). When it appears in a filename, the ? matches any single character. For example, letter? refers to any filename that begins with letter and has one character after that. This would include letterA, letter1, as well as filenames with a non-printing character as their last letter, like letter^C. 
 
@@ -1384,6 +1383,15 @@ DON'T RUN JOBS ON THE HEAD NODE.
 Instead, edit your pbs-script to reflect the .inp and .def files you have just created, adjust the number of CPUs and licenses.  Another file to check is the PBS script. In it you will notice the line:
 
 `#PBS -W x=GRES:aa_r+1%aa_r_hpc+12` 
+
+An equivalent in Slurm is to specify the particular generic resource either in the script or at launch. For example, if there is a compute nodes where the generic resource is `gpu` the following can be used:
+
+`#SBATCH --gres=gpu`
+or
+
+`sbatch --gres="gpu" job.slurm`
+
+
 
 This is what sets the resources for an ANSYS job. It will not run without it. For the first 4 processors you only need to ask for aa_r+1, for every additional processor over 4 you need to ask for a single aa_r_hpc license as well.
 
@@ -3099,10 +3107,10 @@ cat <<- EOF > job${a}
 EOF
 done
 
-6.3 PBS Job Arrays, Dependencies, and Interactive Jobs
-------------------------------------------------------
+## 6.3 PBS Job Arrays, Dependencies, and Interactive Jobs
 
-Job Arrays
+
+### Job Arrays
 
 Multiple job submission based on the same script is possible through job arrays. It is effectively  using a single job script to make multiple requests of the same resources. Where there is similarity in the task or dataset and there is no dependencies between the individual jobs, an array is a very effective tool.
 
@@ -3230,10 +3238,11 @@ echo $THIRD
 
 With SLURM the logic is identical, even if the syntax is slightly different.
 
-Interactive Jobs
+### Interactive Jobs
 	
 There are times when a user wishes to launch an interactive, real-time job. This is typically used for debugging purposes, as real-time modifications can be quite slow. However, it can be used for real time single-processor or multi-processor tasks. Resource requests however should be minimal. If they are not, the user could be waiting quite some time for their interactive job to launch. The following examples are using TORQUE
 
+```
 [lev@trifid gmxdemo]$ qsub -l walltime=1:0:0,nodes=1:ppn=2 -I 
 [lev@trifid ~]$ qsub -l walltime=1:0:0,nodes=1:ppn=2 -I 
 qsub: waiting for job 529253.trifid-m.hpc.vpac.org to start 
@@ -3243,14 +3252,15 @@ qsub: job 529253.trifid-m.hpc.vpac.org ready
 /nfs/user2/lev/intermediate/gromacs/gmxdemo
 [lev@trifid105 gmxdemo]$ module load gromacs
 [lev@trifid105 gmxdemo]$ ./demo 
+```
 
 The only difference in PBSPro would be the initial submission:
 
-qsub -l walltime=1:0:0,select=1:ncpus=2 -I
+`qsub -l walltime=1:0:0,select=1:ncpus=2 -I`
 
 For SLURM a number of institutions have sinteractive installed. This would take the following form for the same expressions:
 
-sinteractive --time=00:00:00 --nodes=1 --ntasks=2
+`sinteractive --time=00:00:00 --nodes=1 --ntasks=2`
 
 Take the opportunity to review the demo script for Gromacs; one will note ample use of the heredoc method to present text information and prompts to the user. It makes use of a variety of Gromacs commands and configuration statements that would usually be part of a normal submission script or called from external files, but are presented in a step-by-step fashion. 
 
@@ -3258,6 +3268,7 @@ Some important aspects for interactive jobs is that the resource requests are ma
 
 One can use graphical windowing forwarding to the login node and then launch an interactive job also with X forwarding and with the usual PBS requirements. An initial connection can be made with secure mode X-windows forwarding and a further connection through the usual method. Thus, starting from the desktop.
 
+```
 bash-4.2$ ssh -Y lev@trifid.vpac.org
 [lev@trifid ~]$ qsub -l nodes=1:ppn=2,walltime=0:10:00 -X -I
 qsub: waiting for job 223936.trifid-m.hpc.vpac.org to start
@@ -3265,33 +3276,43 @@ qsub: job 223936.trifid-m.hpc.vpac.org ready
 [lev@trifid137 ~]$ cd $PBS_O_WORKDIR
 [lev@trifid137 ~]$ module load ansys
 [lev@trifid137 ~]$ cfx5solve
+```
 
 Then you could run the Oscillating Plate ANSYS example without using the compute resources on the head node.
 
-7.0 Command Summary
-===================
+When submitting a job to a partition that is reserved for a particular group, use the partition and -A (account) option, common to PBS and SLURM. For example using SLURM;
 
-7.1 Linux Commands
--------------------
+```
+[lev@spartan ~]$ sinteractive -p water -A punim0006
+srun: job 211916 queued and waiting for resources
+srun: job 211916 has been allocated resources
+[lev@spartan-water01 ~]$ 
+``
+
+
+# 7.0 Command Summary
+
+
+## 7.1 Linux Commands
 
 When a user logs in on a Linux or other UNIX-like system on the command line, they start in their home directory: 
 
-/home/<username>
+`/home/<username>`
 
 In that directory they will have the necessary privileges to create new folders, files and edit existing ones. There are a set of basic commands which every Linux command-line user must know. All commands come with options expressed as:
 
-<command>  -<option[s]> 
+`<command>  -<option[s]>` 
 
 Wildcard characters can be used to substitute for any other characters in a string. The asterisk (*) substitutes as a wildcard character for any zero or more characters, and the question mark (?) usually substitutes as a wildcard character for any one character. 
 
 Linux also have very useful 'pipes' and redirect commands. To pipe one command through another use the '|' symbol. Input and output is usually from the screen. To redirect output use the '>' symbol. To redirect input (for example, to feed data to a command) use the '<'. Concatenation is achieved through the use of '>>' symbol. Examples of these pipes and redirects are included in the command summary that follows.
 
-Basic Linux Commands and Options
+### Basic Linux Commands and Options
 
-at	
+`at`
 "at"; Schedule commands to be executed once at a specified time.
 Examples: 
-echo "ls" | at 1145 nov 29
+`echo "ls" | at 1145 nov 29`
 Echo a directory listing at 11.45 on November 29.
 													
 bg, fg	
