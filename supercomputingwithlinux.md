@@ -632,7 +632,7 @@ When emailing the help desk use one correspondence thread per issue. If you have
 
 When submitting a ticket be as clear and as informative as possible in the ticket. A ticket that says "My job died, why?" is difficult to diagnose. One that says "My job ID 28807 on trifid died. My PBS script is located in ~/openfoam/openfoam_par and my input file was simpleFoam" tells us a great deal! Also, as we'll learn later, jobs often produce useful diagnostic error information. These are worth checking. 
 
-The other request we have is please be patient and accepting. Diagnosing failures in high performance and parallel computing is somewhat far from trivial. Whilst system administrators have a wide range of experience in operations and network administration, resource and cluster management, and scientific programming, they are not experts on all scientific disciplines or even all applications - not even collectively. Often users will have great familiarity and expertise in the application that they're using and almost invariably, the will have greater expertise in the discipline in question. 	  
+The other request we have is please be patient and accepting. Diagnosing failures in high performance and parallel computing is somewhat far from trivial. Whilst system administrators have a wide range of experience in operations and network administration, resource and cluster management, and scientific programming, they are not experts on all scientific disciplines or even all applications - not even collectively. Often users will have great familiarity and expertise in the application that they're using and almost invariably, the will have greater expertise in the discipline in question.
 
 # 2.0 The Linux Environment
 
@@ -683,31 +683,30 @@ When a user logs in on a Linux or other UNIX-like system on the command line, th
 					
 Now let's run a listing for the directory on both the local computer and the supercomputer:
 
-ls
-"List"; lists contents for particular directory, the current directory by default.  
+`ls`
+"List"; lists contents for particular directory, the current directory by default.
 
 Now you know 'Who am I'? 'Where am I?' and 'What's here'? 
 
 Linux commands often come with options expressed as:
 
-<command> -<option[s]>								 
+`<command> -<option[s]>`
 
 Run this command on both the local computer and the supercomputer.
 
-ls -lart
+`ls -lart`
 "List" with long format, including file permissions (l), include hidden files ('a', for all), sorted by reverse  order ('r'), by modification time ('t').
 
 Linux commands come with "man" (manual) pages, which provide a terse description of the meaning and options available to a command. To view the appropriate man page simply enter the word man followed by the command. Specific sections of a man page can also be invoked. A more verbose alternative to man with a simple hypertext system is info. 
 
 Both man and info can exited with 'q' for quit.
 
-man ls
+`man ls`
 Display the manual entry for the command "ls"
-apropos <command>
+`apropos <command>`
 Search for a particular command. Equivalent to "man -k <command>"
-info ls
+`info ls`
 Display the more verbose hypertext entry for the command "ls"
-
 
 Linux also have very useful 'pipes' and redirect commands. To pipe one command through another use the '|' symbol.
 
@@ -715,18 +714,18 @@ For example, the who command how who is currently logged into the system. You ma
 
 Run this command on the supercomputer.
 
-who -u | less
+`who -u | less`
 "Who" shows who is logged on, how long they've been idle and piped through the less command.
 
 You may be wondering why the command to display the contents of a file to the screen is called "less". This is a pun on the expression "less is more"; once upon a time the command to display information to the screen was "more <filename>. But it was only one screen at at time and could not scroll backwards! Take the opportunity to display the same command using 'more', and also read the man page for that utility – check the last time it was updated!
 
-who -u | more
-man more
+`who -u | more`
+`man more`
 "Who" shows who is logged on, how long they've been idle and piped through the more command, followed by the man page more.
 
 Another environment feature to explore is the ps or process status command.  A number of programs can be run by a one or more users simultaneously, including helping programs called daemons. If no options are added ps selects all processes with the same effective user ID (euid=EUID) as the current user and associated with the same terminal as the invoker. To see what is running, who is running it, the process ID, and how much CPU they are using  use:
 
-ps afux | less
+`ps afux | less`
 "ps" provides a list of current processes. The 'a' option list the processes of all users, the 'f' shows job hierarchy, the 'u' option provides additional information about each process, and the 'x' option includes non-user programs such as daemons. This is piped through less.
 
 Note that "ps -aux" is different to "ps aux". The POSIX and UNIX standards require that "ps -aux" print all processes owned by a user named "x". If the user named "x" does not exist, this ps might interpret the command as "ps aux" instead and print a warning, depending on the version of Linux being used.
@@ -735,7 +734,7 @@ To redirect output use the '>' symbol. To redirect input (for example, to feed d
 
 Run this command on the supercomputer.
 
-w > list.txt
+`w > list.txt`
 The command 'w' acts like a combination of who, uptime and ps -a. This is redirected to the file list.txt
 
 This command lists the  current  time, how  long  the  system  has been running, how many users are currently logged on, and the system load averages for the past 1, 5, and 15  minutes and redirects this information to the file list.txt
@@ -748,7 +747,7 @@ Linux is case-sensitive with its filenames. This means that that list.txt is a d
 
 The type of file can be determined with the file command. The type returned will usually be text, executable binaries, archives, or a catch-all "data" file.
 
-file <filename> 
+`file <filename>`
 
 There are three text editors usually available on Linux systems. The first is nano, a very easy to use clone from the Pine email client that uses control keys with a the equivalent of a "shortcut bar". Others include Vim (Vi improved) which is a series of enhancements build on the "screen orientated" text editor vi, which was first introduced in 1976. Vim is generally understood to be a modal editor, operating either in a insert mode (where typed text becomes part of the document) or command mode (where keystrokes are interpreted as commands that control the edit session). Vi or Vim are often installed as the default text editor. Also written in 1976, the hefty EMacs (Editor Macros) editor and environment is a feature-rich program, to the extent that it is even considered by some to be a virtual machine in its own right. With appropriate plugins, it can act as an email client, web browser, IDE, and even comes with a Rogerian psychotherapist.
 
@@ -766,14 +765,14 @@ All files used in this course are available on from https://github.com/levlafaye
 
 To get a copy of all these files (including this book, in plain-text format) use the following command:
 
-git clone https://github.com/levlafayette/superlinux
+`git clone https://github.com/levlafayette/superlinux`
 
 To copy a file from within a system use the cp command. The following is an example: 
 
-cp /common/introductory/gattaca.txt .
-Copy the file gattaca.txt from the directory path /common/introductory/ to the current working directory, represented by the . symbol.
+`cp /common/introductory/gattaca.txt .`
+Copy the file gattaca.txt from the directory path /common/introductory/ to the current working directory, represented by the `.` symbol.
 
-There is a great deal of options that can are part of the cp command; some of the more common include a recursive copy for all files in a series of directories and sub-directories (e.g., cp -r /common/introductory .) and a copy as an archive, with permissions, recursive, and links (e.g., cp -a /common/introductory .) . To copy a long file name or directory, use the tab key for auto-completion of the path and options.
+There is a great deal of options that can are part of the cp command; some of the more common include a recursive copy for all files in a series of directories and sub-directories (e.g., `cp -r /common/introductory .`) and a copy as an archive, with permissions, recursive, and links (e.g., `cp -a /common/introductory .`) . To copy a long file name or directory, use the tab key for auto-completion of the path and options.
 
 To move files to and from the supercomputer and one's desktop you need to use an SCP (secure copy protocol) or SFTP (secure file transfer protocol) over SSH. If you are using Linux or Mac, you will be able to do this with the standard command-line interface with the general procedure of; 
 scp source destination
@@ -782,7 +781,7 @@ This however doesn't quite give the full story. Both the source or the destinati
 
 The following is a more elaborate version of scp:
 
-scp source.address:/path/to/source destination.address:/path/to/destination/
+`scp source.address:/path/to/source destination.address:/path/to/destination/`
 
 If you are using MS-Windows, we recommend using WinSCP, or, if using certain applications such as MATLAB, the PuTTY Secure Copy client PSCP.  WinSCP comes with a intuitive GUI that provides basic file management functionality in addition to Secure Shell and Secure Copy functions.
 
@@ -792,103 +791,104 @@ An alternative transfer option is rsync. Rsync provides a way to keep two reposi
 
 The general sequence is: 
 
-rsync options source destination 
+`rsync options source destination`
 
 The following is the basic command for rsync between two Linux machines:
 
-rsync -avz source/ username@remotemachine.com:/path/to/destination/
+`rsync -avz source/ username@remotemachine.com:/path/to/destination/`
 
 The -avz ensures that it is in archive mode (recursive, copies symlinks, preserves permissions), is verbose, and compresses on transmission. Note that rsync is "trailing slash sensitive". A trailing / on a source means "copy the contents of this directory". Without a trailing slash it means "copy the directory".  In many implementations rsync can be quite intelligent and work out which protocol you are using, so the following will suffice:
 
-rsync -avz source/ username@remotemachine:/path/to/destination
-rsync – avz username@remotemachine:/path/to/source/ .
+`rsync -avz source/ username@remotemachine:/path/to/destination`
+`rsync – avz username@remotemachine:/path/to/source/ .`
 
 For greater  security in the transmission specify ssh encryption.
 
-Rsync -avze ssh username@remotemachine:/path/to/source .
+`rsync -avze ssh username@remotemachine:/path/to/source .`
 
 Rsync can be used in a synchronise mode with the --delete flag. This will delete anything in the destination that is not in source directory. Handle with care! You may wish to also run rsync with the -n or --dry-run option to see what it will do first, before running the command for real.
 
-rsync -avz --delete --dry-run source/ username@remotemachine:/path/to/destination
+`rsync -avz --delete --dry-run source/ username@remotemachine:/path/to/destination`
 
 Many people often use rsync on local machines as well, especially when copying large directories e.g.,
 
-rsync -avz source/ destination/
+`rsync -avz source/ destination/`
 
 A GUI interface for rsync is also available, grysnc.
 
 One may wonder why we aren't running the command on the supercomputer (a "put", rather than a "get"). It must be remembered that in order for a copy of files to occur, both machines have to know where the other one is, translated from hostnames and Internet Protocol (IP) addresses. In most cases, local machines use private IP addresses, not public addresses. For example, if you were on the supercomputer and wanted to copy the file to a local machine you might think the following could work, as it follows the suggested format of source and destination and uses the correct command:
 
-scp list.txt <username>@192.168.1.100
+`scp list.txt <username>@192.168.1.100`
 
 The problem is, which of the multitudes of computers out there with a private address of 192.168.1.100 do you want to copy list.txt to? How would the supercomputer know which machines have this private addresses? Even if it could find out, it would take a very long time to connect to all the switches in the world to find out!
 
 The applications mentioned in this discussion are available at the following URLs
 
-Putty is available from: http://www.chiark.greenend.org.uk/~sgtatham/putty/ 
-Filezilla is available from: http://filezilla-project.org
-Rsync is available from:
-Grsync is available from: http://www.opbyte.it/grsync/
-WinSCP is available from: http://winscp.net
-Fugu is available from: http://rsug.itd.umich.edu/software/fugu/ 
-Cyberduck is available from:  http://cyberduck.ch/
-OpenSSH is available from: http://www.openssh.com/ 
+Putty is available from: `http://www.putty.org/`
+Filezilla is available from: `http://filezilla-project.org`
+Rsync is available from: `https://rsync.samba.org/`
+Grsync is available from: `http://www.opbyte.it/grsync/`
+WinSCP is available from: `http://winscp.net`
+Fugu is available from: `http://rsug.itd.umich.edu/software/fugu/`
+Cyberduck is available from:  `http://cyberduck.ch/`
+OpenSSH is available from: `http://www.openssh.com/` 
 
 ## 2.5 Creating Directories, Moving Files
 
 We are going to copy the file gattaca.txt from the supercomputer to the local machine. From the local machine enter the following command:
 
-scp <username>@trifid.vpac.org:gattaca.txt .
+`scp <username>@trifid.vpac.org:gattaca.txt .`
 
 Be sure to replace <username> with your username on the supercomputer (e.g., train01, train02, train03 etc). When the transfer is complete check on the local machine that the file has transferred with ls.
 
 We know have gattaca.txt on the local computer. Let's add some new material to it before sending it back to the supercomputer. On the local computer enter:
 
-nano gattaca.txt
+`nano gattaca.txt`
 
 Move to the first column on the third line and change the letters ATVK to ATEK. Then write out the file (Cntrl-O) and exit (Cntrl-X).
 
 Our next step will be to create a directory to put this file in and then move the file into that directory. The navigate to the directory and make sure that it is there. On the local computer enter:
 
-mkdir braf
-mv gattaca.txt braf/
+`mkdir braf`
+`mv gattaca.txt braf/`
 
-Change to the braf directory and check the contents of the directory. The output should be the gatta.txt file from the ls command and /home/<user>/braf from the pwd command.
+Change to the braf directory and check the contents of the directory. The output should be the `gattaca.txt` file from the ls command and `/home/<user>/braf` from the `pwd` command.
 
 ## 2.6 Files Differences
 
 The next step will be to copy the directory and its contents from the local computer to the supercomputer. This uses the scp command again, but this time with the -r (recursive) option, which will copy the directory and all sub-directories and files within it. On the local computer enter the following commands:
 
-cd ~
-scp -r braf/ <username>@trifid.vpac.org:
+`cd ~`
+`scp -r braf/ <username>@trifid.vpac.org:`
 
 Now on the supercomputer do a directory listing but specify the file you want and with the time option. You should see a gattaca.txt in your home directory (the original one) and a braf directory. Move into the braf directory and run a directory listing again with the same option. There should be another gattaca.txt file, the one you just moved, but you will notice it has a different timestamp.
 
-ls -l gattaca.txt
-cd braf
-ls -l gattaca.txt
+`ls -l gattaca.txt`
+`cd braf`
+`ls -l gattaca.txt`
 
 Sometimes you may wish to compare the content of files as well as when they were created. To do this use the diff command. This compares files line-by-line and prints the differences to the screen. As usual there are a number of options which can be ascertained from the command man diff, but for now we'll just use the basic command. The command uses brackets to indicate where additional material is located. To illustrate this, let's add some lines to the first list.txt file and then run the diff comparison.
 
 Write out (Cntrl-O) and exit (Cntl-X) and run the diff command.
 
-diff gattaca.txt braf/gattaca.txt
+`diff gattaca.txt braf/gattaca.txt`
 	
 The output should be something like the following:
 
 ```
 [lev@trifid ~]$ diff gattaca.txt braf/gattaca.txt 
 4c4 
-< ATVKSRWSGS HQFEQLSGSI LWMAPEVIRM QDKNPYSFQS DVYAFGIVLY 
+&lt; ATVKSRWSGS HQFEQLSGSI LWMAPEVIRM QDKNPYSFQS DVYAFGIVLY 
 --- 
-> ATEKSRWSGS HQFEQLSGSI LWMAPEVIRM QDKNPYSFQS DVYAFGIVLY 
+&gt; ATEKSRWSGS HQFEQLSGSI LWMAPEVIRM QDKNPYSFQS DVYAFGIVLY 
 ```
 
 For a side-by-side representation use the command sdiff instead.
 
 The diff command is often used by programmers to create a patch file between two programs. For example, if one wanted to a patch of braf/gattaca.txt to gattaca.txt one would generate the patch file like follows:
 
-diff -u gattaca.txt braf/gattaca.txt > gattaca.patch
+`diff -u gattaca.txt braf/gattaca.txt > gattaca.patch`
+
 2.7 Searches and Wildcards
 
 Often you will want to search for files or search within files for a particular phrase. The find command, which will find files according to the directory and sub-directories offered, by name, modification time, size etc, and with filter operations, all of which are available through man find. To find all files with the suffix .txt on your supercomputer account use the following command:
@@ -900,12 +900,21 @@ find . -name '*.txt'
 
 Note that the filter is within quotes, to ensure that the command is not expanded due to the wildcard. 
 	
-To search within a collection of files use the grep command. It originally an abbreviation of "global search for a regular expression and print to standard output". The command searches the named input files for lines containing a match to the given pattern, including regular expressions, and prints the matching lines. As usual there are a variety of options available through man grep. The following command will search for the pattern 'ATEKSRWSGS', ignoring case, within the directory braf. Enter the following on the supercomputer:
+To search within a collection of files use the grep command. It originally an abbreviation of "global search for a regular expression and print to standard output". The command searches the named input files for lines containing a match to the given pattern, including regular expressions, and prints the matching lines. As usual there are a variety of options available through man grep. The following command will search for the pattern 'ATEK', ignoring case, within the directory braf. Enter the following on the supercomputer:
 
 ```
 cd ~
 grep -i ATEK braf/*
 ```
+
+The search is for a regular expression, which means any sequence of characters that includes the letters ATEK. If one wishes to search for a word the -w option can be invoked:
+
+```
+cd ~
+grep -w ARSLPK braf/*
+```
+
+This will prevent a search for `zip`, finding `gzip`, `bzip` etc. for example.
 
 Note that the files being searched must be specified, even with a wildcard character. Simply stating a directory is insufficient. Where there are multiple results, grep will also display the filename. Compressed or gzipped files can be searched with `zgrep`. If one wants to search a PDF file, then either the `poppler-utils` needs to be installed, or `pdfgrep`.
 
