@@ -4,7 +4,7 @@ ISBN-10: 0-9943373-0-2
 
 ISBN-13: 978-0-9943373-0-6
 
-Supercomputing with Linux by Lev Lafayette, 2015
+Supercomputing with Linux by Lev Lafayette, 2015 (online). This edition 2017 (revised)
 
 Published by the Victorian Partnership for Advanced Computing (trading as V3 Alliance) .
 
@@ -149,7 +149,7 @@ In late 2015 the VPAC Board made a decision not to continue the organisation aft
 
 VPAC had a number of commercial and academic case studies of which three are described here in summary for interest's sake. A more complete description of these projects and other case studies is available at: http://www.vpac.org/services and http://www.v3.org.au/case_studies
 
-Marine Benthic Habitat Mapping
+**Marine Benthic Habitat Mapping***
 
 The project objective focused on developing a better understanding of geophysical characteristics and benthic communities in coastal Victoria, Australia.
 
@@ -161,13 +161,13 @@ The technique of combining derivative products from the backscatter and the bath
 
 Development of coastal regions has resulted in significant anthropogenic impacts in south-west Victoria. The Victorian Marine Habitat Mapping Project surveyed over 500 square kilometres in 14 marine regions within Victorian state waters with the objective of establishing baseline physical and biological information regarding coastal waters.
 
-SHIINe Infection Surveillance System
+**SHIINe Infection Surveillance System**
 
 Infection surveillance is regarded as the cornerstone of Infection Control programs. Knowledge of the normal rate of infections is essential if medical health providers such as hospitals are to accurately detect and measure any increases in reported infections and assess preventative actions. 
 
 Hospitals are required to undertake routine hospital-acquired or nosocomial infection surveillance as a component of their Infection Control programs. Infection surveillance can be very time consuming, and efficient data management is vital to the process. VICNISS and V3 Alliance are collaboratively developing a new infection surveillance software application, called Safer Hospitals Integrated Information Network (SHIINe), to ensure scientific credibility, identify problems, ensure the use of standardised methodology, and to increase compliance and participation with Infection Control in hospitals.
 
-Multi-Disciplinary Optimisation of a Vehicle Architecture
+**Multi-Disciplinary Optimisation of a Vehicle Architecture**
 
 GM Holden wished to optimise the design of a vehicle architecture by removing mass from the vehicle frame without affecting crash safety. The optimisation process required the client to generate hundreds of minor variants of a design and simulate the performance of each variant in multiple crash scenarios. V3 Alliance provided a software automation solution based on its Virtuneer technology that greatly reduced the time and cost involved in such a large-scale simulation and design exercise. 
 
@@ -175,7 +175,7 @@ Multi-Disciplinary Optimisation (MDO) is a common technique in automotive engine
  
 GM Holden reduced manual set-up time for a large-scale MDO study from an estimated 6 weeks to 1.5 weeks and greatly reduced the number of failed HPC simulations. The client therefore realised large time and cost savings for both staff and HPC resources and successfully accelerated its innovation process.
 
-VisLab for social research
+**VisLab for social research**
 
 Researchers at Victoria University’s Centre for Cultural Diversity and Wellbeing (CCDW) examine issues relating to diversity, creativity and health in both local and global contexts. The use of technologies enabling greater 'connectedness' is central to their exploration of these areas.
 
@@ -253,7 +253,7 @@ Finally, there is the command line. For most users a Graphic User Interface (GUI
 
 It is valuable for any user to have recorded the system specifications of the high performance compute cluster that they will be using. Many clusters will have a heterogeneous collection of processors, often partitioned into different queues, different interconnect systems, and different methods of storing data, along with different core distributions of the Linux operating system.
 
-A current configuration of the Trifid cluster, would include the following as an example:
+A configuration of the Trifid cluster (2015), would include the following as an example:
 
 220 total system unit "nodes" (218 compute, login, and management).
 3,008 cores of Intel E5-2670 (trifid001-trifid179) 
@@ -267,343 +267,334 @@ CentOS 6 Linux
 
 There is close to four hundred scientific software applications and versions installed, including compiler suites (GCC, Intel, PGI), computational chemistry (Gromacs, LAMMPS, Schrodinger, VMD), bioinformatics (BEAST, BLAST, MrBayes), Math Libraries (ATLAS, Boost, FFTW, LAPACK, Scalapack), fluid dynamics and engineering (Abaqus, Ansys, Fluent, OpenFOAM), mathematics and statistics (Octave, R, Matlab), climate and weather modelling (Geant, WRF), and many more. A complete list will be illustrated through the use of the module command, illustrated later in this manual.
 
-The following is a non-comprehensive list of the software that's generally available on on HPC clusters:
+The following is a non-comprehensive list of the software that's often available on on HPC clusters. It is taken from the software that was on VPAC's last two clusters, Tango and Trifid, but serves as an illustrative collection.
 
-Abaqus: Abaqus is a package for finite element analysis, usually applied in mechanical engineering. Abaqus is available at the following URL : http://www.3ds.com/products-services/simulia/products/abaqus/
+**Abaqus**: Abaqus is a package for finite element analysis, usually applied in mechanical engineering. Abaqus is available at the following URL : http://www.3ds.com/products-services/simulia/products/abaqus/
 
-ABWT: The AB WT (Whole Transcriptome) Analysis Pipeline is an off-instrument SOLiD data analysis software package for the analysis of experiments run. It maps reads from a transcript sample to a reference genome and assigning tag counts to features of the reference genome. ABWT is available at the following URL: http://solidsoftwaretools.com/gf/project/transcriptome/
+**ABWT**: The AB WT (Whole Transcriptome) Analysis Pipeline is an off-instrument SOLiD data analysis software package for the analysis of experiments run. It maps reads from a transcript sample to a reference genome and assigning tag counts to features of the reference genome. ABWT is available at the following URL: http://solidsoftwaretools.com/gf/project/transcriptome/
 
-ACML: The AMD Core Math Library (ACML) is a set of optimised and threaded math routines, especially useful for computational-intensive tasks. The AMD Core Math Library is available at the following URL: http://developer.amd.com/tools-and-sdks/archive/amd-core-math-library-acml/
+**ACML**: The AMD Core Math Library (ACML) is a set of optimised and threaded math routines, especially useful for computational-intensive tasks. The AMD Core Math Library is available at the following URL: http://developer.amd.com/tools-and-sdks/archive/amd-core-math-library-acml/
 
-AFNI: AFNI (Analysis of Functional NeuroImages) is a set of C programs for processing, analyzing, and displaying functional MRI (FMRI) data - a technique for mapping human brain activity. AFNI is available at the following URL: https://afni.nimh.nih.gov/afni/
+**AFNI**: AFNI (Analysis of Functional NeuroImages) is a set of C programs for processing, analyzing, and displaying functional MRI (FMRI) data - a technique for mapping human brain activity. AFNI is available at the following URL: https://afni.nimh.nih.gov/afni/
 
-AMBER: Assisted Model Building with Energy Refinement (AMBER) is a family of force fields for molecular dynamics of biomolecules. AMBER is also the name for the molecular dynamics software package that simulates these force fields. AMBER is available at the following URL: http://ambermd.org/
+**AMBER**: Assisted Model Building with Energy Refinement (AMBER) is a family of force fields for molecular dynamics of biomolecules. AMBER is also the name for the molecular dynamics software package that simulates these force fields. AMBER is available at the following URL: http://ambermd.org/
 
-ANSYS: ANSYS is an engineering simulation for general-purpose finite element analysis and computational fluid dynamics. ANSYS can be found at the following URL: http://www.ansys.com/
+**ANSYS**: ANSYS is an engineering simulation for general-purpose finite element analysis and computational fluid dynamics. ANSYS can be found at the following URL: http://www.ansys.com/
 
-Ant: Apache Ant as an automated software build processes, like Make etc, but is implemented using the Java language, requiring the Java platform, and best suited to building Java projects. Ant can be found at the following URL: http://ant.apache.org/
+**Ant**: Apache Ant as an automated software build processes, like Make etc, but is implemented using the Java language, requiring the Java platform, and best suited to building Java projects. Ant can be found at the following URL: http://ant.apache.org/
 
-Armadillo: Armadillo is a C++ linear algebra library (matrix maths) that supports integer, floating point and complex numbers, as well as a subset of trigonometric and statistics functions. Armadillo can be found at the following URL: http://arma.sourceforge.net/
+**Armadillo**: Armadillo is a C++ linear algebra library (matrix maths) that supports integer, floating point and complex numbers, as well as a subset of trigonometric and statistics functions. Armadillo can be found at the following URL: http://arma.sourceforge.net/
 
-Atlas: Automatically Tuned Linear Algebra Software (ATLAS) is a software library for linear algebra, providing an open source implementation of BLAS APIs for C and Fortran77. ATLAS is available at the following URL: http://math-atlas.sourceforge.net/
+**Atlas**: Automatically Tuned Linear Algebra Software (ATLAS) is a software library for linear algebra, providing an open source implementation of BLAS APIs for C and Fortran77. ATLAS is available at the following URL: http://math-atlas.sourceforge.net/
 
-Autodock: AutoDock is a suite of docking tools designed to predict how small molecules, such as substrates or drug candidates, bind to a receptor of known 3D structure. AutoDock is available at the following URL: http://autodock.scripps.edu/
+**Autodock**: AutoDock is a suite of docking tools designed to predict how small molecules, such as substrates or drug candidates, bind to a receptor of known 3D structure. AutoDock is available at the following URL: http://autodock.scripps.edu/
 
-AutoGrow: AutoGrow uses AutoDock as the selection operator. For each generation, all ligand files are docked to the target protein, and for each dock, AutoDock returns a predicted binding affinity. AutoGrow (Java DOCK), uses fragment-based growing, docking, and evolutionary techniques. AutoGrow is available from the following URL: http://autogrow.ucsd.edu/
+**AutoGrow**: AutoGrow uses AutoDock as the selection operator. For each generation, all ligand files are docked to the target protein, and for each dock, AutoDock returns a predicted binding affinity. AutoGrow (Java DOCK), uses fragment-based growing, docking, and evolutionary techniques. AutoGrow is available from the following URL: http://autogrow.ucsd.edu/
 
-BEAM: BEAMnrc is a general purpose Monte Carlo simulation system for modelling radiotherapy sources which is based on the EGSnrcMP code system for modelling coupled electron and photon transport. BEAMnrc is available at the following URL: http://www.nrc-cnrc.gc.ca/eng/solutions/advisory/beam_index.html
+**BEAM**: BEAMnrc is a general purpose Monte Carlo simulation system for modelling radiotherapy sources which is based on the EGSnrcMP code system for modelling coupled electron and photon transport. BEAMnrc is available at the following URL: http://www.nrc-cnrc.gc.ca/eng/solutions/advisory/beam_index.html
 
-BigDFT: BigDFT is a Density Functional Theory (DFT) parallel electronic structure code using a wavelet basis set. Wavelets form a real space basis set distributed on an adaptive mesh. Surfaces and isolated systems can be simulated with the proper boundary conditions and GTH or HGH pseudopotentials are used to remove the core electrons. BigDFT is available at the following URL: http://bigdft.org/
+**BigDFT**: BigDFT is a Density Functional Theory (DFT) parallel electronic structure code using a wavelet basis set. Wavelets form a real space basis set distributed on an adaptive mesh. Surfaces and isolated systems can be simulated with the proper boundary conditions and GTH or HGH pseudopotentials are used to remove the core electrons. BigDFT is available at the following URL: http://bigdft.org/
 
-Binutils: The GNU Binary Utilities, or binutils, is a collection of programming tools for the manipulation of object code in various object file formats. They are typically used in conjunction with GNU Compiler Collection, make, and GDB. The GNU Binutils are available from the following URL: https://www.gnu.org/software/binutils/
+**Binutils**: The GNU Binary Utilities, or binutils, is a collection of programming tools for the manipulation of object code in various object file formats. They are typically used in conjunction with GNU Compiler Collection, make, and GDB. The GNU Binutils are available from the following URL: https://www.gnu.org/software/binutils/
 
-BLAST: The NCBI Basic Local Alignment Search Tool (BLAST) finds regions of local similarity between DNA sequences sequences and can be used to infer functional and evolutionary relationships between sequences as well as help identify members of gene families. 
+**BLAST**: The NCBI Basic Local Alignment Search Tool (BLAST) finds regions of local similarity between DNA sequences sequences and can be used to infer functional and evolutionary relationships between sequences as well as help identify members of gene families. 
 
-Blender: Blender is a 3D graphics application used for modeling, UV unwrapping, texturing, rigging, water simulations, skinning, animating, rendering, particle, and other simulations, non-linear editing, compositing, and creating interactive 3D applications. The image (right) was created with Blender. 
+**Blender**: Blender is a 3D graphics application used for modeling, UV unwrapping, texturing, rigging, water simulations, skinning, animating, rendering, particle, and other simulations, non-linear editing, compositing, and creating interactive 3D applications. The image (right) was created with Blender. 
 
-BLT: The BLT library is an extension to Tcl/Tk. that adds plotting widgets, a geometry manager, a canvas item, and several new commands to Tk. 
+**BLT**: The BLT library is an extension to Tcl/Tk. that adds plotting widgets, a geometry manager, a canvas item, and several new commands to Tk. 
 
-Bonnie++: Bonnie++ is a benchmark suite that is aimed at performing a number of simple tests of hard drive and file system performance. 
+**Bonnie++**: Bonnie++ is a benchmark suite that is aimed at performing a number of simple tests of hard drive and file system performance. 
 
-Boost: The Boost C++ libraries are a collection of open source libraries that extend the functionality of C++. They range from general-purpose libraries like the smart_ptr library to libraries primarily aimed at other library developers and advanced C++ users, like the metaprogramming template (MPL) and DSL creation (Proto). 
+**Boost**: The Boost C++ libraries are a collection of open source libraries that extend the functionality of C++. They range from general-purpose libraries like the smart_ptr library to libraries primarily aimed at other library developers and advanced C++ users, like the metaprogramming template (MPL) and DSL creation (Proto). 
 
-BWA: The Burrows-Wheeler Alignment (BWA) Tool is a fast light-weight tool that aligns short sequences to a sequence database, such as the human reference genome. 
+**BWA**: The Burrows-Wheeler Alignment (BWA) Tool is a fast light-weight tool that aligns short sequences to a sequence database, such as the human reference genome. 
 
-CGAL: CGAL (Computational Geometry Algorithms Library) provides efficient and reliable geometric algorithms in the form of a C++ library data structures and algorithms for triangulations, Voronoi diagrams, polygons and polyhedra, arrangements of curves and their applications, mesh generation, geometry processing, subdivision and parameterization, as well as estimation of local differential properties, and approximation of ridges and umbilics, alpha shapes, convex hull algorithms, search structures , interpolation, shape analysis, fitting, and distances, and kinetic data structures. 
+**CGAL**: CGAL (Computational Geometry Algorithms Library) provides efficient and reliable geometric algorithms in the form of a C++ library data structures and algorithms for triangulations, Voronoi diagrams, polygons and polyhedra, arrangements of curves and their applications, mesh generation, geometry processing, subdivision and parameterization, as well as estimation of local differential properties, and approximation of ridges and umbilics, alpha shapes, convex hull algorithms, search structures , interpolation, shape analysis, fitting, and distances, and kinetic data structures. 
 
-Circuitscape: Circuitscape is a free, open-source program which borrows algorithms from electronic circuit theory to predict patterns of movement, gene flow, and genetic differentiation among plant and animal populations in heterogeneous landscapes. 
+**Circuitscape**: Circuitscape is a free, open-source program which borrows algorithms from electronic circuit theory to predict patterns of movement, gene flow, and genetic differentiation among plant and animal populations in heterogeneous landscapes. 
 
-CDAT: The Climate Data Analysis Tools (CDAT) is a software infrastructure that uses Python. The CDAT subsystems, implemented as Python modules, provide access to and management of gridded data (Climate Data Management System or CDMS); large-array numerical operations (Numerical Python); and visualization (Visualization and Control System or VCS). The image (left) is a composite of CDAT windows. 
+**CDAT**: The Climate Data Analysis Tools (CDAT) is a software infrastructure that uses Python. The CDAT subsystems, implemented as Python modules, provide access to and management of gridded data (Climate Data Management System or CDMS); large-array numerical operations (Numerical Python); and visualization (Visualization and Control System or VCS). The image (left) is a composite of CDAT windows. 
 
-CDO: The Climate Data Operators (CDO) software is a collection of many operators for standard processing of climate and NWP model output. 
+**CDO**: The Climate Data Operators (CDO) software is a collection of many operators for standard processing of climate and NWP model output. 
 
-CPMD: The Car-Parrinello Molecular Dynamics code is a parallelized plane wave/pseudopotential implementation of Density Functional Theory, particularly designed for ab-initio molecular dynamics. 
+**CPMD**: The Car-Parrinello Molecular Dynamics code is a parallelized plane wave/pseudopotential implementation of Density Functional Theory, particularly designed for ab-initio molecular dynamics. 
 
-CUDA: The NVIDIA CUDA Toolkit includes accelerated BLAS and FFT implementations, parallel thread execution and CUDA command line compiler. CUDA (an acronym for Compute Unified Device Architecture) is a parallel computing architecture developed by NVIDIA, the computing engine in NVIDIA graphics processing units (GPUs). 
+**CUDA**: The NVIDIA CUDA Toolkit includes accelerated BLAS and FFT implementations, parallel thread execution and CUDA command line compiler. CUDA (an acronym for Compute Unified Device Architecture) is a parallel computing architecture developed by NVIDIA, the computing engine in NVIDIA graphics processing units (GPUs). 
 
-DAWN: Drawer for Academic WritiNgs (DAWN) is a renderer which reads 3D geometrical data and visualizes with a vectorized 3D PostScript processor with analytical hidden line/surface removal. 
+**DAWN**: Drawer for Academic WritiNgs (DAWN) is a renderer which reads 3D geometrical data and visualizes with a vectorized 3D PostScript processor with analytical hidden line/surface removal. 
 Desmond: Desmond is a software package developed at D.E. Shaw Research to perform high-speed molecular dynamics simulations of biological systems on parallel systems that is available as part of Schrodinger or as a stand-alone package. 
 
-DeMon: DeMon (Density of Montréal) is a software package for density functional theory (DFT) calculations. It uses the linear combination of Gaussian-type orbital (LCGTO) approach for the self-consistent solution of the Kohn-Sham (KS) DFT equations. The calculation of the four-center electron repulsion integrals is avoided by introducing an auxiliary function basis for the variational fitting of the Coulomb potential. 
+**DeMon**: DeMon (Density of Montréal) is a software package for density functional theory (DFT) calculations. It uses the linear combination of Gaussian-type orbital (LCGTO) approach for the self-consistent solution of the Kohn-Sham (KS) DFT equations. The calculation of the four-center electron repulsion integrals is avoided by introducing an auxiliary function basis for the variational fitting of the Coulomb potential. 
 
-DL POLY: DL_POLY is a general purpose classical molecular dynamics (MD) simulation software developed at Daresbury Laboratory by I.T. Todorov and W. Smith. 
+**DL POLY**: DL_POLY is a general purpose classical molecular dynamics (MD) simulation software developed at Daresbury Laboratory by I.T. Todorov and W. Smith. 
 
-DOCK: DOCK simulates the problem of docking molecules to each other. In the field of molecular modeling, docking is a method which predicts the preferred orientation of one molecule to a second when bound to each other to form a stable complex. 
+**DOCK**: DOCK simulates the problem of docking molecules to each other. In the field of molecular modeling, docking is a method which predicts the preferred orientation of one molecule to a second when bound to each other to form a stable complex. 
 
-Ecat: Comprehensive C Library and utilities to handle Ecat, Interfile and Analyze datasets. Allows conversion, and access to file internals. 
+**Ecat**: Comprehensive C Library and utilities to handle Ecat, Interfile and Analyze datasets. Allows conversion, and access to file internals. 
 
-EGSnrc: EGSnrc is a package for the Monte Carlo simulation of coupled electron-photon transport. 
+**EGSnrc**: EGSnrc is a package for the Monte Carlo simulation of coupled electron-photon transport. 
 
-EM3D: EM3D is an integrated software application designed to facilitate the analysis and visualization of electron microscope (EM) tomography data by cellular and molecular biologists. 
+**EM3D**: EM3D is an integrated software application designed to facilitate the analysis and visualization of electron microscope (EM) tomography data by cellular and molecular biologists. 
 
-Espresso: Molecular dynamics simulation of "coarse-grained" bead-spring models as they are used in soft-matter research in physics, chemistry and molecular biology. 
+**Espresso**: Molecular dynamics simulation of "coarse-grained" bead-spring models as they are used in soft-matter research in physics, chemistry and molecular biology. 
 
-EMBOSS: The European Molecular Biology Open Software Suite (EMBOSS) is a molecular biology tool which copes with data in a variety of formats and even allows transparent retrieval of sequence data from the web. 
+**EMBOSS**: The European Molecular Biology Open Software Suite (EMBOSS) is a molecular biology tool which copes with data in a variety of formats and even allows transparent retrieval of sequence data from the web. 
 
-FDS: Fire Dynamics Simulator (FDS) is a computational fluid dynamics model of fire-driven fluid flow. The software solves numerically a form of the Navier-Stokes equations appropriate for low-speed, thermally-driven flow, with an emphasis on smoke and heat transport from fires.
+**FDS**: Fire Dynamics Simulator (FDS) is a computational fluid dynamics model of fire-driven fluid flow. The software solves numerically a form of the Navier-Stokes equations appropriate for low-speed, thermally-driven flow, with an emphasis on smoke and heat transport from fires.
 
-FFTW: "Fastest Fourier Transform in the West" (FFTW) is a C subroutine library for computing the discrete Fourier transform (DFT) in one or more dimensions, of arbitrary input size, and of both real and complex data (as well as of even/odd data, i.e. the discrete cosine/sine transforms or DCT/DST). 
+**FFTW**: "Fastest Fourier Transform in the West" (FFTW) is a C subroutine library for computing the discrete Fourier transform (DFT) in one or more dimensions, of arbitrary input size, and of both real and complex data (as well as of even/odd data, i.e. the discrete cosine/sine transforms or DCT/DST). 
 
-FLUENT: FLUENT is a flexible general-purpose computational fluid dynamics package used for engineering simulations of all levels of complexity. 
+**FLUENT**: FLUENT is a flexible general-purpose computational fluid dynamics package used for engineering simulations of all levels of complexity. 
 
-Freeglut: freeglut is a completely opensource alternative to the OpenGL Utility Toolkit (GLUT) library. 
+**Freeglut**: freeglut is a completely opensource alternative to the OpenGL Utility Toolkit (GLUT) library. 
 
-FreeSurfer: FreeSurfer is a set of automated tools for reconstruction of the brain’s cortical surface from structural MRI data, and overlay of functional MRI data onto the reconstructed surface. 
+**FreeSurfer**: FreeSurfer is a set of automated tools for reconstruction of the brain’s cortical surface from structural MRI data, and overlay of functional MRI data onto the reconstructed surface. 
 
-FSL: FSL is a comprehensive library of analysis tools for FMRI, MRI and DTI brain imaging data. 
+**FSL**: FSL is a comprehensive library of analysis tools for FMRI, MRI and DTI brain imaging data. 
 
-G4beamline: G4Beamline is a particle tracking and simulation program based on the Geant4 toolkit that is specifically designed to easily simulate beamlines and other systems using single-particle tracking. 
+**G4beamline**: G4Beamline is a particle tracking and simulation program based on the Geant4 toolkit that is specifically designed to easily simulate beamlines and other systems using single-particle tracking. 
 
-GAMESS: General Atomic and Molecular Electronic Structure System (GAMESS) is a program for ab initio molecular quantum chemistry. A variety of molecular properties, ranging from simple dipole moments to frequency dependent hyperpolarizabilities may be computed. 
+**GAMESS**: General Atomic and Molecular Electronic Structure System (GAMESS) is a program for ab initio molecular quantum chemistry. A variety of molecular properties, ranging from simple dipole moments to frequency dependent hyperpolarizabilities may be computed. 
 
-GATE: The Geant4 Application for Emission Tomography (GATE) provides comprehensive physics modeling abilities of the general purpose codes while making it possible to intuitively configurate an Emission Tomography simulation. GATE allows the accurate description of time-dependent phenomena such as source or detector movement and source decay kinetics. 
+**GATE**: The Geant4 Application for Emission Tomography (GATE) provides comprehensive physics modeling abilities of the general purpose codes while making it possible to intuitively configurate an Emission Tomography simulation. GATE allows the accurate description of time-dependent phenomena such as source or detector movement and source decay kinetics. 
 
-Gaussian: Gaussian provides electronic structure modeling which can be applied to both stable species and compounds which are difficult or impossible to observe experimentally. Gaussian can be used for comprehensive investigations of molecules and reactions, predicting and interpreting spectra, exploring diverse chemical arenas, and complex modelling. 
+**Gaussian**: Gaussian provides electronic structure modeling which can be applied to both stable species and compounds which are difficult or impossible to observe experimentally. Gaussian can be used for comprehensive investigations of molecules and reactions, predicting and interpreting spectra, exploring diverse chemical arenas, and complex modelling. 
 
-GCC: The GNU Compiler Collection (GCC) is a compiler system produced by the GNU Project supporting various programming languages including C and C++ with front ends for Fortran, Pascal, Objective-C, Java, Ada and others. 
+**GCC**: The GNU Compiler Collection (GCC) is a compiler system produced by the GNU Project supporting various programming languages including C and C++ with front ends for Fortran, Pascal, Objective-C, Java, Ada and others. 
 
-GD: The Graphics Draw (GD) Library is a graphics software library for dynamically manipulating images. Its native programming language is ANSI C, but it has interfaces for many other programming languages. 
+**GD**: The Graphics Draw (GD) Library is a graphics software library for dynamically manipulating images. Its native programming language is ANSI C, but it has interfaces for many other programming languages. 
 
-GDB: The GNU Debugger (GDB) is the standard debugger for the GNU software system. It is a portable debugger that runs on many Unix-like systems and works for many programming languages, including Ada, C, C++, FreeBASIC, FreePascal and Fortran. 
+**GDB**: The GNU Debugger (GDB) is the standard debugger for the GNU software system. It is a portable debugger that runs on many Unix-like systems and works for many programming languages, including Ada, C, C++, FreeBASIC, FreePascal and Fortran. 
 
-GEANT: GEometry ANd Tracking (GEANT) is a simulation software designed to describe the passage of elementary particles through matter, using Monte Carlo methods. 
+**GEANT**: GEometry ANd Tracking (GEANT) is a simulation software designed to describe the passage of elementary particles through matter, using Monte Carlo methods. 
 
-GENREG: Generator fuer regulaere Graphen (GENREG) generates regular graphs for the chosen parameters and constructs them. 
+**GENREG**: Generator fuer regulaere Graphen (GENREG) generates regular graphs for the chosen parameters and constructs them. 
 
-GEOS: GEOS (Geometry Engine - Open Source) is a C++ port of the Java Topology Suite (JTS). As such, it aims to contain the complete functionality of JTS in C++. This includes all the OpenGIS Simple Features for SQL spatial predicate functions and spatial operators, as well as specific JTS enhanced topology functions. 
+**GEOS**: GEOS (Geometry Engine - Open Source) is a C++ port of the Java Topology Suite (JTS). As such, it aims to contain the complete functionality of JTS in C++. This includes all the OpenGIS Simple Features for SQL spatial predicate functions and spatial operators, as well as specific JTS enhanced topology functions. 
 
-GLUE: Grid LSC User Environment (GLUE) is a collection of utilities for running data analysis pipelines for online and offline analysis as well as accessing various grid utilities. It also provides the infrastructure for the segment database. 
+**GLUE**: Grid LSC User Environment (GLUE) is a collection of utilities for running data analysis pipelines for online and offline analysis as well as accessing various grid utilities. It also provides the infrastructure for the segment database. 
 
-GMP: GNU MP (GMP) is a library for arbitrary precision arithmetic, operating on signed integers, rational numbers, and floating point numbers. It has a rich set of functions, and the functions have a regular interface. It is particularly designed for speed. 
+**GMP**: GNU MP (GMP) is a library for arbitrary precision arithmetic, operating on signed integers, rational numbers, and floating point numbers. It has a rich set of functions, and the functions have a regular interface. It is particularly designed for speed. 
 
-GotoBLAS: The GotoBLAS codes are a fast implementation of the Basic Linear Algebra Subroutines. The advantage is fast calculation which makes use of all instruction sets of modern processors. 
+**GotoBLAS**: The GotoBLAS codes are a fast implementation of the Basic Linear Algebra Subroutines. The advantage is fast calculation which makes use of all instruction sets of modern processors. 
 
-Grace: Grace is a tool to make two-dimensional plots of numerical data. It combines the convenience of a graphical user interface with the power of a scripting language which enables it to do sophisticated calculations or perform automated tasks. 
+**Grace**: Grace is a tool to make two-dimensional plots of numerical data. It combines the convenience of a graphical user interface with the power of a scripting language which enables it to do sophisticated calculations or perform automated tasks. 
 
-Graphviz: Graphviz is open source graph visualization software with several main graph layout programs, interactive graphical interfaces, auxiliary tools, libraries, and language bindings. 
+**Graphviz**: Graphviz is open source graph visualization software with several main graph layout programs, interactive graphical interfaces, auxiliary tools, libraries, and language bindings. 
 
-GROMACS: The GROningen MAchine for Chemical Simulations (GROMACS) is a molecular dynamics simulation package that is very fast and has support for different force fields. It is notable for being used for protein folding at Folding@Home. 
+**GROMACS**: The GROningen MAchine for Chemical Simulations (GROMACS) is a molecular dynamics simulation package that is very fast and has support for different force fields. It is notable for being used for protein folding at Folding@Home. 
 
-Gridpro: Gridpro is an object-oriented, multiblock grid generator that provides users the capability to build topology, edit surfaces, set CFD boundary conditions, and view grids. 
+**Gridpro**: Gridpro is an object-oriented, multiblock grid generator that provides users the capability to build topology, edit surfaces, set CFD boundary conditions, and view grids. 
 
-GSL: The GNU Scientific Library (GSL), is a collection of numerical routines for scientific computing. The library provides a wide range of mathematical routines such as random number generators, special functions and least-squares fitting. 
+**GSL**: The GNU Scientific Library (GSL), is a collection of numerical routines for scientific computing. The library provides a wide range of mathematical routines such as random number generators, special functions and least-squares fitting. 
 
-H5utils: The package h5utils is a set of utilities for visualization and conversion of scientific data in the free, portable 
+**H5utils**: The package h5utils is a set of utilities for visualization and conversion of scientific data in the free, portable HDF5 format along with programs to convert HDF5 datasets into the formats required by other free visualization software (e.g. plain text, Vis5d, and VTK). 
 
-HDF5 format along with programs to convert HDF5 datasets into the formats required by other free visualization software (e.g. 
-plain text, Vis5d, and VTK). 
+**Harminv**: Harminv is used to solve problems of harmonic inversion - given a discrete-time, finite-length signal that consists of a sum of finitely-many sinusoids (possibly exponentially decaying) in a given bandwidth, it determines the frequencies, decay constants, amplitudes, and phases of those sinusoids. It can, in principle, provide much better accuracy than straightforwardly extracting FFT peaks. 
 
-Harminv: Harminv is used to solve problems of harmonic inversion - given a discrete-time, finite-length signal that consists of a sum of finitely-many sinusoids (possibly exponentially decaying) in a given bandwidth, it determines the frequencies, decay constants, amplitudes, and phases of those sinusoids. It can, in principle, provide much better accuracy than straightforwardly extracting FFT peaks. 
+**HDF5**: HDF5 is a data model, library, and file format for storing and managing data. It supports an unlimited variety of datatypes, and is designed for flexible and efficient I/O and for high volume and complex data. 
 
-HDF5: HDF5 is a data model, library, and file format for storing and managing data. It supports an unlimited variety of datatypes, and is designed for flexible and efficient I/O and for high volume and complex data. 
+**Hadoop**: Apache Hadoop is a framework for running applications on large clusters built of commodity hardware. The Hadoop framework transparently provides applications both reliability and data motion. 
 
-Hadoop: Apache Hadoop is a framework for running applications on large clusters built of commodity hardware. The Hadoop framework transparently provides applications both reliability and data motion. 
+**HyperWorks**: Altair HyperWorks is a computer-aided engineering simulation software platform that includes modeling, analysis, visualization and data management solutions for linear, nonlinear, structural optimization, fluid-structure interaction, and multi-body dynamics applications. 
 
-HyperWorks: Altair HyperWorks is a computer-aided engineering simulation software platform that includes modeling, analysis, visualization and data management solutions for linear, nonlinear, structural optimization, fluid-structure interaction, and multi-body dynamics applications. 
+**Hypre**: Hypre is a library of high performance preconditioners that features parallel multigrid methods for both structured and unstructured grid problems. 
 
-Hypre: Hypre is a library of high performance preconditioners that features parallel multigrid methods for both structured and unstructured grid problems. 
+**IDL**: Interactive Data Language (IDL) is a programming language used for data analysis. IDL is vectorized, numerical, and interactive, and is commonly used for interactive processing of large amounts of data (including image processing). 
 
-IDL: Interactive Data Language (IDL) is a programming language used for data analysis. IDL is vectorized, numerical, and interactive, and is commonly used for interactive processing of large amounts of data (including image processing). 
+**IMOD**: IMOD is a set of image processing, modeling and display programs used for tomographic reconstruction and for 3D reconstruction of EM serial sections and optical sections. 
 
-IMOD: IMOD is a set of image processing, modeling and display programs used for tomographic reconstruction and for 3D reconstruction of EM serial sections and optical sections. 
+**Intel**: Intel compilers are optimised for its hardware platforms to minimise stalls and produce code that executes in the fewest number of cycles. Intel's suite of compilers has front ends for C, C++, and Fortran. 
 
-Intel Compilers: Intel compilers are optimised for its hardware platforms to minimise stalls and produce code that executes in the fewest number of cycles. Intel's suite of compilers has front ends for C, C++, and Fortran. 
+**IPRSCAN**: IntroProScan (iprscan) is a tool that combines different protein signature recognition methods into one resource. InterProScan is more than a simple wrapping of sequence analysis applications since it requires performing a considerable data look-ups from some databases and program outputs. 
 
-IPRSCAN: IntroProScan (iprscan) is a tool that combines different protein signature recognition methods into one resource. 
+**ISP**: In-situ Partial Order (ISP) is a dynamic verifier for MPI Programs. ISP will help you debug your programs, and graphically show you all the possible send/receive matches, barrier synchronizations, etc. 
 
-InterProScan is more than a simple wrapping of sequence analysis applications since it requires performing a considerable data look-ups from some databases and program outputs. 
+**ITKSNAP**: ITK-SNAP is used to segment structures in 3D medical images, providing semi-automatic segmentation using active contour methods, as well as manual delineation and image navigation. 
 
-ISP: In-situ Partial Order (ISP) is a dynamic verifier for MPI Programs. ISP will help you debug your programs, and graphically show you all the possible send/receive matches, barrier synchronizations, etc. 
+**JAIDA**: JAIDA is a Java (J) implementation of the Abstract Interfaces for Data Analysis (AIDA). JAIDA allows Java programmers to create histograms, scatter plots and tuples, perform fits, view plots and store and retrieve analysis objects from files. 
 
-ITKSNAP: ITK-SNAP is used to segment structures in 3D medical images, providing semi-automatic segmentation using active contour methods, as well as manual delineation and image navigation. 
+**JAS3**: JAS3 is a follow on from Java Analysis Studio (JAS), a general purpose data analysis tool for histograms, XY plots, scatterplots, export of plots in a variety of formats, and AIDA compliant analysis system. 
 
-JAIDA: JAIDA is a Java (J) implementation of the Abstract Interfaces for Data Analysis (AIDA). JAIDA allows Java programmers to create histograms, scatter plots and tuples, perform fits, view plots and store and retrieve analysis objects from files. 
+**JasPer**: JasPer is a collection of software (i.e., a library and application programs) for the coding and manipulation of images. 
 
-JAS3: JAS3 is a follow on from Java Analysis Studio (JAS), a general purpose data analysis tool for histograms, XY plots, scatterplots, export of plots in a variety of formats, and AIDA compliant analysis system. 
+**Java**: The Java programming language is an object-orientated language similar to C and C++ in syntax, but with a simpler object model and fewer low-level facilities. It is designed for developing cross-playment applications. 
 
-JasPer: JasPer is a collection of software (i.e., a library and application programs) for the coding and manipulation of images. 
+**KOBAS**: KEGG Orthology Based Annotation System (KOBAS) is a bioinformatics Python application. KOBAS can assign appropriate KO terms for queried sequences based on similarity search, and it can further discover enriched KO terms among the annotation results by frequency of pathways or statistical significance of pathways. 
 
-Java: The Java programming language is an object-orientated language similar to C and C++ in syntax, but with a simpler object model and fewer low-level facilities. It is designed for developing cross-playment applications. 
+**LAL**: The LSC Algorithm Library (LAL) is a collection of routines written in ANSI C99 for gravitational wave data analysis. 
 
-KOBAS: KEGG Orthology Based Annotation System (KOBAS) is a bioinformatics Python application. KOBAS can assign appropriate KO terms for queried sequences based on similarity search, and it can further discover enriched KO terms among the annotation results by frequency of pathways or statistical significance of pathways. 
+**LAMMPS**: Large-scale Atomic/Molecular Massively Parallel Simulator (LAMMPS) has potentials for soft materials and solid-state materials (metals, semiconductors) and coarse-grained or mesoscopic systems. It can be used to model atoms or as a parallel particle simulator at the atomic, meso, or continuum scale. The image (left) is atom-to-continuum coupling using LAMMPS. 
 
-LAL: The LSC Algorithm Library (LAL) is a collection of routines written in ANSI C99 for gravitational wave data analysis. 
+**LatentGOLD**: Latent GOLD is a latent class and finite mixture program. Latent GOLD contains separate modules for estimating three different model structures; LC Cluster models, DFactor models, and LC Regression models. 
 
-LAMMPS: Large-scale Atomic/Molecular Massively Parallel Simulator (LAMMPS) has potentials for soft materials and solid-state materials (metals, semiconductors) and coarse-grained or mesoscopic systems. It can be used to model atoms or as a parallel particle simulator at the atomic, meso, or continuum scale. The image (left) is atom-to-continuum coupling using LAMMPS. 
+**LMF**: The Local Maximum Fitting (LMF) algorithm firstly finds local maximums within a certain time window, and regenerate the time series data as a sum of harmonic curves. The number of harmonic curves is limited by AIC (Akaike Information Criterion) to avoid over-fitting. 
 
-LatentGOLD: Latent GOLD is a latent class and finite mixture program. Latent GOLD contains separate modules for estimating three different model structures; LC Cluster models, DFactor models, and LC Regression models. 
+**LP_SOLVE**: LP_SOLVE is a linear programming code written in ANSI C, which has solved problems as large as 30,000 variables and 50,000 constraints. Lp_solve can also handle (smaller) integer and mixed-integer problems. 
 
-LMF: The Local Maximum Fitting (LMF) algorithm firstly finds local maximums within a certain time window, and regenerate the time series data as a sum of harmonic curves. The number of harmonic curves is limited by AIC (Akaike Information Criterion) to avoid over-fitting. 
+**MADYMO**: MAthematical DYnamic MOdels (MADYMO) is a multibody dynamics solver and frequently used for automobile occupant safety/injury calculations. 
 
-LP_SOLVE: LP_SOLVE is a linear programming code written in ANSI C, which has solved problems as large as 30,000 variables and 50,000 constraints. Lp_solve can also handle (smaller) integer and mixed-integer problems. 
+**Maq**: Maq builds mapping assemblies from short reads generated by the next-generation sequencing machines. It is particularly designed for Illumina-Solexa 1G Genetic Analyzer, and has preliminary functions to handle ABI SOLiD data. 
 
-MADYMO: MAthematical DYnamic MOdels (MADYMO) is a multibody dynamics solver and frequently used for automobile occupant safety/injury calculations. 
+**Marmot**: Marmot is a library written in C++, which has to be linked to your application in addition to the existing MPI library. It will check if your application conforms to the MPI standard and will issue warnings if there are errors or non-portable constructs. 
 
-Maq: Maq builds mapping assemblies from short reads generated by the next-generation sequencing machines. It is particularly designed for Illumina-Solexa 1G Genetic Analyzer, and has preliminary functions to handle ABI SOLiD data. 
+**Mash**: Mash is a toolkit for multimedia using IP multicast. The Mash toolkit is an outgrowth of the MBone tools (e.g.--sdr, vic, vat) developed to support streaming audio and video applications. 
 
-Marmot: Marmot is a library written in C++, which has to be linked to your application in addition to the existing MPI library. It will check if your application conforms to the MPI standard and will issue warnings if there are errors or non-portable constructs. 
+**Matio**: Libmatio is an open-source library for reading/writing Matlab MAT files. This library is designed for use by programs/libraries that do not have access or do not want to rely on Matlab's libmat shared library. 
 
-Mash: Mash is a toolkit for multimedia using IP multicast. The Mash toolkit is an outgrowth of the MBone tools (e.g.--sdr, vic, vat) developed to support streaming audio and video applications. 
+**MATLAB**: MATLAB (R) is a numerical computing environment allowing matrix manipulation, plotting of functions and data, implementation of algorithms etc. 
 
-Matio: Libmatio is an open-source library for reading/writing Matlab MAT files. This library is designed for use by programs/libraries that do not have access or do not want to rely on Matlab's libmat shared library. 
+**MEEP**: MIT Electromagnetic Equation Propagation (MEEP) is a finite-difference time-domain (FDTD) simulation software package developed at MIT to model electromagnetic systems. 
 
-MATLAB: MATLAB (R) is a numerical computing environment allowing matrix manipulation, plotting of functions and data, implementation of algorithms etc. 
+**MEME**: MEME provides tools for discovering and using protein and DNA sequence motifs, a pattern of nucleotides or amino acids that appears repeatedly in a group of related DNA or protein sequences. 
 
-MEEP: MIT Electromagnetic Equation Propagation (MEEP) is a finite-difference time-domain (FDTD) simulation software package developed at MIT to model electromagnetic systems. 
+**Mesa**: Mesa is an implementation of the OpenGL specification for rendering interactive 3D graphics, usable in a variety of environments from software emulation to GPUs. 
 
-MEME: MEME provides tools for discovering and using protein and DNA sequence motifs, a pattern of nucleotides or amino acids that appears repeatedly in a group of related DNA or protein sequences. 
+**Metaio**: Metaio contains a library for parsing LIGO_LW Table files and can read XML files compressed with the gzip compression algorithm. 
 
-Mesa: Mesa is an implementation of the OpenGL specification for rendering interactive 3D graphics, usable in a variety of environments from software emulation to GPUs. 
+**MFIX**: MFIX (Multiphase Flow With Interphase Exchanges) has been developed by the U.S. National Energy Technology Laborartory, providing transient data on the three-dimensional distribution of pressure, velocity, temperature, and species mass fractions. 
 
-Metaio: Metaio contains a library for parsing LIGO_LW Table files and can read XML files compressed with the gzip compression algorithm. 
+**MGLTools**: Developed by the Molecular Graphics Laboratory (MGL) MGLTools, is used for visualization and analysis of molecular structures. It includes AutoDockTools (ADT), Python Molecular Viewer (PMV) and Vision, a visual-based programming environment. 
 
-MFIX: MFIX (Multiphase Flow With Interphase Exchanges) has been developed by the U.S. National Energy Technology Laborartory, providing transient data on the three-dimensional distribution of pressure, velocity, temperature, and species mass fractions. 
+**Minibaum**: Minibaum3 is a small C program which has been used for hypohamilton graphs and angular momentum graphs. 
 
-MGLTools: Developed by the Molecular Graphics Laboratory (MGL) MGLTools, is used for visualization and analysis of molecular structures. It includes AutoDockTools (ADT), Python Molecular Viewer (PMV) and Vision, a visual-based programming environment. 
+**Modules**: The environment modules package package provides for the dynamic modification of a user's environment. 
 
-Minibaum: Minibaum3 is a small C program which has been used for hypohamilton graphs and angular momentum graphs. 
+**Molden**: Molden displays molecular density from the ab initio packages GAMESS and GAUSSIAN and others. Molden reads all the required information from the GAMESS / GAUSSIAN outputfile. Molden is capable of displaying molecular orbitals, electron density and molecular minus atomic density. 
 
-Modules (Environment): The environment modules package package provides for the dynamic modification of a user's environment. 
+**Molekel**: Molekel is a molecular visualization program that import and exports data using OpenBabel and displays molecules with different rendering styles, generates iosurfaces, and animates. 
 
-Molden: Molden displays molecular density from the ab initio packages GAMESS and GAUSSIAN and others. Molden reads all the required information from the GAMESS / GAUSSIAN outputfile. Molden is capable of displaying molecular orbitals, electron density and molecular minus atomic density. 
+**Mono**: Mono is used to develop an Ecma standard compliant, .NET-compatible set of tools, including a C# compiler and a Common Language Runtime. 
 
-Molekel: Molekel is a molecular visualization program that import and exports data using OpenBabel and displays molecules with different rendering styles, generates iosurfaces, and animates. 
+**MOPAC**: Molecular Orbital PACkage (MOPAC) is a semiempirical quantum chemistry program based on Dewar and Thiel's NDDO approximation. 
 
-Mono: Mono is used to develop an Ecma standard compliant, .NET-compatible set of tools, including a C# compiler and a Common Language Runtime. 
+**MPFR**: The GNU MPFR library is a C library for multiple-precision floating-point computations with correct rounding. 
 
-MOPAC: Molecular Orbital PACkage (MOPAC) is a semiempirical quantum chemistry program based on Dewar and Thiel's NDDO approximation. 
+**mpiBLAST**: mpiBLAST is an implementation of the bioinformatics software NCBI BLAST, which finds regions of local similarity between sequences. Through database fragmentation, query segmentation, intelligent scheduling, and parallel I/O, it improves performance by several orders of magnitude. 
 
-MPFR: The GNU MPFR library is a C library for multiple-precision floating-point computations with correct rounding. 
+**MPICH**: MPICH is a free and portable implementation of MPI, a standard for message-passing for distributed-memory applications used in parallel computing. 
 
-mpiBLAST: mpiBLAST is an implementation of the bioinformatics software NCBI BLAST, which finds regions of local similarity between sequences. Through database fragmentation, query segmentation, intelligent scheduling, and parallel I/O, it improves performance by several orders of magnitude. 
+**MVAPICH** and **MVAPICH2**: MVAPICH/MVAPICH2 are implementations of MPI for computing systems and servers using InfiniBand, 10GigE/iWARP and RoCE & etc networking technologies. 
 
-MPICH: MPICH is a free and portable implementation of MPI, a standard for message-passing for distributed-memory applications used in parallel computing. 
+**Mpiexec**: Mpiexec is a replacement program for the script mpirun, which is part of the mpich package. It is used to initialize a parallel job from within a PBS batch or interactive environment. 
 
-MVAPICH and MVAPICH2: MVAPICH/MVAPICH2 are implementations of MPI for computing systems and servers using InfiniBand, 10GigE/iWARP and RoCE & etc networking technologies. 
+**MrBayes**: MrBayes conducts Bayesian estimation of phylogeny based on the posterior probability distribution of trees, which is the probability of a tree conditioned on the observations. 
 
-Mpiexec: Mpiexec is a replacement program for the script mpirun, which is part of the mpich package. It is used to initialize a parallel job from within a PBS batch or interactive environment. 
+**MUMmer**: MUMmer is rapidly aligns entire genomes, including incomplete genomes and contigs from a shotgun sequencing program. 
 
-MrBayes: MrBayes conducts Bayesian estimation of phylogeny based on the posterior probability distribution of trees, which is the probability of a tree conditioned on the observations. 
+**NAMD**: NAnoscale Molecular Dynamics (NAMD) is a molecular dynamics simulation package written using the Charm++ parallel programming model, often used to simulate large systems (e.g., millions of atoms). 
 
-MUMmer: MUMmer is rapidly aligns entire genomes, including incomplete genomes and contigs from a shotgun sequencing program. 
+**Nauty**: nauty is a LAMMPS (Large-scale Atomic/Molecular Massively Parallel Simulator) program for computing automorphism groups of graphs, digraphs and can also produce a canonical labelling. 
 
-MVAPICH: MVAPICH implements MPI over InfiniBand, 10GigE/iWARP and RDMA over Ethernet. 
+**NCARG-NCL**: NCAR is the National Centre for Atmospheric Research, NCARG is a graphics library, maps database and applications for the same, and NCAR Command Language (NCL) is interpreted language for the above. 
 
-NAMD: NAnoscale Molecular Dynamics (NAMD) is a molecular dynamics simulation package written using the Charm++ parallel programming model, often used to simulate large systems (e.g., millions of atoms). 
+**NEI Nastran**: NEi Nastran is a finite element analysis (FEA) solver used to generate 1.5 VPAC's Software solutions for linear and nonlinear stress, dynamics, and heat transfer characteristics of structures and mechanical components. The image (right) is a Nastran model. 
 
-Nauty: nauty is a LAMMPS (Large-scale Atomic/Molecular Massively Parallel Simulator) program for computing automorphism groups of graphs, digraphs and can also produce a canonical labelling. 
+**netCDF**: The Unidata network Common Data Form (netCDF) is an interface for scientific data access and a library that provides an implementation of the interface. The netCDF library also defines a machine-independent format for representing scientific data. Together, the interface, library, and format support the creation, access, and sharing of scientific data. 
 
-NCARG-NCL: NCAR is the National Centre for Atmospheric Research, NCARG is a graphics library, maps database and applications for the same, and NCAR Command Language (NCL) is interpreted language for the above. 
+**NS**: Network Simulator (NS) is a discrete event simulator targeted at networking research. Ns provides substantial support for simulation of TCP, routing, and multicast protocols over wired and wireless (local and satellite) networks. 
 
-NEI Nastran: NEi Nastran is a finite element analysis (FEA) solver used to generate 1.5 VPAC's Software solutions for linear and nonlinear stress, dynamics, and heat transfer characteristics of structures and mechanical components. The image (right) is a Nastran model. 
+**NUMPY**: NumPy is numerical package for scientific computing with Python. It provides numerical array objects, linear algebra and other capabilities. 
 
-netCDF: The Unidata network Common Data Form (netCDF) is an interface for scientific data access and a library that provides an implementation of the interface. The netCDF library also defines a machine-independent format for representing scientific data. Together, the interface, library, and format support the creation, access, and sharing of scientific data. 
+**Octave**: GNU Octave is a high-level language, primarily intended for numerical computations and is highly compatible with MATLAB. 
 
-NS: Network Simulator (NS) is a discrete event simulator targeted at networking research. Ns provides substantial support for simulation of TCP, routing, and multicast protocols over wired and wireless (local and satellite) networks. 
+**Open Babel**: Open Babel is a chemical toolbox which can read, write and convert over 90 chemical file formats, and filter and search molecular files using SMARTS and other methods. 
 
-NUMPY: NumPy is numerical package for scientific computing with Python. It provides numerical array objects, linear algebra and other capabilities. 
+**OpenFOAM**: Open Field Operation and Manipulation (OpenFOAM) is primarily a C++ toolbox for the customisation and extension of numerical solvers for continuum mechanics problems, including computational fluid dynamics. 
 
-Octave: GNU Octave is a high-level language, primarily intended for numerical computations and is highly compatible with MATLAB. 
+**OpenMPI**: Open MPI is a message passing interface that combines the merger of three major MPI implementations (FT-MPI, LA-MPI, and LAM/MPI) to create a complete MPI-2 implementation. MPI is a language-independent communications protocol used to program parallel computers. 
 
-Open Babel: Open Babel is a chemical toolbox which can read, write and convert over 90 chemical file formats, and filter and search molecular files using SMARTS and other methods. 
+**Padb**: Padb works as a parallel front end to gdb allowing it to target parallel applications. 
 
-OpenFOAM: Open Field Operation and Manipulation (OpenFOAM) is primarily a C++ toolbox for the customisation and extension of numerical solvers for continuum mechanics problems, including computational fluid dynamics. 
+**Pahole**: Analyzes your code and identifies unused memory holes in data structures, and suggests re-ordering to improve memory usage and speed. 
 
-OpenMPI: Open MPI is a message passing interface that combines the merger of three major MPI implementations (FT-MPI, LA-MPI, and LAM/MPI) to create a complete MPI-2 implementation. MPI is a language-independent communications protocol used to program parallel computers. 
+**Paraview**: ParaView is a data analysis and visualisation application. The data exploration can be done interactively in 3D or programmatically using ParaView's batch processing capabilities. ParaView was developed to analyze extremely large datasets. 
 
-Padb: Padb works as a parallel front end to gdb allowing it to target parallel applications. 
+**PBSssh**: PBSssh: Is a Bourne-Again shell executable for Portable Batch Script. 
 
-Pahole: Analyzes your code and identifies unused memory holes in data structures, and suggests re-ordering to improve memory usage and speed. 
+**PHYLIP**: PHYLIP (the PHYLogeny Inference Package) is a package of programs for inferring phylogenies (evolutionary trees). 
 
-Paraview: ParaView is a data analysis and visualisation application. The data exploration can be done interactively in 3D or programmatically using ParaView's batch processing capabilities. ParaView was developed to analyze extremely large datasets. 
+**PCRE**: Perl-Compatible Regular Expression (PCRE) library is a set of functions that implement regular expression pattern matching using the same syntax and semantics as Perl 5. 
 
-PBSssh: PBSssh: Is a Bourne-Again shell executable for Portable Batch Script. 
+**Perl**: Perl is a high-level, general-purpose, interpreted, dynamic programming language designed as a a general-purpose Unix scripting language to make report processing easier. 
 
-PHYLIP: PHYLIP (the PHYLogeny Inference Package) is a package of programs for inferring phylogenies (evolutionary trees). 
+**PETSc**: PETSc is a suite of data structures and routines for solution of scientific applications modeled by partial differential equations. 
 
-PCRE: Perl-Compatible Regular Expression (PCRE) library is a set of functions that implement regular expression pattern matching using the same syntax and semantics as Perl 5. 
+**PGI**: PGI compilers are a set of Fortran, C and C++ compilers for High Performance Computing Systems from Portland Group. 
 
-Perl: Perl is a high-level, general-purpose, interpreted, dynamic programming language designed as a a general-purpose Unix scripting language to make report processing easier. 
+**Phaser**: Phaser consists of CCP4 and BLT. The former is used to determine macromolecular structures by X-ray crystallography, and other biophysical techniques. BLT has been previously described. 
 
-PETSc: PETSc is a suite of data structures and routines for solution of scientific applications modeled by partial differential equations. 
+**POV-Ray**: Persistence of Vision Raytracer (POV-RAY) is a high-quality for creating three-dimensional graphics. Features include radiosity, photon mapping, focal blur, and other photorealistic capabilities. 
 
-PGI compilers: PGI compilers are a set of Fortran, C and C++ compilers for High Performance Computing Systems from Portland Group. 
+**Parallel NETCDF**: Parallel NETCDF is an implementation of the Network Common Data Form which supports parallel I/O.
 
-Phaser: Phaser consists of CCP4 and BLT. The former is used to determine macromolecular structures by X-ray crystallography, and other biophysical techniques. BLT has been previously described. 
+**Python**: Python is a general-purpose high-level programming language that aims for high levels of readability. It features a fully dynamic type system and automatic memory management. Like other dynamic languages it is often used as a scripting language. 
 
-POV-Ray: Persistence of Vision Raytracer (POV-RAY) is a high-quality for creating three-dimensional graphics. Features include radiosity, photon mapping, focal blur, and other photorealistic capabilities. 
+**Quilt**: Quilt is a tool to manage large sets of patches by keeping track of the changes each patch makes. Patches can be applied, unapplied, refreshed, etc. 
 
-Parallel NETCDF : Parallel NETCDF is an implementation of the Network Common Data Form which supports parallel I/O.  
+**R**: R is a programming language and software environment for statistical computing, where it is a defacto standard, and graphics. 
 
-Python: Python is a general-purpose high-level programming language that aims for high levels of readability. It features a fully dynamic type system and automatic memory management. Like other dynamic languages it is often used as a scripting language. 
+**Rosetta**: Rosetta is a molecular modeling software package for understanding protein structures, protein design, protein docking, protein-DNA and protein-protein interactions. 
 
-Quilt: Quilt is a tool to manage large sets of patches by keeping track of the changes each patch makes. Patches can be applied, unapplied, refreshed, etc. 
+**rysnc**: Rsync copies files either to or from a remote host, or locally on the current host. It is quick because it only copies changed files. 
 
-R: R is a programming language and software environment for statistical computing, where it is a defacto standard, and graphics. 
+**SABRE**: Software for the Analysis of Recurrent Events (SABRE) is a program for the statistical analysis of multi-process random effect response data. These responses can take the form of binary, ordinal, count and linear recurrent events. 
 
-Rosetta: Rosetta is a molecular modeling software package for understanding protein structures, protein design, protein docking, protein-DNA and protein-protein interactions. 
+**Schrodinger**: Schrodinger is a suite of molecular modelling and simulation, lead discovery, and optimisation applications that support basic modelling through advanced pharmaceutical research. The image (left) is Schrodinger Maestro.
 
-rysnc: Rsync copies files either to or from a remote host, or locally on the current host. It is quick because it only copies changed files. 
+**Scilab**: Scilab is a scientific software package for numerical computations which includes hundreds of mathematical functions, sophisticated data structures (including lists, polynomials, rational functions, linear systems), an interpreter and a high level programming language. 
 
-SABRE: Software for the Analysis of Recurrent Events (SABRE) is a program for the statistical analysis of multi-process random effect response data. These responses can take the form of binary, ordinal, count and linear recurrent events. 
+**SCons**: SCons is a software construction tool (build tool, or make tool) implemented in Python, that uses Python scripts as "configuration files" for software builds. 
 
-Schrodinger: Schrodinger is a suite of molecular modelling and simulation, lead discovery, and optimisation applications that support basic modelling through advanced pharmaceutical research. The image (left) is Schrodinger Maestro.
+**Semtex**: Semtex is a family of spectral element simulation codes. The spectral element method is a high-order finite element technique that combines the geometric flexibility of finite elements with the high accuracy of spectral methods. 
 
-Scilab: Scilab is a scientific software package for numerical computations which includes hundreds of mathematical functions, sophisticated data structures (including lists, polynomials, rational functions, linear systems), an interpreter and a high level programming language. 
+**smem**: smem is a memory reporting tool, notable for its ability to report proportional set size (PSS), which is a more meaningful representation of the amount of memory used by libraries and applications in a virtual memory system. 
 
-SCons: SCons is a software construction tool (build tool, or make tool) implemented in Python, that uses Python scripts as "configuration files" for software builds. 
+**SPEC**: The Standard Performance Evaluation Corporation (SPEC) that has a standard set of relevant benchmarks for computer systems. SPEC CPU2006 measures the performance of the processor, memory architecture, and compilers. 
 
-Semtex: Semtex is a family of spectral element simulation codes. The spectral element method is a high-order finite element technique that combines the geometric flexibility of finite elements with the high accuracy of spectral methods. 
+**Spinner**: Spinner is an anti-idle program that displays a little "spinning" ASCII character in the top left corner of your terminal. Spinner is useful for keeping ssh links from dropping due to inactivity. 
 
-smem: smem is a memory reporting tool, notable for its ability to report proportional set size (PSS), which is a more meaningful representation of the amount of memory used by libraries and applications in a virtual memory system. 
+**SRB**: Storage Resource Broker (SRB) is a Data Grid Management System (DGMS) or simply a logical distributed file system based on a client-server architecture which presents the user with a single global logical namespace or file hierarchy. 
 
-SPEC CPU2006: The Standard Performance Evaluation Corporation (SPEC) that has a standard set of relevant benchmarks for computer systems. SPEC CPU2006 measures the performance of the processor, memory architecture, and compilers. 
+**Stata**: Stata is a integrated statistical package that provides data analysis, data management, and graphics that includes linear mixed models, multivariate methods, multinominal probit and Mata, a matrix language. 
 
-Spinner: Spinner is an anti-idle program that displays a little "spinning" ASCII character in the top left corner of your terminal. Spinner is useful for keeping ssh links from dropping due to inactivity. 
+**SVMperf**: Support Vector Machine for Multivariate Performance Measures (SVMperf) is an implementation of the Support Vector Machine (SVM) formulation for optimizing multivariate performance measures and implements alternative structural formulation of the SVM optimization problem for conventional binary classification with error rate and ordinal regression. 
 
-SRB: Storage Resource Broker (SRB) is a Data Grid Management System (DGMS) or simply a logical distributed file system based on a client-server architecture which presents the user with a single global logical namespace or file hierarchy. 
+**Szlib**: Szip is a freeware portable general purpose lossless compression program. 
 
-Stata: Stata is a integrated statistical package that provides data analysis, data management, and graphics that includes linear mixed models, multivariate methods, multinominal probit and Mata, a matrix language. 
+**TAU**: Tuning and Analysis Utilities (TAU) is a program and performance analysis tool for high-performance parallel and distributed computing with a suite of tools for static and dynamic analysis of programs written in C, C++, FORTRAN 77/90, Python, High Performance FORTRAN, and Java. 
 
-SVMperf: Support Vector Machine for Multivariate Performance Measures (SVMperf) is an implementation of the Support Vector Machine (SVM) formulation for optimizing multivariate performance measures and implements alternative structural formulation of the SVM optimization problem for conventional binary classification with error rate and ordinal regression. 
+**Tcl**: Tool command language (Tcl) is a scripting language commonly used for rapid prototyping, scripted applications, GUIs and testing. 
 
-Szlib: Szip is a freeware portable general purpose lossless compression program. 
+**Tk**: Tk is an a library of basic elements ("widgits") for building a graphical user interface. It is typically used with Tcl. 
 
-TAU: Tuning and Analysis Utilities (TAU) is a program and performance analysis tool for high-performance parallel and distributed computing with a suite of tools for static and dynamic analysis of programs written in C, C++, FORTRAN 77/90, Python, High Performance FORTRAN, and Java. 
+**tkcon**: tkcon is a replacement for the standard console that comes with Tk which provides many more features than the standard console. 
 
-Tcl: Tool command language (Tcl) is a scripting language commonly used for rapid prototyping, scripted applications, GUIs and testing. 
+**TORQUE**: Terascale Open-Source Resource and QUEue Manager (TORQUE) is a distributed resource manager with notable fault tolerance, scalability and a useful scheduling interface. 
 
-Tk: Tk is an a library of basic elements ("widgits") for building a graphical user interface. It is typically used with Tcl. 
+**UltraScan**: UltraScan is used for the analysis of ultracentrifugation data. The software features an integrated data editing and analysis environment in graphical user interface, popular sedimentation and equilibrium analysis methods with support for velocity and equilibrium experiments, single and multi-channel centerpieces, absorbance and interference optics. 
 
-tkcon: tkcon is a replacement for the standard console that comes with Tk which provides many more features than the standard console. 
+**Underworld**: Underworld is a 3D-parallel geodynamic modelling framework capable of deriving viscous / viscoplastic thermal, chemical and thermochemical models consistent with tectonic processes, such as mantle convection and lithospheric deformation over long time scales. 
 
-TORQUE: Terascale Open-Source Resource and QUEue Manager (TORQUE) is a distributed resource manager with notable fault tolerance, scalability and a useful scheduling interface. 
+**Valgrind**: Valgrind is an instrumentation framework for building dynamic analysis tools. 
 
-UltraScan: UltraScan is used for the analysis of ultracentrifugation data. The software features an integrated data editing and analysis environment in graphical user interface, popular sedimentation and equilibrium analysis methods with support for velocity and equilibrium experiments, single and multi-channel centerpieces, absorbance and interference optics. 
+**VASP**: VAMP/VASP [Vienna Ab-initio Simulation Package] is a package for performing ab-initio quantum-mechanical molecular dynamics (MD) using pseudopotentials and a plane wave basis set. 
 
-Underworld: Underworld is a 3D-parallel geodynamic modelling framework capable of deriving viscous / viscoplastic thermal, chemical and thermochemical models consistent with tectonic processes, such as mantle convection and lithospheric deformation over long time scales. 
+**Velvet**: Velvet is a set of algorithms manipulating de Bruijn graphs for genomic Sequence assembly. It was designed for short read sequencing technologies, such as Solexa or 454 Sequencing. The tool takes in short read sequences, removes errors then produces high quality unique contigs. 
 
-Valgrind: Valgrind is an instrumentation framework for building dynamic analysis tools. 
+**VisualDOC**: VisualDOC is a general-purpose optimization tool that allows the user to quickly add design optimization capabilities to almost any analysis program. 
 
-VASP: VAMP/VASP [Vienna Ab-initio Simulation Package] is a package for performing ab-initio quantum-mechanical molecular dynamics (MD) using pseudopotentials and a plane wave basis set. 
+**VMD**: Visual molecular dynamics (VMD) is a molecular modelling and visualization computer program. VMD is primarily developed as a tool for viewing and analyzing the results of molecular dynamics simulations. 
 
-Velvet: Velvet is a set of algorithms manipulating de Bruijn graphs for genomic Sequence assembly. It was designed for short read sequencing technologies, such as Solexa or 454 Sequencing. The tool takes in short read sequences, removes errors then produces high quality unique contigs. 
+**WIEN2k**: WIEN2k performs quantum mechanical calculations on periodic solids. It uses the full-potential (linearized) augmented plane-wave and local-orbitals basis set to solve the Kohn–Sham equations of density functional theory. 
 
-VisualDOC: VisualDOC is a general-purpose optimization tool that allows the user to quickly add design optimization capabilities to almost any analysis program. 
+**Wine**: Wine Is Not an Emulator (Wine) allows Unix-like computer operating systems to execute programs written for Microsoft Windows. 
 
-VMD: Visual molecular dynamics (VMD) is a molecular modelling and visualization computer program. VMD is primarily developed as a tool for viewing and analyzing the results of molecular dynamics simulations. 
+**WRF**: WRF (The Weather Research and Forecasting Model) is a mesoscale numerical weather prediction system designed to serve both operational forecasting and atmospheric research needs. The image (right) is a case study used in WRF from the data of the the U.S. East Coast storm of January 2000.
 
-WIEN2k: WIEN2k performs quantum mechanical calculations on periodic solids. It uses the full-potential (linearized) augmented plane-wave and local-orbitals basis set to solve the Kohn–Sham equations of density functional theory. 
+**XFOIL**: XFOIL is an interactive program for the design and analysis of subsonic isolated airfoils. 
 
-Wine: Wine Is Not an Emulator (Wine) allows Unix-like computer operating systems to execute programs written for Microsoft Windows. 
-
-WRF: WRF (The Weather Research and Forecasting Model) is a mesoscale numerical weather prediction system designed to serve both operational forecasting and atmospheric research needs. The image (right) is a case study used in WRF from the data of the the U.S. East Coast storm of January 2000.
-
-XFOIL: XFOIL is an interactive program for the design and analysis of subsonic isolated airfoils. 
-
-XMDS: eXtensible Multi Dimensional Simulator (XMDS) is a numerical simulation package that integrates equation that converts 
-
-XML files to a C++ program that integrates the equations. 
+**XMDS**: eXtensible Multi Dimensional Simulator (XMDS) is a numerical simulation package that integrates equation that converts XML files to a C++ program that integrates the equations. 
 
 ## 1.7 Accounts, Licensed Software, and Helpdesk
 
@@ -617,12 +608,12 @@ Regrettably a great deal of software – and sometimes common and popular softwa
 
 An example license is that for Gaussian which was required for all VPAC users to agree to.
 
-Use of the Gaussian software is conditional upon acceptance of the following conditions: 
-1. I am not a member of a research group developing software competitive to Gaussian. 
-2. I will stop using Gaussian on VPAC systems immediately and will notify VPAC (help@vpac.org) if there is a change in my situation that would bring into 
-question my status with respect to point 1. above. 
-3. I will not copy the Gaussian software, nor make it available to anyone else. 
-4. I will acknowledge Gaussian Inc. in published works to which Gaussian calculations on the VPAC systems contributed.
+>Use of the Gaussian software is conditional upon acceptance of the following conditions: 
+>1. I am not a member of a research group developing software competitive to Gaussian. 
+>2. I will stop using Gaussian on VPAC systems immediately and will notify VPAC (help@vpac.org) if there >is a change in my situation that would bring into 
+>question my status with respect to point 1. above. 
+>3. I will not copy the Gaussian software, nor make it available to anyone else. 
+>4. I will acknowledge Gaussian Inc. in published works to which Gaussian calculations on the VPAC >systems contributed.
 
 Most HPC clusters will have a team of systems administrators to provided assistance to users and most of those will have some sort of ticketing system (e.g., Request Tracker) to manage those issue requests. This means that there will be one email address to contact for help (e.g., help@vpac.org)
 
@@ -658,13 +649,11 @@ However, if you do need to do remote visualisation, you will also need some sort
 
 With Mac or Linux simply open the terminal client and enter your username and the machine you wish to connect to, followed by the password when connected. For example; 
 
-```
-ssh <your username>@trifid.vpac.org
-```
+`ssh <your username>@trifid.vpac.org`
 
 Secure shell opens a connection to a remote system. Replace trifid.vpac.org with the HPC cluster that you are connecting to.
 	
-If you want to enable graphic enabling you can use the -X or -Y (secure) options e.g., ssh -Y <your username>@trifid.vpac.org
+If you want to enable graphic enabling you can use the -X or -Y (secure) options e.g., `ssh -Y <your username>@trifid.vpac.org`
 
 Open up two terminal windows. In the first terminal window we'll explore some of the basic commands on the local machine In the second terminal window we'll do the same, but on the supercomputer.
 
@@ -672,10 +661,8 @@ Open up two terminal windows. In the first terminal window we'll explore some of
 
 The first thing we'll do is explore the environment of the command-line on both our local machine and the supercomputer. On both these systems, run the following commands.
 
-whoami
-"Who Am I?; prints the effective user id.
-pwd
-"Print working directory";  prints the directory where you're currently in.
+`whoami` : "Who Am I?; prints the effective user id.
+`pwd` : "Print working directory";  prints the directory where you're currently in.
 
 Now you know who you are (useful if you are logged on to several machines at the same time with different user names) and where you are.
 
@@ -683,8 +670,7 @@ When a user logs in on a Linux or other UNIX-like system on the command line, th
 					
 Now let's run a listing for the directory on both the local computer and the supercomputer:
 
-`ls`
-"List"; lists contents for particular directory, the current directory by default.
+`ls` : "List"; lists contents for particular directory, the current directory by default.
 
 Now you know 'Who am I'? 'Where am I?' and 'What's here'? 
 
@@ -694,50 +680,43 @@ Linux commands often come with options expressed as:
 
 Run this command on both the local computer and the supercomputer.
 
-`ls -lart`
-"List" with long format, including file permissions (l), include hidden files ('a', for all), sorted by reverse  order ('r'), by modification time ('t').
+`ls -lart` : "List" with long format, including file permissions (l), include hidden files ('a', for all), sorted by reverse  order ('r'), by modification time ('t').
 
-Linux commands come with "man" (manual) pages, which provide a terse description of the meaning and options available to a command. To view the appropriate man page simply enter the word man followed by the command. Specific sections of a man page can also be invoked. A more verbose alternative to man with a simple hypertext system is info. 
+Linux commands come with `man` (manual) pages, which provide a terse description of the meaning and options available to a command. To view the appropriate man page simply enter the word man followed by the command. Specific sections of a man page can also be invoked. A more verbose alternative to man with a simple hypertext system is info. 
 
-Both man and info can exited with 'q' for quit.
+Both man and info can exited with `q` for quit.
 
-`man ls`
-Display the manual entry for the command "ls"
-`apropos <command>`
-Search for a particular command. Equivalent to "man -k <command>"
-`info ls`
-Display the more verbose hypertext entry for the command "ls"
+`man ls` : Display the manual entry for the command "ls"
+`apropos <command>` : Search for a particular command. Equivalent to "man -k <command>"
+`info ls` : Display the more verbose hypertext entry for the command "ls"
 
-Linux also have very useful 'pipes' and redirect commands. To pipe one command through another use the '|' symbol.
+Linux also have very useful 'pipes' and redirect commands. To pipe one command through another use the `|` symbol.
 
 For example, the who command how who is currently logged into the system. You may suspect that this will differ on the supercomputer and the local system! Run the command on the local computer and then 'pipe' the who command through 
 
 Run this command on the supercomputer.
 
-`who -u | less`
-"Who" shows who is logged on, how long they've been idle and piped through the less command.
+`who -u | less` : "Who" shows who is logged on, how long they've been idle and piped through the less command.
 
 You may be wondering why the command to display the contents of a file to the screen is called "less". This is a pun on the expression "less is more"; once upon a time the command to display information to the screen was "more <filename>. But it was only one screen at at time and could not scroll backwards! Take the opportunity to display the same command using 'more', and also read the man page for that utility – check the last time it was updated!
 
-`who -u | more`
-`man more`
-"Who" shows who is logged on, how long they've been idle and piped through the more command, followed by the man page more.
+`who -u | more` : "Who" shows who is logged on, how long they've been idle and piped through the more command, followed by the man page more.
 
 Another environment feature to explore is the ps or process status command.  A number of programs can be run by a one or more users simultaneously, including helping programs called daemons. If no options are added ps selects all processes with the same effective user ID (euid=EUID) as the current user and associated with the same terminal as the invoker. To see what is running, who is running it, the process ID, and how much CPU they are using  use:
 
-`ps afux | less`
-"ps" provides a list of current processes. The 'a' option list the processes of all users, the 'f' shows job hierarchy, the 'u' option provides additional information about each process, and the 'x' option includes non-user programs such as daemons. This is piped through less.
+`ps afux | less` : "ps" provides a list of current processes. The 'a' option list the processes of all users, the 'f' shows job hierarchy, the 'u' option provides additional information about each process, and the 'x' option includes non-user programs such as daemons. This is piped through less.
 
 Note that "ps -aux" is different to "ps aux". The POSIX and UNIX standards require that "ps -aux" print all processes owned by a user named "x". If the user named "x" does not exist, this ps might interpret the command as "ps aux" instead and print a warning, depending on the version of Linux being used.
 
-To redirect output use the '>' symbol. To redirect input (for example, to feed data to a command) use the '<'. Concatenation is achieved through the use of '>>' symbol. 
+To redirect output use the `>` symbol. To redirect input (for example, to feed data to a command) use the `<`. Concatenation is achieved through the use of `>>` symbol.
 
 Run this command on the supercomputer.
 
-`w > list.txt`
-The command 'w' acts like a combination of who, uptime and ps -a. This is redirected to the file list.txt
+`w > list.txt` : The command 'w' acts like a combination of who, uptime and ps -a. This is redirected to the file list.txt
 
 This command lists the  current  time, how  long  the  system  has been running, how many users are currently logged on, and the system load averages for the past 1, 5, and 15  minutes and redirects this information to the file list.txt
+
+If the command is run a second time, it will overwrite the first `list.txt`. If it is run with `w >> list.txt` it will append the result to the existing file.
 
 ## 2.3 Files and Text Editing
 
@@ -753,7 +732,7 @@ There are three text editors usually available on Linux systems. The first is na
 
 In "UNIX culture" EMacs and Vim are considered favourites among experienced users, with nano considered the best for beginners. There are also long-running, and largely tongue-in-cheek, "editor wars" with various proponents debating the relative merits of different editors. 
 
-Nano; A Simple Text Editor
+**Nano; A Simple Text Editor**
 
 With nano editing is very intuitive. Start with nano <filename> on the command prompt. One can type straight to the display and editing is a simple function of simultaneously using Ctrl and a keystroke. Previously we created a file list.txt - you may wish to experiment with nano's options using this file.
 
@@ -769,8 +748,7 @@ To get a copy of all these files (including this book, in plain-text format) use
 
 To copy a file from within a system use the cp command. The following is an example: 
 
-`cp /common/introductory/gattaca.txt .`
-Copy the file gattaca.txt from the directory path /common/introductory/ to the current working directory, represented by the `.` symbol.
+`cp /common/introductory/gattaca.txt .` : Copy the file gattaca.txt from the directory path /common/introductory/ to the current working directory, represented by the `.` symbol.
 
 There is a great deal of options that can are part of the cp command; some of the more common include a recursive copy for all files in a series of directories and sub-directories (e.g., `cp -r /common/introductory .`) and a copy as an archive, with permissions, recursive, and links (e.g., `cp -a /common/introductory .`) . To copy a long file name or directory, use the tab key for auto-completion of the path and options.
 
@@ -789,9 +767,7 @@ Linux and Mac users can also use a GUI for secure file transfers. For Linux user
 
 An alternative transfer option is rsync. Rsync provides a way to keep two repositories of files "in sync", one of these repositories may be on your desktop, the other your home directory on the cluster. The nice feature of rsync is that it is very fast - after the initial backup. The reason for this is that it tracks changes. There is no point copying and re-writing an entire file when only a handful of characters have changed.
 
-The general sequence is: 
-
-`rsync options source destination`
+The general sequence is: `rsync options source destination`
 
 The following is the basic command for rsync between two Linux machines:
 
@@ -889,7 +865,7 @@ The diff command is often used by programmers to create a patch file between two
 
 `diff -u gattaca.txt braf/gattaca.txt > gattaca.patch`
 
-2.7 Searches and Wildcards
+## 2.7 Searches and Wildcards
 
 Often you will want to search for files or search within files for a particular phrase. The find command, which will find files according to the directory and sub-directories offered, by name, modification time, size etc, and with filter operations, all of which are available through man find. To find all files with the suffix .txt on your supercomputer account use the following command:
 
@@ -922,16 +898,12 @@ The wildcard you see most often is * (asterisk), but we'll start with something 
 
 The * wildcard matches any character or group of zero or more characters. For example, *.txt matches all files whose names end with .txt, *.c matches all files whose names end with .c (by convention, source code for programs in the C language), and so on.
 
-Wildcard
-Matches 
-?
-Any single character 
-*
-Any group of zero or more characters 
-[ab]
-Either a or b 
-[a-z]
-any character between a and z, inclusive 
+| Wildcard	| Matches 	 				|
+|---------------|-----------------------------------------------|
+| ?		| Any single character 				|
+| *		| Any group of zero or more characters 		|
+| [ab]		| Either a or b 				|
+| [a-z]		| Any character between a and z, inclusive 	|
 
 ## 2.8 Deletions
 
@@ -957,11 +929,14 @@ rm -rf braf
 
 Be very careful with rm, especially with the -rf option and especially with wildcards. Consider what would happen to someone who wishes to delete all their backup files in a directory with the helpful suffix .BAK. Choosing a wildcard and the suffix they intend to type rm *.BAK but instead, they mistype the command and type rm * .BAK. The result of this typing error is that they have just deleted everything in that directory. Worse still imagine a user running as root thinking that they are about to delete a directory and instead types rm -rf / ; a command that will delete everything or, more commonly rm -rf ./ ; a command which deletes the current directory and all sub-directories. 
 
-Why The File Differences Mattered
-
-BRAF is a human gene that makes a protein (imaginatively) named B-Raf. This protein is involved in sending signals inside cells, which are involved in directing cell growth. In 2002, it was shown to be faulty (mutated) in human cancers. 
-
-In particular the difference that between the two files "ATVKSRWSGS" and "ATEKSRWSGS" is the difference which leads to susceptibility to metastatic melanoma. Fortunately, because of high performance computing, massive databases, and molecular modelling applications, science has begun to develop specific inhibitors of mutated B-raf protein for anticancer treatments.
+>**Why The File Differences Mattered**
+> 
+>BRAF is a human gene that makes a protein (imaginatively) named B-Raf. This protein is involved in >sending signals inside cells, which are involved in directing cell growth. In 2002, it was shown to be >faulty (mutated) in human cancers. 
+> 
+>In particular the difference that between the two files "ATVKSRWSGS" and "ATEKSRWSGS" is the difference
+>which leads to susceptibility to metastatic melanoma. Fortunately, because of high performance
+>computing, massive databases, and molecular modelling applications, science has begun to develop 
+>specific inhibitors of mutated B-raf protein for anticancer treatments.
 
 # 3.0 Modules, PBS, and Example Jobs
 
@@ -969,15 +944,13 @@ In particular the difference that between the two files "ATVKSRWSGS" and "ATEKSR
 
 Modulefiles also have the advantages of being shared on many users on a system (such as an HPC system) and easily allowing multiple installations of the same application but with different versions and compilation options. Sometimes users want the latest and greatest of a particular version of an application for the feature-set they offer. In other cases, such as someone who is participating in a research project, a consistent version of an application is desired. Having multiple version of applications available on a system is essential in research computing.
 
-Module commands
+**Module commands**
 
 Some basic module commands include the following:
 
-`module help` 
-The command module help , by itself, provides a list of the switches, subcommands, and subcommand arguments that are available through the environment modules package. Note that one of the subcommands is module help [modulefile]. If, and only if, a help file has been associated with a particular module (and not the program itself), this command will generate any action. This is not the case with any of the modules installed on trifid - instead, use module whatis [modulefile] or module display [modulefile].
+`module help` :The command module help , by itself, provides a list of the switches, subcommands, and subcommand arguments that are available through the environment modules package. Note that one of the subcommands is module help [modulefile]. If, and only if, a help file has been associated with a particular module (and not the program itself), this command will generate any action. This is not the case with any of the modules installed on trifid - instead, use module whatis [modulefile] or module display [modulefile].
 
-`module avail`
-This option lists all the modules which are available to be loaded. Notice that many of them have version numbers associated with them. Modules makes it easy to switch compiler application versions. The module name without a version number is the production default. 
+`module avail` : This option lists all the modules which are available to be loaded. Notice that many of them have version numbers associated with them. Modules makes it easy to switch compiler application versions. The module name without a version number is the production default. 
 
 One particular nuissance is that the output of a module avail is treated as a standard error, rather than standard output. Thus to pipe the output of module avail to less, one has to redirect standard error to standard output. This can also be used for providing an output of module whatis  i.e.,
 
@@ -987,11 +960,9 @@ module avail -l 2>&1 | less
 module whatis 2>&1 | less
 ```
 
-`module whatis <modulefile>`
-This option provides a description of the module listed. 
+`module whatis <modulefile>` : This option provides a description of the module listed. 
 
-`module display <modulefile>`
-Use this command to see exactly what a given modulefile will do to your environment, such as what will be added to the PATH, MANPATH, etc. environment variables. 
+`module display <modulefile>` : Use this command to see exactly what a given modulefile will do to your environment, such as what will be added to the PATH, MANPATH, etc. environment variables. 
 
 For example the command: module display freesurfer displays the following results:
 
@@ -1003,24 +974,23 @@ prepend-path	 FREESURFER_HOME /usr/local/freesurfer/4.5.0
 prepend-path	 SUBJECTS_DIR /usr/local/freesurfer/4.5.0/subjects 
 ```
 
-`module load <modulefile>`
-This adds one or more modulefiles to the user's current environment (some modulefiles load other modulefiles, e.g., module load vpac or module load gcc). You can load multiple modules simultaneously.
+`module load <modulefile>` : This adds one or more modulefiles to the user's current environment (some modulefiles load other modulefiles, e.g., module load vpac or module load gcc). You can load multiple modules simultaneously.
 
-For example, to load NAMD one would use the command: module load namd
+For example, to load NAMD one would use the command: `module load namd`
 
 If you load the generic name of a module, you will get the default version. To load a specific version, load the module using its full specification. for example;
 
-`module load gcc/4.8.2`
+`module load namd/2.9-openmpi-gcc`
 
-`module list`
-This lists all the modules which are currently loaded into the users environment. 
+It is almost always better to use the precise version to ensure consistency in scripts and resuls. The default version should only be used for testing purposes.
 
-`module unload <modulefile>`
-This removes any listed modules from the user's current environment. Multiple modules can be unloaded simultaneously.
+`module list` : This lists all the modules which are currently loaded into the users environment. 
+
+`module unload <modulefile>` : This removes any listed modules from the user's current environment. Multiple modules can be unloaded simultaneously.
 
 e.g., `module unload gcc namd`
 	
-Note that unloading a module does not automatically remove additional modules loaded by the original module file. For example;
+Note that unloading a module does not necessarily automatically remove additional modules loaded by the original module file, depending on the configuration of the modules on a particular system. For example;
 
 ```
 module load gcc
@@ -1029,8 +999,7 @@ module unload gcc
 module list
 ```
 
-`module switch <modulefile1> <modulefile2>` 
-This unloads one modulefile (modulefile1) and loads another (modulefile2). This is very handy for testing behavior across different versions of the same program. 
+`module switch <modulefile1> <modulefile2>` : This unloads one modulefile (modulefile1) and loads another (modulefile2). This is very handy for testing behavior across different versions of the same program. 
 
 For example, the following loads Octave v3.2.0, but the user then discovers that an earlier version better suits their needs. Rather than loading and unloading the different versions they can simply use module switch instead.
 
@@ -1039,27 +1008,21 @@ module load octave/3.2.0
 module switch octave/3.2.0 octave/3.0.3 
 ```
 
-`module purge`
-This removes all modules from the user's environment.
+`module purge` : This removes all modules from the user's environment.
 
-`module initadd <modulename>`
-The 'module initadd' command can be used to have a module automatically loaded each time a user logs into the system.
+`module initadd <modulename>` : The 'module initadd' command can be used to have a module automatically loaded each time a user logs into the system.
 
 Depending on the user's shell preferred shell, the initadd command searches a range of initialisation files in the user's home directory for a 'module load' and appends as appropriate. 
 
 If the `module load` line is found in multiple shell initialization files, all of the lines are changed. 
 
-`initrm <modulefile>` 
-Remove a module file from the initialisation files.
+`initrm <modulefile>` : Remove a module file from the initialisation files.
 
-`initswitch <modulefile1> <modulefile2 >`
-Switch one modulefile to another in the initialisation file.
+`initswitch <modulefile1> <modulefile2 >` : Switch one modulefile to another in the initialisation file.
 
-`initlist`
-List all the modulefiles loaded from the shell initialisation files.
+`initlist` : List all the modulefiles loaded from the shell initialisation files.
 
-`initclear`
-Clear all the modulefiles from the shell's initialisation files.
+`initclear` : Clear all the modulefiles from the shell's initialisation files.
 
 ## 3.2 Portable Batch System
 
@@ -1083,11 +1046,9 @@ Submitting and running jobs is a relatively straight-forward process consisting 
 
 Remember that this is a shared environment, hence the need for a resource requesting system. There could be hundreds or thousands of individuals with accounts on an HPC cluster, and they all will want resources. Policies are typically established to ensure that everyone has access to a "fair share" of these resources (e.g., a limit on how many processors an individual may access at any one time). One thing that is invariably requested by administrators of HPC clusters:
 
-Don't run jobs on the login node!
+			**Don't run jobs on the login node!**
 
-Whilst the entire cluster is a shared resource, the login node is a particularly shared resource. All users will access the login node in order to check their files, submit jobs etc. If one or more users start to run computationally or I/O intensive tasks on the login node (such as forwarding of graphics, copying large files, running multicore jobs), then that will make life difficult for everyone. Avoid it whenever possible.
-
-Instead, using the queuing system to submit jobs.
+Whilst the entire cluster is a shared resource, the login node is a particularly shared resource. All users will access the login node in order to check their files, submit jobs etc. If one or more users start to run computationally or I/O intensive tasks on the login node (such as forwarding of graphics, copying large files, running multicore jobs), then that will make life difficult for everyone. Avoid it whenever possible. Instead, using the queuing system to submit jobs.
 
 The graphic presented below (from an otherwise fairly formal book on queue management by IBM) gives an amusing representation of what occurs; the jobs are launched by the user (the initial rabbits) which then go into a queue. The scheduler (the dog) determines when they can run, they dash off to the compute machines and, after computation, collect their results (the carrots).
 
@@ -1095,103 +1056,68 @@ The graphic presented below (from an otherwise fairly formal book on queue manag
 
 When uploading files in preparation for launching a HPC job it is good practice to keep each job in separate folders, labeled in an intuitive way, such as:    NAMD_albumin_run_01 . Writing all files to the top level of the home directory will very quickly become difficult to follow and easy to make mistakes. Use the mkdir command learned in the previous section to do this.
 
-A pbs script allocates the compute nodes and time requested by the user 
-The user can edit this script to change the number of preferences including the number of cpus to use, the length of time to run the job and the name of the program executable.  
+A pbs script allocates the compute nodes and time requested by the user. The user can edit this script to change the number of preferences including the number of cpus to use, the length of time to run the job and the name of the program executable.
 
 Lines that start with  `#PBS` pass a PBS command,  while adding a white space does not.   For example, compare the lines:
 
-`	#PBS -l walltime=24:0:0`         		
-`	# PBS -l walltime=24:0:0`       		 
+`#PBS -l walltime=24:0:0`
+`# PBS -l walltime=24:0:0` 
 
-The following is a sample PBS script for TORQUE and with comments for script for PBSPro and SLURM. Note that PBS job script directives should be declared first.
+The following is a sample PBS script for TORQUE and with comments for script for PBSPro and SLURM. Note that PBS job script directives should be declared first. The following is an example Job Script with annotations for TORQUE, PBSPro, and SLURM.
 
-Example Job Script for TORQUE, PBSPro, and SLURM
+| Script command		| Explanation							|
+|-------------------------------|---------------------------------------------------------------|
+| #!/bin/bash 			| Always invoke a shell. This is common regardless of whether one is using TORQUE, PBSPro, or SLURM. |
+| #  job script for a NAMD job. | A comment line. Note the use of whitespace after the hash.	|
+| #PBS -N Job_name		| The name of the job. 						|
+| #PBS -q compute		| A request for the compute queue; can be left out if the system accepts a default. Will vary on different systems. Format is identical for TORQUE and PBS.		|
+| # SBATCH -p compute		| The equivalent command for the above but for SLURM. Note that it makes use of the -p (partition) rather than -q (queue) option.					|
+| #PBS -l nodes=8		| Asking for any 8 cores for TORQUE.				|
+| # PBS -l ncpus=8		| The same resource request, but for PBSPro.			|
+| # SBATCH -ntasks=8		| Again, the same resource requests, but this time for SLURM.	|
+| # PBS -M example@example.com	| The email address that notifications should be sent to for TORQUE and PBSPro. Currently commented out. Make sure this is entered correctly.				|
+| # SBATCH --mail-user=example@example.com	| The same command as above, except for SLURM.	|
+| # PBS -m abe			| Mail user if job aborts (a), begins (b) or ends (e). Currently commented out. 			|
+| # SBATCH –mail-type=FAIL	| |
+| # SBATCH --mail-type=BEGIN	| |
+| # SBATCH –mail-type=END	| |
+| # SBATCH –mail-type=ALL	| The equivalent of the above for SLURM with the equivalent of the "abe" option represented by "all"	|
+|#PBS -l walltime=24:10:5	| Walltime for TORQUE and PBSPro. Set the job to run 24 hours 10 minutes and 5 seconds – a deliberately strange time request for the purposes of illustration. 		|
+| # SBATCH --time=24:10:5	| The same command as above but written for SLURM. SLURM also takes the format -t days-hours:minutes:seconds								|
+| #PBS -o output_file_name.txt	| |
+| #PBS -e error_file_name.txt	| For TORQUE and PBSPro, set output and error file name. Note that these are created with the job ID by default. In this format they can also be combined with #PBS -j oe (join error and output)		|
+| # SBATCH -output		| |
+| # SBATCH -error		| The equivalent output and error filenames for SLURM. Where -o is specified without a -e SLURM assumes they are to be combined.					|
+| module load namd/2.9-openmpi-gcc	| Load the NAMD module					|
+| cd $PBS_O_WORKDIR		| For TORUE and PBSPro, change to the directory where the job was launched; otherwise it will try to run it in the home directory. SLURM assumes that you want to run in the directory where you launched the job from, so this command is not necessary.		|
+| # Launching the job!		| Another comment line. 					|
+| mpiexec namd2 configfile	| Launching the executable “namd2”  with the file “configfile”. |
 
-							Explanation:
-#!/bin/bash
-Always invoke a shell. This is common regardless of whether one is using TORQUE, PBSPro, or SLURM.  
-#  job script for a NAMD job:
-A comment line. Note the use of whitespace after the hash.
-#PBS -N Job_name
-The name of the job. 
-#PBS -q compute
-A request for the compute queue; can be left out if the system accepts a default. Format is identical for TORQUE and PBS.
-# SBATCH -p compute
-The equivalent command for the above but for SLURM. Note that it makes use of the -p (partition) rather than -q (queue) option.
-#PBS -l nodes=8
-Asking for any 8 cores for TORQUE.	 
-# PBS -l ncpus=8
-The same resource request, but for PBSPro.
-# SBATCH -ntasks=8
-Again, the same resource requests, but this time for SLURM.
-# PBS -M example@example.com
-The email address that notifications should be sent to for TORQUE and PBSPro. Currently commented out. Make sure this is entered correctly.
-# SBATCH --mail-user=example@example.com
-The same command as above, except for SLURM.
-# PBS -m abe
-Mail user if job aborts (a), begins (b) or ends (e). Currently commented out. 
-# SBATCH –mail-type=FAIL
-# SBATCH --mail-type=BEGIN
-# SBATCH –mail-type=END
-# SBATCH –mail-type=ALL
-The equivalent of the above for SLURM with the equivalent of the "abe" option represented by "all"
-#PBS -l walltime=24:10:5
-Walltime for TORQUE and PBSPro. Set the job to run 24 hours 10 minutes and 5 seconds – a deliberately strange time request for the purposes of illustration. 
-# SBATCH --time=24:10:5
-The same command as above but written for SLURM. SLURM also takes the format -t days-hours:minutes:seconds
-#PBS -o output_file_name.txt
-#PBS -e error_file_name.txt
-For TORQUE and PBSPro, set output and error file name. Note that these are created with the job ID by default. In this format they can also be combined with #PBS -j oe (join error and output)
-# SBATCH -output
-# SBATCH -error
-The equivalent output and error filenames for SLURM. Where -o is specified without a -e SLURM assumes they are to be combined.
-module load namd
-Load the default NAMD module 			    
-cd $PBS_O_WORKDIR
-For TORUE and PBSPro, change to the directory where the job was launched; otherwise it will try to run it in the home directory. SLURM assumes that you want to run in the directory where you launched the job from, so this command is not necessary.
-# Launching the job!
-Another comment line. 
-mpiexec namd2 config_file
- Launching the executable “namd2”  with the file “config_file”.
-
-Queues and Partitions:
+**Queues and Partitions**
 
 With the qstat or squeue commands (see below) the available queues on the system can be shown. Queues are simply a set of available resource limits, which on various systems may be subject to a different set of scheduler rules. 
 
-To submit according to a particular queue in TORQUE or PBSPro use #PBS -q queuename ; if using SLURM try #SBATCH -p partitionname
+To submit according to a particular queue in TORQUE or PBSPro use `#PBS -q queuename` ; if using SLURM use `#SBATCH -p partitionname`
 
-Nodes:
+**Nodes and Performance**
 
-Requesting more nodes for a particular job does not necessarily mean better performance or faster completion. This depends on how well parallelised the program is. Also, requesting large numbers of cores (e.g., greater than 128) may result in the job waiting in the queue for days while the scheduler allows for resources to become available.  The number of nodes requested can be distinguished between a number of cores from anywhere on the system, or within a single system unit, or another combination. It is also possible to request specific nodes on the entire system, although the instances where this is necessary are fairly rare.
+Requesting more nodes or cores for a particular job does not necessarily mean better performance or faster completion. This depends on how well parallelised the program is. Also, requesting large numbers of cores may result in the job waiting in the queue for days while the scheduler allows for resources to become available.  The number of nodes requested can be distinguished between a number of cores from anywhere on the system, or within a single system unit, or another combination. It is also possible to request specific nodes on the entire system, although the instances where this is necessary are fairly rare.
 
 Note that with TORQUE the nodes request is for system units (except when expressed in the singular, when it is processors) and in PBSPro it is "chunks", which may or may not be specific system units.
 
-TORQUE
-PBSPro
-SLURM
-Description
-#PBS -l nodes=16
-#PBS -l ncpus=16
-#SBATCH --ntasks=16
-Sixteen processors
-#PBS -l nodes=1:ppn=16
-#PBS -l select=1:ncpus=16 
-#SBATCH -n=1
-#SBATCH --ntasks-per-node=16
-Sixteen processors from a system unit or "chunk"
-#PBS -l nodes=2:ppn=8 
-#PBS -l select=2:ncpus=16
-#SBATCH -N=2
-#SBATCH -n=16
-Sixteen processors from two system units or "chunks"  (eight each)
-#PBS -l nodes="trifid001"
-#PBS -l nodes="trifid001" 
-#SBATCH -w, --nodelist=trifid001
-To run specifically on trifid001
+| TORQUE		| PBSPro	| SLURM			|Description				|
+|-----------------------|-----------------------|---------------|---------------------------------------|
+| #PBS -l nodes=16	| #PBS -l ncpus=16	| #SBATCH --ntasks=16 | Sixteen cores			|
+| #PBS -l nodes=1:ppn=16| #PBS -l select=1:ncpus=16 | #SBATCH -n=1 |					|
+|			|				| #SBATCH --ntasks-per-node=16 Sixteen processors from a system unit or "chunk"								|
+| #PBS -l nodes=2:ppn=8 | #PBS -l select=2:ncpus=16 | #SBATCH -N=2	|				|
+|			|		| #SBATCH -n=16		| Sixteen processors from two system units or "chunks"  (eight each)					|
+| #PBS -l nodes="trifid001"	| #PBS -l nodes="trifid001" |	#SBATCH -w, --nodelist=trifid001 |
+To run specifically on trifid001									|
 
 Note that the details of these resource requests may vary significantly between systems. Some implementations of PBSPro, for example, also require the statement: mpiprocs=n after selecting the quantity of processors specifically for MPI jobs.
 
-Walltime:
+**Walltime**
 
 Walltime is the length of time specified in the pbs script for which the job will run. In a shared resource environment, the user who is submitting a job is making an agreement with other users: "This job will require x number of resources for y period of time". At the end of that time the job "hits a wall" and will stop. 
 
@@ -1199,74 +1125,38 @@ So make sure that you have specified enough walltime for a particular job to com
 
 In a number of environments and email to the helpdesk with a request to extend walltime can be fulfilled. But don't rely on this, and certainly don't make it a habit. In effect when an extension is granted, it means that the user is jumping ahead in the queue, by way of extension of resource use. This is unfair to others. It is best to be generous with one's walltime to begin with and run a few test cases to see how long a dataset takes to process.
 
-Memory:
+**Memory**
 
 Sometimes you will require more or less memory that is typical for a job. In these cases the resource requests memory for the total job (mem for TORQUE and PBSPro), or more commonly, for each processing task (pmem), may be useful. A standard resource request is used e.g., #PBS -l pmem=2000mb for TORQUE and PBS or #SBATCH --mem=20000 for SLURM.
 
 ## 3.3 Frequently Used PBS and Scheduler Commands
 
-TORQUE/PBSPro
-SLURM
-Description
-qstat | less
-squeue -a | less
-Information about queues and jobs, piped through less.
-showq | less
-showq | less
-squeue
-Displays information about active, eligible, blocked, and/or recently completed jobs, piped through less. This command is not available in PBSPro.
-showq -w user=[username]
-showq -u [username]
-showq -u
-squeue -u
-Showq with a constraint, in this case, user. Also not available in PBSPro.
-qstat -q
-sinfo -a
-List all queues
-qstat -Q
-sinfo -a
-Queue limits.
-qstat -a
-squeue -A <account>
-List all jobs in alternative format.
-qstat -au
-squeue -A <account>
-List all jobs of a particular user, e.g., qstat -au mike
-qstat -s | less
-squeue -a | less
-All jobs with status comments, piped through less
-qstat -r | less
-squeue -t R | less
-All running jobs, piped through less
-qstat -f <jobid>
-squeue -j <jobid>
-Information concerning a particular job.
-qsub <pbsscript>
-sbatch <jobname>
-Submits job script
-qsub -I
-sinteractive
-Submit an interactive batch job.
-qdel <jobid>
-scanel <jobid>
-Deletes a job. SLURM allows one to delete all jobs belonging to a user wit the -u option.
+| TORQUE/PBSPro		| SLURM		| Description					|
+|-----------------------|---------------|						|
+| qstat			| squeue	| Show status of jobs   			|
+| showq			| squeue	| Displays information about active, eligible, blocked, and/or recently completed jobs.					|
+| showq -u user=[username] |	squeue -u | Showq with a constraint, in this case, user. Not available in PBSPro [EDIT].									|
+| qstat -q		| sinfo -a	| List all queues or partitions 		|
+| qstat -Q		| sinfo -a	| Queue limits.					|
+| qstat -a		| squeue -A 	| List all jobs in alternative format.		|
+| qstat -au		| squeue -A <account> | List all jobs of a particular user, e.g., qstat -au mike|
+| qstat -s 		| squeue -a	| All jobs with status comments			|
+| qstat -r		| squeue -t R	| All running jobs				|
+| qstat -f <jobid>	| squeue -j <jobid> | Information concerning a particular job.  |
+| qsub <pbsscript>	| sbatch <jobname>  | Submits job script			|
+| qsub -I 		| sinteractive	 | Submit an interactive batch job. SLURM command varies per installation.										|
+| qdel <jobid>		| scancel <jobid> | Deletes a job. SLURM allows one to delete all jobs belonging to a user wit the -u option.								|
 
 The following are state definitions for a job.
 
-State 
-Definition
-Down 
-Node is either not reporting status, is reporting status but failures are detected, or is reporting status but has been marked down by an administrator.
-Idle 
-Node is reporting status, currently is not executing any workload, and is ready to accept additional workload.
-Busy 
-Node is reporting status, currently is executing workload, and cannot accept additional workload due to load.
-Running 
-Node is reporting status, currently is executing workload, and can accept additional workload.
-Drained 
-Node is reporting status, currently is not executing workload, and cannot accept additional workload due to administrative action.
-Draining 
-Node is reporting status, currently is executing workload, and cannot accept additional workload due to administrative action.
+| State 		| Definition							|
+|-----------------------|---------------------------------------------------------------|
+| Down 			| Node is either not reporting status, is reporting status but failures are detected, or is reporting status but has been marked down by an administrator.		|
+| Idle 			| Node is reporting status, currently is not executing any workload, and is ready to accept additional workload.							|
+| Busy			| Node is reporting status, currently is executing workload, and cannot accept additional workload due to load.							|
+| Running 		| Node is reporting status, currently is executing workload, and can accept additional workload. SLURM will use "Mixed" to describe this state			|
+| Drained 		| Node is reporting status, currently is not executing workload, and cannot accept additional workload due to administrative action.				|
+| Draining 		| Node is reporting status, currently is executing workload, and cannot accept additional workload due to administrative action.					|
 
 ## 3.4 Standard Job DLPOLY: Molecullar Modelling
 
@@ -1276,27 +1166,25 @@ The following example runs a job for phase-state transition in potassium chlorid
 
 Copy the test files to an appropriate directory and extract:
 
+```
 cd /home/train01/
 wget http://www.ccp5.ac.uk/DL_POLY/TUTORIAL/EXERCISES/TEST1.tar.gz 
 tar xvf TEST1.tar.gz 
-
+```
 Inside the TEST1 directory, create the following file 'dltest' with nano. 
 
-#!/bin/bash 
-## Job settings 
-#PBS -N dlpoly1 
-# PBS -m abe 
-# PBS -M YOUR_MAIL_ADDRESS_HERE 
-## Job resources 
-#PBS -l nodes=1:ppn=4
-#PBS -l walltime=00:10:00 
-module load dlpoly/4.03.2.1
-cd $PBS_O_WORKDIR 
-mpiexec DLPOLY.Z
+`#!/bin/bash`
+`#PBS -N dlpoly1`
+`## Job resources`
+`#PBS -l nodes=1:ppn=4`
+`#PBS -l walltime=00:10:00`
+`module load dlpoly/4.03.2.1`
+`cd $PBS_O_WORKDIR` 
+`mpiexec DLPOLY.Z`
 
 This job example is specific to TORQUE; if one is using PBSPro or SLURM, changes will need to be made as illustrated previously. 
 
-Once having written up the script, submit it according to the scheduler used (e.g., qsub dltest). There may be mistakes! Typing errors are very common in script writing, so be attentive to what you've written. The scheduler will generate error messages as appropriate. Take the opportunity to work through these to find out what went wrong.
+Once having written up the script, submit it according to the scheduler used (e.g., `qsub dltest`). There may be mistakes! Typing errors are very common in script writing, so be attentive to what you've written. The scheduler will generate error messages as appropriate. Take the opportunity to work through these to find out what went wrong.
 
 Assuming all goes well, DLPOLY will read in the CONFIG, CONTROL, and FIELD data, and wait for the output. If successful the job will create OUTPUT, RDFDAT, REVCON, REVIVE, and STATIS files. 
 
@@ -1304,40 +1192,35 @@ Assuming all goes well, DLPOLY will read in the CONFIG, CONTROL, and FIELD data,
 
 GNU Octave is a mathematical application and programming language that is highly compatible with  MATLAB(R) but without the licensing restrictions. The following compares (using TORQUE examples) two job scripts written for the respective languages that generate the same result. 
 
-```
-#!/bin/sh 
-#PBS -l nodes=1:ppn=1
-#PBS -l walltime=00:10:00 
-module load matlab
-cd $PBS_O_WORKDIR 
-matlab -nodesktop -nodisplay -nosplash< polar-plot.m 
-```
+`#!/bin/sh`
+`#PBS -l nodes=1:ppn=1`
+`#PBS -l walltime=00:10:00`
+`module load matlab`
+`cd $PBS_O_WORKDIR` 
+`matlab -nodesktop -nodisplay -nosplash< polar-plot.m` 
 
-```
-#!/bin/sh 
-#PBS -l nodes=1:ppn=1 
-#PBS -l walltime=00:10:00 
-module load octave
-cd $PBS_O_WORKDIR 
-octave polar-plot.m 
-```
+`#!/bin/sh` 
+`#PBS -l nodes=1:ppn=1` 
+`#PBS -l walltime=00:10:00` 
+`module load octave`
+`cd $PBS_O_WORKDIR` 
+`octave polar-plot.m` 
 
 The Matlab example, more designed for a graphical interface, requires parameters to be passed to the executable to ensure that the output is conducted on the file itself. In both cases the .m file is polar-plot.m i.e.,
 
-
-```
-angle = 0:.1*pi:3*pi; 
-             radius = exp(angle/20); 
-             polar(angle,radius),... 
-             title('An Example Polar Plot'),... 
-             grid 
-print -deps polar-plot.ps; 
-quit; 
-```
+`angle = 0:.1*pi:3*pi;`
+`            radius = exp(angle/20);`
+`            polar(angle,radius),...`
+`            title('An Example Polar Plot'),...`
+`            grid`
+`print -deps polar-plot.ps;`
+`quit;`
 
 Simply put the PBS job is submitted, which calls the polar-plot.m file, which runs it's own script, which then generates a polar-plot.ps file which can be downloaded and viewed.
 
 ## 3.6 Standard Job with PDF Output: R, A Statistical Package
+
+[EDIT]
 
 The data is used to indicate an estimate of biomass of ponderosa pine in a study performed by Dale W. Johnson, J. Timothy Ball, and Roger F. Walker who are associated with the Biological Sciences Center, Desert Research Institute, University of Nevada. The tutorial is partially derived from material by Kelly Black of Clarkson University.
 
@@ -1347,10 +1230,8 @@ A collection of files is available in the introductory directory, so change to t
 
 Submit the job with: qsub pbs-script, check the status of the job (qstat -u [username]) until the job is completed. When it is complete note the directory listing (ls). You should have something like the following: 
 
-```
-[lev@trifid R]$ ls 
-MyJob.e32933  MyJob.o32933  pbs-script  Rplots.pdf  trees91.csv  tutorial.R  w1.dat 
-```
+`[lev@trifid R]$ ls` 
+`MyJob.e32933  MyJob.o32933  pbs-script  Rplots.pdf  trees91.csv  tutorial.R  w1.dat` 
 
 The two files MyJob.e32933 and MyJob.o32933 are the job error and output files, respectively. The error file in this case is empty, but can be useful for debugging purposes if a job fails. The output file in this instance documents the actions of the program, including the significant correlation result. The real output is Rplots.pdf, which can be copied from the cluster to the desktop and then displayed using the command evince Rplots.pdf. 
 
@@ -1395,12 +1276,7 @@ Instead, edit your pbs-script to reflect the .inp and .def files you have just c
 
 An equivalent in Slurm is to specify the particular generic resource either in the script or at launch. For example, if there is a compute nodes where the generic resource is `gpu` the following can be used:
 
-`#SBATCH --gres=gpu`
-or
-
-`sbatch --gres="gpu" job.slurm`
-
-
+`#SBATCH --gres=gpu` or `sbatch --gres="gpu" job.slurm`
 
 This is what sets the resources for an ANSYS job. It will not run without it. For the first 4 processors you only need to ask for aa_r+1, for every additional processor over 4 you need to ask for a single aa_r_hpc license as well.
 
@@ -1456,22 +1332,22 @@ The following procedure can be used to plot the crash models deformed shape:
 
 NAMD is a parallel, molecular dynamics simulation program used to model large biomolecular systems using high performance computing clusters which is freely available for academic work.  If you are interested in running NAMD simulations you should also install a local copy of VMD on your own computer.  VMD is a molecular viewer program that can be used to help set up NAMD simulation and to help analyse and visualize NAMD output. 
 
-VMD can be freely obtained from:   http://www.ks.uiuc.edu/Research/vmd/
+VMD can be freely obtained from:  `http://www.ks.uiuc.edu/Research/vmd/`
 
-Additional tutorials and information about NAMD are available at: http://www.ks.uiuc.edu/Research/namd/
+Additional tutorials and information about NAMD are available at: `http://www.ks.uiuc.edu/Research/namd/`
 
-Molecular Dynamics Simulation
+**Molecular Dynamics Simulation**
 
 We have an example of Ubiquitin protein, in a vacuum,  ready to download and run.  Normally we would do this with water and salt ions, but we need the simulation to run quickly for demonstration purposes. 
 
-Change into this directory and launch the job with the command "qsub" and the pbs script for TORQUE or PBSPro, or sbatch for SLURM. 
+Change into this directory and launch the job with the command `qsub` and the pbs script for TORQUE or PBSPro, or `sbatch` for SLURM. 
 
-cd namd     
-qsub pbs_example_script     
+`cd namd`
+`qsub pbs_example_script`
  
 This particular job is very short compared to a regular NAMD simulation and should be finished in a few minutes. As the job runs, various output files are produced but the main one you will be interested in is the trajectory file with the  .dcd suffix.  The business end of the script is in the last line: 
 
-mpiexec namd2  Ubiquitin_example.conf 
+`mpiexec namd2  Ubiquitin_example.conf` 
 
 This is saying use the program "mpiexec" to launch the parallel program "namd2" passing the configuration file "Ubiquitin_example.conf"
 
@@ -1564,7 +1440,7 @@ The main output file is .dcd while the .xsc, .coor, .vel files all have to do wi
 
 Copy that information back to your local computer and use VMD to visualize the results – remember it is nearly always preferable to do visualisation on the local system and computation on the HPC cluster.
 									
-Visualizing NAMD results with VMD    
+**Visualizing NAMD results with VMD**
 
 In part 2 of this tutorial, you will be using the molecular visualization program, VMD to look at the trajectory data of the ubiquitin protein you generated in part I of the tutorial. 
 
@@ -2514,6 +2390,8 @@ sed /^$/d
 Delete all blank lines. 
 sed s/ *$//
 Delete all spaces at the end of every line. 
+sed 's/^\w*\ *//'
+Remove the first word of each line.
 
 Due to competing standards many decades ago, various forms of *nix (Linux, MacOS X+) use a "line-feed" character for new lines, as does XML, whereas MS-Windows use a carriage return and a line feed, whilst MacClassic used the CR. Whilst better text editors, web-browsers etc are capable of recognising this problem and displaying files as expected this is not always the case. Files originating on Unix or Apple Macintosh systems may appear as a single long line on some MS-Windows applications because it lacks the carriage return. When viewing a file originating from a MS-Windows computer on a *nix system, the extra CR may be displayed as ^M at the end of each line or as a second line break. Again, sed can help here by adding a carriage return for MS-Windows files and removing it in reverse. 
 
@@ -2664,8 +2542,7 @@ Recursive search through your history to locate previous commands.
 ctrl+z
 Stop the current process. 
 
-5.4 Shell Scripting with bash
------------------------------
+## 5.4 Shell Scripting with bash
 
 Shell scripting is not as powerful as a complete programming language when cross-platform support is required, or the tasks are resource-intensive, or when complex data structures, or if floating-point operations or complex numbers are needed. In these cases you should use a language like C, FORTRAN or Java. But for many tasks one will be pleasantly surprised how useful shell scripting can be. Indeed, many file and text manipulation tasks which are complex in a the aforementioned programming languages are simple with shell scripting.
 
@@ -2753,7 +2630,7 @@ Returns true if both the expression is true.
 [ expr1 -o expr2 ]
 Returns true if either of the expression1 or 2 is true. 
 
-There are also a number of special characters in bash scripting. Quoting disables these characters for the content within the quotes. Both single and double quotes can be used, and single quotes can be used to incorporate double quotes. "Backtick" quotation marks can be used for command substitution within the script. Special characters include ';' for command separators, '{}' for command blocks, '|' for a pipe, '< > &' as redirection symbols, '$' for variables, and '#' for comments.
+There are also a number of special characters in bash scripting. Quoting disables these characters for the content within the quotes. Both single and double quotes can be used, and single quotes can be used to incorporate double quotes. "Backtick" quotation marks can be used for command substitution within the script for historical reasons but should be avoided. Special characters include ';' for command separators, '{}' for command blocks, '|' for a pipe, '< > &' as redirection symbols, '$' for variables, and '#' for comments.
 
 echo 'The "Sedimentary" and the "Igenuous" argue about metamorphism'
 echo "There are $(ls | wc -l) files in $(pwd)"
@@ -2847,6 +2724,7 @@ What extract.sh does is test whether a variable is a file and, if it is, runs a 
 
 The select command with conditionals can be used to create simple menus for users which prompts them for their input. 
 
+```
 #!/bin/bash 
 OPTIONS="Sedimentary Igneous Metamorphic Quit" 
 select opt in $OPTIONS; do 
@@ -2863,16 +2741,18 @@ select opt in $OPTIONS; do
 	echo "Select again; 1, 2, 3 or 4" 
 	fi 
 done 
+```
 
-5.5 Better Bash Scripting
--------------------------
+## 5.5 Better Bash Scripting
 
-Scripts With Variables
+**Scripts With Variables**
 
 The simplest script is simply one that runs a list of system commands. At least this saves the time of retyping the sequence each time it is used, and reduces the possibility of error. For example, in the Intermediate course, the following script was recommended to calculate the disk use in a directory. It's a good script, very handy, but how often would you want to type it? Instead, type enter it once and keep it. You will recall of course, that a script starts with an invocation of the shell, followed by commands.
 
+```
 #!/bin/bash
 du -sk * | sort -nr | cut -f2 | xargs -d "\n" du -sh  > diskuse.txt
+```
 
 chmod +x diskuse.sh
 
@@ -2976,6 +2856,7 @@ done
 
 Like the dot, the comma operator has multiple uses. Usually it is used to link multiple arithmetic calculations. This is typically used in for loops, with a C-like syntax. e.g.,
 
+```
 for ((a=1, b=1; a <= LIMIT ; a++, b++))
 do  # The comma concatenates operations.
   echo -n "$a-$b "
@@ -2990,6 +2871,8 @@ do
         echo $file
   fi
 done
+```
+
 
 A double-quote on a value does not change variable substitution. This is sometimes referred to as weak quoting. Using single quotes however, means the variable to be used literally, with no substitution. This is often referred to as strong quoting. For example, a strict single quoted directory listing of ls with a wildcard will only provide files that are expressed by the symbol (which isn't a very good file name). Compare ls * with ls '*'. This example will also worth with double quote and indeed, double-quotes are generally preferable as they prevent reinterpretation of all special characters except $, `, and \. This are usually the symbols which are wanted in their interpreted mode. 
 
@@ -3011,11 +2894,10 @@ for i in * ; do mv $i 'echo $i | tr "A-Z" "a-z"' ; done
 
 
 
-6.0 Alternative Job Submission Options
-======================================
+# 6.0 Alternative Job Submission Options
 
-6.1 Job Scripts with Shell Scripting
-------------------------------------
+
+## 6.1 Job Scripts with Shell Scripting
 
 Because PBS job scripts call a shell when launched any shell commands can can also be used in a PBS script. Every single Linux command, every item of information learned about scripting, about file manipulation, system information, regular expressions, report generation and so forth can be used in a job script. This allows for some very powerful and complex job submissions.
 

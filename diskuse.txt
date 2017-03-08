@@ -1,0 +1,9 @@
+62M	chapter06
+34M	chapter03
+264K	supercomputingwithlinux.md
+260K	chapter05
+248K	chapter04
+8.0K	isbn-978-0-9943373-0-6.png
+4.0K	README.md
+4.0K	chapter02
+4.0K	diskuse.txt
