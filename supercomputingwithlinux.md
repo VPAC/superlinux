@@ -1450,7 +1450,9 @@ You can now start VMD and load up the trajectory data.  In a new terminal type: 
 Three windows will appear: 
  
 The Main panel
+
 The Display
+
 The Console
 
 The first file you need to read into VMD is the protein structure file, (1ubq_example.psf in this case). The .psf file contains important information about the system such as which atoms are bonded together, what charge they are, and the mass of each atom type, but does not contain any spacial information. 
@@ -1478,7 +1480,7 @@ From the main panel you can bring up the Representations dialog to play with mor
 
 Graphics - Representations   
 
-Comparison of Job Time from NAMD
+**Comparison of Job Time from NAMD**
 
 The default pbs script for NAMD is 4 nodes (i.e., 4 cores), which are sourced from anywhere on the cluster. The output file also describes the time that this took, along with other resources used:
 
@@ -1516,7 +1518,7 @@ Overall, when submitting jobs it really is a case of trial and error initially f
 
 ## 4.1 Login Files
 
-One of the first commands introduced was how to generate directory listing when a user logged in on the command line i.e., ls. We also learned how to get a more complete directory listing by applying options to a basic command, for example one which is ls -lart (list with long format, including file permissions (l), all files (a), sorted in reverse order (r), by modification time (t). Start up a terminal window, login to the supercomputer and run a long directory listing:  
+One of the first commands introduced was how to generate directory listing when a user logged in on the command line i.e., ls. We also learned how to get a more complete directory listing by applying options to a basic command, for example one which is ls -lart (list with long format, including file permissions (l), all files (a), sorted in reverse order (r), by modification time (t). Start up a terminal window, login to the supercomputer and run a long directory listing:
 
 `ls -lart` 
 
@@ -1529,13 +1531,13 @@ Users can interact directly with the shell, or with an application which interac
 
 What does this mean? 
 
-When Bash is invoked as an interactive login shell it first reads and executes commands from the file /etc/profile, if that file exists. After reading that file, it looks for ~/.bash_profile, ~/.bash_login, and ~/.profile, in that order, and reads and executes commands from the first one that exists and is readable. 
+When Bash is invoked as an interactive login shell it first reads and executes commands from the file `/etc/profile`, if that file exists. After reading that file, it looks for `~/.bash_profile`, `~/.bash_login`, and `~/.profile`, in that order, and reads and executes commands from the first one that exists and is readable. 
 
 Typically an startup file for an interactive shell will include startup commands, paths and environment variables, aliases and terminal colours. 
 
-When an interactive shell that is not a login shell is started (for example, a person who has the rights to 'su', substitute user, running a script), Bash reads and executes commands from ~/.bashrc, if that file exists. 
+When an interactive shell that is not a login shell is started (for example, a person who has the rights to 'su', substitute user, running a script), Bash reads and executes commands from `~/.bashrc`, if that file exists. 
 
-Usually a ~/.bash_profile contains a line to ensure that options in .bashrc are included with an interactive login; but not the other way around. For example, if one checks bash_profile they should see the line: 
+Usually a `~/.bash_profile` contains a line to ensure that options in `.bashrc` are included with an interactive login; but not the other way around. For example, if one checks `.bash_profile` they should see the line: 
 
 `if  [ -f ~/.bashrc ]; then . ~/.bashrc; fi` 
 
@@ -1553,9 +1555,7 @@ What else is there?
 if [ -f ~/.bashrc ]; then 
 	. ~/.bashrc 
 fi 
-
 # User specific environment and startup programs 
-
 module load vpac 
 alias d='ls -F --color' 
 # Override some of the silly colours Linux gives ls : 
@@ -1603,7 +1603,7 @@ Currently Loaded Modulefiles:
 2) openmpi-intel/1.6.3   4) pgi/12.10             6) mpfr/3.1.1            8) gcc/4.7.2 
 ```
 
-What about .bashrc?
+What about `.bashrc`?
 
 ```
 [root@trifid-m train01]# cat .bashrc# .bashrc 
@@ -1614,7 +1614,7 @@ if [ -f /etc/bashrc ]; then
 fi 
 ```
 
-Even less! But there's a another link in the home directory for .bashrc for global definitions sourced in /etc/bashrc! So what's in there? Apparently, quite a lot!
+Even less! But there's a another link in the home directory for `.bashrc` for global definitions sourced in `/etc/bashrc`! So what's in there? Apparently, quite a lot!
 
 ```
 $ less /etc/bashrc 
@@ -1652,9 +1652,9 @@ Typing 'i' enters the insert mode, which allows text to be added and edited in t
 
 Vim may initially seem a little cryptic with its commands, and "dual-clutch" system, switching between the different modes, but it really is very powerful. Because the commands are often abstract, learning by doing with vim is far more effective than memorisation alone. It is thoroughly recommended that one goes through the vimtutor a couple of times at least. The following is just a reference to some of the key commands.
 
-Relative movement
+**Relative movement**
 
-Relative movement can be prefixed with a count, to tell vi to repeat the motion. 
+Relative movement can be prefixed with a count, to tell vim to repeat the motion. 
 
 h j k l
 Move the cursor to the left, down, up, right, respectively. These also take a count: '8l' moves the cursor 8 letters to the right. 
@@ -1667,7 +1667,7 @@ Move to end of current or previous paragraph, respectively.
 ) (
 Move to end of current or previous sentence, respectively. 
 
-Absolute movement 
+**Absolute movement**
 
 G
 Go to (a specified line). E.g., "10G" moves the cursor to line 10.  Without a count, vi goes to the last line of the buffer. 
@@ -1678,7 +1678,7 @@ Move to end of current line.
 0
 Move to beginning of current line. 
 
-Operators 
+**Operators**
 
 Many text modification commands are known as operators. They can be prefixed with a count (to repeat the operator), and are suffixed with a motion command. The text between the current position and the final position (after the motion) is called a region. Ensure that you're in 'command mode'.
 
@@ -1711,13 +1711,13 @@ indent a region. '<}' indents left all the lines from here until end of  paragra
 
 In some instances, if the motion command repeats the operator character (as in 'dd'), the region is a whole line (e.g., 'dd' deletes the current line. Prefixing it with a count repeats (or makes it apply to more than one), e.g., '10dd' deletes 10 lines. 
 
-Visual Mode
+**Visual Mode**
 
 The visual mode in vim allows for an easy way to select text for operations. It is invoked with "v", "V", or Ctrl-V in the command mode, marking the character under the text as the start. Use the cursor to the end character and then apply an operator. With Ctrl-V it marks a block of text. 
 
 For example, to change the contents in a column of text, select the column with Ctrl-V. When the the end of the text is reached, type c, which represents "visual block change", then enter the new text, select ESC-ESC, and all the text in the column will be changed. ESC is used to leave the visual selection mode. The y, p, and d (yank, put, and delete for the marked area) commands can be used as well. The case of all text can be changed with the tilde (~) command. 
 
-Other Commands
+**Other Commands**
 
 :/pattern  
    Search for pattern and place the cursor at the start of the matched text.
@@ -1746,7 +1746,7 @@ Go into visual mode to select an area for action.
 :set number
 Turns on line numbers. 
 
-Vimrc
+**Vimrc**
 
 Like .bash_profile and .bashrc an equivalent can be created with a .vimrc.  The following is a small and simple example; you will note that " is a comment marker.  Other options  can be found by going to :help options in vim itself.
 
@@ -1761,7 +1761,7 @@ map <F8> :tabp <ENTER>
 
 Of particular note is the commands to automatically turn files that end in .sh or .pl into executables when on writes out from the buffer, and the keyboard bindings for tabbed editing.
 
-Tabs and Windows
+**Tabs and Windows**
 
 The map command, for example, turns the keys F7 and F8 to tabn and tabp respectively; this allows a user who is using tabbed vim (invoke with vim -p filename1 filename2 etc) to quickly cycle between the different tabs rather than type tabn, tabp etc. A command can be run across multiple tabbed files with tabdo, for example tabdo %s/foo/bar/g will replace 'foo' with 'bar' across all files.
 
@@ -1776,7 +1776,7 @@ Split windows vertically
 ctrl+ww
 Switch between windows
 
-Vimtutorial and Vimgolf
+**Vimtutorial and Vimgolf**
 
 An interactive tutorial is typically installed alongside vim and can be invoked with the command vimtutor. It's worth running through this a few times to gain mastery over the basic commands. 
 
