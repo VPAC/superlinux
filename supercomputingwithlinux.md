@@ -1224,20 +1224,20 @@ Simply put the PBS job is submitted, which calls the polar-plot.m file, which ru
 
 ## 3.6 Standard Job with PDF Output: R, A Statistical Package
 
-[EDIT]
-
 The data is used to indicate an estimate of biomass of ponderosa pine in a study performed by Dale W. Johnson, J. Timothy Ball, and Roger F. Walker who are associated with the Biological Sciences Center, Desert Research Institute, University of Nevada. The tutorial is partially derived from material by Kelly Black of Clarkson University.
 
 It consists of observation measurements and markers for 28 different measurements of a given tree. For example, the first number in each row is a number, either 1, 2, 3, or 4, which signifies a different level of exposure to carbon dioxide. The sixth number in every row is an estimate of the biomass of the stems of a tree. Note that the very first line in the file is a list of labels used for the different columns of data. 
 
-A collection of files is available in the introductory directory, so change to that. Review the files that it references with less (less pbs-script, less tutorial.R, less trees91.csv, less w1.dat). The tutorial.R script, imports the w1.dat and trees91.csv files into appropriate variables. Then it plots a histogram, breaks, a box plot, normal quantiles, a scatter plot relationship. The output file will also record the correlation of the scatter diagram. 
+A collection of files is available in the introductory directory, so change to that. Review the files that it references with less (`less pbs-script`, `less tutorial.R`, `less trees91.csv`, `less w1.dat`). The `tutorial.R` script, imports the w1.dat and trees91.csv files into appropriate variables. Then it plots a histogram, breaks, a box plot, normal quantiles, a scatter plot relationship. The output file will also record the correlation of the scatter diagram. 
 
-Submit the job with: qsub pbs-script, check the status of the job (qstat -u [username]) until the job is completed. When it is complete note the directory listing (ls). You should have something like the following: 
+Submit the job with: qsub pbs-script, check the status of the job (`qstat -u [username]`) until the job is completed. When it is complete note the directory listing (`ls`). You should have something like the following: 
 
-`[lev@trifid R]$ ls` 
-`MyJob.e32933  MyJob.o32933  pbs-script  Rplots.pdf  trees91.csv  tutorial.R  w1.dat` 
+```
+[lev@trifid R]$ ls
+MyJob.e32933  MyJob.o32933  pbs-script  Rplots.pdf  trees91.csv  tutorial.R  w1.dat` 
+```
 
-The two files MyJob.e32933 and MyJob.o32933 are the job error and output files, respectively. The error file in this case is empty, but can be useful for debugging purposes if a job fails. The output file in this instance documents the actions of the program, including the significant correlation result. The real output is Rplots.pdf, which can be copied from the cluster to the desktop and then displayed using the command evince Rplots.pdf. 
+The two files `MyJob.e32933` and `MyJob.o32933` are the job error and output files, respectively. The error file in this case is empty, but can be useful for debugging purposes if a job fails. The output file in this instance documents the actions of the program, including the significant correlation result. The real output is Rplots.pdf, which can be copied from the cluster to the desktop and then displayed using the command evince Rplots.pdf. 
 
 # 3.7 Extended Application for Parallel Processing: R: A Statistical Package
 
@@ -1245,11 +1245,11 @@ Many applications assume single-core usage and don't take advantage of parallel 
 
 In addition to the standard, single-core job in the R directory, there are also files for a parallel task that makes use of the snow (simple network of workstations) library that has been developed to extend the functionality of the R application. It is one of several R libraries which have been implemented to carry out parallel computation. 
 
-In this example a simple task on normal distribution using both a sequential process and a parallel process. The outline of the R script is contained in the file xvalidate.R and the pbs script itself is r-parallel.pbs; these should be reviewed (less r-parallel.pbs, less xvalidate.R)
+In this example a simple task on normal distribution using both a sequential process and a parallel process. The outline of the R script is contained in the file xvalidate.R and the pbs script itself is `r-parallel.pbs`; these should be reviewed (`less r-parallel.pbs`, `less xvalidate.R`)
 
-A review of the r-parallel.pbs script will indicate that that the job requests 4 cores, and 10 minutes of walltime. It also includes a call to the PBS variable PBS_NODEFILE which is the nodes (system units) that the cores are called from. It makes use of the applications R (as expected) but also openmpi-gcc, which are called as modules.
+A review of the r-parallel.pbs script will indicate that that the job requests 4 cores, and 10 minutes of walltime. It also includes a call to the PBS variable `PBS_NODEFILE` which is the nodes (system units) that the cores are called from. It makes use of the applications R (as expected) but also openmpi-gcc, which are called as modules.
 
-In the file xvalidate.R, the R script calls the special library extension snow to allow for parallel processing. It then creates a random data set and samples, fits the model to the samples, and eventually the mean squared difference – with a test to ensure that the results are equal. There are two output files in this case, one which is the results of the R script (xvalidate.out) and one which has a list of the PBS_NODEFILE (e.g., R-parallel.o279816)
+In the file `xvalidate.R`, the R script calls the special library extension snow to allow for parallel processing. It then creates a random data set and samples, fits the model to the samples, and eventually the mean squared difference – with a test to ensure that the results are equal. There are two output files in this case, one which is the results of the R script (`xvalidate.out`) and one which has a list of the `PBS_NODEFILE` (e.g., `R-parallel.o279816`)
 
 This example of parallel processing with R is taken from Eugster and Knaus (2011).
 
@@ -1263,11 +1263,9 @@ The geometry consists of a 2D closed cavity and a thin plate, 1 m high, that is 
 
 This is a quick start that bypasses the building of input files by copying them from two different samples directories. Normally, you would build your own input files using the ANSYS and CFX GUIs but this will demonstrate the scheduling process. 
 
-The input file, OscillatingPlate.inp, is a the step-by-step instructions that is sent to ansys. Normally this file has to be created from the Ansys Workbench, and the .def file is create the cfx.  
+The input file, `OscillatingPlate.inp`, is a the step-by-step instructions that is sent to ansys. Normally this file has to be created from the Ansys Workbench, and the .def file is create the cfx.  
 
-Under the standard tutorial there is the conclusion concludes with "Obtaining A Solution Using ANSYS CFX-Solver"; contrary to what the tutorial suggests don't press the "Start Run" button. 
-
-There are two reasons for this: 
+Under the standard tutorial there is the conclusion concludes with "Obtaining A Solution Using ANSYS CFX-Solver"; contrary to what the tutorial suggests don't press the "Start Run" button. There are two reasons for this: 
 
 * The job will run on only one cpu on the head node. That cpu will be shared with lots of other users so your job will run very badly. 
 * By doing so, you break a very important rule, by running a computational intensive process on the head node, you seriously inconvenience all the other users logged on. They will not like that! 
@@ -1284,9 +1282,7 @@ An equivalent in Slurm is to specify the particular generic resource either in t
 
 This is what sets the resources for an ANSYS job. It will not run without it. For the first 4 processors you only need to ask for aa_r+1, for every additional processor over 4 you need to ask for a single aa_r_hpc license as well.
 
-You should be now able to check your output file, OscillatingPlate.db. 
-
-Two other ANSYS jobs you can launch and view results include pbs-script-pvm and pbs-cfx-benchmark. 
+You should be now able to check your output file, `OscillatingPlate.db`. Two other ANSYS jobs you can launch and view results include `pbs-script-pvm` and `pbs-cfx-benchmark`. 
 
 ## 3.9 Standard Job with License : Abaqus Finite Element Analysis
 
@@ -1298,12 +1294,9 @@ The case study here is a car door being propelled into a pole. This is analogous
 
 The cae file is "complete abaqus environment", the inp file is for input. The output files will be Door.odb and Door.jnl ("output database" and "journal")
 
-Submit the job using the following command:
-`qsub pbs-abaqus` 
+Submit the job using the following command: `qsub pbs-abaqus` 
 
-The status of the job can be queried using the following command:
-
-`tail -f door.sta` 
+The status of the job can be queried using the following command: `tail -f door.sta` 
 
 Once the job has completed, all files, with the exception of the output database (.ODB) file can be deleted. By default, ABAQUS/CAE writes the results of the analysis to the ODB file. When you create a step, ABAQUS/CAE generates a default output request for the step, which in the case of this analysis is Energy Output. Check the output files for the job to ensure it has run correctly.
 
