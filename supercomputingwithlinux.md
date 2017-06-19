@@ -1108,7 +1108,7 @@ Note that with TORQUE the nodes request is for system units (except when express
 | #PBS -l nodes=1:ppn=16| #PBS -l select=1:ncpus=16 | #SBATCH --nodes=1 |					|
 |			|				| #SBATCH --ntasks-per-node=16 | Sixteen cores or tasks from a system unit.	|
 | #PBS -l nodes=2:ppn=8 | #PBS -l select=2:ncpus=16 | #SBATCH --nodes=2	|				|
-|			|		| #SBATCH --ntasks-per-node=8		| Sixteen processors from two system units with eight each.	|
+|			|		| #SBATCH --ntasks-per-node=8		| Sixteen or tasks from two system units with eight each.	|
 | #PBS -l nodes="trifid001"	| #PBS -l nodes="trifid001" |	#SBATCH -w, --nodelist=trifid001 | To run specifically on trifid001	|
 
 Note that the details of these resource requests may vary significantly between systems. Some implementations of PBSPro, for example, also require the statement: mpiprocs=n after selecting the quantity of processors specifically for MPI jobs.
@@ -1128,7 +1128,7 @@ Sometimes you will require more or less memory that is typical for a job. In the
 ## 3.3 Frequently Used PBS and Scheduler Commands
 
 | TORQUE/PBSPro		| SLURM		| Description					|
-|-----------------------|---------------|						|
+|-----------------------|---------------|-----------------------------------------------|
 | qstat			| squeue	| Show status of jobs   			|
 | showq			| squeue	| Displays information about active, eligible, blocked, and/or recently completed jobs.					|
 | showq -u user=[username] |	squeue -u | Showq with a constraint, in this case, user. Not available in PBSPro [EDIT].									|
