@@ -1190,29 +1190,35 @@ Assuming all goes well, DLPOLY will read in the CONFIG, CONTROL, and FIELD data,
 
 GNU Octave is a mathematical application and programming language that is highly compatible with  MATLAB(R) but without the licensing restrictions. The following compares (using TORQUE examples) two job scripts written for the respective languages that generate the same result. 
 
-`#!/bin/sh`
-`#PBS -l nodes=1:ppn=1`
-`#PBS -l walltime=00:10:00`
-`module load matlab`
-`cd $PBS_O_WORKDIR` 
-`matlab -nodesktop -nodisplay -nosplash< polar-plot.m` 
+```
+#!/bin/sh`
+#PBS -l nodes=1:ppn=1
+#PBS -l walltime=00:10:00
+module load matlab
+cd $PBS_O_WORKDIR 
+matlab -nodesktop -nodisplay -nosplash< polar-plot.m
+```
 
-`#!/bin/sh` 
-`#PBS -l nodes=1:ppn=1` 
-`#PBS -l walltime=00:10:00` 
-`module load octave`
-`cd $PBS_O_WORKDIR` 
-`octave polar-plot.m` 
+```
+#!/bin/sh 
+#PBS -l nodes=1:ppn=1 
+#PBS -l walltime=00:10:00 
+module load octave
+cd $PBS_O_WORKDIR
+octave polar-plot.m
+```
 
 The Matlab example, more designed for a graphical interface, requires parameters to be passed to the executable to ensure that the output is conducted on the file itself. In both cases the .m file is polar-plot.m i.e.,
 
-`angle = 0:.1*pi:3*pi;`
-`            radius = exp(angle/20);`
-`            polar(angle,radius),...`
-`            title('An Example Polar Plot'),...`
-`            grid`
-`print -deps polar-plot.ps;`
-`quit;`
+```
+angle = 0:.1*pi:3*pi;
+            radius = exp(angle/20);
+            polar(angle,radius),...
+            title('An Example Polar Plot'),...
+            grid
+print -deps polar-plot.ps;`
+quit;
+```
 
 Simply put the PBS job is submitted, which calls the polar-plot.m file, which runs it's own script, which then generates a polar-plot.ps file which can be downloaded and viewed.
 
