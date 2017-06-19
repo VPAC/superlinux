@@ -1169,14 +1169,16 @@ tar xvf TEST1.tar.gz
 ```
 Inside the TEST1 directory, create the following file 'dltest' with nano. 
 
-`#!/bin/bash`
-`#PBS -N dlpoly1`
-`## Job resources`
-`#PBS -l nodes=1:ppn=4`
-`#PBS -l walltime=00:10:00`
-`module load dlpoly/4.03.2.1`
-`cd $PBS_O_WORKDIR` 
-`mpiexec DLPOLY.Z`
+```
+#!/bin/bash
+#PBS -N dlpoly1
+## Job resources
+#PBS -l nodes=1:ppn=4
+#PBS -l walltime=00:10:00
+module load dlpoly/4.03.2.1
+cd $PBS_O_WORKDIR
+mpiexec DLPOLY.Z
+```
 
 This job example is specific to TORQUE; if one is using PBSPro or SLURM, changes will need to be made as illustrated previously. 
 
