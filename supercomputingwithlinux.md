@@ -1125,6 +1125,10 @@ In a number of environments and email to the helpdesk with a request to extend w
 
 Sometimes you will require more or less memory that is typical for a job. In these cases the resource requests memory for the total job (mem for TORQUE and PBSPro), or more commonly, for each processing task (pmem), may be useful. A standard resource request is used e.g., #PBS -l pmem=2000mb for TORQUE and PBS or #SBATCH --mem=20000 for SLURM.
 
+**Backfilling**
+
+Many schedulers and resource managers use a backfilling algorithm to improve system utilisation and maximise job throughout. When more resource intensive (e.g., multiple node) jobs are running it is possible that gaps ends up in the resource allocation. To fill these gaps a best effort is made for low-resource jobs to slot into these spaces.
+
 ## 3.3 Frequently Used PBS and Scheduler Commands
 
 | TORQUE/PBSPro		| SLURM		| Description					|
