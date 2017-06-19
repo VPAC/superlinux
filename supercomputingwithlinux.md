@@ -1034,7 +1034,7 @@ In addition to this variety of implementations of PBS different institutions may
 
 This means that PBS and other job scripts that one may find from other sources are not always completely compatible. Pay attention to what implementation is being used on your system and ask the systems administrators what site-specific options have been enabled. 
 
-HPC clusters typically have a resource manager and a job scheduler; resource manager daemons operate on the compute nodes and provide information to the scheduler. Users submit jobs to pbs_server using the qsub command on the login node, which then informs the scheduler. When the scheduler determines that resources are available, it sends instructions to run the job with the node list back to the pbs_server which submits the the job to the first node in the node list.
+HPC clusters typically have a resource manager and a job scheduler, although these are often combined into the same software package (e.g., PBSPro, Slurm). The resource manager is responsible for managing the resources of the cluter, such as the the availble nodes and processors, memory etc, and to ensure that jobs do not overlap on such resources. The scheduler receives the jobs and controls the initiation and management of the jobs.
 
 The PBS command file does not need to be an executable. In the case of parallel jobs, the PBS command file is staged to, and executed on, the first allocated compute node only. The script is executed from the user's home directory by default, however the script may define the submission directory by using the $PBS_O_WORKDIR environment variable. 
 
