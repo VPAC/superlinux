@@ -1088,6 +1088,7 @@ The following is a sample PBS script for TORQUE and with comments for script for
 | cd $PBS_O_WORKDIR		| For TORUE and PBSPro, change to the directory where the job was launched; otherwise it will try to run it in the home directory. SLURM assumes that you want to run in the directory where you launched the job from, so this command is not necessary.		|
 | # Launching the job!		| Another comment line. 					|
 | mpiexec namd2 configfile	| Launching the executable “namd2”  with the file “configfile”. |
+| # srun namd2 configfile	| Launching the executable “namd2”  with the file “configfile” using srun for Slurm. |
 
 **Queues and Partitions**
 
@@ -1103,13 +1104,12 @@ Note that with TORQUE the nodes request is for system units (except when express
 
 | TORQUE		| PBSPro	| SLURM			|Description				|
 |-----------------------|-----------------------|---------------|---------------------------------------|
-| #PBS -l nodes=16	| #PBS -l ncpus=16	| #SBATCH --ntasks=16 | Sixteen cores			|
-| #PBS -l nodes=1:ppn=16| #PBS -l select=1:ncpus=16 | #SBATCH -n=1 |					|
-|			|				| #SBATCH --ntasks-per-node=16 Sixteen processors from a system unit or "chunk"								|
-| #PBS -l nodes=2:ppn=8 | #PBS -l select=2:ncpus=16 | #SBATCH -N=2	|				|
-|			|		| #SBATCH -n=16		| Sixteen processors from two system units or "chunks"  (eight each)					|
-| #PBS -l nodes="trifid001"	| #PBS -l nodes="trifid001" |	#SBATCH -w, --nodelist=trifid001 |
-To run specifically on trifid001									|
+| #PBS -l nodes=16	| #PBS -l ncpus=16	| #SBATCH --ntasks=16 | Sixteen cores or tasks			|
+| #PBS -l nodes=1:ppn=16| #PBS -l select=1:ncpus=16 | #SBATCH --nodes=1 |					|
+|			|				| #SBATCH --ntasks-per-node=16 | Sixteen cores or tasks from a system unit.	|
+| #PBS -l nodes=2:ppn=8 | #PBS -l select=2:ncpus=16 | #SBATCH --nodes=2	|				|
+|			|		| #SBATCH --ntasks-per-node=8		| Sixteen processors from two system units with eight each.	|
+| #PBS -l nodes="trifid001"	| #PBS -l nodes="trifid001" |	#SBATCH -w, --nodelist=trifid001 | To run specifically on trifid001	|
 
 Note that the details of these resource requests may vary significantly between systems. Some implementations of PBSPro, for example, also require the statement: mpiprocs=n after selecting the quantity of processors specifically for MPI jobs.
 
