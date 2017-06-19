@@ -1,6 +1,6 @@
-#Supercomputing with Linux
+# Supercomputing with Linux
 
-##About
+## About
 
 In 2000, six of Victoria's universities came together to form the Victorian Partnership for Advanced Computing, a body dedicated to providing high performance computing facilities, advanced programming, and training to Victoria's research community. In that time the organisation produced high performance compute facilities across the country, including two systems that were in the 'Top 500' systems at the time.
 
@@ -10,7 +10,7 @@ Between 2013 and 2015 researchers from the following institutions were taught by
 
 As VPAC comes to a close, the following publication compiles some of the material from the training manuals provided to these institutions to be provided to the wider research commuity. This book is designed for anyone interested in receiving a strong introduction to Linux command line skills in the context of using supercomputers.
 
-##The Repository
+## The Repository
 
 The most recent version of "Supercomputing with Linux" (ISBN 978-0-9943373-0-6) is kept on the VPAC Github (`https://github.com/VPAC/superlinux`). Job submission scripts and other associated files are included in each directory according to the chapter number.
 
