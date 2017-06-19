@@ -1443,10 +1443,9 @@ In part 2 of this tutorial, you will be using the molecular visualization progra
 
 Download the entire NAMD example directory back to your local computer. For example:
 
-`scp  -r [your account name]@trifid.vpac.org:namd .`    
+`scp  -r [your account name]@trifid.vpac.org:namd .` 
 
-You can now start VMD and load up the trajectory data.  In a new terminal type: 
- vmd 
+You can now start VMD and load up the trajectory data.  In a new terminal type: `vmd` 
 
 Three windows will appear: 
  
@@ -1454,55 +1453,58 @@ The Main panel
 The Display
 The Console
 
-The first file you need to read into VMD is the protein structure file,(1ubq_example.psf in this case).    The .psf file contains important information about the system such as which atoms are bonded together, what charge they are, and the mass of each atom type, but does not contain any spacial information.  
+The first file you need to read into VMD is the protein structure file, (1ubq_example.psf in this case). The .psf file contains important information about the system such as which atoms are bonded together, what charge they are, and the mass of each atom type, but does not contain any spacial information. 
 
 From the Main panel: 
-File -> New molecule -> (browse: 1ubq_example.psf) -> load     
+File - New molecule - (browse: `1ubq_example.psf`) - load
 
 Next load the coordinates from the pdb file:
 
-File -> Load data onto molecule -> (browse:  1ubq_example.pdb) -> load    
+File - Load data onto molecule - (browse:  `1ubq_example.pdb`) - load 
 
-Now you should have the model in the display that  can be moved around with the mouse.    
+Now you should have the model in the display that  can be moved around with the mouse. 
 
 This is the initial starting position of the simulation.   Next load in the trajectory data into VMD:
 
-File -> Load data onto molecule -> (browse: 1ubq_example_output_01.dcd) -> load    
+File - Load data onto molecule - (browse: `1ubq_example_output_01.dcd`) - load
 
 To summarise, load structure, then data, then trajectory.
 
-This data is shows how the atoms in the model moved around during the course of the NAMD simulation.  You can play the trajectory by pressing the bottom right arrow of the Main panel.  (Use the speed scroll bar to the left of that button to slow it down). 
+This data is shows how the atoms in the model moved around during the course of the NAMD simulation.  You can play the trajectory by pressing the bottom right arrow of the Main panel. Use the speed scroll bar to the left of that button to slow it down.
 
-What you are seeing is supposed to represent is the molecular motion of the protein on an extremely small time scale.   The NAMD program calculates how the molecule moves over time given certain parameters such as temperature.  These models and simulations can give insight into how proteins behave and their role in biological function and certain diseases.  
+What you are seeing is supposed to represent is the molecular motion of the protein on an extremely small time scale.   The NAMD program calculates how the molecule moves over time given certain parameters such as temperature.  These models and simulations can give insight into how proteins behave and their role in biological function and certain diseases.
 
 From the main panel you can bring up the Representations dialog to play with more rendering types: 
 
-Graphics -> Representations   
+Graphics - Representations   
 
 Comparison of Job Time from NAMD
 
 The default pbs script for NAMD is 4 nodes (i.e., 4 cores), which are sourced from anywhere on the cluster. The output file also describes the time that this took, along with other resources used:
 
+```
 tail Namd_1ubq_example_output.txt
 WallClock: 20.340076  CPUTime: 20.340076  Memory: 279.839844 MB
+```
 
 It is worthwhile experimenting with different configurations to determine the best combination of processors (and memory) to suit each task or group of tasks. For example, consider the results from the following (using TORQUE's descriptions):
 
-
+```
 #PBS -l nodes=4
-4 cores from anywhere on the cluster
+# 4 cores from anywhere on the cluster
 #PBS -l nodes=1:ppn=4
-4 cores from one specific system unit
+# 4 cores from one specific system unit
 #PBS -l nodes=2
-2 cores from anywhere on the cluster
+# 2 cores from anywhere on the cluster
 #PBS -l nodes=8
-8 cores from anywhere on the cluster
+# 8 cores from anywhere on the cluster
 #PBS -l nodes=2:ppn=4
-8 cores, 4 from one system unit, 4 from another
+# 8 cores, 4 from one system unit, 4 from another
 #PBS -l nodes=16
-16 cores from anywhere on the cluster
+# 16 cores from anywhere on the cluster
 #PBS -l nodes=1:ppn=16
-16 cores from one system unit
+# 16 cores from one system unit
+```
 
 It is worth running each of these jobs in succession and noting the walltime results.
 
