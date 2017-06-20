@@ -1524,10 +1524,8 @@ Two of the hidden files are .bash_profile and .bashrc . These are startup files 
 
 Users can interact directly with the shell, or with an application which interacts with the shell as the image portrays (image from opensuse.org). A user submits their commands to the shell, which then either executes them directly or passes them on to other programs. These programs in turn request lower-level services from the kernel. Unlike some operating systems, Linux has a number of different shells available to users some of which we'll briefly explore in this course; the default most of these days is bash. 
 
-.bash_profile is executed when you login. 
-.bashrc is typically used for non login shells. 
-
-What does this mean? 
+`.bash_profile` is executed when you login. 
+`.bashrc` is typically used for non login shells. 
 
 When Bash is invoked as an interactive login shell it first reads and executes commands from the file `/etc/profile`, if that file exists. After reading that file, it looks for `~/.bash_profile`, `~/.bash_login`, and `~/.profile`, in that order, and reads and executes commands from the first one that exists and is readable. 
 
@@ -1654,27 +1652,22 @@ Vim may initially seem a little cryptic with its commands, and "dual-clutch" sys
 
 Relative movement can be prefixed with a count, to tell vim to repeat the motion. 
 
-h j k l
-Move the cursor to the left, down, up, right, respectively. These also take a count: '8l' moves the cursor 8 letters to the right. 
-Return + - 
-Move the cursor down (Return and '+') or up ('-'). 
-w W b B
-Move forward ('w' and 'W') or back ('b' and 'B') by a word. 'w' and 'b' treat anything non-alphanumeric as a word delimiter; 'W' and 'B' honor only white space. Can be combined with quantity e.g., 2w, move forward two words.
-} {
-Move to end of current or previous paragraph, respectively. 
-) (
-Move to end of current or previous sentence, respectively. 
+| Command	| Description								|
+|---------------|-----------------------------------------------------------------------|
+| h j k l	| Move the cursor to the left, down, up, right, respectively. These also take a count: '8l' moves the cursor 8 letters to the right.						| 
+| Return + - 	| Move the cursor down (Return and '+') or up ('-').			| 
+| w W b B	| Move forward ('w' and 'W') or back ('b' and 'B') by a word. 'w' and 'b' treat anything non-alphanumeric as a word delimiter; 'W' and 'B' honor only white space. Can be combined with quantity e.g., 2w, move forward two words.							|
+| } {		| Move to end of current o r previous paragraph, respectively.		| 
+| ) (		| Move to end of current or previous sentence, respectively. 		|
 
 **Absolute movement**
 
-G
-Go to (a specified line). E.g., "10G" moves the cursor to line 10.  Without a count, vi goes to the last line of the buffer. 
-^
-Move to first nonblank character on the current line. 
-$
-Move to end of current line. 
-0
-Move to beginning of current line. 
+| Command	| Description								|
+|---------------|-----------------------------------------------------------------------|
+| G 		| Go to (a specified line). E.g., "10G" moves the cursor to line 10.  Without a count, vim goes to the last line of the buffer.						| 
+| ^		| Move to first nonblank character on the current line. 		|
+| $		| Move to end of current line. 						|
+| 0		| Move to beginning of current line. 					|
 
 **Operators**
 
@@ -1682,30 +1675,20 @@ Many text modification commands are known as operators. They can be prefixed wit
 
 These are examples of operators: 
 
-o O
-Open a line below (o) or above (O) the cursor and change to insert mode.
-x
-Delete a character under the cursor.
-d
-Delete a line. 'd10G' deletes lines from current line until line 10 (inclusive).  Can be added with motion (e.g., dw, delete to end of a word excluding the character the cursor is under)
-i
-Enter to insert mode. To return to command mode use <ESC>
-a A
-Append text after the cursor (a) or at the end of the line (A).
-u, U
-Undo the last command (u), or undo changes on an entire line (U)
-Cntrl-R
-Redo; undo the undos.
-y
-Yank (or copy) text (y) or a line (yy), can be combined with movement commands (e.g., 2yy to copy two lines).
-p
-Put (or paste), put previously deleted text after the cursor.
-R
-Replace text; every typed character replaces existing characters.
-c
-Change operator; allows you to change from the cursor with motion.  eg. Type  ce  to change from the cursor to the end of the word,  c$  to change to the end of a line.
-< >
-indent a region. '<}' indents left all the lines from here until end of  paragraph. '>/xxx' indents right lines from here until the line containing  the pattern 'xxx'. 
+| Command	| Description									|
+|---------------|-------------------------------------------------------------------------------|
+| o O		| Open a line below (o) or above (O) the cursor and change to insert mode.	|
+| x		| Delete a character under the cursor.						|
+| d		| Delete a line. 'd10G' deletes lines from current line until line 10 (inclusive).  Can be added with motion (e.g., dw, delete to end of a word excluding the character the cursor is under) |
+| i		| Enter to insert mode. To return to command mode use <ESC>			|
+| a A		| Append text after the cursor (a) or at the end of the line (A).		|
+| u, U		| Undo the last command (u), or undo changes on an entire line (U)		|
+| Cntrl-R	| Redo; undo the undos.								|
+| y		| Yank (or copy) text (y) or a line (yy), can be combined with movement commands (e.g., 2yy to copy two lines).										|
+| p		| Put (or paste), put previously deleted text after the cursor.			|
+| R		| Replace text; every typed character replaces existing characters.		|
+| c		| Change operator; allows you to change from the cursor with motion.  eg. Type  ce  to change from the cursor to the end of the word,  c$  to change to the end of a line.		|
+| < >		| indent a region. '<}' indents left all the lines from here until end of  paragraph. '>/xxx' indents right lines from here until the line containing  the pattern 'xxx'. 		|
 
 In some instances, if the motion command repeats the operator character (as in 'dd'), the region is a whole line (e.g., 'dd' deletes the current line. Prefixing it with a count repeats (or makes it apply to more than one), e.g., '10dd' deletes 10 lines. 
 
@@ -1717,37 +1700,27 @@ For example, to change the contents in a column of text, select the column with 
 
 **Other Commands**
 
-:/pattern  
-   Search for pattern and place the cursor at the start of the matched text.
-:%s/foo/bar/gc
-Global search for 'foo' and replace with 'bar' globally (g) and with confirmations (c). 
-:?pattern
-Search in the reverse direction. 
-%
-Move the cursor to the matching brace or bracket: {} [] (). 
-.
-Repeat the last command which has modified the file. 
-:!program
-Execute an external command
-:w filename
-Writes (saves) the current document. If the optional filename is provided, the text is saved in the specified file. 
-:q
-Quits the editor. 
-:e
-Loads the specified file into the editor. 
-:n
-Loads the next file into the editor. Useful when vim was invoked from the command line with multiple file names (e.g., vim -p filename1 filename2 filename3)
-:r filename
-Reads (inserts) the content of the specified file into the current document. 
-v
-Go into visual mode to select an area for action.
-:set number
-Turns on line numbers. 
+| Command		| Description									|
+|-----------------------|-------------------------------------------------------------------------------|
+| :/pattern		| Search for pattern and place the cursor at the start of the matched text.			| 
+| :%s/foo/bar/gc	|Global search for 'foo' and replace with 'bar' globally (g) and with confirmations (c).	| 
+| :?pattern		| Search in the reverse direction. 					       |
+| %			| Move the cursor to the matching brace or bracket: {} [] (). 		       |
+| . 			| Repeat the last command which has modified the file.			       | 
+| :!program		| Execute an external command						       |
+| :w filename		| Writes (saves) the current document. If the optional filename is provided, the text is saved in the specified file. 								       |
+| :q			| Quits the editor. 							       |
+| :e			| Loads the specified file into the editor. 				       |
+| :n			| Loads the next file into the editor. Useful when vim was invoked from the command line with multiple file names (e.g., vim -p filename1 filename2 filename3)		       |
+| :r filename		| Reads (inserts) the content of the specified file into the current document. | 
+| v			|	Go into visual mode to select an area for action.		       |
+| :set number		| Turns on line numbers. 						       |
 
 **Vimrc**
 
 Like .bash_profile and .bashrc an equivalent can be created with a .vimrc.  The following is a small and simple example; you will note that " is a comment marker.  Other options  can be found by going to :help options in vim itself.
 
+```
 set nocompatible "use vim defaults rather than force compatibility with vi
 set incsearch  "Incremental searching; vim will search for text as you enter it
 set tabstop=4 "Sets tabs to four characters (default is eight)
@@ -1756,6 +1729,7 @@ au BufWritePost   *.sh !chmod +x % "Converts .sh files to executable
 au BufWritePost   *.pl !chmod +x % "Converts .pl files to executable 
 map <F7> :tabn <ENTER> 
 map <F8> :tabp <ENTER>
+```
 
 Of particular note is the commands to automatically turn files that end in .sh or .pl into executables when on writes out from the buffer, and the keyboard bindings for tabbed editing.
 
@@ -1765,14 +1739,12 @@ The map command, for example, turns the keys F7 and F8 to tabn and tabp respecti
 
 As an alternative for working with multiple windows and files simultaneously, new windows can be created in vim with the following commands
 
-:sp filename
-Split the window and create or open a new file. 
-ctrl+ws
-Split windows
-ctrl+wv
-Split windows vertically
-ctrl+ww
-Switch between windows
+| Command		| Description									|
+|-----------------------|-------------------------------------------------------------------------------|
+| :sp filename		| Split the window and create or open a new file.                               |
+| ctrl+ws		| Split windows.								|
+| ctrl+wv		| Split windows vertically							|
+| ctrl+ww		| Switch between windows							|
 
 **Vimtutorial and Vimgolf**
 
