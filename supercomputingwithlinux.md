@@ -1192,15 +1192,15 @@ Assuming all goes well, DLPOLY will read in the CONFIG, CONTROL, and FIELD data,
 
 ## 3.5 Two Standard Jobs with Graphic Output: GNU Octave and MATLAB(R)
 
-GNU Octave is a mathematical application and programming language that is highly compatible with  MATLAB(R) but without the licensing restrictions. The following compares (using TORQUE examples) two job scripts written for the respective languages that generate the same result. 
+GNU Octave is a mathematical application and programming language that is highly compatible with MATLAB(R) but without the licensing restrictions. The following compares (using TORQUE examples) two job scripts written for the respective languages that generate the same result. 
 
 ```
-#!/bin/sh`
+#!/bin/sh
 #PBS -l nodes=1:ppn=1
 #PBS -l walltime=00:10:00
 module load matlab
-cd $PBS_O_WORKDIR 
-matlab -nodesktop -nodisplay -nosplash< polar-plot.m
+cd $PBS\_O\_WORKDIR 
+matlab -nodesktop -nodisplay -nosplash < polar-plot.m
 ```
 
 ```
@@ -1208,7 +1208,7 @@ matlab -nodesktop -nodisplay -nosplash< polar-plot.m
 #PBS -l nodes=1:ppn=1 
 #PBS -l walltime=00:10:00 
 module load octave
-cd $PBS_O_WORKDIR
+cd $PBS\_O\_WORKDIR
 octave polar-plot.m
 ```
 
@@ -1238,7 +1238,7 @@ Submit the job with: qsub pbs-script, check the status of the job (`qstat -u [us
 
 ```
 [lev@trifid R]$ ls
-MyJob.e32933  MyJob.o32933  pbs-script  Rplots.pdf  trees91.csv  tutorial.R  w1.dat` 
+MyJob.e32933  MyJob.o32933  pbs-script  Rplots.pdf  trees91.csv  tutorial.R  w1.dat
 ```
 
 The two files `MyJob.e32933` and `MyJob.o32933` are the job error and output files, respectively. The error file in this case is empty, but can be useful for debugging purposes if a job fails. The output file in this instance documents the actions of the program, including the significant correlation result. The real output is Rplots.pdf, which can be copied from the cluster to the desktop and then displayed using the command evince Rplots.pdf. 
@@ -1354,7 +1354,7 @@ This is saying use the program "mpiexec" to launch the parallel program "namd2" 
 
 Let's have a look at the NAMD configuration script: 
 
-`less Ubiquitin_example.conf`   
+`less Ubiquitin_example.conf`
 
 The lines near the top define the input files, (the protein structure file .psf, and the coordinate file, .pdb) and also the name of the output files.:
 
@@ -1495,21 +1495,15 @@ WallClock: 20.340076  CPUTime: 20.340076  Memory: 279.839844 MB
 
 It is worthwhile experimenting with different configurations to determine the best combination of processors (and memory) to suit each task or group of tasks. For example, consider the results from the following (using TORQUE's descriptions):
 
-```
-#PBS -l nodes=4
-# 4 cores from anywhere on the cluster
-#PBS -l nodes=1:ppn=4
-# 4 cores from one specific system unit
-#PBS -l nodes=2
-# 2 cores from anywhere on the cluster
-#PBS -l nodes=8
-# 8 cores from anywhere on the cluster
-#PBS -l nodes=2:ppn=4
-# 8 cores, 4 from one system unit, 4 from another
-#PBS -l nodes=16
-# 16 cores from anywhere on the cluster
-#PBS -l nodes=1:ppn=16
-# 16 cores from one system unit
+| Resource Request		| Description					|
+|-------------------------------|-----------------------------------------------|
+| #PBS -l nodes=4		| 4 cores from anywhere on the cluster		|
+| #PBS -l nodes=1:ppn=4		| 4 cores from one specific system unit		|
+| #PBS -l nodes=2		| 2 cores from anywhere on the cluster		|
+| #PBS -l nodes=8		| 8 cores from anywhere on the cluster		|
+| #PBS -l nodes=2:ppn=4		| 8 cores, 4 from two nodes each		|
+| #PBS -l nodes=16		| 16 cores from anywhere on the cluster		|
+| #PBS -l nodes=1:ppn=16	| 16 cores from one system unit			|
 ```
 
 It is worth running each of these jobs in succession and noting the walltime results.
@@ -2579,8 +2573,8 @@ In addition to variable assignments, bash scripting allows for  loops (for/do, w
 
  The until/do loop conducts the same action, but with the count in reverse. The next until/do produces the same results as the first, but not the difference in the conditional test. The main difference between while/do and until/do is that the while/do loop repeats the code block while the conditional is true whilst the until/do loop repeats the block whilst the expression is false.
 
-for file in *.mp3 ; do ffmpeg -i "${file}" "${file/%mp3/ogg}" ; done
-for i in *.jpeg ; do convert "$i" "${i%.*}.png" ; done
+`for file in *.mp3 ; do ffmpeg -i "${file}" "${file/%mp3/ogg}" ; done`
+`for i in *.jpeg ; do convert "$i" "${i%.*}.png" ; done`
 
 Note the use of command substitution by using $(command); sometimes you will find the use of backticks instead (e.g., for i in * ; do mv $i `echo $i | tr "A-Z" "a-z"` ; done); this is not recommended. They are (a) not a POSIX standard, (b) can be difficult to read with deep escapes and (c) can be very dangerous if mistaken for strong quotes.
 
@@ -2588,7 +2582,7 @@ x=1; while [ $x -le 5 ]; do echo "While-do count up $x"; x=$(( $x + 1 )); done
 x=5; until [ $x -le 0 ]; do echo "Until-do count down $x"; x=$(( $x - 1 )); done
 x=1; until [ $x = 6 ]; do echo "Until-do count up $x"; x=$(( $x + 1 )); done
 
-Consider converting these files into permanent bash scripts and saving them in one's own bin directory. For example, the first script, which converts files to lower case, could be saved as the text file 'lowercase' in /home/<username>/bin, and changed to an executable (chmod +x lowercase).
+Consider converting these files into permanent bash scripts and saving them in one's own bin directory. For example, the first script, which converts files to lower case, could be saved as the text file 'lowercase.sh' in /home/<username>/bin, and changed to an executable (chmod +x lowercase).
 
 #!/bin/bash
 for i
@@ -2596,7 +2590,7 @@ do
 	mv $i $(echo $i | tr "A-Z" "a-z")
 done
 
-Now the command lowercase <filename1> <filename2> ... <filenamei> can be run anytime.
+Now the command `lowercase.sh` can be run anytime.
 
 The until/do loop can serve as a trigger for events. In the following script, access to a system is tested with ping every few minutes until a connection is made whereupon it opens an SSH session. 
 
