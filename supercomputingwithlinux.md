@@ -1504,7 +1504,6 @@ It is worthwhile experimenting with different configurations to determine the be
 | #PBS -l nodes=2:ppn=4		| 8 cores, 4 from two nodes each		|
 | #PBS -l nodes=16		| 16 cores from anywhere on the cluster		|
 | #PBS -l nodes=1:ppn=16	| 16 cores from one system unit			|
-```
 
 It is worth running each of these jobs in succession and noting the walltime results.
 
