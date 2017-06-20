@@ -2582,7 +2582,7 @@ In addition to variable assignments, bash scripting allows for  loops (for/do, w
 for file in *.mp3 ; do ffmpeg -i "${file}" "${file/%mp3/ogg}" ; done
 for i in *.jpeg ; do convert "$i" "${i%.*}.png" ; done
 
-Note the use of command substitution by using $(command); sometimes you will find the use of backticks instead (e.g., for i in * ; do mv $i `echo $i | tr "A-Z" "a-z"` ; done); this is not recommended.
+Note the use of command substitution by using $(command); sometimes you will find the use of backticks instead (e.g., for i in * ; do mv $i `echo $i | tr "A-Z" "a-z"` ; done); this is not recommended. They are (a) not a POSIX standard, (b) can be difficult to read with deep escapes and (c) can be very dangerous if mistaken for strong quotes.
 
 x=1; while [ $x -le 5 ]; do echo "While-do count up $x"; x=$(( $x + 1 )); done
 x=5; until [ $x -le 0 ]; do echo "Until-do count down $x"; x=$(( $x - 1 )); done
