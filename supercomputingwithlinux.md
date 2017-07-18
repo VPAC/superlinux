@@ -3035,7 +3035,7 @@ save -append demo-result.txt k;
 
 ### Job Dependencies
 
-It is not unusual for a user to make the launch of one job dependent on the successful completion of another job. The most common example is when a user wishes to make the output of one job the input of a second job. They might launch both jobs simultaneously, but they do not want the second job to run before the first job has completed successfully. In other words, they want a conditional dependency on the job,
+It is not unusual for a user to make the launch of one job dependent on the successful completion of another job. The most common example is when a user wishes to make the output of one job the input of a second job. They might launch both jobs simultaneously, but they do not want the second job to run before the first job has completed successfully. In other words, they want a conditional dependency on the job.
 
 PBS allows a several conditional directives to be placed on a job which are tested prior to the job being intiatied, which are summarised as after, afterok, afternotok, before, beforeok, and beforenotok (e.g., `PBS -W depend=afterok:xxxxx`). Multiple jobs can be listed as dependencies with colon separated values (e.g., `#PBS -W depend=before:jobid0:jobid1`). Fortunately nobody has been to have dependency of "during"!
 
