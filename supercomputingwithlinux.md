@@ -2977,18 +2977,10 @@ With TORQUE job arrays are submitted through the -t (tasks) option to qsub, or b
 
 Job arrays can be sent with a varying range and step number. The following table illustrates the differences in according to scheduler:
 
-TORQUE
-PBSPro
-SLURM
-Description
-#PBS -t 1-10
-#PBS -J 1-10
-#sbatch --array=1-10
-Submit job array by ID 1 to 10
-#PBS -t 1,3,5,7,9
-#PBS -J 1-10:2
-#sbatch –array=1-10:2
-Submit job array by ID 1, 3, 5, 7, 9
+|TORQUE		| PBSPro	| SLURM			| Description			|
+|:--------------|---------------|-----------------------|-------------------------------|
+|`#PBS -t 1-10` |`#PBS -J 1-10`	| #sbatch --array=1-10	| Submit job array by ID 1 to 10|
+|`#PBS -t 1,3,5,7,9` | `#PBS -J 1-10:2` | `#sbatch –array=1-10:2` | Submit job array by ID 1, 3, 5, 7, 9|
 
 The qdel, qhold, and qrls commands from TORQUE and PBS can operate on array - either the entire array or a range of that array, just as the equivalent job control commands in SLURM would operate, as the jobs receive both a JobID and an ArrayTaskID (e.g., scancel, suspend, resume).  Any job in the array may be accessed normally by using that job's ID, just as you would with any other job. Each job is considered independent in terms of launch and walltime.
 
@@ -3041,30 +3033,24 @@ M=rand(10,10);
 k=svd(M); 
 save -append demo-result.txt k;
 
-Job Dependencies 
+### Job Dependencies
 
-It is not unusual for a user to make the launch of one job dependent on the successful completion of another job. PBS allows this through the afterok (or aftenotok, or afterany) command in a PBS script by adding the job id (i.e PBS -W depend=afterok:xxxxx). 
+It is not unusual for a user to make the launch of one job dependent on the successful completion of another job. The most common example is when a user wishes to make the output of one job the input of a second job. They might launch both jobs simultaneously, but they do not want the second job to run before the first job has completed successfully. In other words, they want a conditional dependency on the job,
 
-Directive 
-Description 
-after
-This job may be scheduled after jobs jobid have started 
-afterok 
-This job may be scheduled after jobs jobid have completed with no errors 
-afternotok 
-This job may be scheduled after jobs jobid have completed with errors 
-afterany 
-This job may be scheduled after jobs jobid have completed with or without errors 
-before 
-After this job begins, jobs jobid may be scheduled 
-beforeok 
-After this job completes without errors, jobs jobid may be scheduled 
-beforenotok 
-After this job completes with errors, jobs jobid may be scheduled 
-beforeany 
-After this job completes with or without errors, jobs jobid may be scheduled 
+PBS allows a several conditional directives to be placed on a job which are tested prior to the job being intiatied, which are summarised as after, afterok, afternotok, before, beforeok, and beforenotok (e.g., `PBS -W depend=afterok:xxxxx`). Multiple jobs can be listed as dependencies with colon separated values (e.g., `#PBS -W depend=before:jobid0:jobid1`). Fortunately nobody has been to have dependency of "during"!
 
-There are two alternatives on how to get around this. The first is to set the job id as a variable (e.g., #PBS -W x=depend:afterok:myfirstjob). The second is to set the job id as a variable as part of a job submission (e.g., qsub -W depend=afterany:$FIRST myjob5.pbs). 
+| Directive	| Description 									|
+|:--------------|-------------------------------------------------------------------------------|
+| after		| This job may be scheduled after jobs jobid have started 			|
+| afterok 	| This job may be scheduled after jobs jobid have completed with no errors	|	
+| afternotok 	| This job may be scheduled after jobs jobid have completed with errors 	|
+| afterany 	| This job may be scheduled after jobs jobid have completed with or without errors |
+| before 	| After this job begins, jobs jobid may be scheduled 				|
+| beforeok 	| After this job completes without errors, jobs jobid may be scheduled 		|
+| beforenotok 	| After this job completes with errors, jobs jobid may be scheduled 		|
+| beforeany 	| After this job completes with or without errors, jobs jobid may be scheduled 	|
+
+There are two alternatives on how submit jobs with dependencies. The first is to set the job id as a variable (e.g., #PBS -W x=depend:afterok:myfirstjob). The second is to set the job id as a variable as part of a job submission (e.g., qsub -W depend=afterany:$FIRST myjob5.pbs). 
 
 The following example is for TORQUE for mysecondjob.pbs. It differs from myfirstjob.pbs insofar that it has the dependency line that it cannot run until the myfirstjob.pbs has completed successfully. 
 
@@ -3077,16 +3063,17 @@ cd $PBS_O_WORKDIR
 echo $(hostname ) $PBS_JOBNAME running $PBS_JOBID >> hostname.txt 
 sleep 60
 
-Interestingly, with PBSPro and SLURM this method would not work, as it requires the jobID rather than the name variable to be sent as the dependency. This can be difficult to include in a script, but it can be included in the command line submission e.g.,
+Interestingly, with PBSPro and SLURM this method would not work, as it requires the jobID rather than the name variable to be sent as the dependency. Using the job name can be very problematic as different jobs might have been set with the same name by user submissions. On the other hand setting a jobID can be difficult to include in a script, but it can be included in the command line submission e.g.,
 
-qsub -W depend=afterok:<<jobid>> mysecondjob.pbs
+`qsub -W depend=afterok:<<jobid>> mysecondjob.pbs`
 
 With SLURM the equivalent would be:
 
-sbatch --dependency=afterok:<<jobid>> mysecondjob
+`sbatch --dependency=afterok:<<jobid>> mysecondjob`
 
 Another method for PBSPro and SLURM would be to add these commands into a script. This also works for TORQUE.
 
+```
 #!/bin/bash 
 FIRST=$(qsub myjob4.pbs) 
 echo $FIRST 
@@ -3094,8 +3081,21 @@ SECOND=$(qsub -W depend=afterany:$FIRST myjob5.pbs)
 echo $SECOND 
 THIRD=$(qsub -W depend=afterany:$SECOND myjob6.pbs) 
 echo $THIRD 
+```
 
-With SLURM the logic is identical, even if the syntax is slightly different.
+With Slurm the logic is identical, even if the syntax is slightly different. When a Slurm job is submitted the job ID is parsed at a different word in sequence:
+
+```
+#!/bin/bash
+FIRST=$(sbatch myjob4.slurm)
+echo $FIRST
+SUB1=$(echo ${FIRST##* })
+SECOND=$(sbatch --dependency=afterany:$SUB1 myjob5.slurm)
+echo $SECOND
+SUB2=$(echo ${SECOND##* })
+THIRD=$(sbatch --dependency=afterany:$SUB2 myjob6.slurm)
+echo $THIRD
+```
 
 ### Interactive Jobs
 	
