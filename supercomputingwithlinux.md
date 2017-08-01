@@ -75,7 +75,7 @@ All trademarks are property of their respective owners.
 6.2 Autogenerating PBS Scripts with a Heredoc
 6.3 PBS Job Arrays, Dependencies, and Interactive Jobs
 
-7.0 Command Summary
+7.0 Command Summary and References
 7.1 Linux Commands
 7.2 File System
 7.3 Queuing Commands
@@ -2007,58 +2007,65 @@ So, in summary:
 
 ## 4.6 Attributes, Types, Ownership
 
-The command chmod (change mode) changes the file system modes of files and directories. It is normally executed on permissions, but can also include special modes. The command uses either an octal reference or a symbolic reference for notation. To see what permissions currently exist, use the ls -l command. Among others there should be a file something like the following;
+The command chmod (change mode) changes the file system modes of files and directories. It is normally executed on permissions, but can also include special modes. The command uses either an octal reference or a symbolic reference for notation. To see what permissions currently exist, use the `ls -l` command. Among others there should be a file something like the following;
 
-[train01@trifid ~] ls -l 
--rw-r--r-- 2 lev vpac  379 Jul  1 10:32 quakes.csv
+`[train01@trifid ~] ls -l`
+`-rw-r--r-- 2 lev vpac  379 Jul  1 10:32 quakes.csv`
 
-The file attributes and permissions are the series -rw-r--r-- 
+The file attributes and permissions are the series `-rw-r--r--` . The first character indicates the file type. Usually you will encounter either a `-` for a regular file, a `d` for a directory, and `l` for a symbolic link. Less common file types include `b` for block devices (e.g., hard drives, ram etc), `c` for character devices which stream data one character at a time (e.g., mice, keyboards, virtual terminals). A common place to find this range of file types is in the devices directory. This can be checked with `ls -lart /dev/ &#124; less`.
 
-The first character indicates the file type. Usually you will encounter either a "-" for a regular file, a "d" for a directory, and "l" for a symbolic link. Less common file types include "b" for block devices (e.g., hard drives, ram etc), "c" for character devices which stream data one character at a time (e.g., mice, keyboards, virtual terminals). 
+After the first character the notation should be understood in terms of three groups of three. The first group refers to what the owners can do with the file, the second group what group members can do and the third group what other users can do. The triplet of characters in each group are usually `r` for "readable", `w` for writable" and `x` for executable. Executable also implies conducting an executable action on a directory, thus `x` is usually found for directories as well. If there is a `-` in a particular location, there is no permission. 
 
-After the first character the notation should be understood in terms of three groups of three. The first group refers to what the owners can do with the file, the second group what group members can do and the third group what other users can do. The triplet of characters in each group are usually "r" for "readable", "w" for writable" and "x" for executable. Executable also implies 'searching', thus "x" is usually found for directories as well. If there is a "-" in a particular location, there is no permission. 
+Note that there is no inheritance of permissions; just because a directory is set to `x` it doesn't mean the files within it are executable. So in the example given above the regular file `quakes.csv` can be read and written to by user `lev`, and can be read by the group `vpac` and all others.
 
-Note that there is no inheritance of permissions; just because a directory is set to "x" it doesn't mean the files within it are executable. So in the example given above the regular file quakes.csv can be read and written to by user "lev", and can be read by the group "vpac" and all others.
+Occasionally one will encounter a `s` for setuid on the execute field. If the execute bit for the owner is set to `s` the set user ID bit is set causing any user or process that run the executable to have access to system resources as though they are the owner of the file. If the bit is set for the group, the set group ID bit is set and the user running the program is given access based on access permission for the group the file belongs to. 
 
-It is also possible to encounter a "s" for setuid. This is only found in the execute field. If the execute bit for the owner is set to "s" the set user ID bit is set causing any user or process that run the executable to have access to system resources as though they are the owner of the file. If the bit is set for the group, the set group ID bit is set and the user running the program is given access based on access permission for the group the file belongs to. 
+Finally there is `t`, "save text attribute", or more commonly known as "sticky bit". This allows a user to delete or modify only those files in the directory that they own or have write permission for. A typical example is the `/tmp` directory, which is world-writeable
 
-Finally there is "t", "save text attribute", or more commonly known as "sticky bit". This allows a user to delete or modify only those files in the directory that they own or have write permission for. A typical example is the /tmp directory, which is world-writeable
+`[train01@trifid ~] ls -l /tmp`
+`drwxrwxrwt  29 root root 36864 Nov 11 11:42 tmp`
 
-[train01@trifid ~] ls -l /tmp
-drwxrwxrwt  29 root root 36864 Nov 11 11:42 tmp
+Whilst everyone can read, write, and access the directory, the `t` indicates that only the user that created a file in this directory can delete that file. 
 
-Whilst everyone can read, write, and access the directory, the "t'' indicates that only the user that created a file in this directory can delete that file. 
-To chmod a file you have to own it. The command is : chmod [option] [symbolic | octal] file. For options, the most common is -R or --recursive which changes files and directories recursively. 
+To chmod a file you have to own it. The command is : `chmod [option] [symbolic | octal]` file. For options, the most common is `-R` or `--recursive` which changes files and directories recursively. 
 
-The symbolic or octal option is two ways of setting permissions. For symbolic notation, first establish the user reference, either "u" (user, the owner of the file), "g" (group, members of the file's group), "o" (others, neither the owner or group members), or "a" (all). If a user reference is not specified the operator and mode applies to all.
+The symbolic or octal option is two ways of setting permissions. For symbolic notation, first establish the user reference, either `u` (user, the owner of the file), `g` (group, members of the file's group), `o` (others, neither the owner or group members), or `a` (all). If a user reference is not specified the operator and mode applies to all.
 
-After this determine the operation that is going to be expressed, either "+" (add the mode), "-" remove the mode, or "=" (equals, mode only equals that expression). Finally, specify the mode permissions as described above, "r" (read), "w" (write), "x" (execute), "s" (setuid, setgid), "t" (sticky). One final mode permission is "X" (exclusive execute) which sets execute only if the file or directory already has at least one execute permission (user, group, other). Usually this is applied to directory trees with "-R" and "+" allowing for the addition of execute permissions without setting execute on normal files (such as text files). As an example the first command would set execute on all files for everyone regardless of the file type, to the current directory and all subdirectories, whereas the second would not:
+After this determine the operation that is going to be expressed, either `+` (add the mode), `-` remove the mode, or `=` (equals, mode only equals that expression). Finally, specify the mode permissions as described above, `r` (read), `w` (write), `x` (execute), `s` (setuid, setgid), `t` (sticky). 
 
-chmod -R a+rx .		
-chmod -R a+rX .
+One final mode permission is `X` (exclusive execute) which sets execute only if the file or directory already has at least one execute permission (user, group, other). Usually this is applied to directory trees with `-R` and `+` allowing for the addition of execute permissions without setting execute on normal files (such as text files). As an example the first command would set execute on all files for everyone regardless of the file type, to the current directory and all subdirectories, whereas the second would not:
+
+`chmod -R a+rx .`
+`chmod -R a+rX .`
 
 As an example, let's make a file read-only. Again, note that if there is no user reference it applies to all users.
 
+```
 [train01@trifid ~] chmod -r quakes.csv 
 [train01@trifid ~] ls -l
 --w------- 2 lev vpac  379 Jul  1 10:32 quakes.csv
 [train01@trifid ~] vim quakes.csv
+```
 
 What would happen if we took the execute bit off the directory?
 
+```
 [train01@trifid ~] chmod -x class
 [train01@trifid ~] cd class 
 -bash: cd: class: Permission denied
 [train01@trifid ~] ls -l class 
+```
 
 You can see how problematic that could be! Perhaps we'd better return that to it's normal state.
 
+```
 [train01@trifid ~] chmod +x class
 [train01@trifid ~] cd class
+```
 
 Multiple chmod commands can be applied to a file or directory with separation of commands with a comma e.g.,
 
-[train01@trifid ~] chmod -R u+w,go-rw PhD 
+`[train01@trifid ~] chmod -R u+w,go-rw PhD`
 
 This will recourse into the directory PhD, add write access for the user, and deny write access for everybody else.
 
@@ -2068,27 +2075,17 @@ The sum of the three (or four components) thus makes up an alternative exact not
 
 A summary of the octal mode permissions is expressed in the following table:
 
-Permissions\User
-User
-Group
-Others
-Read
-4
-4
-4
-Write
-2
-2
-2
-Execute
-1
-1
-1
+| Permissions	| User	| Group	| Others |
+|:--------------|-------|-------|--------|
+| Read		| 4	| 4	| 4	 |
+| Write		| 2	| 2	| 2	 |
+| Execute	| 1	| 1	| 1	 |
 
-Usually, only those with superuser (root) access make use of the chown (change owner) command. The general syntax for this is chown [option] [user:group] [file | directory]. Usually group is optional on the grounds that users are usually provided ownership. A common use is to provide ownership to web-writeable directories e.g., (chown -R www-data:www-data /var/www/files). In contrast regular users can use chgrp ("change group") change the group associated with a file and directory with the same syntax, but only to one of which they are a member. 
+Usually, only those with superuser (root) access make use of the chown (change owner) command. The general syntax for this is `chown [option] [user:group] [file | directory]`. Usually group is optional on the grounds that users are usually provided ownership. A common use is to provide ownership to web-writeable directories e.g., (`chown -R www-data:www-data /var/www/files`). In contrast regular users can use `chgrp` ("change group") change the group associated with a file and directory with the same syntax, but only to one of which they are a member. 
 
-Finally there is one other relevant command for this section; umask ("user mask") which we encountered in the .bashrc for global definitions sourced in /etc/bashrc in the section entitled "Login Files". The relevant section had the following:
+Finally there is one other relevant command for this section; umask ("user mask") which we encountered in the `.bashrc` for global definitions sourced in `/etc/bashrc` in the section entitled "Login Files". The relevant section had the following:
 
+```
 # By default, we want this to get set. 
 # Even for non-interactive, non-login shells. 
 if [ $UID -gt 99 ] && [ "`id -gn`" = "`id -un`" ]; then 
@@ -2096,6 +2093,7 @@ if [ $UID -gt 99 ] && [ "`id -gn`" = "`id -un`" ]; then
 else 
 	umask 022 
 fi 
+```
 
 What this command does is sets a file mode creation mask, limiting the permission modes for files and directories created by a process. When a program or script creates a file or directory, it specifies  permissions. The operating system then removes from those the permissions that the file mode creation mask does not allow. Typical umask values are 022 (removing the write permission for the group and others) and 002 (removing the write permission for others). 
 
@@ -2103,9 +2101,7 @@ What this command does is sets a file mode creation mask, limiting the permissio
 
 The ln command creates a link, associating one file with another. There are two basic types; a hard link (the default) and a symbolic link. The core difference is that a hard link is a specific location of physical data, whereas a symbolic link is an abstract location of another file. Hard links cannot link directories and nor can they cross system boundaries; soft links can do both of these. Hard links always refer to the source, even if moved or deleted, whereas symbolic links are never updated. 
 
-The general syntax for links is: 
-ln [option] source destination 
-
+The general syntax for links is:  `ln [option] source destination` 
 
 This most common option is -s, to create a symbolic link. The source is the original file. The destination is the new symbolic link.  Without a symbolic option, a hard link is created. In this case the link and the original are pointing to the same file. To illustrate;
 
@@ -2119,24 +2115,24 @@ The above is a bit of a simplification. To be more precise, a Linux file consist
 (Filename1 + Inode#) maps to inode (includes permissions, address for data)
 (Filename2 + Inode#) maps to inode (includes permissions, address for data)
 
-Links are particularly useful if you want to share a file with another user, such as working on a collaborative paper. In addition to the link read and write access should be granted as well, using the chmod command which we have just learned. 
+Links are particularly useful if you want to share a file with another user, such as working on a collaborative paper. In addition to the link read and write access should be granted as well, using the `chmod` command just illustrated. 
 
-For example, user train01 could copy a file, quakes.csv. However they also want to share this with train02; fortunately they both belong to the same group (vpac) so it is relatively easy to provide those permissions. First we'll create the file, then we'll change the permissions so members of the group can access it, then train02 will create a link to that file with the filename shakes.csv. 
+For example, user `train01` could copy a file, `quakes.csv`. However they also want to share this with `train02`; fortunately they both belong to the same group (vpac) so it is relatively easy to provide those permissions. First we'll create the file, then we'll change the permissions so members of the group can access it, then `train02` will create a link to that file with the filename `shakes.csv`. 
 
 So first on train01; 
-[train01@trifid ~] cp /common/intermediate/quakes.csv . 
-[train01@trifid ~] chmod 0664 quakes.csv
+`[train01@trifid ~] cp /common/intermediate/quakes.csv .` 
+`[train01@trifid ~] chmod 0664 quakes.csv`
 
 Then on train02;
-[train02@trifid ~] ln -s /home/train01/quakes.csv shakes.csv
+`[train02@trifid ~] ln -s /home/train01/quakes.csv shakes.csv`
 
 (The same process can be conducted with other odd and even training accounts as appropriate; that is train03 and train04, train05 and train06, train07 and train08 etc) 
 
 Now the important think to realise is that /home/train01/quakes.csv and home/train02/shakes.csv are the same. Modifications to one is a modification to the other. Open the file with vim and add the following lines at the beginning of the file: 
 
-[train01@trifid ~] vim /home/train01/quakes.csv 
+`[train01@trifid ~] vim /home/train01/quakes.csv` 
 
-The file, by the way, is a selection from the Catalogue of GeoNet moment tensor solutions: this includes moment magnitude estimations for all significant New Zealand region earthquakes 
+> The `quakes.csv` file is a selection from the Catalogue of GeoNet moment tensor solutions: this includes moment magnitude estimations for all significant New Zealand region earthquakes 
 
 When this is completed on the quakes.csv file add the following at the end of the file.
 
@@ -2144,41 +2140,52 @@ http://info.geonet.org.nz/display/appdata/Earthquake+Resources
 
 When a file is created a link is associated to it. When a hard link is removed with the rm command you can still access the file from any other links. 
 
-For example, if the link /home/train02/quakes.csv is removed, the data will still exist in the /home/train01/shakes.csv original. However if you remove the original then the symbolic link  will display as a dead link, because the symbolic link is not directly connected to the data. Symbolic links are particularly useful for associating with directories or across file system on a network. As an example; 
+For example, if the link `/home/train02/quakes.csv` is removed, the data will still exist in the `/home/train01/shakes.csv` original. However if you remove the original then the symbolic link  will display as a dead link, because the symbolic link is not directly connected to the data. Symbolic links are particularly useful for associating with directories or across file system on a network. As an example; 
 
-cd ~ 
-ln -s /tmp temp 
-cd temp 
-ls -l 
+`ln -s /tmp temp` 
+`cd temp` 
+`ls -l` 
+`cd ..`
+`rm temp`
+
+Note that `temp` is a *file*, not a directory. It is a file with a symbolic link to a directory. Thus, an `rm` rather than `rmdir` is used (of course, if it *was* a directory, it wouldn't be empty *and* if it wasn't a symblolic link, one probably wouldn't want to remove the `/tmp` direcory!
 
 One example use of symbolic links in a HPC cluster environment is storing home directories on an attached storage device with an NFS (network file system) mount from the cluster itself. When users of the cluster "tango" logged into their home directories, they were actually working with symbolic links. When the new cluster with a similar architecture ("trifid") was introduced, users were able to login and access the same files on both systems. When the older cluster was turned off, there was no outage or need for users to transfer their files between the two systems.
 
 ## 4.8 File Manipulation Commands
 
-Earlier we introduced some fairly simple file manipulation commands such as copying files (cp), moving files (mv) and deleting files (rm). Now there will give examples of a range of different commands such as rename, split, sort, and uniq. The scripting commands, awk and sed, will be discussed in the next chapter. We shall also provide some examples based around regular expressions which are also explored further in the next chapter.
+Earlier we introduced some fairly simple file manipulation commands such as copying files (`cp`), moving files (`mv`) and deleting files (`rm`). Now there will give examples of a range of different commands such as `rename`, `split`, `sort`, and `uniq`. The scripting commands, `awk` and `sed`, will be discussed in the next chapter. We shall also provide some examples based around regular expressions which are also explored further in the next chapter.
 
-Rename is a command which has some variations on Linux systems depending on its origin. On our Centos clusters, the rename command is part of the util-linux-ng package; to change all *.txt files to *.bak, one would use the command 
+**Rename**
 
-rename .txt .bak *.txt 
+Rename is a command which has some variations on Linux systems depending on its origin. On RedHat derived systems, the rename command is part of the util-linux-ng package; to change all `*.txt` files to `*.bak`, one would use the command 
 
-However in other systems it is part of the Perl programming language, which would use a regular expression to conduct the same command. 
+`rename .txt .bak *.txt` 
 
-rename 's/\.txt$/\.bak'/' *.txt
+However on Debian derived it is part of the Perl programming language, which would use a regular expression to conduct the same command. 
 
-There are a number of commands that manipulate not just the names of files, but the contents as well. For example, the command 'split' can be used to split large files into smaller components, such as a large data file that needs to be split into smaller components for editing.  
+`rename 's/\.txt$/\.bak'/' *.txt`
 
-The general syntax is split [OPTION]... [INPUT [PREFIX]]. Options include byte (-b #) or linecount (-l #, default of 1000) for the new files, the input is the filename and the prefix is the output, PREFIXaa, PREFIXab etc. 
+**Split**
 
-split -d -l100 filename newfilename
-Will split a file into new files of 100 lines indicated in order by a numeric suffix. e.g., split -d -l100 quakes.csv newquakes
+There are a number of commands that manipulate not just the names of files, but the contents as well. For example, the command `split` can be used to split large files into smaller components, such as a large data file that needs to be split into smaller components for editing.  
+
+The general syntax is `split [OPTION]... [INPUT [PREFIX]]`. Options include byte (-b #) or linecount (-l #, default of 1000) for the new files, the input is the filename and the prefix is the output, `PREFIXaa`, `PREFIXab etc`. 
+
+The command `split -d -l100 filename newfilename` will split a file into new files of 100 lines indicated in order by a numeric suffix. e.g., `split -d -l100 quakes.csv newquakes`
+
+
+**Sort and Uniq**
 
 Again with a descriptive name, sort will organise a text file into an order specified by options and output to a specific file, if desired. The general syntax is `sort [option] [input file] -o [filename]`. Some of the options include -b (ignore beginning spaces), -d (use dictionary order, ignore punctuation), -m (merge two input files into one sorted output, and -r (sort in reverse order). An interesting option for sort is for natural language ordering (e.g., 1, 10, 2, 20); for this case use sort -g filename (generic) or -V (version number).
 
-To filter repeated lines in a text file use uniq. The standard syntax is uniq [options] [input file] [output file]. A simple example is uniq repeats.txt unique.txt. It is often combined with sort to create a sorted file of unique lines, e.g., sort repeats.txt | uniq > sortuniq.txt
+To filter repeated lines in a text file use uniq. The standard syntax is `uniq [options] [input file] [output file]`. A simple example is `uniq repeats.txt unique.txt`. It is sometimes with sort to create a sorted file of unique lines, e.g., `sort repeats.txt | uniq > sortuniq.txt`, although `sort` also can do this with the `-u` option.
 
 ## 4.9 System Information Commands
 
-In the introductory course we did not spend much time on system information commands (an exception was the 'who' command). In this intermediate course, we will briefly cover some general commands of this nature, such as du (disk usage), head and tail, uname and the information found under the /proc directory.
+In the introductory course we did not spend much time on system information commands (an exception was the `who` command). In this intermediate course, we will briefly cover some general commands of this nature, such as `du` (disk usage), `head` and `tail`, `uname` and the information found under the `/proc` directory.
+
+**du**
 
 The du command has the standard syntax of du [options] [file]. The default expression is to print to standard output size of a file or directory in kilobytes. Without any arguments du will print all files, entering directories recursively. Common options include -s, which generates a summary of directories and -h which expresses output in "human readable" format (i.e., megabytes, gigabytes etc). To give a summary of an entire directory therefore the command would simply be du -sh, and to express in bytes, just du -sk.
 
@@ -3144,8 +3151,7 @@ srun: job 211916 has been allocated resources
 ``
 
 
-# 7.0 Command Summary
-
+# 7.0 Command Summary and References
 
 ## 7.1 Linux Commands
 
@@ -3429,8 +3435,7 @@ Examples:
 find . -name "*.txt" | xargs grep foo
 Finds all files with the suffix .txt and searches them for the phrase “foo”
 																				
-7.2 File System
-----------------
+## 7.3 File System
 
 The  general layout of a Linux system is called the Filesystem Hierarchy Standard (FHS), defining the main directories and their contents in most Linux-based computer operating systems.
 
@@ -3471,8 +3476,7 @@ Secondary hierarchy for user data; contains the majority of utilities, applicati
 /var/
 Variable files, such as logs, spool files, and temporary e-mail files. 
 
-7.3 Queuing Commands
---------------------
+## 7.4 Queuing Commands
 
 TORQUE/PBSPro
 SLURM
@@ -3520,8 +3524,8 @@ qdel <jobid>
 scanel <jobid>
 Deletes a job. SLURM allows one to delete all jobs belonging to a user wit the -u option.
 
-7.4 References
---------------
+## 7.5 References
+
 Adaptive Computing, TORQUE Resource Manager Administrator Guide 4.2.10, 2015
 
 Altair Engineering, PBS Professional 12.0 Reference Guide, 2013
@@ -3552,8 +3556,8 @@ Paul Sheer, Linux: Rute User's Tutorial and Exposition, Prentice-Hall, 2002
 
 Greg Wilson, High Performance Computing Considered Harmful, 22nd International Symposium on High Performance Computing Systems and Applications, 2008
 
-
-Images
+**Images**
 													
-Cray-1-deutsches-museum" by Clemens Pfeiffer. Licensed under CC BY 2.5 via Commons - https://commons.wikimedia.org/wiki/File:Cray-1-deutsches-museum.jpg#/media/File:Cray-1-deutsches-museum.jpg
+Cray-1-deutsches-museum" by Clemens Pfeiffer. Licensed under CC BY 2.5 via Commons - https://commons.wikimedia.org/wiki/File:Cray-1-deutsches-museum.jpg#/media/File:Cray-1-deutsches-museum.jpg   
+
 "Structure of the BRAF protein" by Emw (Wikipedia User). Creative Commons Attribution-Share Alike 3.0 Unported license. https://commons.wikimedia.org/wiki/File:Protein_BRAF_PDB_1uwh.png 
