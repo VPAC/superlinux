@@ -854,9 +854,9 @@ The output should be something like the following:
 ```
 [lev@trifid ~]$ diff gattaca.txt braf/gattaca.txt 
 4c4 
-&lt; ATVKSRWSGS HQFEQLSGSI LWMAPEVIRM QDKNPYSFQS DVYAFGIVLY 
+< ATVKSRWSGS HQFEQLSGSI LWMAPEVIRM QDKNPYSFQS DVYAFGIVLY 
 --- 
-&gt; ATEKSRWSGS HQFEQLSGSI LWMAPEVIRM QDKNPYSFQS DVYAFGIVLY 
+> ATEKSRWSGS HQFEQLSGSI LWMAPEVIRM QDKNPYSFQS DVYAFGIVLY 
 ```
 
 For a side-by-side representation use the command sdiff instead.
@@ -1197,7 +1197,7 @@ GNU Octave is a mathematical application and programming language that is highly
 #PBS -l walltime=00:10:00
 module load matlab
 cd $PBS\_O\_WORKDIR 
-matlab -nodesktop -nodisplay -nosplash &lt; polar-plot.m
+matlab -nodesktop -nodisplay -nosplash < polar-plot.m
 ```
 
 ```
@@ -1916,7 +1916,7 @@ tar cvfj homeuser.tar.bz2 /home/user
 
 ## 4.5 Redirection and Tee
 
-Earlier, we learned the basic commands for redirection and piping. To redirect output use the '&gt;' symbol. To redirect input (for example, to feed data to a command) use the '&lt;'. Concatenation is achieved through the use of '&gt;&gt;' symbol. Like other Linux commands, redirects can be used multiple times for useful effects. 
+Earlier, we learned the basic commands for redirection and piping. To redirect output use the '>' symbol. To redirect input (for example, to feed data to a command) use the '<'. Concatenation is achieved through the use of '>>' symbol. Like other Linux commands, redirects can be used multiple times for useful effects. 
 
 A core principle of UNIX-like operating systems is that the output of one program should be usable as the input to another. In most cases this means that the operating system design shows a preference to plain-text files. This includes process streams as well as data streams. For example run the following set of commands:
 
@@ -1938,9 +1938,9 @@ Redirections require some grounding in theory; the concept of terminal as a file
 
 The default behaviour is to accept inputs from the terminal (standard input) and display the results, either output or errors, to the terminal (standard output). With a redirection, input, output or errors can be redirected. In the previous tutorial we did this with a simple redirect to a file. 
 
-`grep 3639992 &lt; quakes.csv &gt; 3639992.txt`
+`grep 3639992 < quakes.csv > 3639992.txt`
 
-Which is, of course, identical to the command `grep -i 3639992 quakes.csv &gt; 3639992.txt`, but it illustrates the use of multiple redirection. 
+Which is, of course, identical to the command `grep -i 3639992 quakes.csv > 3639992.txt`, but it illustrates the use of multiple redirection. 
 
 In any shell derived from the original Bourne shell (such as bash), redirections can be further modified by placing a number next immediately before the redirector, which affects which stream is being used for redirection. These numbers are 0 for standard input, 1 for standard output and 2 for standard error. 
 
@@ -1954,16 +1954,16 @@ cat error.txt
 ls: cannot access /home/train01/seismic: No such file or directory 
 ```
 
-Redirections of this sort are common, for example, among programmers who wish to capture the errors of compilation to a file for further analysis (e.g., ./configure 2&gt; errors.log)
+Redirections of this sort are common, for example, among programmers who wish to capture the errors of compilation to a file for further analysis (e.g., ./configure 2> errors.log)
 
-Standard error can also to be redirected to the same destination that standard output is directed to using `2&gt;&1`; it merges stderr (2) into stdout (1). This has one very useful application on tango - because the environment modules program is written so that the command module avail outputs to error, we cannot run module avail | less with the results that we would expect. 
+Standard error can also to be redirected to the same destination that standard output is directed to using `2>&1`; it merges stderr (2) into stdout (1). This has one very useful application on tango - because the environment modules program is written so that the command module avail outputs to error, we cannot run module avail | less with the results that we would expect. 
 
 `module avail | less` 
-`module avail 2&gt;&1 | less`
+`module avail 2>&1 | less`
 
 This appending is the equivalent is the equivalent of the following:
 
-`module avail &gt;> modulelist.txt`
+`module avail >> modulelist.txt`
 `less modulelist.txt`
 
 A pipe is used to connect the standard input of one command with the standard input of another. It has the same effect as redirecting the standard output of a command to a file then using that file as the input to another command. In the introductory tutorial we used it as follows:
@@ -1972,8 +1972,8 @@ A pipe is used to connect the standard input of one command with the standard in
 
 This is the equivalent of:
 
-`who -u &gt; whofile.txt`
-`less &lt; whofile.txt`
+`who -u > whofile.txt`
+`less < whofile.txt`
 
 Except a tempfile isn't needed! 
 
