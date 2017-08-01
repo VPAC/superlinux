@@ -2012,7 +2012,7 @@ The command chmod (change mode) changes the file system modes of files and direc
 `[train01@trifid ~] ls -l`    
 `-rw-r--r-- 2 lev vpac  379 Jul  1 10:32 quakes.csv`
 
-The file attributes and permissions are the series `-rw-r--r--` . The first character indicates the file type. Usually you will encounter either a `-` for a regular file, a `d` for a directory, and `l` for a symbolic link. Less common file types include `b` for block devices (e.g., hard drives, ram etc), `c` for character devices which stream data one character at a time (e.g., mice, keyboards, virtual terminals). A common place to find this range of file types is in the devices directory. This can be checked with `ls -lart /dev/ &#124; less`.
+The file attributes and permissions are the series `-rw-r--r--` . The first character indicates the file type. Usually you will encounter either a `-` for a regular file, a `d` for a directory, and `l` for a symbolic link. Less common file types include `b` for block devices (e.g., hard drives, ram etc), `c` for character devices which stream data one character at a time (e.g., mice, keyboards, virtual terminals). A common place to find this range of file types is in the devices directory. This can be checked with `ls -lart /dev/ | less`.
 
 After the first character the notation should be understood in terms of three groups of three. The first group refers to what the owners can do with the file, the second group what group members can do and the third group what other users can do. The triplet of characters in each group are usually `r` for "readable", `w` for writable" and `x` for executable. Executable also implies conducting an executable action on a directory, thus `x` is usually found for directories as well. If there is a `-` in a particular location, there is no permission. 
 
@@ -2185,7 +2185,7 @@ To filter repeated lines in a text file use uniq. The standard syntax is `uniq [
 
 In the introductory course we did not spend much time on system information commands (an exception was the `who` command). In this intermediate course, we will briefly cover some general commands of this nature, such as `du` (disk usage), `head` and `tail`, `uname` and the information found under the `/proc` directory.
 
-**du**
+**du and df**
 
 The du command has the standard syntax of du [options] [file]. The default expression is to print to standard output size of a file or directory in kilobytes. Without any arguments du will print all files, entering directories recursively. Common options include -s, which generates a summary of directories and -h which expresses output in "human readable" format (i.e., megabytes, gigabytes etc). To give a summary of an entire directory therefore the command would simply be du -sh, and to express in bytes, just du -sk.
 
@@ -2196,48 +2196,54 @@ The following is a handy use of xargs is to parse a directory list and output th
 
 `du -sk * | sort -nr | cut -f2 | xargs -d "\n" du -sh  > diskuse.txt`
 
-The command 'df' will generate a report of file system disk space usage. If a filename is added it will generate a report just for the file system that the file is located on.
+The command `df` will generate a report of file system disk space usage. If a filename is added it will generate a report just for the file system that the file is located on.
 
-The command head and tail print the first and last ten lines of a file by default. The standard syntax is head/tail [option] [file]. The former is often useful to determine what sort of file one is looking at, as comments are often contained in that area. Tail can be used when compiling programs to see the output in real-time, for example tail -f compile.log .
+**head and tail**
 
-A typical command to access system information is uname (unix name), with the simple syntax uname [options]. The most common command is uname -a (all) which provides, in order, kernel name, network node name, kernel release and version, machine hardware name, processor and hardware platform (if known), and operating system. You can test this on tango;
+The command `head` and `tail` print the first and last ten lines of a file by default. The standard syntax is `[command] [option] [file]`. The `head` command is often useful to determine what sort of file one is looking at, as comments are often contained in that area or to peek at a set of record titles. The `tail` command can be used when compiling programs to see the output in real-time, for example `tail -f compile.log`.
 
+**uname**
+
+A typical command to access system information is `uname` (unix name), with the simple syntax `uname [options]`. The most common command is `uname -a` (all) which provides, in order, kernel name, network node name, kernel release and version, machine hardware name, processor and hardware platform (if known), and operating system. You can test this on tango;
+
+```
 [train01@trifid ~]$ uname -a 
 Linux tango.vpac.org 2.6.32.23edac #1 SMP Thu Sep 30 12:14:41 EST 2010 x86_64 x86_64 x86_64 GNU/Linux
+```
 
-Another useful source for system information is the /proc directory. The directory doesn't actually contain 'real' files but runtime system information. Running ls -l on /proc will display a number of files with a size of 0 bytes; one exception is /proc/kcore, which an image of the actual memory in a system. Combined with the simple program cat a range of information about a system can be accessed from the /proc directory. Some examples are given below:
+**/proc**
 
-less /proc/cpuinfo
-Model name, MHz, flags and more for all CPUs on a node
-less /proc/filesystems
-Filesystems on a node
-less /proc/uptime
-Uptime of a node in seconds
-less /proc/kmsg
-Messages output by the kernel (typically limited by permissions). 
-less /proc/loadavg
-The load average of the system for the last 1, 5 and 15 minutes.
-less /proc/meminfo
-Information about memory usage, both physical and swap.
-less /proc/modules
-Loaded kernel modules.
-less /proc/mounts
-Mounted filesystems
-less /proc/net/arp
-Kernel ARP table.
-less /proc/partitions
-Table of partitions known to the system
+Another useful source for system information is the `/proc` directory. The directory doesn't actually contain 'real' files but runtime system information. Running `ls -l` on `/proc` will display a number of files with a size of 0 bytes; one exception is `/proc/kcore`, which an image of the actual memory in a system. Combined with the simple program `less` a range of information about a system can be accessed from the `/proc` directory. Some examples are given below:
 
-The command lscpu will provide information about the processor architecture as well gathered from /proc/cpuinfo including the number of CPUs, threads, cores, and sockets. 
+| Command		| Output								|
+|:----------------------|:----------------------------------------------------------------------|
+| less /proc/cpuinfo	| Model name, MHz, flags and more for all CPUs on a node.		|
+| less /proc/filesystems| Filesystems on a node.						|
+| less /proc/uptime	| Uptime of a node in seconds.						|
+| less /proc/kmsg	| Messages output by the kernel (typically limited by permissions). 	|
+| less /proc/loadavg	| The load average of the system for the last 1, 5 and 15 minutes.	|
+| less /proc/meminfo	| Information about memory usage, both physical and swap.		|
+| less /proc/modules	| Loaded kernel modules.						|
+| less /proc/mounts	| Mounted filesystems.							|
+| less /proc/net/arp	| Kernel ARP table.							|
+| less /proc/partitions	| Table of partitions known to the system.				|
+
+The command `lscpu` will provide information about the processor architecture as well gathered from `/proc/cpuinfo` including the number of CPUs, threads, cores, and sockets. 
 
 ## 4.10 Program Manipulation Commands
 
 In the previous course we did not include any program manipulation commands. In this course we'll introduce a few; at, fg, bg, kill and nice. 
 
+**at**
+
 The `at` command is used to schedule commands to be executed once at a specified time; it is distinct from a sysadmin's favourite, `cron`, which is used for recurring executions. The syntax is simply at [options] time. Typically it is piped with an echo statement which includes the command. The following trivial example will print a directory listing to the screen at 1145 on November 29. The output is mailed to the user (i.e., the owner of the training account).
 
+```
 [train01@trifid ~]$ echo "ls" | at 1145 nov 29 
 job 22 at 2010-11-29 11:45 
+```
+
+**fg and bg**
 
 The commands fg (foreground) and bg (background) are complementary manipulations of processes.  Usually processes (jobs) take next to no time (e.g., 'ls'). But other times, like a transfer of files or a compilation of very complex program, can take a great deal of time. Such jobs can be suspended with Cntrl-Z to return to the terminal; however one can also resume execution of these jobs in the background with the 'bg', or they can be resumed to the foreground with 'fg'. A job can also be initiated in the background with an ampersand. Each job in the background is given a job number which can be brought back to the foreground with 'fg #'. The 'jobs' command can list all current jobs. A background job can be killed with kill %job-number. 
 
