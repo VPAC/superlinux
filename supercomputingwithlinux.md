@@ -1754,7 +1754,7 @@ Emacs is one of the oldest continuous software applications available, first wri
 
 The big features of Emacs is the extremely high level of built-in commands, customisation, and extensions, so extensive that those explored here only begin to touch the extraordinary diverse world that is Emacs. Indeed, Eric Raymond, notes "[i]t is a common joke, both among fans and detractors of Emacs, to describe it as an operating system masquerading as an editor". 
 
-With extensions, Emacs includes LaTex formatted documents, syntax highlighting for major programming and scripting languages, a calculator, a calender and planner, a text-based adventure, a web-browser, a news-reader and email client, and an ftp client. It provides file difference, merging, and version control, a text-based adventure game, and even a Rogerian psychotherapist.
+With extensions, Emacs includes LaTex formatted documents, syntax highlighting for major programming and scripting languages, a calculator, a calender and planner, a text-based adventure, a web-browser, a news-reader and email client, and an ftp client. It provides file difference, merging, and version control, a text-based adventure game, and even a Rogerian psychotherapist. 
 
 Try doing that with Notepad!
 
@@ -1764,21 +1764,21 @@ This tutorial will provide a usable introduction to Emacs.
 
 **Starting Emacs**
 
-The default of Emacs installations on contemporary Linux systems assume the use of a graphical-user interface. This is obviously not the case with an HPC system, but for those with a home installation you should be aware that 'emacs -nw' from the command-line will launch the program without the GUI. If you wish to make this the default you should add it as an alias to .bashrc (e.g., alias emacs='emacs -nw'). 
+The default of Emacs installations on contemporary Linux systems assume the use of a graphical-user interface. This is obviously not the case with an HPC system, but for those with a home installation you should be aware that `emacs -nw` from the command-line will launch the program without the GUI. If you wish to make this the default you should add it as an alias to `.bashrc` (e.g., `alias emacs='emacs -nw`). 
 
-Emacs is launched by simply typing 'emacs' on the command line. Commands are invoked by a combination of the Control (Ctrl) key and a character key (C-<chr>) or the Meta key (Alt, or Esc) and a character key (M-<char>). Of course, if you're using a terminal emulator, as if often the case, the "alt" key will probably be superseded by the emulator itself, so you'll want to use Esc instead. However the Esc key is not a shift key; rather than hold it down, type it distinctly.
+Emacs is launched by simply typing 'emacs' on the command line. Commands are invoked by a combination of the Control (Ctrl) key and a character key (`C-<chr>`) or the Meta key (Alt, or Esc) and a character key (`M-<char>`). Of course, if you're using a terminal emulator, as if often the case, the "alt" key will probably be superseded by the emulator itself, so you'll want to use Esc instead. However the Esc key is not a shift key; rather than hold it down, type it distinctly.
 
 **Basic Commands**
 
-To quit emacs use C-x C-c – you'll use this a lot as a beginner! Note that with all Emacs commands this represents two sets of keystrokes. The space is not actually typed. 
+To quit emacs use `C-x C-c` – you'll use this a lot as a beginner! Note that with all Emacs commands this represents two sets of keystrokes. The space is not actually typed. 
 
-To "break" from a partially entered command, C-g.
+To "break" from a partially entered command, `C-g`.
 
-If an Emacs session crashed recently, M-x recover-session can recover the files that were being edited. 
+If an Emacs session crashed recently, `M-x` recover-session can recover the files that were being edited. 
 
-The menubar  can be activated with M-` 
+The menubar can be activated with `M-/`` 
 
-The help files are accessed with C-h and the manual with C-h r.
+The help files are accessed with `C-h` and the manual with `C-h r`.
 
 **Files, Buffers, and Windows**
 
@@ -1796,6 +1796,7 @@ Emacs also has a blank line below the mode line to display messages, and for inp
 
 Cursor keys can be used to mover around the text, along with Page Up and Page Down, if the terminal uses them. However Emacs aficionados will recommend the use of the control key for speed. Common commands include the following; you may notice a pattern in the command logic:
 
+<pre>
 C-v (move page down), M-v (move page up)
 C-p (move previous line), C-n (move next line), 
 C-f (move forward, one character), C-b (move backward, one character)
@@ -1805,44 +1806,42 @@ M-a (move forward, beginning of a sentence)
 M-e (move backward, beginning of a sentence)
 M-{ (move backward, beginning of a paragraph), M-} (end of paragraph)
 M-< (move to the beginning of a text), M-> (move end of a text). 
-
 <backspace>  (delete the character just before the cursor )
 C-d (delete the character on the cursor) 
 M-<backspace> (cut the word before the cursor)
 M-d (cut the word after the cursor )
-
 C-k  (cut from the cursor position to end of line )
 M-k  (cut to the end of the current sentence )
-
 C-q (prefix command; use when you want to enter a control key into the buffer  e.g,. C-q ESC inserts an Escape)
+</pre>
 
 Like the page-up and page-down keys on a standard keyboard you will discover that Emacs also interprets the Backspace and Delete key as expected.
 
-A selection can be cut (or 'killed' in Emacs lingo) by marking the beginning of the selected text with C-SPC (space) and ending it with with standard cursor movements and entering C-w.  Text that has been cut can be pasted ('yanked') by moving the cursor to the appropriate location and entering C-y. 
+A selection can be cut (or 'killed' in Emacs lingo) by marking the beginning of the selected text with `C-SPC` (space) and ending it with with standard cursor movements and entering `C-w`.  Text that has been cut can be pasted ('yanked') by moving the cursor to the appropriate location and entering C-y. 
 
-Emacs commands also accept a numeric input for repetition, in the form of C-u, the number of times the command is to be repeated, followed bythe command (e.g., C-u 8 C-n moves eight lines down the screen.) 
+Emacs commands also accept a numeric input for repetition, in the form of `C-u`, the number of times the command is to be repeated, followed bythe command (e.g., `C-u 8 C-n` moves eight lines down the screen.) 
 
 **File Management**
 
 There are only three main file manipulation commands that a user needs to know; how to find a file, how to save a file from a buffer, and how to save all. 
 
-The first command is C-x C-f, shorthand for "find-file". At first this command checks prompts for the name of the file. If it is already copied into a buffer it will switch to that buffer. If it is not, it will create a new buffer with the name requested. 
+The first command is `C-x C-f`, shorthand for "find-file". At first this command checks prompts for the name of the file. If it is already copied into a buffer it will switch to that buffer. If it is not, it will create a new buffer with the name requested. 
 
-For the second command, to save a buffer to a file file with the buffer name use C-x C-s, shorthand for "save-buffer". 
+For the second command, to save a buffer to a file file with the buffer name use `C-x C-s`, shorthand for "save-buffer". 
 
-The third command is C-x s. This is shorthand for "save-some-buffers" and will cycle through each open buffer and prompt the user for their action (save, don't save, check and maybe save, etc) 
+The third command is `C-x s`. This is shorthand for "save-some-buffers" and will cycle through each open buffer and prompt the user for their action (save, don't save, check and maybe save, etc) 
 
 **Buffer Management**
 
 There are four main commands relating to buffer management that a user needs to know. How to switch to a buffer, how to list existing buffers, how to kill a buffer, and how to read a buffer in read-only mode.
 
-To switch to a buffer, user C-x b. This will prompt for a buffer name, and switch the buffer of the current window to that buffer. It does not change your existing windows. If you type a new name, it will create a new empty buffer.
+To switch to a buffer, user `C-x b`. This will prompt for a buffer name, and switch the buffer of the current window to that buffer. It does not change your existing windows. If you type a new name, it will create a new empty buffer.
 
-To list current active buffers, use C-x C-b. This will provide a new window which lists current buffers, name, whether they have been modified, their size, and the file that they are associated with.
+To list current active buffers, use `C-x C-b`. This will provide a new window which lists current buffers, name, whether they have been modified, their size, and the file that they are associated with.
 
-To kill a buffer, use C-x k. This will prompt for the buffer name, and then remove the data for that buffer from Emacs, with an opportunity to save it. This does not delete any associated files.
+To kill a buffer, use `C-x k`. This will prompt for the buffer name, and then remove the data for that buffer from Emacs, with an opportunity to save it. This does not delete any associated files.
 
-The toggle read only mode on a buffer, use C-x C-q.
+The toggle read only mode on a buffer, use `C-x C-q`.
 
 **Window Management**
 
@@ -1850,6 +1849,7 @@ Emacs has it's own windowing system, consisting of several areas of framed text.
 
 Commonly used window commands include: 
 
+<pre>
 C-x 0 delete the current window 
 C-x 1 delete all windows except the selected window 
 C-x 2 split the current window horizontally 
@@ -1858,26 +1858,25 @@ C-x ^ make selected window taller
 C-x } make selected window wider 
 C-x { make selected window narrower
 C-x + make all windows the same height
+</pre>
 
-A command use is to bring up other documents or menus. For example, with the key sequence C-h one usually calls for help files. If this is followed by k, it will open a new vertical window, and with C-f, it will display the help information for the command C-f (i.e., C-h k C-f). This new window can be closed with C-x 1. 
+A command use is to bring up other documents or menus. For example, with the key sequence `C-h` one usually calls for help files. If this is followed by `k`, it will open a new vertical window, and with `C-f`, it will display the help information for the command `C-f` (i.e., `C-h k C-f`). This new window can be closed with `C-x 1`. 
 
 **Kill and Yank, Search-Replace, Undo**
 
-Emacs is notable for having a “very large” undo sequence, limited by system resources, rather than application resources. This undo sequence is invoked with C-_ (control underscore), or with C-x u .  However it has a special feature that, by engaging in a simple navigation command (e.g., C-f) the undo action is pushed to the top of the stack and therefore the user can undo an undo command.
+Emacs is notable for having a very large undo sequence, limited by system resources, rather than application resources. This undo sequence is invoked with `C-_` (control underscore), or with `C-x u` .  However it has a special feature that, by engaging in a simple navigation command (e.g., `C-f`) the undo action is pushed to the top of the stack and therefore the user can undo an undo command.
 
 **Other Features**
 
-Emacs can make it easier to read C and C++  by colour-coding such files, through the ~/.emacs configuration file, and adding “global-font-lock-mode t”. 
-
-Programmers also find the feature on being able to run the GNU debugger (GDB) from within Emacs as well. The command M-x gdb will start up gdb. If there’s a breakpoint, Emacs automatically pulls up the appropriate source file, which gives a better context than the standard GDB. 
+Emacs can make it easier to read C and C++  by colour-coding such files, through the `~/.emacs` configuration file, and adding `global-font-lock-mode t`. Programmers also find the feature on being able to run the GNU debugger (GDB) from within Emacs as well. The command `M-x gdb` will start up gdb. If there’s a breakpoint, Emacs automatically pulls up the appropriate source file, which gives a better context than the standard GDB. 
 
 ## 4.4 Archiving Files
 
 As you've probably guessed by now there are a number of utilities available to archive and compress files in Linux and often they can be combined. Here we'll have a look at some of the most common such as tar, gz and bz, along with brief mention (and script) of some of the others. 
 
-Let's begin with the file class.tar.gz You'll notice the file has a double-barrelled suffix, .tar.gz. This is because it was archived with tar and compressed with gz. The former, as the name suggests, was originally designed for tape archives. That program concatenates  one or more files with a header that and preserves file system information such as user and group permissions, dates, and directory structures. The latter (gzip) is any of several software applications used for file compression and decompression, in this case meaning the GNU Project's implementation ("GNU Zip"). 
+Let's begin with the file `class.tar.gz` You'll notice the file has a double-barrelled suffix, `.tar.gz`. This is because it was archived with tar and compressed with gz. The former, as the name suggests, was originally designed for tape archives. That program concatenates  one or more files with a header that and preserves file system information such as user and group permissions, dates, and directory structures. The latter (gzip) is any of several software applications used for file compression and decompression, in this case meaning the GNU Project's implementation ("GNU Zip"). 
 
-Typically both tar and gzip are used in conjunction with each other. A group of files is concatenated with tar, and then the (new, single) file is compressed. This is often represented as a *.tar.gz file, although it can also appear as a *.tgz file. Both *.tar or *.tar.gz (or *.tgz) are often referred to as 'tarballs'.
+Typically both tar and gzip are used in conjunction with each other. A group of files is concatenated with tar, and then the (new, single) file is compressed. This is often represented as a `*.tar.gz` file, although it can also appear as a `*.tgz` file. Both `*.tar` or `*.tar.gz` (or `*.tgz`) are often referred to as 'tarballs'.
 
 As an aside, the type of a file can often be determined by the file command.
 
@@ -1887,11 +1886,13 @@ To illustrate the difference between archiving and compression let's uncompress 
 
 `tar -tzf class.tar.gz`
 
-As you can see, the tar file is quite big compared to the sum of the component files (mping.c, mpi-pong.c, msum.c), whereas the tar.gz file is much smaller. The tar larger file's size is because of the file information system material. 
+As you can see, the tar file is quite big compared to the sum of the component files (`mping.c`, `mpi-pong.c`, `msum.c`), whereas the tar.gz file is much smaller. The tar larger file's size is because of the file information system material.
 
-To extract a tar file the command tar xvf <<filename.tar(.gz)>> can be used. The options stand for extract (x), verbose (v), and file (f). The `f` option is another relic of the past - the default is a tape machine! Note that this command works for files that are in a tar or a combined tar and gz. To create a tar archive the command tar -cvf <<archive.tar>> <<files>>, where the options stand for create (c), verbose (v) and files (f). Note that there is no `untar` command for extraction. To extract a gz file, use the command illustrated above (gunzip <<filename>>). To compress a file in the gz format simply use gzip <<filename>>).
+> As an aside, these files are small sample MPI programs.
 
-As mentioned tar and gz are often combined. To create a tar archive and compress it use something like tar cvzf comressedarchive.tar.gz <<files>>, where the 'z' option represents the gz compression. For example to create such an archive of the `class` directory, the following command would be used:
+To extract a tar file the command `tar xvf filename.tar.gz` can be used. The options stand for extract (x), verbose (v), and file (f). The `f` option is another relic of the past - the default is a tape machine! Note that this command works for files that are in a tar or a combined tar and gz. To create a tar archive the command `tar -cvf archive.tar $directory`, where the options stand for create (c), verbose (v) and files (f). Note that there is no `untar` command for extraction. To extract a gz file, use the command illustrated above (`gunzip filename.gz`). To compress a file in the gz format simply use `gzip $directory`).
+
+As mentioned tar and gz are often combined. To create a tar archive and compress it use something like `tar cvzf comressedarchive.tar.gz $directory`, where the 'z' option represents the gz compression. For example to create such an archive of the `class` directory, the following command would be used:
 
 `tar cvfz class.tgz class/`
 
@@ -1993,24 +1994,16 @@ Another example would be to display a system's IP address and write that to a fi
 
 So, in summary:
  
-Redirects and Pipes
-bash command
-Redirect standard output to a file
-command > file
-Redirect standard error to a file
-command 2> file
-Redirect standard output and standard error to file
-command > file 2>&1
-Redirect a file as standard input to a command
-command < file
-Redirect stdout to end of file
-command >> file
-Redirect standard and standard error to end of file
-command >> file 2>&1
-Pipe standard output to a second command
-command | command2
-Pipe standard output and standard error to a second command
-command 2>&1 | command2
+| Redirects and Pipes				| bash command			|
+|:----------------------------------------------|:------------------------------|
+| Redirect standard output to a file		| command > file		|
+| Redirect standard error to a file		| command 2> file		|
+| Redirect standard output and standard error to file | command > file 2>&1	|
+| Redirect a file as standard input to a command | command < file		|
+| Redirect stdout to end of file		| command >> file		|
+| Redirect standard and standard error to end of file | command >> file 2>&1 	|
+| Pipe standard output to a second command	| command &#124; command2	|
+| Pipe standard output and standard error to a second command | command 2>&1 &#124; command2 |
 
 ## 4.6 Attributes, Types, Ownership
 
