@@ -255,15 +255,15 @@ It is valuable for any user to have recorded the system specifications of the hi
 
 A configuration of the Trifid cluster (2015), would include the following as an example:
 
-220 total system unit "nodes" (218 compute, login, and management).
-3,008 cores of Intel E5-2670 (trifid001-trifid179) 
-5 nodes with GPUs MICs (trifid180-tridid184)
-500 cores of Intel E5-2660v2 (trifid191-trifid218)
-4 GB PC1600 memory per core (64-80 GB per node), with 6 nodes having 16 GB per core (256 GB per node)
-FDR Infiniband
-CentOS 6 Linux
-40TB NFS for home
-165TB Lustre DDN S2A high-performance array
+> 220 total system unit "nodes" (218 compute, login, and management).
+> 3,008 cores of Intel E5-2670 (trifid001-trifid179) 
+> 5 nodes with GPUs MICs (trifid180-tridid184)
+> 500 cores of Intel E5-2660v2 (trifid191-trifid218)
+> 4 GB PC1600 memory per core (64-80 GB per node), with 6 nodes having 16 GB per core (256 GB per node)
+> FDR Infiniband
+> CentOS 6 Linux
+> 40TB NFS for home
+> 165TB Lustre DDN S2A high-performance array
 
 There is close to four hundred scientific software applications and versions installed, including compiler suites (GCC, Intel, PGI), computational chemistry (Gromacs, LAMMPS, Schrodinger, VMD), bioinformatics (BEAST, BLAST, MrBayes), Math Libraries (ATLAS, Boost, FFTW, LAPACK, Scalapack), fluid dynamics and engineering (Abaqus, Ansys, Fluent, OpenFOAM), mathematics and statistics (Octave, R, Matlab), climate and weather modelling (Geant, WRF), and many more. A complete list will be illustrated through the use of the module command, illustrated later in this manual.
 
@@ -578,7 +578,7 @@ Desmond: Desmond is a software package developed at D.E. Shaw Research to perfor
 
 **Valgrind**: Valgrind is an instrumentation framework for building dynamic analysis tools. 
 
-**VASP**: VAMP/VASP [Vienna Ab-initio Simulation Package] is a package for performing ab-initio quantum-mechanical molecular dynamics (MD) using pseudopotentials and a plane wave basis set. 
+**VASP**: VASP (Vienna Ab-initio Simulation Package) is a package for performing ab-initio quantum-mechanical molecular dynamics (MD) using pseudopotentials and a plane wave basis set. 
 
 **Velvet**: Velvet is a set of algorithms manipulating de Bruijn graphs for genomic Sequence assembly. It was designed for short read sequencing technologies, such as Solexa or 454 Sequencing. The tool takes in short read sequences, removes errors then produces high quality unique contigs. 
 
@@ -608,12 +608,12 @@ Regrettably a great deal of software – and sometimes common and popular softwa
 
 An example license is that for Gaussian which was required for all VPAC users to agree to.
 
->Use of the Gaussian software is conditional upon acceptance of the following conditions: 
->1. I am not a member of a research group developing software competitive to Gaussian. 
->2. I will stop using Gaussian on VPAC systems immediately and will notify VPAC (help@vpac.org) if there >is a change in my situation that would bring into 
+> Use of the Gaussian software is conditional upon acceptance of the following conditions: 
+> 1. I am not a member of a research group developing software competitive to Gaussian. 
+> 2. I will stop using Gaussian on VPAC systems immediately and will notify VPAC (help@vpac.org) if there >is a change in my situation that would bring into 
 >question my status with respect to point 1. above. 
->3. I will not copy the Gaussian software, nor make it available to anyone else. 
->4. I will acknowledge Gaussian Inc. in published works to which Gaussian calculations on the VPAC >systems contributed.
+> 3. I will not copy the Gaussian software, nor make it available to anyone else. 
+> 4. I will acknowledge Gaussian Inc. in published works to which Gaussian calculations on the VPAC >systems contributed.
 
 Most HPC clusters will have a team of systems administrators to provided assistance to users and most of those will have some sort of ticketing system (e.g., Request Tracker) to manage those issue requests. This means that there will be one email address to contact for help (e.g., help@vpac.org)
 
@@ -929,14 +929,11 @@ rm -rf braf
 
 Be very careful with rm, especially with the -rf option and especially with wildcards. Consider what would happen to someone who wishes to delete all their backup files in a directory with the helpful suffix .BAK. Choosing a wildcard and the suffix they intend to type rm *.BAK but instead, they mistype the command and type rm * .BAK. The result of this typing error is that they have just deleted everything in that directory. Worse still imagine a user running as root thinking that they are about to delete a directory and instead types rm -rf / ; a command that will delete everything or, more commonly rm -rf ./ ; a command which deletes the current directory and all sub-directories. 
 
->**Why The File Differences Mattered**
+> **Why The File Differences Mattered**
 > 
->BRAF is a human gene that makes a protein (imaginatively) named B-Raf. This protein is involved in >sending signals inside cells, which are involved in directing cell growth. In 2002, it was shown to be >faulty (mutated) in human cancers. 
+> BRAF is a human gene that makes a protein (imaginatively) named B-Raf. This protein is involved in >sending signals inside cells, which are involved in directing cell growth. In 2002, it was shown to be >faulty (mutated) in human cancers. 
 > 
->In particular the difference that between the two files "ATVKSRWSGS" and "ATEKSRWSGS" is the difference
->which leads to susceptibility to metastatic melanoma. Fortunately, because of high performance
->computing, massive databases, and molecular modelling applications, science has begun to develop 
->specific inhibitors of mutated B-raf protein for anticancer treatments.
+> In particular the difference that between the two files "ATVKSRWSGS" and "ATEKSRWSGS" is the difference which leads to susceptibility to metastatic melanoma. Fortunately, because of high performance computing, massive databases, and molecular modelling applications, science has begun to develop  specific inhibitors of mutated B-raf protein for anticancer treatments.
 
 # 3.0 Modules, PBS, and Example Jobs
 
@@ -1042,7 +1039,7 @@ Submitting and running jobs is a relatively straight-forward process consisting 
 
 Remember that this is a shared environment, hence the need for a resource requesting system. There could be hundreds or thousands of individuals with accounts on an HPC cluster, and they all will want resources. Policies are typically established to ensure that everyone has access to a "fair share" of these resources (e.g., a limit on how many processors an individual may access at any one time). One thing that is invariably requested by administrators of HPC clusters:
 
-			**Don't run jobs on the login node!**
+**Don't run jobs on the login node!**
 
 Whilst the entire cluster is a shared resource, the login node is a particularly shared resource. All users will access the login node in order to check their files, submit jobs etc. If one or more users start to run computationally or I/O intensive tasks on the login node (such as forwarding of graphics, copying large files, running multicore jobs), then that will make life difficult for everyone. Avoid it whenever possible. Instead, using the queuing system to submit jobs.
 
@@ -1200,7 +1197,7 @@ GNU Octave is a mathematical application and programming language that is highly
 #PBS -l walltime=00:10:00
 module load matlab
 cd $PBS\_O\_WORKDIR 
-matlab -nodesktop -nodisplay -nosplash < polar-plot.m
+matlab -nodesktop -nodisplay -nosplash &lt; polar-plot.m
 ```
 
 ```
@@ -1267,14 +1264,14 @@ The geometry consists of a 2D closed cavity and a thin plate, 1 m high, that is 
 
 This is a quick start that bypasses the building of input files by copying them from two different samples directories. Normally, you would build your own input files using the ANSYS and CFX GUIs but this will demonstrate the scheduling process. 
 
-The input file, `OscillatingPlate.inp`, is a the step-by-step instructions that is sent to ansys. Normally this file has to be created from the Ansys Workbench, and the .def file is create the cfx.  
+The input file, `OscillatingPlate.inp`, is a the step-by-step instructions that is sent to ansys. Normally this file has to be created from the Ansys Workbench, and the .def file is create the cfx.
 
 Under the standard tutorial there is the conclusion concludes with "Obtaining A Solution Using ANSYS CFX-Solver"; contrary to what the tutorial suggests don't press the "Start Run" button. There are two reasons for this: 
 
 * The job will run on only one cpu on the head node. That cpu will be shared with lots of other users so your job will run very badly. 
 * By doing so, you break a very important rule, by running a computational intensive process on the head node, you seriously inconvenience all the other users logged on. They will not like that! 
 
-DON'T RUN JOBS ON THE HEAD NODE.
+**DON'T RUN JOBS ON THE HEAD NODE.**
 
 Instead, edit your pbs-script to reflect the .inp and .def files you have just created, adjust the number of CPUs and licenses.  Another file to check is the PBS script. In it you will notice the line:
 
@@ -1633,7 +1630,7 @@ $ ~/.bash_logout
 /usr/bin/clear 
 ```
 
-This command simply clears the terminal screen. Why do we have this? So that when a user exits the terminal in a public environment their work isn't left behind for anyone to see. Certainly this is less of an issue these days given that most systems use virtual terminals, but nevertheless anything could be placed in the .bash_logout, according to what the individual wants. It's about users having the opportunity to control their environment, and to script activities for that environment.
+This command simply clears the terminal screen. Why do we have this? One reason is so that when a user exits the terminal in a public environment their work isn't left behind for anyone to see. Certainly this is less of an issue these days given that most systems use virtual terminals, but nevertheless anything could be placed in the .bash_logout, according to what the individual wants. It's about users having the opportunity to control their environment, and to script activities for that environment.
 
 The name of the shell, by the way, is a bit of a pun (as are quite a few commands). In part is recognition of the popular early Unix shells (authored by Stephen Bourne in 1977). Over time a number of other shells were developed, some with some excellent features. Bash took up these features to create a superset of the original Bourne shell (they were "bashed together"). Also, indicating the popularity and joy from using this new shell, it is expressed in the full name – the Bourne-again shell.
 
@@ -1765,13 +1762,13 @@ This all said, Emacs is not easily to learn for beginners. The level of customis
 
 This tutorial will provide a usable introduction to Emacs. 
 
-Starting Emacs 
+**Starting Emacs**
 
 The default of Emacs installations on contemporary Linux systems assume the use of a graphical-user interface. This is obviously not the case with an HPC system, but for those with a home installation you should be aware that 'emacs -nw' from the command-line will launch the program without the GUI. If you wish to make this the default you should add it as an alias to .bashrc (e.g., alias emacs='emacs -nw'). 
 
 Emacs is launched by simply typing 'emacs' on the command line. Commands are invoked by a combination of the Control (Ctrl) key and a character key (C-<chr>) or the Meta key (Alt, or Esc) and a character key (M-<char>). Of course, if you're using a terminal emulator, as if often the case, the "alt" key will probably be superseded by the emulator itself, so you'll want to use Esc instead. However the Esc key is not a shift key; rather than hold it down, type it distinctly.
 
-Basic Commands 
+**Basic Commands**
 
 To quit emacs use C-x C-c – you'll use this a lot as a beginner! Note that with all Emacs commands this represents two sets of keystrokes. The space is not actually typed. 
 
@@ -1783,7 +1780,7 @@ The menubar  can be activated with M-`
 
 The help files are accessed with C-h and the manual with C-h r.
 
-Files, Buffers, and Windows
+**Files, Buffers, and Windows**
 
 Emacs has three main data structures, Files, Buffers, and Windows which are essential to understand. 
 
@@ -1795,7 +1792,7 @@ A window is the user's view of a buffer. Not all buffers may be visible to the u
 
 Emacs also has a blank line below the mode line to display messages, and for input for prompts from Emacs. This is called the mini-buffer, or echo.
 
-Exploring and Entering Text 
+**Exploring and Entering Text**
 
 Cursor keys can be used to mover around the text, along with Page Up and Page Down, if the terminal uses them. However Emacs aficionados will recommend the use of the control key for speed. Common commands include the following; you may notice a pattern in the command logic:
 
@@ -1825,7 +1822,7 @@ A selection can be cut (or 'killed' in Emacs lingo) by marking the beginning of 
 
 Emacs commands also accept a numeric input for repetition, in the form of C-u, the number of times the command is to be repeated, followed bythe command (e.g., C-u 8 C-n moves eight lines down the screen.) 
 
-File Management
+**File Management**
 
 There are only three main file manipulation commands that a user needs to know; how to find a file, how to save a file from a buffer, and how to save all. 
 
@@ -1835,7 +1832,7 @@ For the second command, to save a buffer to a file file with the buffer name use
 
 The third command is C-x s. This is shorthand for "save-some-buffers" and will cycle through each open buffer and prompt the user for their action (save, don't save, check and maybe save, etc) 
 
-Buffer Management
+**Buffer Management**
 
 There are four main commands relating to buffer management that a user needs to know. How to switch to a buffer, how to list existing buffers, how to kill a buffer, and how to read a buffer in read-only mode.
 
@@ -1847,7 +1844,7 @@ To kill a buffer, use C-x k. This will prompt for the buffer name, and then remo
 
 The toggle read only mode on a buffer, use C-x C-q.
 
-Window Management
+**Window Management**
 
 Emacs has it's own windowing system, consisting of several areas of framed text. The behaviour is similar to a tiling window manager; none of the windows overlap with each other. 
 
@@ -1864,11 +1861,11 @@ C-x + make all windows the same height
 
 A command use is to bring up other documents or menus. For example, with the key sequence C-h one usually calls for help files. If this is followed by k, it will open a new vertical window, and with C-f, it will display the help information for the command C-f (i.e., C-h k C-f). This new window can be closed with C-x 1. 
 
-Kill and Yank, Search-Replace, Undo
+**Kill and Yank, Search-Replace, Undo**
 
 Emacs is notable for having a “very large” undo sequence, limited by system resources, rather than application resources. This undo sequence is invoked with C-_ (control underscore), or with C-x u .  However it has a special feature that, by engaging in a simple navigation command (e.g., C-f) the undo action is pushed to the top of the stack and therefore the user can undo an undo command.
 
-Other Features
+**Other Features**
 
 Emacs can make it easier to read C and C++  by colour-coding such files, through the ~/.emacs configuration file, and adding “global-font-lock-mode t”. 
 
@@ -1884,110 +1881,115 @@ Typically both tar and gzip are used in conjunction with each other. A group of 
 
 As an aside, the type of a file can often be determined by the file command.
 
-file class.tar.gz
+`file class.tar.gz`
 
 To illustrate the difference between archiving and compression let's uncompress the class.tar.gz file and have a look at its size. First however let's see what is inside it; as it is both an archived and compressed file we need the `t` option (table of contents), the `z` option (for compression), and the `f` option (file). If it was just a tar file we wouldn't need the `z`.
 
-tar -tzf class.tar.gz
+`tar -tzf class.tar.gz`
 
 As you can see, the tar file is quite big compared to the sum of the component files (mping.c, mpi-pong.c, msum.c), whereas the tar.gz file is much smaller. The tar larger file's size is because of the file information system material. 
 
 To extract a tar file the command tar xvf <<filename.tar(.gz)>> can be used. The options stand for extract (x), verbose (v), and file (f). The `f` option is another relic of the past - the default is a tape machine! Note that this command works for files that are in a tar or a combined tar and gz. To create a tar archive the command tar -cvf <<archive.tar>> <<files>>, where the options stand for create (c), verbose (v) and files (f). Note that there is no `untar` command for extraction. To extract a gz file, use the command illustrated above (gunzip <<filename>>). To compress a file in the gz format simply use gzip <<filename>>).
 
-As mentioned tar and gz are often combined. To create a tar archive and compress it use something like tar cvzf comressedarchive.tar.gz <<files>>, where the 'z' option represents the gz compression. For example to create such a file of all the C files in a directory as with the example above, the following command was entered:
+As mentioned tar and gz are often combined. To create a tar archive and compress it use something like tar cvzf comressedarchive.tar.gz <<files>>, where the 'z' option represents the gz compression. For example to create such an archive of the `class` directory, the following command would be used:
 
-tar cvfz class.tar.gz *
+`tar cvfz class.tgz class/`
 
 Perhaps, for backup purposes you might want to archive and compress and entire directory (e.g., a home directory). In that case the command would be:
 
-tar cvfz homeuser.tar.gz /home/user
+`tar cvfz homeuser.tar.gz /home/$user`
 
 Note that when directories are archived they are also extracted in the order that they were put in. This can create an annoying "tarbomb", which extracts all the directories within the tarball in the current working directory. To check whether this is the case, run a table of contents check - tar -tzf <<filename>>.tar.(gz) - to see where it will be extracted to. If it is less than ideal, create another directory, move the tarball, and extract and decompress there instead. To recover from a tarbomb, use the command xargs; it takes the input from the standard input (or file) and uses that as the arguments for another command. So if your carefully designed directory has been littered by a thousand files and folders from a badly designed tarball, you can run the following: 
 
-tar tf tarbomb.tar | xargs rm -rf
+`tar tf tarbomb.tar | xargs rm -rf`
 
 This xargs command takes the output of the tar table of contents and uses that as an input for the rm -rf command. Usual caveats apply with using 'rm' - be very careful that you don't delete something that you actually want to keep! 
 
 Another common compression algorithm that Linux users are likely to encounter with regularity is bzip2. It is particularly notable for the efficiency of the files it compresses, but at a cost of decompression speed. Like gzip, bzip2 is not an archiver; again you have to use tar for that. The commands however are remarkably similar. Drawing from the previous examples just provided you would have commands like the following;
 
+```
 tar xvf <<filename.tar.bz2>>
 tar -tjf class.tar.gz 
 tar cvfj class.tar.bz2 *.class
 tar cvfj homeuser.tar.bz2 /home/user
+```
 
 ## 4.5 Redirection and Tee
 
-Earlier, we learned the basic commands for redirection and piping. To redirect output use the '>' symbol. To redirect input (for example, to feed data to a command) use the '<'. Concatenation is achieved through the use of '>>' symbol. Like other Linux commands, redirects can be used multiple times for useful effects. 
+Earlier, we learned the basic commands for redirection and piping. To redirect output use the '&gt;' symbol. To redirect input (for example, to feed data to a command) use the '&lt;'. Concatenation is achieved through the use of '&gt;&gt;' symbol. Like other Linux commands, redirects can be used multiple times for useful effects. 
 
 A core principle of UNIX-like operating systems is that the output of one program should be usable as the input to another. In most cases this means that the operating system design shows a preference to plain-text files. This includes process streams as well as data streams. For example run the following set of commands:
 
+```
 cd ~
 mkdir dir1; mkdir dir2
 touch dir1/file1; touch dir1/file2; touch dir1/file3
 touch dir2/file3; touch dir2/file4; touch dir2/file5
 diff -u <(ls dir1) <(ls dir2) 
+```
 
 Will display a diff of files in the root of dir1 and dir2 . It is the results of the ls commands that have been redirected. 
 
 Note that modern implementations of diff will be able to carry this out automatically.
 
-diff dir1 dir2
+`diff dir1 dir2`
 
 Redirections require some grounding in theory; the concept of terminal as a file and as standard input and output. We are by now familiar with the concept of ordinary files and directories. In UNIX-like operating systems devices are a type of file as well, and are structured under the /dev directory. For example, a directory listing of /dev will list as files internals like cpu and ram, peripherals like disk and dvd, and terminal connections tty, tty0, tty1 etc. For example simply run ls /dev on your desktop or on the cluster. 
 
 The default behaviour is to accept inputs from the terminal (standard input) and display the results, either output or errors, to the terminal (standard output). With a redirection, input, output or errors can be redirected. In the previous tutorial we did this with a simple redirect to a file. 
 
-grep 3639992 < quakes.csv > 3639992.txt
+`grep 3639992 &lt; quakes.csv &gt; 3639992.txt`
 
-Which is, of course, identical to the command grep -i 3639992 quakes.csv > 3639992.txt, but it illustrates the use of multiple redirection. 
+Which is, of course, identical to the command `grep -i 3639992 quakes.csv &gt; 3639992.txt`, but it illustrates the use of multiple redirection. 
 
 In any shell derived from the original Bourne shell (such as bash), redirections can be further modified by placing a number next immediately before the redirector, which affects which stream is being used for redirection. These numbers are 0 for standard input, 1 for standard output and 2 for standard error. 
 
 Standard error is just another output stream. Unlike standard output, it provides error messages rather than results. Like standard output it is typically sent to the terminal by default, but it can be redirected to a file. e.g., run the ifconfig command on tango, then run it again with the error message redirected. As an example, let us try to list a directory that doesn't exist.
 
+```
 ls -d /home/train01/seismic
-ls: cannot access /home/train01/seismic: No such file or directory
-
+ls: cannot access /home/train01/seismic: No such file or directory`
 ls -d /home/train01/seismic 2> error.txt 
 cat error.txt 
 ls: cannot access /home/train01/seismic: No such file or directory 
+```
 
-Redirections of this sort are common, for example, among programmers who wish to capture the errors of compilation to a file for further analysis (e.g., ./configure 2> errors.log)
+Redirections of this sort are common, for example, among programmers who wish to capture the errors of compilation to a file for further analysis (e.g., ./configure 2&gt; errors.log)
 
-Standard error can also to be redirected to the same destination that standard output is directed to using 2>&1; it merges stderr (2) into stdout (1). This has one very useful application on tango - because the environment modules program is written so that the command module avail outputs to error, we cannot run module avail | less with the results that we would expect. 
+Standard error can also to be redirected to the same destination that standard output is directed to using `2&gt;&1`; it merges stderr (2) into stdout (1). This has one very useful application on tango - because the environment modules program is written so that the command module avail outputs to error, we cannot run module avail | less with the results that we would expect. 
 
-module avail | less 
-module avail 2>&1 | less
+`module avail | less` 
+`module avail 2&gt;&1 | less`
 
 This appending is the equivalent is the equivalent of the following:
 
-module avail 2> modulelist.txt
-less modulelist.txt
+`module avail &gt;> modulelist.txt`
+`less modulelist.txt`
 
 A pipe is used to connect the standard input of one command with the standard input of another. It has the same effect as redirecting the standard output of a command to a file then using that file as the input to another command. In the introductory tutorial we used it as follows:
 
-who -u | less
+`who -u | less`
 
 This is the equivalent of:
 
-who -u > whofile.txt
-less < whofile.txt
+`who -u &gt; whofile.txt`
+`less &lt; whofile.txt`
 
 Except a tempfile isn't needed! 
 
 Pipes are especially good for creating custom commands on the fly for example
 
-who -u | sort | less
+`who -u | sort | less`
 
 The tee command copies standard input to standard output and also to any files included in the tee. The 'tee' indicates that it acts like the letter, or like a tee-pipe used in plumbing. When combined with pipes it takes input from a single direction and outputs it two directions.  This is particularly handy if one wishes to see and save information from a command.
 
 For example, the following will give an output file of the command who -u (who.txt) and pipes grep over the who -u command;
 
-who -u | tee whofile.txt | grep trainXX
+`who -u | tee whofile.txt | grep $username`
 
 Another example would be to display a system's IP address and write that to a file at the same time. e.g.,
 
-/sbin/ifconfig | tee ipaddress.txt | less
+`/sbin/ifconfig | tee ipaddress.txt | less`
 
 So, in summary:
  
