@@ -2189,13 +2189,12 @@ In the introductory course we did not spend much time on system information comm
 
 The du command has the standard syntax of du [options] [file]. The default expression is to print to standard output size of a file or directory in kilobytes. Without any arguments du will print all files, entering directories recursively. Common options include -s, which generates a summary of directories and -h which expresses output in "human readable" format (i.e., megabytes, gigabytes etc). To give a summary of an entire directory therefore the command would simply be du -sh, and to express in bytes, just du -sk.
 
-cd ~
-du -sh *
-du -sk *
+`du -sh *`
+`du -sk *`
 
 The following is a handy use of xargs is to parse a directory list and output the results to a file. The command script below runs a disk usage in summary, sorts in order of size and exports to the file diskuse.txt. The "\n" is to ignore spaces in filenames.
 
-du -sk * | sort -nr | cut -f2 | xargs -d "\n" du -sh  > diskuse.txt
+`du -sk * | sort -nr | cut -f2 | xargs -d "\n" du -sh  > diskuse.txt`
 
 The command 'df' will generate a report of file system disk space usage. If a filename is added it will generate a report just for the file system that the file is located on.
 
