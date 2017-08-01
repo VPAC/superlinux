@@ -2009,7 +2009,7 @@ So, in summary:
 
 The command chmod (change mode) changes the file system modes of files and directories. It is normally executed on permissions, but can also include special modes. The command uses either an octal reference or a symbolic reference for notation. To see what permissions currently exist, use the `ls -l` command. Among others there should be a file something like the following;
 
-`[train01@trifid ~] ls -l`
+`[train01@trifid ~] ls -l`    
 `-rw-r--r-- 2 lev vpac  379 Jul  1 10:32 quakes.csv`
 
 The file attributes and permissions are the series `-rw-r--r--` . The first character indicates the file type. Usually you will encounter either a `-` for a regular file, a `d` for a directory, and `l` for a symbolic link. Less common file types include `b` for block devices (e.g., hard drives, ram etc), `c` for character devices which stream data one character at a time (e.g., mice, keyboards, virtual terminals). A common place to find this range of file types is in the devices directory. This can be checked with `ls -lart /dev/ &#124; less`.
@@ -2022,7 +2022,7 @@ Occasionally one will encounter a `s` for setuid on the execute field. If the ex
 
 Finally there is `t`, "save text attribute", or more commonly known as "sticky bit". This allows a user to delete or modify only those files in the directory that they own or have write permission for. A typical example is the `/tmp` directory, which is world-writeable
 
-`[train01@trifid ~] ls -l /tmp`
+`[train01@trifid ~] ls -l /tmp`    
 `drwxrwxrwt  29 root root 36864 Nov 11 11:42 tmp`
 
 Whilst everyone can read, write, and access the directory, the `t` indicates that only the user that created a file in this directory can delete that file. 
@@ -2035,7 +2035,7 @@ After this determine the operation that is going to be expressed, either `+` (ad
 
 One final mode permission is `X` (exclusive execute) which sets execute only if the file or directory already has at least one execute permission (user, group, other). Usually this is applied to directory trees with `-R` and `+` allowing for the addition of execute permissions without setting execute on normal files (such as text files). As an example the first command would set execute on all files for everyone regardless of the file type, to the current directory and all subdirectories, whereas the second would not:
 
-`chmod -R a+rx .`
+`chmod -R a+rx .`     
 `chmod -R a+rX .`
 
 As an example, let's make a file read-only. Again, note that if there is no user reference it applies to all users.
@@ -2105,14 +2105,14 @@ The general syntax for links is:  `ln [option] source destination`
 
 This most common option is -s, to create a symbolic link. The source is the original file. The destination is the new symbolic link.  Without a symbolic option, a hard link is created. In this case the link and the original are pointing to the same file. To illustrate;
 
-With a hard link: File1 -> Data1 and File2 -> Data1
+With a hard link: File1 -> Data1 and File2 -> Data1    
 With a symbolic link: File2 -> File1 -> Data1
 
 This means that if the original file is deleted with hard links, any new hardlinked files will still be able to access the data. However if the original file for a symbolic link is deleted, it will create a "dead link". The symlink points to the now deleted file, not the data itself! Despite this apparent fragility, the ability for symlinks to traverse file systems is seen as a significant advantage and they are usually more commonly used than hard links.
 
 The above is a bit of a simplification. To be more precise, a Linux file consists of a filename and an inode reference. The reference maps to the actual inode. The inode contains the permissions, and data address. More than one filename can have the same inode reference; thus files can be hardlinked. i.e.,
 
-(Filename1 + Inode#) maps to inode (includes permissions, address for data)
+(Filename1 + Inode#) maps to inode (includes permissions, address for data)    
 (Filename2 + Inode#) maps to inode (includes permissions, address for data)
 
 Links are particularly useful if you want to share a file with another user, such as working on a collaborative paper. In addition to the link read and write access should be granted as well, using the `chmod` command just illustrated. 
@@ -2120,7 +2120,7 @@ Links are particularly useful if you want to share a file with another user, suc
 For example, user `train01` could copy a file, `quakes.csv`. However they also want to share this with `train02`; fortunately they both belong to the same group (vpac) so it is relatively easy to provide those permissions. First we'll create the file, then we'll change the permissions so members of the group can access it, then `train02` will create a link to that file with the filename `shakes.csv`. 
 
 So first on train01; 
-`[train01@trifid ~] cp /common/intermediate/quakes.csv .` 
+`[train01@trifid ~] cp /common/intermediate/quakes.csv .`     
 `[train01@trifid ~] chmod 0664 quakes.csv`
 
 Then on train02;
@@ -2142,11 +2142,11 @@ When a file is created a link is associated to it. When a hard link is removed w
 
 For example, if the link `/home/train02/quakes.csv` is removed, the data will still exist in the `/home/train01/shakes.csv` original. However if you remove the original then the symbolic link  will display as a dead link, because the symbolic link is not directly connected to the data. Symbolic links are particularly useful for associating with directories or across file system on a network. As an example; 
 
-`ln -s /tmp temp` 
-`cd temp` 
-`ls -l` 
-`cd ..`
-`rm temp`
+`ln -s /tmp temp`    
+`cd temp`    
+`ls -l`    
+`cd ..`    
+`rm temp`   
 
 Note that `temp` is a *file*, not a directory. It is a file with a symbolic link to a directory. Thus, an `rm` rather than `rmdir` is used (of course, if it *was* a directory, it wouldn't be empty *and* if it wasn't a symblolic link, one probably wouldn't want to remove the `/tmp` direcory!
 
@@ -2189,7 +2189,7 @@ In the introductory course we did not spend much time on system information comm
 
 The du command has the standard syntax of du [options] [file]. The default expression is to print to standard output size of a file or directory in kilobytes. Without any arguments du will print all files, entering directories recursively. Common options include -s, which generates a summary of directories and -h which expresses output in "human readable" format (i.e., megabytes, gigabytes etc). To give a summary of an entire directory therefore the command would simply be du -sh, and to express in bytes, just du -sk.
 
-`du -sh *`
+`du -sh *`   
 `du -sk *`
 
 The following is a handy use of xargs is to parse a directory list and output the results to a file. The command script below runs a disk usage in summary, sorts in order of size and exports to the file diskuse.txt. The "\n" is to ignore spaces in filenames.
