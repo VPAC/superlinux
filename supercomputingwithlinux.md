@@ -2174,12 +2174,13 @@ The general syntax is `split [OPTION]... [INPUT [PREFIX]]`. Options include byte
 
 The command `split -d -l100 filename newfilename` will split a file into new files of 100 lines indicated in order by a numeric suffix. e.g., `split -d -l100 quakes.csv newquakes`
 
-
 **Sort and Uniq**
 
 Again with a descriptive name, sort will organise a text file into an order specified by options and output to a specific file, if desired. The general syntax is `sort [option] [input file] -o [filename]`. Some of the options include -b (ignore beginning spaces), -d (use dictionary order, ignore punctuation), -m (merge two input files into one sorted output, and -r (sort in reverse order). An interesting option for sort is for natural language ordering (e.g., 1, 10, 2, 20); for this case use sort -g filename (generic) or -V (version number).
 
-To filter repeated lines in a text file use uniq. The standard syntax is `uniq [options] [input file] [output file]`. A simple example is `uniq repeats.txt unique.txt`. It is sometimes with sort to create a sorted file of unique lines, e.g., `sort repeats.txt | uniq > sortuniq.txt`, although `sort` also can do this with the `-u` option.
+The `sort` command also have a very useful option for sorting by columns. Delimites can be established with the `-t` option (e.g., `-t,` for comma separated values) and fields with the the `-k` option (e.g., sort by the second field in numeric order in a comma separated file would be `sort -t, -nk2 fiename.csv`)
+
+To filter repeated lines in a text file use `uniq`. The standard syntax is `uniq [options] [input file] [output file]`. A simple example is `uniq repeats.txt unique.txt`. It is sometimes with sort to create a sorted file of unique lines, e.g., `sort repeats.txt | uniq > sortuniq.txt`, although `sort` also can do this with the `-u` option.
 
 ## 4.9 System Information Commands
 
@@ -2245,147 +2246,112 @@ job 22 at 2010-11-29 11:45
 
 **fg and bg**
 
-The commands fg (foreground) and bg (background) are complementary manipulations of processes.  Usually processes (jobs) take next to no time (e.g., 'ls'). But other times, like a transfer of files or a compilation of very complex program, can take a great deal of time. Such jobs can be suspended with Cntrl-Z to return to the terminal; however one can also resume execution of these jobs in the background with the 'bg', or they can be resumed to the foreground with 'fg'. A job can also be initiated in the background with an ampersand. Each job in the background is given a job number which can be brought back to the foreground with 'fg #'. The 'jobs' command can list all current jobs. A background job can be killed with kill %job-number. 
+The commands `fg` (foreground) and `bg` (background) are complementary manipulations of processes.  Usually processes (jobs) take next to no time (e.g., `ls`). But other times, like a transfer of files or a compilation of very complex program, can take a great deal of time and resources. On a shared cluster system complex tasks should not be conducted on the login or head node. Instead, the queuing system can be used, typically an interactive job which would provide enough dedicated resources for the task but a short wait time. Processes with a human-notable time period can be suspended with `Cntrl-Z` to return to the terminal and can be resumed execution in the background with the `bg` and the job ID, or they can be resumed to the foreground with `fg`. A job can also be initiated in the background with an ampersand. Each job in the background is given a job number which can be brought back to the foreground with `fg %job-number`. The `jobs` command can list all current jobs. A background job can be killed with `kill %job-number`. 
 
-The following evaluates a small script that prints "igneous"  to the file rocks.txt (a fine something that all people need) in the background. This can be checked by concatenating the rocks file. The script can be run again in the foreground (with "sedimentary") which will block useful input until suspended. Running the jobs command shows that there is now two jobs running, both of these are echoing terms to the same output file. A third command starts introducing metamorphic (which are of course, derived from the other two types). 
+By way of illustration, the following evaluates a small script that prints the word "igneous"  to the file `rocks.txt` in the background. This can be checked by concatenating the `rocks.txt` file. The script can be run again in the foreground (with "sedimentary") which will block other input until suspended. Running the `jobs` command shows that there is now two jobs running, both of these are echoing terms to the same output file. A third command starts introducing "metamorphic" (which are of course, derived from the other two types). All these jobs can be terminated by the kill command.
 
-These jobs can be terminated by the kill command.
-
+```
 [train01@trifid ~]$ eval 'for i in {1..100}; do sleep 2; echo "Igneous" >> rocks.txt ; done' & 
 [train01@trifid ~]$ jobs 
 [train01@trifid ~]$ cat rocks.txt 
-[train01@trifid ~]$ fg 1 
+[train01@trifid ~]$ fg %1 
 Ctrl-Z 
 [train01@trifid ~]$ cat rocks.txt 
-[train01@trifid ~]$ bg 1 
+[train01@trifid ~]$ bg %1 
 [train01@trifid ~]$ eval 'for i in {1..100}; do sleep 2; echo "Sedimentary" >> rocks.txt ; done' 
 Ctrl-Z 
 [train01@trifid ~]$ jobs 
 [train01@trifid ~]$ cat rocks.txt 
-[train01@trifid ~]$ bg 2
+[train01@trifid ~]$ bg %2
 [train01@trifid ~]$ eval 'for i in {1..100}; do sleep 2; echo "Metamorphic" >> rocks.txt ; done' & 
 [train01@trifid ~]$ jobs 
 [train01@trifid ~]$ kill %1 
 [train01@trifid ~]$ kill %2 
 [train01@trifid ~]$ kill %3 
 [train01@trifid ~]$ cat rocks.txt
+```
 
 # 5.0 Regular Expressions, Shells, and Scripting
 
 ## 5.1 Regular Expressions with grep and sed
 
-In order to make the best use of these scripting languages knowledge of regular expressions, also known as regex or regexp, is a powerful tool. Scripts and utility commands search strings of text for regular expressions of characters which then can be expressed or manipulated. 
+In order to make the best use of these scripting languages knowledge of regular expressions, also known as regex or regexp, is a powerful tool. Scripts and utility commands search strings of text for regular expressions of characters which then can be expressed or manipulated. The main command for searching with regular expressions is `grep`, a "global search for regular expression and print to standard output", encountered earlier in a simple form. The command `sed`, in contrast, is a "stream editor" whose output involves a transformation to the input file. A furthe command, `awk` is explored in the following section. Between them, `grep`, `sed`, and `awk` are extremely powerful and entire books have been written just exploring their capabilities. Here, only a minimal subset of searching, transforming, and reporting is provided.
 
-A simple example of is the unstructured regular expression "row"; in searching a certain document this could be identified with "brown", "crow", "drown", "microwaves" etc, to use an some examples from the command "grep row /usr/share/dict/words". 
+A simple example of is the unstructured regular expression "row"; in searching a certain document this could be identified with "brown", "crow", "drown", "microwaves" etc, to use an some examples from the command "grep row /usr/share/dict/words". Whilst simple expressions have a literal character to character match ("a"="a"), regular expressions also have meta-characters, some of which are described below using the file `gattaca.txt`. 
 
-Whilst simple expressions have a literal character to character match ("a"="a"), regular expressions also have meta-characters, some of which are described below. 
+| Metacharacter	| Function			| Example		| What It Matches			|
+|:--------------|-------------------------------|-----------------------|---------------------------------------|
+| ^		| Beginning-of-line anchor	| ^ATVK			| All lines beginning with ATVK		| 
+| $		| End-of-line anchor		| WSGS$			| All lines ending with WSGS		|
+| .		| Matches one character		| A.........S		Lines containing an A, followed by nine characters, followed by an S | 
+| *		| Matches zero characters 	| ATVK*			| The pattern ATVK plus any additional characters	| 
+| [ ]		| Matches one in the set	| AT[VE]K		| The pattern ATVK or ATEK		|
+| [x-y]		| Matches within a range	| [A–Z]TVK		| A through Z followed by TVK		|
+| [^ ]		| Matches not in the set	| [^A–Z]		| Any character not in the range between A and Z	|
+| \		| Escape a metacharacter	| WSGS\./		| Sequence WSGS, followed by a literal period	|
 
-Metacharacter
-Function
-Example
-What It Matches 
-^
-Beginning-of-line anchor
-/^ATVKSRWSGS/
-All lines beginning with ATVKSRWSGS 
-$
-End-of-line anchor
-/ATVKSRWSGS$/
-All lines ending with ATVKSRWSGS
-.
-Matches one character
-/A.........S/
-Lines containing an A, followed by nine characters, followed by an S 
-*
-Matches zero or more of the preceding characters
-/ *ATVKSRWSGS/
-Lines with zero or more spaces, followed by the pattern ATVKSRWSGS 
-[ ]
-Matches one in the set
-/[Aa]ATVKSRWSGS/
-Matches lines containing ATVKSRWSGS or  aTVKSRWSGS
-[x-y]
-Matches one character within a range in the set
-/[A–Z]TVKSRWSGS/
-Letters from A through Z followed by  TVKSRWSGS
-[^ ]
-Matches one character not in the set
-/[^A–Z]/
-Any character not in the range between A and Z
-\
-Used to escape a metacharacter
-/ATVKSRWSGS\./
-Lines containing ATVKSRWSGS, followed by a literal period; Normally the period matches one of any character 
 
-Expand the simple example with metacharacters and grep gains additional utility. e.g.,
+Metachatacters can be combined. For example, to search for a sequence of characters from the system dictionary that starts with "brown" and has additional six letters the following command is invoked: 
 
-grep ^brown.......$ /usr/share/dict/words
+`grep ^brown......$ /usr/share/dict/words`
 
-Only one unhypthenated word matches this search of an eleven letter word starting with the characters 'brown'. Which is why grep might be popular among people who do crossword puzzles or play Scrabble(R).
+This illustrates why grep might be popular among people who do crossword puzzles or play Scrabble(R).
 
-The 'matches one in the set' metacharacter has a number of options that one may find useful.
+The 'matches one in the set' metacharacter has a number of options.
 
-[:digit:] 	Only the digits 0 to 9
-[:alnum:] 	Any alphanumeric character 0 to 9 OR A to Z or a to z.
-[:alpha:] 	Any alpha character A to Z or a to z.
-[:blank:] 	Space and TAB characters only.
+| Example	| What It Matches		| 
+|:--------------|-------------------------------|
+| [:digit:] 	| Only the digits 0 to 9	|
+| [:alnum:] 	| Any alphanumeric character 0 to 9 OR A to Z or a to z.	|
+| [:alpha:] 	| Any alpha character A to Z or a to z.	|
+| [:blank:] 	| Space and TAB characters only.	|
 
 Sometimes the metacharacters can be combined in an interesting manner. For example the metacharacters for beginning and end of line anchors can be used with grep to count the number of empty lines in a file. 
 
-grep -c "^$" filename
+`grep -c "^$" filename`
 
-The caret symbol can also be used to call an exception to a class of characters. The following example conducts a search for all words in the dictionary that do not begin with a-z (which should be a null set!). Another example would be to invert the search with the -v option, for example, a search for words with no vowels.
+The caret symbol can also be used to call an exception to a class of characters. The following example conducts a search for all words in the dictionary that do not begin with a-z (which should be a null set in most circumstances). Another example would be to invert the search with the -v option, for example, a search for words with no classic vowels.
 
-grep -i "^[^a-z]" /usr/share/dict/words
-grep -v "[aeiou]" /usr/share/dict/words
+`grep -i "^[^a-z]" /usr/share/dict/words`
+`grep -v "[aeiou]" /usr/share/dict/words`
 
-The commands grep, sed and awk are three well known and useful utilities that make significant use of regular expressions. We have already been introduced to grep in the introductory course, whose title, 'Global search for Regular Expression and Print to standard output', explains its use. In comparison, sed is, also as the name indicates, a stream-editor, of which the unstated important component is that it is non-interactive. Finally, awk is a field-orientated pattern programming language in its own right.  
+As mentioned `sed` is a stream-editor, of which the unstated important component is that it is non-interactive. The following is a basic example of of substitution, which makes up the most common use of the `sed` command.
 
-Whilst entire books have been written on the use of these commands – as they should - the very brief introduction here provides a minimal introduction to their most common use by user in an HPC environments; how to find text (grep), how to search and replace text (sed), and how to generate quick reports (awk).
+`sed 's/ATVK/ATEKS/g' gattaca.txt`	
 
-The following are examples of of substitution, deletion and printing which takes up the overwhelming majority of uses for sed.  e.g.,
+This will simply search for `ATVK` within the `gattaca.txt` file and replace it with `ATEK`. The `s/` indicates that a substitution is desired and the `/g` indicates a global search - otherwise it will only conduct the first substitution on a line where the pattern is found. The command will not make changes to the file itself, but will instead product to standard output. Often, a user will make the changes, check them visually on standard output, then do the "real" test, changing the file with the "-i" ("inline") option.
 
-sed -e 's/ATVK/ATEKS/' gattaca.txt	
+`sed -i 's/ATVK/ATEKS/g' gattaca.txt`
 
-If the file needs to be changed, use the "-i" option instead.
+The following are other examples of substitution with `sed` including deletions, and using regular expression metacharacters.
 
-Some other handy examples of sed;
+| Example		| Effect							| 
+|:----------------------|---------------------------------------------------------------|
+| sed 's/^/     /'	| Insert five whitespaces at the beginning of every line. 	|
+| sed '/baz/s/foo/bar/g'| Substitute all instances of 'foo' with 'bar' on lines that start with 'baz' |
+| sed '/baz/!s/foo/bar/g' | Substitute all instances of 'foo' with 'bar' except on lines that start with 'baz' |
+| sed 's/foo\|bar\|baz/qux/g' | Substitute 'qux' for 'foo' or 'bar' or 'baz'		| 
+| sed 's/^[ \t]*//'	| Substitute leading whitespace (spaces, tabs) from front of each line aligns all text flush left 	|
+| sed /^$/d		| Delete all blank lines. 					|
+| sed s/ *$//		| Delete all spaces at the end of every line. 			| 
+| sed 's/^\w*\ *//'	| Remove the first word of each line.				|
 
-sed 's/^/     /'
-Insert five whitespaces at the beginning of every line. 
-sed '/baz/s/foo/bar/g'  
-Substitute all instances of 'foo' with 'bar' on lines that start with 'baz'
-sed '/baz/!s/foo/bar/g'
-Substitute all instances of 'foo' with 'bar' except on lines that start with 'baz' 
-sed 's/foo\|bar\|baz/qux/g'
-Substitute 'qux' for 'foo' or 'bar' or 'baz' 
-sed 's/^[ \t]*//'
-Substitute leading whitespace (spaces, tabs) from front of each line aligns all text flush left 
-sed /^$/d
-Delete all blank lines. 
-sed s/ *$//
-Delete all spaces at the end of every line. 
-sed 's/^\w*\ *//'
-Remove the first word of each line.
+Due to competing standards many decades ago, various forms of *nix (Linux, MacOS X+) use a "line-feed" character for new lines, as does XML, whereas MS-Windows use a carriage return and a line feed, whilst MacClassic used the CR. Whilst better text editors, web-browsers etc are capable of recognising this problem and displaying files as expected this is not always the case. Files originating on Unix or Apple Macintosh OS X systems may appear as a single long line on some MS-Windows applications because it lacks the carriage return. When viewing a file originating from a MS-Windows computer on a *nix system, the extra CR may be displayed as ^M at the end of each line or as a second line break. Again, sed can help here by adding a carriage return for MS-Windows files and removing it in reverse. 
 
-Due to competing standards many decades ago, various forms of *nix (Linux, MacOS X+) use a "line-feed" character for new lines, as does XML, whereas MS-Windows use a carriage return and a line feed, whilst MacClassic used the CR. Whilst better text editors, web-browsers etc are capable of recognising this problem and displaying files as expected this is not always the case. Files originating on Unix or Apple Macintosh systems may appear as a single long line on some MS-Windows applications because it lacks the carriage return. When viewing a file originating from a MS-Windows computer on a *nix system, the extra CR may be displayed as ^M at the end of each line or as a second line break. Again, sed can help here by adding a carriage return for MS-Windows files and removing it in reverse. 
+`sed -i 's/$/\r/g' filename` 	# *nix to MS-Windows, adds CR. 
+`sed -i 's/\r$//g' filename`	# MS-Windows to *nix, removes CR 
 
-sed -i 's/$/\r/g' filename 	# *nix to MS-Windows, adds CR. 
-sed -i 's/\r$//g' filename	# MS-Windows to *nix, removes CR 
+The `sed` command is extremely versatile, and over the years a number of common and popular one-line sed commands have been compiled. These can ge found at the following URL, and are included with in the resources direcory of the git repository for this book.
 
-A popular list of one-line sed commands can be found at the following URL
-
-http://sed.sourceforge.net/sed1line.txt
+`http://sed.sourceforge.net/sed1line.txt`
 
 ## 5.2 Reports with awk
 
-Awk is a data driven programming language designed for processing text-based data, either in files or data streams, its name derived from the surname initial of the designers (Alfred Aho, Peter Weinberger, and Brian Kernighan). Whilst AWK has an enormous range of capabilities, in this tutorial we will concentrate on those which are appropriate to illustrate text-manipulation and regular expressions useful for scripting. 
+Its name is derived from the surname initial of the designers (Alfred Aho, Peter Weinberger, and Brian Kernighan), `awk` originated in 1977. As a data driven programming language designed for processing text-based data, `awk` can operate on either in files or data streams. Whilst `awk` has an enormous range of capabilities, this book will concentrate on the basic text-manipulation and regular expressions useful for scripting and producing reports. 
 
-Awk is particularly good at understanding and manipulating text structured by fields - such as tables of rows and columns. The essential organization of an AWK program follows the form: pattern { action }. This is sometimes structured with BEGIN and END which specify actions to be taken before any lines are read, and after the last line is read. With it's structured data features, awk can print columns by number ($0 equals everything). 
+`Awk` is particularly good at understanding and manipulating text structured by fields - such as tables of rows and columns. The essential organization of an `awk` program follows the form: `pattern { action }`. This is sometimes structured with `BEGIN` and `END` which specify actions to be taken before any lines are read, and after the last line is read. With it's structured data features, awk can print columns by number: the value `$0` equates to `everything`). By default, `awk` used a space to represent an internal field separator is not specified, which can lead to unexpected results. e.g., 
 
-$ awk '{print $1}' quakes.csv
-
-But if the internal field separator is not specified, AWK can get confused as it defaults to a space. 
+`$ awk '{print $1}' quakes.csv`
 
 To fix this specify the field separator as a comma e.g., 
 
@@ -2395,74 +2361,77 @@ awk -F"," '{print $2}' quakes.csv
 awk -F"," '{print $1}' quakes.csv
 ```
 
-The most common field separators are a space, a comma, a tab and a colon, represented as -F" ", -F",", -F"\t" and -F":", respectively. Adding new separators to the standard output print of multiple fields is also recommended - otherwise AWK will print without any separators. For example; 
+The most common alternative field separators in a structured text file to the space are a comma, a tab and a colon, represented as `-F","`, `-F"\t"` and `-F":"`, respectively. Adding new separators to the standard output print of multiple fields is also common - otherwise AWK will print without any separators.  
 
-awk -F"," '{print $1 " : " $3}' quakes.csv
+`awk -F"," '{print $1  $3}' quakes.csv`
+`awk -F"," '{print $1 " " $3}' quakes.csv`
 
-It is quite reasonable to pipe other commands into a display, such as sort or uniq. 
+It is quite possible to pipe other commands within as well outside an `awk` script, for example a `sort` or `uniq`. 
 
-awk -F"," '{print $1 " : " $3 | "sort"}' quakes.csv | less
+`awk -F"," '{print $1 " " $3 | "sort"}' quakes.csv | less`
 
-Often you will want to manipulate or display structured data but without reference to the first row which is typically the header information for the file. In this case use NR (number of records). In the first example we use count the total number of rows after the last line is read. In the second example we display all three columns in reverse order using comma-separated values, but without the first row displayed. 
+Often you will want to manipulate or display structured data but without reference to the first row which is typically the header information for the file. In this case use NR (number of records). In the first example we use count the total number of rows after the last line is read. In the second example we display all three columns in reverse order using comma-separated values, but without the first row displayed. The third example illustrates the use of logical or (`||`) and logical and (`&&`).
 
-The third example is left for your own to work out.
-
-awk -F"," 'END {print NR}' quakes.csv 
-awk -F"," 'NR>1{print $3 "," $2 "," $1}' quakes.csv 
-awk -F"," '(NR <2) || (NR!=6) && (NR<9)' quakes.csv > selection.txt
+`awk -F"," 'END {print NR}' quakes.csv`
+`awk -F"," 'NR>1{print $3 "," $2 "," $1}' quakes.csv` 
+`awk -F"," '(NR <2) || (NR!=6) && (NR<9)' quakes.csv > selection.txt`
 
 A couple of other useful simple awk examples; a sum of instances per column, a sum of a column, a sum of a row.
 
-$ cat simple1.txt
-A C C T A G T
-C A A A G T A
-C A T T A C C
-A G T A C A A
+```
+$ cat simple1.txt   
+A C C T A G T   
+C A A A G T A   
+C A T T A C C   
+A G T A C A A   
+```
 
-$awk '$7=="A" { ++count } END { print count }' simple1.txt
+`$awk '$7=="A" { ++count } END { print count }' simple1.txt`
 
-$ cat simple2.txt
-1 2 3 4 5 6 7 8 9
-2 3 4 5 6 7 8 9 10
-3 4 5 6 7 8 9 11 12
+```
+$ cat simple2.txt   
+1 2 3 4 5 6 7 8 9   
+2 3 4 5 6 7 8 9 10   
+3 4 5 6 7 8 9 11 12   
+```
 
-awk '{sum+=$7} END {print sum}' simple2.txt
+`awk '{sum+=$7} END {print sum}' simple2.txt`
 
-$ cat simple3.txt
-1 2 3 4 5
-6 7 8 9 10
-11 12 13 14 15
+```
+$ cat simple3.txt   
+1 2 3 4 5   
+6 7 8 9 10   
+11 12 13 14 15   
+```
 
-$ awk '{ for(i=1; i<=NF;i++) j+=$i; print j; j=0 }' simple3.txt
+`$ awk '{ for(i=1; i<=NF;i++) j+=$i; print j; j=0 }' simple3.txt`
 
-The utilities of awk are vast; it can act as a search tool, the first example printing the lines which contains "20031211234000" in the second field. It can, like sed, conduct substitutions. It can delete entire fields; in the third example, the second column is deleted, leaving just the characters and the year of appearance. It can act like the command uniq; with the fourth example. With selective printing, it can act like head and tail.
+The utilities of `awk` are vast; it can act as a search tool, the first example printing the lines which contains "20031211234000" in the second field. It can, like `sed`, conduct substitutions. It can delete entire fields; in the third example, the second column is deleted, leaving just the characters and the year of appearance. It can act like the command uniq; with the fourth example. With selective printing, it can act like head and tail.
 
-awk -F"," '$2 == "20031211234000"' quakes.csv
-awk '{gsub(/foo|Foo|/, "Bar")}; 1' filename
-awk -F"\t" '{ $2 = ""; print }' filename
-awk 'a != $0; { a = $0 }' filename
-awk 'NR < 11' filename
+`awk -F"," '$2 == "20031211234000"' quakes.csv`
+`awk '{gsub(/foo|Foo|/, "Bar")}; 1' filename`
+`awk -F"\t" '{ $2 = ""; print }' filename`
+`awk 'a != $0; { a = $0 }' filename`
+`awk 'NR < 11' filename`
 
 Other useful awk one-liners make use of the arithmetic functions of this programming language. 
 
-awk '{totalf = totalf + NF }; END {print totalf}' $file			
-# print the total number of fields in $file. 
-awk '{sum=0; for (i=1; i<=NF; i++) sum=sum+$i; print sum}' $file	
-# print the sum of the fields (columns) of every line (row); NF is number of field. 
+`awk '{totalf = totalf + NF }; END {print totalf}' $file`			
+`# print the total number of fields in $file.` 
+`awk '{sum=0; for (i=1; i<=NF; i++) sum=sum+$i; print sum}' $file`	
+`# print the sum of the fields (columns) of every line (row); NF is number of field.`
 
-A popular list of one-line awk commands can be found at the following URL
+Like `sed` a popular list of one-line awk commands is available. They are included with the chapter resources on the repository for this book and can be found at the following URL:
 
-http://www.pement.org/awk/awk1line.txt
+`http://www.pement.org/awk/awk1line.txt`
 
-5.3 Shells
-----------
+## 5.3 Shells
 
-The core software to any operating system is the kernel, which provides a bridge between applications and the hardware and manages system resources. An operating system's "shell" is that software that provides an interface for users of the operating system to access the kernel, whether for interactive use, customisation or programming. Examples include the *nix-universal Bourne shell (sh) Bourne-Again shell (bash), Z shell (zsh), Korn shell (ksh), extended C shell (tcsh) and the friendly interactive shell (fish). 
+The core software to any operating system is the kernel, which provides a bridge between applications and the hardware and manages system resources. An operating system's "shell" is that software that provides an interface for users of the operating system to access the kernel, whether for interactive use, customisation or programming. Examples include the *nix-universal Bourne shell (sh) Bourne-Again shell (bash), Z shell (zsh), Korn shell (ksh), extended C shell (tcsh) and the friendly interactive shell (fish). There is even an amusing attempt to develop a shell into a text-based adventure game (Adventure shell, available at `http://nadvsh.sourceforge.net/`).
 
-There is even an amusing attempt to develop a shell into a text-based adventure game (Adventure shell, available at http://nadvsh.sourceforge.net/).
+To check what shells are available on VPAC's Trifid system the following is a directory listing. Note that `csh` is now a symlink to `tsch` (extended cshell) which was implemented due to a variety of problems with the former (see the document, Csh Programming Considered Harmful" `https://www-uxsup.csx.cam.ac.uk/misc/csh.html`) and that the original shell (`sh`) is now a symlink to `bash` given limitations to the former. The other shell systems listed include korn shell (`ksh`, `ksh93`) and Z shell (`zsh`).
 
-Let us check what shells are available on our system, with a typical result; 
-
+```
 $ ls -l /bin/*sh* 
 -rwxr-xr-x 1 root root  801512 Jan 22  2009 /bin/bash 
 lrwxrwxrwx 1 root root       4 Nov 22 09:24 /bin/csh -> tcsh 
@@ -2471,107 +2440,98 @@ lrwxrwxrwx 1 root root      21 Jun 29  2010 /bin/ksh -> /etc/alternatives/ksh
 lrwxrwxrwx 1 root root       4 Jun 29  2010 /bin/sh -> bash 
 -rwxr-xr-x 1 root root  352904 Nov  4 10:24 /bin/tcsh 
 -rwxr-xr-x 1 root root  596208 Sep 22  2009 /bin/zsh 
+```
 
-Each have different features and often slightly different syntax, which is mostly beyond the scope of this course. Perhaps on of the most significant difference is how to set variables and environment variables. 
+Each shell has different features and often slightly different syntax, which is mostly beyond the scope of this course. The main two are bash or csh-derived. The most significant difference is how to set variables and environment variables. This publication concentrates on scripting used with the bash shell and we'll follow some examples from the standard GNU bash tutorial. This is the GNU standard shell which includes many feastures from Bourne, the original UNIX shell, and from ksh and tcsh. 
 
-Shell
-bash
-tcsh 
-Variables
-var=val
-set var=val 
-Environment
-export var=val
-setenv var val 
+| Shell		| Variables	| Environment	|
+|:--------------|---------------|---------------|
+| bash		| var=val	| export var=val| 
+| tcsh 		| set var=val 	| setenv var val|
 
-In this course we will concentrate on scripting used with 'bash' and we'll follow some examples from the standard GNU bash tutorial. This is the GNU standard shell which includes many feastures from Bourne, the original UNIX shell, and from ksh and tcsh. As explained at the start of this course, every time a user logs in, bash executes ~/.bash_profile. ~/.bash_login or ~/.login then ~/.bashrc as start-up files. These are examples of basic shell scripting, rather like the PBS files we've already seen in the introductory course. 
+
+As explained at the start of this course, every time a user logs in, bash executes `~/.bash_profile`, `~/.bash_login`, or `~/.login` then `~/.bashrc` as start-up files. These are examples of basic shell scripting, rather like the job submission files we've already seen. Indeed, job submission scripts are shell scripts (they invoke a shell) but with directives for the scheduler which are interpreted as comments (and thus ignored) by the shell.
 
 Bash has certain shortcut features; in the introductory course we already visited some of these such as using ~ to represent the home directory, the period, "." to represent the current directory, a double period ".." for one level up in the file system hierarchy, and tab-completion of pathnames. The following is a more complete listing worthy of practising.
 
-~
-Shortcut to user's home directory.
-.
-The current directory.
-..
-One level up in the file system hierarchy.
-TAB
-Autocompletion suggestions. 
-ctrl+w
-Remove word behind cursor. 
-ctrl+u
-Delete everything from cursor to beginning of the line 
-!!
-Repeat last typed command; can be combined with other commands. 
-&&
-Combine commands if the first succeeds (e.g., make && make install)
-||
-Alternative command if the first fails (e.g., make makeile1 || make Makefile)
-alt+f
-Go forward to the end of the previous word 
-alt+b
-Move cursor back to the beginning of the previous word 
-ctrl+d
-Quick logout. 
-ctrl+r
-Recursive search through your history to locate previous commands. 
-ctrl+z
-Stop the current process. 
+| Shortcut	| Effect					|
+|:--------------|-----------------------------------------------|
+| ~ 		| The user's home directory.			|
+| .		| The current directory.			|
+| ..		| One level up in the file system hierarchy.	|
+| TAB		| Autocompletion suggestions.			| 
+| ctrl+w	| Remove word behind cursor.			|
+| ctrl+u	| Delete everything to beginning of the line	|
+| !!		| Repeat last typed command			|
+| && 		| Combine commands if the first succeeds (e.g., make && make install)	|
+| ||		| Alternative command if the first fails (e.g., make makeile1 || make Makefile) |
+| alt+f 	| Go forward to the end of the previous word 	|
+| alt+b		| Move cursor back to the beginning of the previous word |
+| ctrl+d	| Quick logout.					| 
+| ctrl+r	| Recursive search through your history to locate previous commands. |
+| ctrl+z	| Stop the current process. 			|
 
 ## 5.4 Shell Scripting with bash
 
-Shell scripting is not as powerful as a complete programming language when cross-platform support is required, or the tasks are resource-intensive, or when complex data structures, or if floating-point operations or complex numbers are needed. In these cases you should use a language like C, FORTRAN or Java. But for many tasks one will be pleasantly surprised how useful shell scripting can be. Indeed, many file and text manipulation tasks which are complex in a the aforementioned programming languages are simple with shell scripting.
+Shell scripting is not as powerful as a complete programming language when cross-platform support is required, or the tasks are resource-intensive, or when complex data structures, or if floating-point operations or complex numbers are needed. In these cases you should use a language like C, Fortran or Java. But for many tasks one will be pleasantly surprised how useful shell scripting can be. Indeed, many file and text manipulation tasks which are complex in a the aforementioned programming languages are simple with shell scripting. Always remember that shells scripting can quickly and readily make use of the entire toolkit of operating system commands that already exist.
 
-The most basic form of scripting simply follows commands in sequence, such as this rather undeveloped backup script, which runs tar and gzip on the home directory. First we use vim to create the script, add a identifier for bash, the single script line, exit vim, turn backup.sh into an executable and run the command. There should be a file called homeuser.tar.gz when the script is complete. 
+The most basic form of scripting simply follows commands in sequence, such as this rather undeveloped backup script, which runs tar and gzip on the home directory. First we use a text editor to create the script (e.g., `vim backup.sh`), add a identifier for bash, the single script line, exit the editor, turn backup.sh into an executable (`chmod +x backup.sh`) and run the command. There should be a file called homeuser.tar.gz when the script is complete. 
 
-vim backup.sh
-#!/bin/bash          
+```
+#!/bin/bash
 tar cvfz homeuser.tgz /home/train[01..12]
+```
 
-This is, of course, no different to typing the command at the prompt. Not much of a script! So let's start adding some variables to it. Let's make use of the preset date and time commands to add to the file to provide an archive with a timestamp within the filename as variables and, indeed, make the file itself a variable name. 
+**Variables**
 
+This is, of course, no different to typing the command at the prompt. Not much of a script, although even at this level of simplicity time has been saved if it is used more than once. A simple alteration would be to make use the preset date and time commands to add to the file to provide an archive with a timestamp within the filename as variables and, indeed, make the file itself a variable name. Note the space between "date" and the addition sign!
+
+```
 #!/bin/bash          
 BU=homeuser$(date +%Y%m%d).tgz 
-tar cvfz $BU /home/train01
+tar cvfz $BU /home/train[01..12]
+```
 
-Note the space between "date" and the addition sign!
+Thus, a variable is prefaced by a dollar sign ($) to refer to its value. It can also be assigned with an equals sign, without whitespaces on either side. 
 
-The file can be made into an executable by changing its attributes or by running it with sh i.e,.
-
-$ chmod +x backup.sh
-$ sh backup.sh 
-$ ./backup.sh 
-
-A variable is prefaced by a dollar sign ($) to refer to its value. It can also be assigned with an equals sign, without whitespaces on either side. 
-
+```
 $ Ubh="Unbihexium"
 $ echo $Ubh 
   Unbihexium
+```
+
+**Loops**
 
 In addition to variable assignments, bash scripting allows for  loops (for/do, while/do, util/do) and conditionals (if/then/else/fi, case). For example, the first for/do one-line script (which, like all scripts, can be run directly from the bash shell), moves all files in the working directory to lower case; a second example copies all .oga files to .ogg - the format is identical and recommended, but some music players might not recognise it. 
 
- The until/do loop conducts the same action, but with the count in reverse. The next until/do produces the same results as the first, but not the difference in the conditional test. The main difference between while/do and until/do is that the while/do loop repeats the code block while the conditional is true whilst the until/do loop repeats the block whilst the expression is false.
+The until/do loop conducts the same action, but with the count in reverse. The next until/do produces the same results as the first, but not the difference in the conditional test. The main difference between while/do and until/do is that the while/do loop repeats the code block while the conditional is true whilst the until/do loop repeats the block whilst the expression is false.
 
 `for file in *.mp3 ; do ffmpeg -i "${file}" "${file/%mp3/ogg}" ; done`
 `for i in *.jpeg ; do convert "$i" "${i%.*}.png" ; done`
 
-Note the use of command substitution by using $(command); sometimes you will find the use of backticks instead (e.g., for i in * ; do mv $i `echo $i | tr "A-Z" "a-z"` ; done); this is not recommended. They are (a) not a POSIX standard, (b) can be difficult to read with deep escapes and (c) can be very dangerous if mistaken for strong quotes.
+Note the use of command substitution by using $(command); sometimes you will find the use of backticks instead (e.g., `for i in * ; do mv $i \`echo $i | tr "A-Z" "a-z"\` ; done);` this is *not* recommended. The use of backticks (a) not a POSIX standard, (b) can be difficult to read with deep escapes and (c) can be *very* dangerous if mistaken for strong quotes.
 
-x=1; while [ $x -le 5 ]; do echo "While-do count up $x"; x=$(( $x + 1 )); done
-x=5; until [ $x -le 0 ]; do echo "Until-do count down $x"; x=$(( $x - 1 )); done
-x=1; until [ $x = 6 ]; do echo "Until-do count up $x"; x=$(( $x + 1 )); done
+The following are examples of loops with conditional tests.
 
-Consider converting these files into permanent bash scripts and saving them in one's own bin directory. For example, the first script, which converts files to lower case, could be saved as the text file 'lowercase.sh' in /home/<username>/bin, and changed to an executable (chmod +x lowercase).
+`x=1; while [ $x -le 5 ]; do echo "While-do count up $x"; x=$(( $x + 1 )); done`
+`x=5; until [ $x -le 0 ]; do echo "Until-do count down $x"; x=$(( $x - 1 )); done`
+`x=1; until [ $x = 6 ]; do echo "Until-do count up $x"; x=$(( $x + 1 )); done`
 
+Even short, single line, scripts like these can be turned into permanent bashscripts if they are used regularly enough. It is good practise, for example, to convert them to executables and save them in a local `bin` directory (`/home/<username>/bin`) or similar in the user's PATH. For example, for a script `lowercase.sh`.
+
+```
 #!/bin/bash
+# Will change every file in the existing directory to lower-case.
+# Warning! Will overwrite *existing* files with the same lower-case name!
 for i
 do 
 	mv $i $(echo $i | tr "A-Z" "a-z")
 done
-
-Now the command `lowercase.sh` can be run anytime.
-
+exit
+```
 The until/do loop can serve as a trigger for events. In the following script, access to a system is tested with ping every few minutes until a connection is made whereupon it opens an SSH session. 
 
+```
 #! /bin/bash 
 read -p "Enter Hostname:" nethost 
 echo $nethost 
@@ -2580,6 +2540,9 @@ do
         sleep 180; 
 done 
 ssh $nethost 
+```
+
+**Conditionals**
 
 Conditions may be expressed in different structures depending on the test of the conditionals. A single test of conditions and commands can be expressed through an if/then/fi structure. A single test with an alternative set of commands is expressed if/then/else/fi. Finally, a switch-like structure can be constructed through a series of elif statements in a if/then/elif/elif/.../else/fi structure. 
 
@@ -2590,28 +2553,25 @@ Conditions may be expressed in different structures depending on the test of the
           
 There are several conditional expressions that could be used to test with the files. The following are few common examples; 
 
-[ -e filepath ]
-Returns true if file exists. 
-[$var lt value ] [ gt ] [ eq ]
-Returns true if less than, greater than or equal 
-[ -f filepath ]
-Returns true if filepath is actually a file.
-[ -x filepath ]
-Returns true if file exists and executable. 
-[ -S filepath ]
-Returns true if file exists and its a socket file. 
-[ expr1 -a expr2 ]
-Returns true if both the expression is true. 
-[ expr1 -o expr2 ]
-Returns true if either of the expression1 or 2 is true. 
+| Conditional 		| Truth Test			|
+|:----------------------|-------------------------------|
+| [ -e filepath ]	| Returns true if file exists. 	|
+| [$var lt value ] [ gt ] [ eq ] | Returns true if less than, greater than, or equal, respectively |
+| [ -f filepath ] 	| Returns true if filepath is actually a file. |
+| [ -x filepath ]	| Returns true if file exists and executable.  | 
+| [ -S filepath ]	| Returns true if file exists and its a socket file. 	|
+| [ expr1 -a expr2 ]	| Returns true if both the expression is true. |
+| [ expr1 -o expr2 ]	| Returns true if either of the expression1 or 2 is true. |
 
-There are also a number of special characters in bash scripting. Quoting disables these characters for the content within the quotes. Both single and double quotes can be used, and single quotes can be used to incorporate double quotes. "Backtick" quotation marks can be used for command substitution within the script for historical reasons but should be avoided. Special characters include ';' for command separators, '{}' for command blocks, '|' for a pipe, '< > &' as redirection symbols, '$' for variables, and '#' for comments.
+There are also a number of special characters in bash scripting. Quoting disables these characters for the content within the quotes. Both single and double quotes can be used, and single quotes can be used to incorporate double quotes. Again, "backtick" quotation marks can be used for command substitution within the script for historical reasons but should be avoided. Special characters include `;` for command separators, `{}` for command blocks, `|` for a pipe, `< > &` as redirection symbols, `$` for variables, and `#` for comments. Compare the following:
 
-echo 'The "Sedimentary" and the "Igenuous" argue about metamorphism'
-echo "There are $(ls | wc -l) files in $(pwd)"
+`echo 'The "Sedimentary" and the "Igenuous" argue about contributions to metamorphism'`
+`echo "There are $(ls | wc -l) files in $(pwd)"`
+`echo 'There are $(ls | wc -l) files in $(pwd)'`
 
 The following simple example tests a conditional on whether a specified file exists at the location stated.
 
+```
 #! /bin/bash 
 file=$1 
 if [ -e $file ] 
@@ -2620,9 +2580,11 @@ then
 else 
 	echo -e "File $file doesn't exists" 
 fi 
+```
 
 The following example was used by Mike Kuiper; a directory held a large number of data files which he wished to convert into .tga files using vmd. The conditional statement stepped through all files with *.plot.dat, creating a new file them with a *.tmp and then running the command. If the *.tmp already existed it skipped that file and went to the next one.
 
+```
 #!/bin/bash 
  for i in *.plot.dat; do 
 	if [ -f $i.tmp ]; then 
@@ -2632,9 +2594,11 @@ The following example was used by Mike Kuiper; a directory held a large number o
  	"/usr/local/vmd/1.8.7-gcc/lib/tachyon_LINUXAMD64" -aasamples 2 -rescale_lights 0.38 -add_skylight 1.0 -res 1280 720 $i -format TARGA -o $i.tga 
 	fi; 
  done 
+```
 
 Conditionals can also be interrupted and resumed using the 'break' and 'continue' statements. The break command terminates the loop (breaks out of it), while continue causes a jump to the next iteration (repetition) of the loop, skipping all the remaining commands in that particular loop cycle. Both can optionally take a parameter. The following is a well-known example of break and continue;
 
+```
 #!/bin/bash 
 LIMIT=19  # Upper limit 
 echo 
@@ -2651,9 +2615,11 @@ do
 
  echo -n "$a "   # This will not execute for 3 and 11. 
 done 
+```
 
-# Same loop, but substituting 'break' for 'continue'.
+The following is the same loop, but substituting 'break' for 'continue'.
 
+```
 a=0
 
 while [ "$a" -le "$LIMIT" ]
@@ -2671,11 +2637,13 @@ done
 echo; echo; echo
 
 exit 0
+```
 
-Earlier we explored some of the most common extraction and archiving programs available in Linux. There are plenty of others with a similar syntax and which can be explored as you need. The following is a "handy extract program", a small shell script that, when made executable, requires that one simply types extract <<filename>> and, for a variety of archive/compression methods used, it will extract the files. The original is from dotfiles.org; unfortunately the original author is unknown.
+Earlier examples were given of common extraction and archiving programs available in Linux. There are plenty of others with a similar syntax and which can be explored as needed. The following is a "handy extract program", a small shell script that, when made executable, requires that one simply type `extract.sh filename`  and, for a variety of archive/compression methods used, it will extract the files. Unfortunately the original author is unknown; it has been used as an example in VPAC courses since at least 2008.
 
-What extract.sh does is test whether a variable is a file and, if it is, runs a case a sort of select option, over various commands that can extract the file. If it cannot extract the file it states so (the final case switch). If it was not a file in the first place, it states so.
+What `extract.sh` does is test whether a variable is a file and, if it is, runs a case a sort of select option, over various commands that can extract the file. If it cannot extract the file it states so (the final case switch). If it was not a file in the first place, it states so. It is far better to use `case` statements, as in this example, rather than the additional processing required for a ladder of if/else/elseif statements.
 
+```
 #!/bin/bash
 # Handy Extract Program 
     if [[ -f $1 ]]; then 
@@ -2696,8 +2664,9 @@ What extract.sh does is test whether a variable is a file and, if it is, runs a 
     else 
     echo "'$1' is not a valid file!" 
     fi 
+```
 
-The select command with conditionals can be used to create simple menus for users which prompts them for their input. 
+Finally, the select command with conditionals can be used to create simple menus for users which prompts them for their input. 
 
 ```
 #!/bin/bash 
