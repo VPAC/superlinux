@@ -2698,80 +2698,79 @@ The simplest script is simply one that runs a list of system commands. At least 
 du -sk * | sort -nr | cut -f2 | xargs -d "\n" du -sh  > diskuse.txt
 ```
 
-chmod +x diskuse.sh
+`chmod +x diskuse.sh`
 
-The script runs a disk usage in summary, sorts in order of size and exports to the file diskuse.txt. The "\n" is to ignore spaces in filenames.
+The script runs a disk usage in summary, sorts in order of size, extracting the second field, parses the values in delimited form to run as disk usage summary in human form, and then exports to the file `diskuse.txt`. The `\n` is to ignore spaces in filenames.
 
-Making the script a little more complex, variables are usually better than hard-coded values. There are two potential variables in this script, the wildcard '*' and the exported filename "diskuse.txt". In the former case, we'll keep the wildcard as it allows a certain portibility of the script - it can run in any directory it is invoked from. For the latter case however, we'll use the date command so that a history of diskuse can be created which can be reviewed for changes. It's also good practise to alert the user when the script is completed and, although it is often necessary, it is also good practise to cleanly finish any script with with 'exit'.
+Whilst sometimes making the script a little more complex, variables are usually better than hard-coded values. There are two potential variables in this script, the wildcard `*` and the exported filename `diskuse.txt`. In the former case, the wildcard can be kept as it allows a certain portibility of the script - it can run in any directory it is invoked from. For the latter case however, the date command can be used so that a history of diskuse can be created which can be reviewed for changes. It's also good practise to alert the user when the script is completed and, although it is often necessary, it is also good practise to cleanly finish any script with with an `exit` statement.
 
-#!/bin/bash
-DU=diskuse$(date +%Y%m%d).txt
-du -sk * | sort -nr | cut -f2 | xargs -d "\n" du -sh  > $DU
-echo "Disk summary completed and sorted."
+```
+#!/bin/bash   
+DU=diskuse$(date +%Y%m%d).txt   
+du -sk * | sort -nr | cut -f2 | xargs -d "\n" du -sh  > $DU   
+echo "Disk summary completed and sorted."   
 exit
+```
 
-Variables and Conditionals
+**Conditionals**
 
-Another example is a script with conditionals as well as variables. A common conditional, and sadly often forgotten, is whether or not a script has the requiste files for input and output specified. If an input file is not specified a script that performs an action on the file will simple go idle and never complete. If an output file is hardcoded, then the person running the script runs the risk of overwriting a file with the same name, which could be a disaster.
+Another example is a script with conditionals as well as variables. A common conditional, and sadly often forgotten, is whether or not a script has the requiste files for input and output specified. If an input file is not specified a script that performs an action on the file will simple go idle and never complete. If an output file is hardcoded, then the person running the script runs the risk of unknowingly overwriting a file with the same name, which could be a disaster.
 
 The following script searches through any specified text file for text before and after the ubiquitous email "@" symbol and outputs these as a csv file through use of grep, sed, and sort (for neatness). If the input or the output file are not specified, it exits after echoing the error.
 
-#!/bin/bash
-# Search for email addresses in file, extract, turn into csv with designated file name
-INPUT=${1}
-OUTPUT=${2}
-{
-if [ !$1 -o !$2 ]; then
-    echo "Input file not found, or output file not specified. Exiting script."
-    exit 0
-fi
-}
-grep --only-matching -E '[.[:alnum:]]+@[.[:alnum:]]+' $INPUT > $OUTPUT
-sed -i 's/$/,/g' $OUTPUT
-sort -u $OUTPUT -o $OUTPUT
-sed -i '{:q;N;s/\n/ /g;t q}' $OUTPUT
-echo "Data file extracted to" $OUTPUT
-exit
+```
+#!/bin/bash   
+# Search for email addresses in file, extract, turn into csv with designated file name   
+INPUT=${1}   
+OUTPUT=${2}   
+{   
+if [ !$1 -o !$2 ]; then   
+    echo "Input file not found, or output file not specified. Exiting script."   
+    exit 0   
+fi   
+}   
+grep --only-matching -E '[.[:alnum:]]+@[.[:alnum:]]+' $INPUT > $OUTPUT   
+sed -i 's/$/,/g' $OUTPUT   
+sort -u $OUTPUT -o $OUTPUT   
+sed -i '{:q;N;s/\n/ /g;t q}' $OUTPUT   
+echo "Data file extracted to" $OUTPUT   
+exit   
+```
 
-Test this file with hidden.txt as the input text and found.csv as the output text. The output will include a final comma on the last line but this is potentially useful if one wants to run the script with several input files and append to the same output file (simply change the single redirection in the grep statement to an double appended redirection.
+Test this file with `hidden.txt` in the chapter resources directory as the input text and `found.csv` as the output text. The `hidden.txt` file is mostly nonsense text with the occasional email address included. The output will include a final comma on the last line but this is potentially useful if one wants to run the script with several input files and append to the same output file (simply change the single redirection in the grep statement to an double appended redirection.
 
-A serious weakness of the script (so far) is that it will gather any string with the '@' symbol in it, regardless of whether it's a well-formed email address or not. So it's not quite suitable for screen-scraping usenet for email address to turn into a spammers list. But it's getting close.
+The output will show a weakness of the script. It will gather any string with the '@' symbol in it, regardless of whether it's a well-formed email address or not. So it's not *quite* suitable for screen-scraping usenet for email address to turn into a spammers list; but it's getting close.
 
-Reads 
+*Reads for User Input*
 
-The read command simply reads a line from standard input. By applying the -n option is can read in a number of characters, rather than a whole line, so -n1 is "read a single character". The use of the -r option reads the input as raw input, so that the backslash key (for example) doesn't act like a a newline escape character, and the -p option displays the prompt. Plus, a -t timeout in seconds option can also added. Combined, can be used in the effect of "press any key to continue", with a limited timeframe.
+The `read` command simply reads a line from standard input. By applying the -n option is can read in a number of characters, rather than a whole line, so `-n1` is "read a single character". The use of the `-r` option reads the input as raw input, so that the backslash key (for example) doesn't act like a a newline escape character, and the `-p` option displays the prompt. Plus, a `-t` timeout in seconds option can also added. Combined, can be used in the effect of "press any key to continue", with a limited timeframe.
 
 
 Add the following to findemails.sh at the end of the file.
 
-#!/bin/bash
-# Search for email addresses in file, extract, turn into csv with designated file name
-..
-..
-read -t5 -n1 -r -p "Press any key too see the list, sorted and with unique record..." 
-if [ $? -eq 0 ]; then
-            echo A key was pressed.
-    else
-                echo No key was pressed.
-                exit 0
-    fi
+```
+read -t5 -n1 -r -p "Press any key too see the list, sorted and with unique record..."    
+if [ $? -eq 0 ]; then   
+            echo A key was pressed.   
+    else   
+                echo No key was pressed.   
+                exit 0   
+    fi   
+less $OUTPUT | \   
+# Output file, piped through sort and uniq.    
+sort | uniq   
+exit   
+```
 
-less $OUTPUT | \
-# Output file, piped through sort and uniq.
-sort | uniq
+**Metacharacters**
 
-exit
+Scripts essentially consist of commands, keywords, and meta-characters. Meta-characters have meaning beyond their literal meaning (a meta-meaning, if you like). 
 
-Special Characters
+Comments are the most common special meaning. Any text following a # (with the exception of #!, which invokes a directive) is read as a comment and will not be executed. Comments may begin at the beginning of a line, following whitespace, following the end of a command, and even be embedded within a piped command (as above in section 3). A comment ends at the end of the line, and as a result a command may not follow a comment on the same line. A quoted or an escaped # in an echo statement does not begin a comment.
 
-Scripts essentially consist of commands, keywords, and special characters. Special characters have meaning beyond their literal meaning (a meta-meaning, if you like). Comments are the most common special meaning. 
- 
-Any text following a # (with the exception of #!) is comments and will not be executed. Comments may begin at the beginning of a line, following whitespace, following the end of a command, and even be embedded within a piped command (as above in section 3).
+Another meta-characters includes the command seperator, a semicolon, which is used to permit two or more commands on the same line. This is already shown by the the various tests in the script (e.g., `if [ !$1 -o !$2 ]; then and if [ $? -eq 0 ]; then`). Note the space after the semicolon. In contrast a double semicolon (`;;`) represents a terminator in a case option, which was encountered in the extract script in the Intermediate course.
 
-A comment ends at the end of the line, and as a result a command may not follow a comment on the same line. A quoted or an escaped # in an echo statement does not begin a comment.
-
-Another special characters includes the command seperator, a semicolon, which is used to permit two or more commands on the same line. This is already shown by the the various tests in the script (e.g., if [ !$1 -o !$2 ]; then and if [ $? -eq 0 ]; then). Note the space after the semicolon. In contrast a double semicolon (;;) represents a terminator in a case option, which was encountered in the extract script in the Intermediate course.
-
+```
 ..
 case $1 in 
             *.tar.bz2)   tar xvjf $1     ;; 
@@ -2780,72 +2779,63 @@ case $1 in
 ..
 ..
 esac
+```
 
-In contrast, the colon acts as a null command. Whilst this obviously has a variety of uses (e.g., an alternative to the touch command, a really practical advantage of this is that comes with a true exit status, and as such it can be used as placeholder in if/then tests. An example from the Intermediate course;
+In contrast, the colon acts as a null command. Whilst this obviously has a variety of uses (e.g., an alternative to the touch command, a really practical advantage of this is that comes with a true exit status, and as such it can be used as placeholder in if/then tests. An as prior illustrated example;
 
-for i in *.plot.dat; do 
-	if [ -f $i.tmp ]; then 
-	  : # do nothing and exit if-then
- 	else 
-          	touch $i.tmp 
+```
+for i in *.plot.dat; do     
+	if [ -f $i.tmp ]; then     
+	  : # do nothing and exit if-then    
+ 	else    
+          	touch $i.tmp    
+```
 
-The use of the null command as a test at the beginning of a loop will cause it to run endlessley (e.g., <code>while : do ... done</code>) as the test always evaluates as true. Note that the colon is also used as a field separator in /etc/passwd and in the $PATH variable. 
+The use of the null command as a test at the beginning of a loop will cause it to run endlessley (e.g., `while : do ... done`) as the test always evaluates as true. Note that the colon is also used as a field separator in /etc/passwd and in the $PATH variable. 
 
-A dot (.) has multiple special character uses. As a command it sources a filename, importing the code into a script, rather like the #include directive in a C program. This is very useful in situations when multiple scripts use a common data file, for example (e.g., . hidden.txt). As part of a filename of course, as was shown in the Introductory course, the . represents the current working directory (e.g., cp -r /path/to/directory/  .  and of course, .. for the parent directory). A third use for the dot is in regular expressions, matching one character per dot. A final use is multiple dots in sequence in a loop. e.g.,
+A dot (`.`) has multiple special character uses. As a command it sources a filename, importing the code into a script, rather like the `#include` directive in a C program. This is very useful in situations when multiple scripts use a common data file, for example. As part of a directory hierarchy, the `.` represents the current working directory (e.g., `cp -r /path/to/directory/  .`  and of course, `..` for the parent directory). A third use for the dot is in regular expressions, matching one character per dot. A final use is multiple dots in sequence in a loop. e.g.,
 
-for a in {1..10}
-do
-  echo -n "$a "
-done
+```
+for a in {1..10}   
+do   
+  echo -n "$a "   
+done   
+```
 
 Like the dot, the comma operator has multiple uses. Usually it is used to link multiple arithmetic calculations. This is typically used in for loops, with a C-like syntax. e.g.,
 
 ```
-for ((a=1, b=1; a <= LIMIT ; a++, b++))
-do  # The comma concatenates operations.
-  echo -n "$a-$b "
-done
+for ((a=1, b=1; a <= LIMIT ; a++, b++))   
+do  # The comma concatenates operations.   
+  echo -n "$a-$b "   
+done   
+```
 
 Enclosing a referenced value in double quotes (" ... ") does not interfere with variable substitution. This is called partial quoting, sometimes referred to as "weak quoting." Using single quotes (' ... ') causes the variable name to be used literally, and no substitution will take place. This is full quoting, sometimes referred to as 'strong quoting.'  It can also be used to combine strings.
 
-for file in /{,usr/}bin/*sh
-do
-  if [ -x "$file" ]
-  then
-        echo $file
-  fi
-done
+```
+for file in /{,usr/}bin/*sh    
+do    
+  if [ -x "$file" ]   
+  then   
+        echo $file    
+  fi   
+done   
 ```
 
+For example, a strict single quoted directory listing of ls with a wildcard will only provide files that are expressed by the symbol (which isn't a very good file name at all, and *not* recommended!). Compare `ls *` with `ls '*'`. This example will also worth with double quote and indeed, double-quotes are generally preferable as they prevent reinterpretation of all special characters except `$`, `/``, and `\.` This are usually the symbols which are wanted in their interpreted mode. Related to quoting is the use of the backslash (`\`) used to escape single characters. Do not confuse it with the forward slash (`/`) has multiple uses as both the separator in pathnames (e.g., (`/home/train01`), but also a the division operator.
 
-A double-quote on a value does not change variable substitution. This is sometimes referred to as weak quoting. Using single quotes however, means the variable to be used literally, with no substitution. This is often referred to as strong quoting. For example, a strict single quoted directory listing of ls with a wildcard will only provide files that are expressed by the symbol (which isn't a very good file name). Compare ls * with ls '*'. This example will also worth with double quote and indeed, double-quotes are generally preferable as they prevent reinterpretation of all special characters except $, `, and \. This are usually the symbols which are wanted in their interpreted mode. 
+In some scripts backticks (`) are used for command substitution, where the output of a command can be assigned to a variable. Whilst this is not a POSIX standard, it does exist for historical reasons. Nesting commands with backticks also requires escape characters; the deeper the nesting the more escape characters required, which is difficult to read. The preferred and POSIX standard method is to use the dollar sign and parentheses. e.g., echo `"Hello, $(whoami)"`. 
 
-As the escape character has a literal interpretation with single quotes, enclosing a single quote within single quotes will not work as expected.Enclosing a referenced value in double quotes (" ... ") does not interfere with variable substitution. This is called partial quoting, sometimes referred to as "weak quoting." Using single quotes (' ... ') causes the variable name to be used literally, and no substitution will take place. This is full quoting, sometimes referred to as 'strong quoting.' 
-
-Related to quoting is the use of the backslash (\) used to escape single characters. Do not confuse it with the forward slash (/) has multiple uses as both the separator in pathnames (e.g., (/home/train01), but also a the division operator.
-
-In some scripts backticks (`) are used for command substitution, where the output of a command can be assigned to a variable. Whilst this is not a POSIX standard, it does exist for historical reasons. Nesting commands with backticks also requires escape characters; the deeper the nesting the more escape characters required (e.g., echo `echo \`echo \\\`pwd\\\`\``). The preferred and POSIX standard method is to use the dollar sign and parentheses. e.g., echo "Hello, $(whoami)" rather than  echo "Hello, `whoami`".  As an example of the benefits of using the standard, consider the following for loop:
-
-for i in * ; do mv $i $(echo $i | tr "A-Z" "a-z") ; done
-
-This command, with a wildcard, runs a translate command with a command substitution, moving every file with upper-case characters to their lower case equivalent (some people just like to be neat). There is an obvious danger that if there is already a lower case character filename there it may very well overwrite it. However it is even more dangerous using using the backtick method of command substitution i.e., 
-
-for i in * ; do mv $i `echo $i | tr "A-Z" "a-z"` ; done
-
-Why is this a problem? Because novice (and sometimes more experienced) users misread or copy and paste a loop similar to the following with strong substitution quotes instead. It is an exercise for the reader to work out the results of the following – do not type it in your shell:
-
-for i in * ; do mv $i 'echo $i | tr "A-Z" "a-z"' ; done
-
-
+Overall, metacharacters are a very important tool to your *nix-knowledge, providing you the ability to extend a utility, application, or set of shell commands. However, their meta-character meaning is contextual, and awareness and knowledge of that context is required to use them properly. 
 
 # 6.0 Alternative Job Submission Options
 
-
 ## 6.1 Job Scripts with Shell Scripting
 
-Because PBS job scripts call a shell when launched any shell commands can can also be used in a PBS script. Every single Linux command, every item of information learned about scripting, about file manipulation, system information, regular expressions, report generation and so forth can be used in a job script. This allows for some very powerful and complex job submissions.
+Because job submission script call a shell when launched any shell commands can can also be used in a such a cript. Every single Linux command, every item of information learned about scripting, about file manipulation, system information, regular expressions, report generation and so forth can be used in a job script. This allows for some very powerful and complex job submissions.
 
-The following example is relatively simple in comparison, but certainly more advanced than the PBS scripts offered earlier in the book. It is a molecular dynamics drug docking experiment, MD3 -  Aspirin to A2 phospholipase.  It uses 1OXR phospholipase structure as a target, 4 aspirin molecules (parameterized at swissparam) added to a solvated 64x64x64A system. The program used NAMD and can be visualised with VMD.
+The following example is relatively simple in comparison, but certainly more advanced than the job submission scripts offered earlier in the book. It is a molecular dynamics drug docking experiment, MD3-Aspirin to A2 phospholipase.  It uses 1OXR phospholipase structure as a target, 4 aspirin molecules (parameterized at swissparam) added to a solvated 64x64x64A system. The program used NAMD and can be visualised with VMD.
 
 In addition, to aspirin, the 1oxr system  also contains a calcium ion in the crystallographically determined binding position plus 0.15M NaCl. The system is originally optimized and equilibrated at 310K for 0.2 nano seconds under NPT conditions, before switching to NVT ensemble for 10 sequential loops of 10ns each.  The aim of this experiment is to collect enough MD data to see if the aspirin molecules can associate into the crystallographically determined binding pocket. 
 
@@ -2853,103 +2843,109 @@ The first step requires RMSD fitting of the simulation trajectory so that the pr
 
 The fact that this script is written for NAMD/VMD and TORQUE is for illustrative purposes only. It can just as easily be applied to any other application or submission system. Working through the script one can see that there is the use of variables, redirection, loops, copy, move, and remove commands, command substitution, and so forth. 
 
-#!/bin/bash 
-## pbs launching script  December 2010 
-## -to run multiple sequential namd jobs after an initial minimization step  
-## 
-#PBS -l nodes=8 
-#PBS -l walltime=24:0:0 
-## #PBS -A  <account> 
-### - job basename --------------------------------------------------------- 
-jobname="_A2_aspirin_short_example_01_" 
-### ------------------------------------------------------------------------ 
-date=$(date +%F); 
-date2=$(date +%F-%H.%M); 
-cd $PBS_O_WORKDIR 
-set CONV_RSH = ssh 
-qstat -f $PBS_JOBID >JobLog/$date2$jobname.qstat.txt; 
-module load namd 
-### -------------------------------------------------------------------------- 
-## optimize the original molecule 
-mpiexec namd2  aspirin_opt_short.conf >OutputText/opt.$jobname.$date2.out 2>Errors/opt.$jobname.$date2.err; 
-mv *.dcd OutputFiles/ 
-cp *.coor *.vel *.xsc *.xst RestartFiles/ 
-## mv generic_optimmization output to generic_restart files: 
-mv generic_optimization.restart.coor generic_restartfile.restart.coor 
-mv generic_optimization.restart.vel  generic_restartfile.restart.vel 
-mv generic_optimization.restart.xsc  generic_restartfile.restart.xsc 
-### start a loop ------------------------------------------------------------ 
-### aiming for 1 ns a round 
-for loop in {1..5} 
-do 
-basename="$date2$jobname$loop" 
-## run namd job: 
-mpiexec namd2 aspirin_rs_short.conf >OutputText/$basename.out 2>Errors/$basename.err; 
-## rename output and move data into folders 
-cp generic_restartfile.dcd   OutputFiles/$basename.dcd; 
-cp generic_restartfile.coor  RestartFiles/$basename.restart.coor; 
-cp generic_restartfile.vel   RestartFiles/$basename.restart.vel; 
-cp generic_restartfile.xsc   RestartFiles/$basename.restart.xsc; 
-cp generic_restartfile.xst   RestartFiles/$basename.xst; 
-done 
-### -------------------------------------------------------------------------- 
-## cleanup 
-mv FFTW* OutputText/; 
-rm *.BAK *.old *.coor *.vel *.xsc *.xst; 
-mv pbs_*.e* JobLog/; 
-mv pbs_*.o* JobLog/; 
+```
+#!/bin/bash   
+## pbs launching script  December 2010    
+## -to run multiple sequential namd jobs after an initial minimization step     
+##    
+#PBS -l nodes=8    
+#PBS -l walltime=24:0:0    
+## #PBS -A  <account>    
+### - job basename ---------------------------------------------------------    
+jobname="_A2_aspirin_short_example_01_"    
+### ------------------------------------------------------------------------    
+date=$(date +%F);     
+date2=$(date +%F-%H.%M);     
+cd $PBS_O_WORKDIR     
+set CONV_RSH = ssh     
+qstat -f $PBS_JOBID >JobLog/$date2$jobname.qstat.txt;    
+module load namd     
+### --------------------------------------------------------------------------     
+## optimize the original molecule     
+mpiexec namd2  aspirin_opt_short.conf >OutputText/opt.$jobname.$date2.out 2>Errors/opt.$jobname.$date2.err;     
+mv *.dcd OutputFiles/     
+cp *.coor *.vel *.xsc *.xst RestartFiles/     
+## mv generic_optimmization output to generic_restart files:     
+mv generic_optimization.restart.coor generic_restartfile.restart.coor     
+mv generic_optimization.restart.vel  generic_restartfile.restart.vel     
+mv generic_optimization.restart.xsc  generic_restartfile.restart.xsc     
+### start a loop ------------------------------------------------------------     
+### aiming for 1 ns a round     
+for loop in {1..5}     
+do     
+basename="$date2$jobname$loop"    
+## run namd job:     
+mpiexec namd2 aspirin_rs_short.conf >OutputText/$basename.out 2>Errors/$basename.err;     
+## rename output and move data into folders     
+cp generic_restartfile.dcd   OutputFiles/$basename.dcd;     
+cp generic_restartfile.coor  RestartFiles/$basename.restart.coor;     
+cp generic_restartfile.vel   RestartFiles/$basename.restart.vel;     
+cp generic_restartfile.xsc   RestartFiles/$basename.restart.xsc;     
+cp generic_restartfile.xst   RestartFiles/$basename.xst;     
+done     
+### --------------------------------------------------------------------------     
+## cleanup     
+mv FFTW* OutputText/;     
+rm *.BAK *.old *.coor *.vel *.xsc *.xst;     
+mv pbs_*.e* JobLog/;     
+mv pbs_*.o* JobLog/;     
+```
 
-6.2 Autogenerating PBS Scripts with a Heredoc
----------------------------------------------
+## 6.2 Autogenerating PBS Scripts with a Heredoc
 
-A heredoc (also known as a here-string or here document) is a file or input literal, a section of source code that is treated as a separate file with specified delimiters. In various Unix shells the '<<' with a delimiter name will treat subsequent code until the identifier as reached as a separate file. With the addition of a minus sign, leading tabs are ignored which aid formatting.
+A heredoc (also known as a here-string or here document) is a file or input literal, a section of source code that is treated as a separate file with specified delimiters. In various Unix shells the `<<` with a delimiter name will treat subsequent code until the identifier as reached as a separate file. With the addition of a minus sign, leading tabs are ignored which aid formatting.
 
-bash-4.2$  tr a-z A-Z << END_TEXT
-> igneous
-> sedimentary
-> metamorphic
-> END_TEXT
-IGNEOUS
-SEDIMENTARY
-METAMORPHIC
+```
+bash-4.2$  tr a-z A-Z << END_TEXT   
+> igneous   
+> sedimentary   
+> metamorphic   
+> END_TEXT   
+IGNEOUS   
+SEDIMENTARY   
+METAMORPHIC   
+```
 
-A here string is syntactically similar, consisting of <<<, and effects input redirection from a word (a sequence treated as a unit by the shell, in this context generally a string literal). A string with spaces will require quoting. Note that there is no delimiter on a separate line.
+A here string is syntactically similar, consisting of `<<<`, and effects input redirection from a word (a sequence treated as a unit by the shell, in this context generally a string literal). A string with spaces will require quoting. Note that there is no delimiter on a separate line.
 
-tr a-z A-Z <<< 'igneous sedimentary metamorphic'
+```tr a-z A-Z <<< 'igneous sedimentary metamorphic'```
 
 Variables can also be parsed.
 
-bash-4.2$ rocks='igneous sedimentary metamorphic'
-bash-4.2$ tr a-z A-Z <<< $rocks
-IGNEOUS SEDIMENTARY METAMORPHIC
+```
+bash-4.2$ rocks='igneous sedimentary metamorphic'    
+bash-4.2$ tr a-z A-Z <<< $rocks    
+IGNEOUS SEDIMENTARY METAMORPHIC    
+```
 
 It is often used to invoke the bc calculator language. e.g.,
 
-bc -l <<< 2,736^9/22
+```bc -l <<< 2,736^9/22```
 
-Heredocs can also be used however to create PBS scripts. The following example creates one hundred identical PBS scripts. The script itself is trivial of course, but the generation process is rapid and with the use of variables can allows for some quick association with data files.
+Heredocs can also be used however to create job submission scripts. The following example creates one hundred identical PBS scripts. The script itself is trivial of course, but the generation process is rapid and with the use of variables can allows for some quick association with data files.
 
-#!/bin/bash
-for a in {1..99}
-do
-cat <<- EOF > job${a}
-#!/bin/bash
-#PBS -N ${a}
-#PBS -j oe
-#PBS -o err_log${a}
-#PBS -l nodes=1:ppn=1
-#echo $(pwd) >> results.txt
-EOF
-done
+```
+#!/bin/bash    
+for a in {1..99}    
+do    
+cat <<- EOF > job${a}    
+#!/bin/bash   
+#PBS -N ${a}   
+#PBS -j oe   
+#PBS -o err_log${a}   
+#PBS -l nodes=1:ppn=1   
+#echo $(pwd) >> results.txt   
+EOF   
+done   
+```
 
 ## 6.3 PBS Job Arrays, Dependencies, and Interactive Jobs
-
 
 ### Job Arrays
 
 Multiple job submission based on the same script is possible through job arrays. It is effectively  using a single job script to make multiple requests of the same resources. Where there is similarity in the task or dataset and there is no dependencies between the individual jobs, an array is a very effective tool.
 
-With TORQUE job arrays are submitted through the -t (tasks) option to qsub, or by using #PBS -t in your batch script. This option takes a comma-separated list consisting of either a single job ID number, or a pair of numbers separated by a dash. Each of these jobs created will use the same script and will be running in a nearly identical environment. In PBSPro the method is very similar except a -J (jobs) is used to specify the array. In SLURM the request for an array can be added with the --array option (e.g., #SBATCH –array=1-20) or as part of the submission process.
+With TORQUE job arrays are submitted through the `-t` (tasks) option to `qsub`, or by using `#PBS -t` in your batch script. This option takes a comma-separated list consisting of either a single job ID number, or a pair of numbers separated by a dash. Each of these jobs created will use the same script and will be running in a nearly identical environment. In PBSPro the method is very similar except a `-J` (jobs) is used to specify the array. In SLURM the request for an array can be added with the `--array` option (e.g., `#SBATCH –array=1-20`) or as part of the submission process.
 
 Job arrays can be sent with a varying range and step number. The following table illustrates the differences in according to scheduler:
 
@@ -2958,56 +2954,54 @@ Job arrays can be sent with a varying range and step number. The following table
 |`#PBS -t 1-10` |`#PBS -J 1-10`	| #sbatch --array=1-10	| Submit job array by ID 1 to 10|
 |`#PBS -t 1,3,5,7,9` | `#PBS -J 1-10:2` | `#sbatch –array=1-10:2` | Submit job array by ID 1, 3, 5, 7, 9|
 
-The qdel, qhold, and qrls commands from TORQUE and PBS can operate on array - either the entire array or a range of that array, just as the equivalent job control commands in SLURM would operate, as the jobs receive both a JobID and an ArrayTaskID (e.g., scancel, suspend, resume).  Any job in the array may be accessed normally by using that job's ID, just as you would with any other job. Each job is considered independent in terms of launch and walltime.
+The `qdel`, `qhold`, and `qrls` commands from TORQUE and PBS can operate on array - either the entire array or a range of that array, just as the equivalent job control commands in SLURM would operate, as the jobs receive both a JobID and an ArrayTaskID (e.g., `scancel`, `suspend`, `resume`).  Any job in the array may be accessed normally by using that job's ID, just as you would with any other job. Each job is considered independent in terms of launch and walltime. Job deletion or cancellation can occur, for example, if one of the jobs in the array has an error or corruption in the input file. The rest of the jobs can continue running. 
 
-Job deletion or cancellation can occur, for example, if one of the jobs in the array has an error or corruption in the input file. The rest of the jobs can continue running. 
+|TORQUE		| PBSPro	| SLURM			| Description			|
+|:--------------|---------------|-----------------------|-------------------------------|
+| qdel ID[3]	| qdel ID[3]	| scancel ID_3		| Cancel third element of the job array specified by job ID. |
 
-TORQUE
-PBSPro
-SLURM
-Description
-qdel ID[3]
-qdel ID[3]
-scancel ID_3
-Cancel third element of the job array specified by job ID.
+In the Octave array example below, the input files are names from the PBS array identifiers. The Octave script produces a small set of random numbers, each of which are appended to the same output file. Examples are provided for TORQUE and PBSPro.
 
-In the Octave array example below, the input files are names from the PBS array identifiers. The Octave script produces a small set of random numbers, each of which are appended to the same output file. Examples are provided for TORQUE and PBSPro
-
-#!/bin/bash 
-#PBS -N octave-array 
-# TORQUE CPU Request
-#PBS -l nodes=1
-# PBSPro CPU Request
-# PBS -l ncpus=1
-#PBS -l walltime=00:15:00 
-# TORQUE Array Request 
-#PBS -t 1-10 
-# PBSPro Array Request
-# PBS -J 1-10
-cd $PBS_O_WORKDIR 
-module load octave 
-
-# TORQUE Request for ArrayID
-octave file-${PBS_ARRAYID}.oct 
-
-# PBSPro Request for the same
-# octave file-${PBS_ARRAY_INDEX}.oct
+```
+#!/bin/bash    
+#PBS -N octave-array    
+# TORQUE CPU Request   
+#PBS -l nodes=1   
+# PBSPro CPU Request   
+# PBS -l ncpus=1   
+#PBS -l walltime=00:01:00    
+# TORQUE Array Request    
+#PBS -t 1-10    
+# PBSPro Array Request  
+# PBS -J 1-10   
+cd $PBS_O_WORKDIR    
+module load octave    
+# TORQUE Request for ArrayID   
+octave file-${PBS_ARRAYID}.oct    
+# PBSPro Request for the same   
+# octave file-${PBS_ARRAY_INDEX}.oct   
+```
+[EDIT]
 
 The equivalent in SLURM would be the following.
 
-#!/bin/bash 
-#SBATCH --job-name="octave-array"
-#SBATCH -n=1
-#SBATCH -t=00:15:00
-#SBATCH --array=0-19
-module load octave 
-octave file-${SLURM_ARRAY_TASK_ID}.oct
+```
+#!/bin/bash    
+#SBATCH --job-name="octave-array"   
+#SBATCH -n=1   
+#SBATCH -t=00:01:00   
+#SBATCH --array=1-10   
+module load octave    
+octave file-${SLURM_ARRAY_TASK_ID}.oct   
+```
 
 In all cases the GNU Octave files, octave-1.oct through to octave-10.oct are identical:
 
-M=rand(10,10); 
-k=svd(M); 
-save -append demo-result.txt k;
+```
+M=rand(10,10);    
+k=svd(M);    
+save -append demo-result.txt k;   
+```
 
 ### Job Dependencies
 
@@ -3026,20 +3020,22 @@ PBS allows a several conditional directives to be placed on a job which are test
 | beforenotok 	| After this job completes with errors, jobs jobid may be scheduled 		|
 | beforeany 	| After this job completes with or without errors, jobs jobid may be scheduled 	|
 
-There are two alternatives on how submit jobs with dependencies. The first is to set the job id as a variable (e.g., #PBS -W x=depend:afterok:myfirstjob). The second is to set the job id as a variable as part of a job submission (e.g., qsub -W depend=afterany:$FIRST myjob5.pbs). 
+There are two alternatives on how submit jobs with dependencies. The first is to set the job id as a variable (e.g., `#PBS -W x=depend:afterok:myfirstjob`). The second is to set the job id as a variable as part of a job submission (e.g., `qsub -W depend=afterany:$FIRST myjob5.pbs`). 
 
 The following example is for TORQUE for mysecondjob.pbs. It differs from myfirstjob.pbs insofar that it has the dependency line that it cannot run until the myfirstjob.pbs has completed successfully. 
 
-#!/bin/bash 
-#PBS -N mysecondjob 
-#PBS -l walltime=000:02:00
-#PBS -l nodes=1:ppn=1 
-#PBS -W x=depend:afterok:myfirstjob 
-cd $PBS_O_WORKDIR 
-echo $(hostname ) $PBS_JOBNAME running $PBS_JOBID >> hostname.txt 
-sleep 60
+```
+#!/bin/bash    
+#PBS -N mysecondjob    
+#PBS -l walltime=000:02:00   
+#PBS -l nodes=1:ppn=1    
+#PBS -W x=depend:afterok:myfirstjob    
+cd $PBS\_O\_WORKDIR    
+echo $(hostname ) $PBS_JOBNAME running $PBS_JOBID >> hostname.txt     
+sleep 60   
+```
 
-Interestingly, with PBSPro and SLURM this method would not work, as it requires the jobID rather than the name variable to be sent as the dependency. Using the job name can be very problematic as different jobs might have been set with the same name by user submissions. On the other hand setting a jobID can be difficult to include in a script, but it can be included in the command line submission e.g.,
+With PBSPro and SLURM this method would not work, as it requires the jobID rather than the name variable to be sent as the dependency. Using the job name can be very problematic as different jobs submissions might have been set with the same name by the same user! On the other hand setting a jobID can be difficult to include in a script, but it can be included in the command line submission e.g.,
 
 `qsub -W depend=afterok:<<jobid>> mysecondjob.pbs`
 
@@ -3051,26 +3047,26 @@ Another method for PBSPro and SLURM would be to add these commands into a script
 
 ```
 #!/bin/bash 
-FIRST=$(qsub myjob4.pbs) 
-echo $FIRST 
-SECOND=$(qsub -W depend=afterany:$FIRST myjob5.pbs) 
-echo $SECOND 
-THIRD=$(qsub -W depend=afterany:$SECOND myjob6.pbs) 
-echo $THIRD 
+FIRST=$(qsub myjob4.pbs)    
+echo $FIRST    
+SECOND=$(qsub -W depend=afterany:$FIRST myjob5.pbs)    
+echo $SECOND    
+THIRD=$(qsub -W depend=afterany:$SECOND myjob6.pbs)    
+echo $THIRD    
 ```
 
 With Slurm the logic is identical, even if the syntax is slightly different. When a Slurm job is submitted the job ID is parsed at a different word in sequence:
 
 ```
-#!/bin/bash
-FIRST=$(sbatch myjob4.slurm)
-echo $FIRST
-SUB1=$(echo ${FIRST##* })
-SECOND=$(sbatch --dependency=afterany:$SUB1 myjob5.slurm)
+#!/bin/bash   
+FIRST=$(sbatch myjob4.slurm)   
+echo $FIRST   
+SUB1=$(echo ${FIRST##* })   
+SECOND=$(sbatch --dependency=afterany:$SUB1 myjob5.slurm)   
 echo $SECOND
-SUB2=$(echo ${SECOND##* })
-THIRD=$(sbatch --dependency=afterany:$SUB2 myjob6.slurm)
-echo $THIRD
+SUB2=$(echo ${SECOND##* })   
+THIRD=$(sbatch --dependency=afterany:$SUB2 myjob6.slurm)   
+echo $THIRD   
 ```
 
 ### Interactive Jobs
@@ -3078,83 +3074,75 @@ echo $THIRD
 There are times when a user wishes to launch an interactive, real-time job. This is typically used for debugging purposes, as real-time modifications can be quite slow. However, it can be used for real time single-processor or multi-processor tasks. Resource requests however should be minimal. If they are not, the user could be waiting quite some time for their interactive job to launch. The following examples are using TORQUE
 
 ```
-[lev@trifid gmxdemo]$ qsub -l walltime=1:0:0,nodes=1:ppn=2 -I 
-[lev@trifid ~]$ qsub -l walltime=1:0:0,nodes=1:ppn=2 -I 
-qsub: waiting for job 529253.trifid-m.hpc.vpac.org to start 
-qsub: job 529253.trifid-m.hpc.vpac.org ready 
-[lev@trifid105 ~]$ cd $PBS_O_WORKDIR 
-[lev@trifid105 gmxdemo]$ pwd 
-/nfs/user2/lev/intermediate/gromacs/gmxdemo
-[lev@trifid105 gmxdemo]$ module load gromacs
-[lev@trifid105 gmxdemo]$ ./demo 
+[lev@trifid gmxdemo]$ qsub -l walltime=1:0:0,nodes=1:ppn=2 -I    
+[lev@trifid ~]$ qsub -l walltime=1:0:0,nodes=1:ppn=2 -I    
+qsub: waiting for job 529253.trifid-m.hpc.vpac.org to start    
+qsub: job 529253.trifid-m.hpc.vpac.org ready    
+[lev@trifid105 ~]$ cd $PBS\_O\_WORKDIR    
+[lev@trifid105 gmxdemo]$ pwd    
+/nfs/user2/lev/intermediate/gromacs/gmxdemo   
+[lev@trifid105 gmxdemo]$ module load gromacs   
+[lev@trifid105 gmxdemo]$ ./demo    
 ```
 
 The only difference in PBSPro would be the initial submission:
 
 `qsub -l walltime=1:0:0,select=1:ncpus=2 -I`
 
-For SLURM a number of institutions have sinteractive installed. This would take the following form for the same expressions:
+For SLURM a number of institutions have an sinteractive wrapper installed. This would take the following form for the same expressions:
 
 `sinteractive --time=00:00:00 --nodes=1 --ntasks=2`
 
 Take the opportunity to review the demo script for Gromacs; one will note ample use of the heredoc method to present text information and prompts to the user. It makes use of a variety of Gromacs commands and configuration statements that would usually be part of a normal submission script or called from external files, but are presented in a step-by-step fashion. 
 
-Some important aspects for interactive jobs is that the resource requests are made at the point of submission (e.g., the walltime, the number of  processors) along with the -I submission flag to indicate that it is interactive. In addition, once the user has been logged into the compute node, they are required to add the usual functional commands that they would have otherwise added into their job script, such as loading the modules that they want to use and changing to the working directory where the job was launched from.
+Some important aspects for interactive jobs is that the resource requests are made at the point of submission (e.g., the walltime, the number of  processors) along with the `-I` submission flag to indicate that it is interactive. In addition, once the user has been logged into the compute node, they are required to add the usual functional commands that they would have otherwise added into their job script, such as loading the modules that they want to use and changing to the working directory where the job was launched from.
 
 One can use graphical windowing forwarding to the login node and then launch an interactive job also with X forwarding and with the usual PBS requirements. An initial connection can be made with secure mode X-windows forwarding and a further connection through the usual method. Thus, starting from the desktop.
 
 ```
-bash-4.2$ ssh -Y lev@trifid.vpac.org
-[lev@trifid ~]$ qsub -l nodes=1:ppn=2,walltime=0:10:00 -X -I
-qsub: waiting for job 223936.trifid-m.hpc.vpac.org to start
-qsub: job 223936.trifid-m.hpc.vpac.org ready
-[lev@trifid137 ~]$ cd $PBS_O_WORKDIR
-[lev@trifid137 ~]$ module load ansys
-[lev@trifid137 ~]$ cfx5solve
+bash-4.2$ ssh -Y lev@trifid.vpac.org   
+[lev@trifid ~]$ qsub -l nodes=1:ppn=2,walltime=0:10:00 -X -I   
+qsub: waiting for job 223936.trifid-m.hpc.vpac.org to start   
+qsub: job 223936.trifid-m.hpc.vpac.org ready   
+[lev@trifid137 ~]$ cd $PBS\_O\_WORKDIR   
+[lev@trifid137 ~]$ module load ansys   
+[lev@trifid137 ~]$ cfx5solve   
 ```
 
-Then you could run the Oscillating Plate ANSYS example without using the compute resources on the head node.
+Then you could run the Oscillating Plate ANSYS example without using the compute resources on the head node, but rather using the dedicated resources that have been set aside by the job submission process.
 
 When submitting a job to a partition that is reserved for a particular group, use the partition and -A (account) option, common to PBS and SLURM. For example using SLURM;
 
 ```
-[lev@spartan ~]$ sinteractive -p water -A punim0006
-srun: job 211916 queued and waiting for resources
-srun: job 211916 has been allocated resources
+[lev@spartan ~]$ sinteractive -p water -A punim0006   
+srun: job 211916 queued and waiting for resources   
+srun: job 211916 has been allocated resources   
 [lev@spartan-water01 ~]$ 
-``
+```
 
 
 # 7.0 Command Summary and References
 
 ## 7.1 Linux Commands
 
-When a user logs in on a Linux or other UNIX-like system on the command line, they start in their home directory: 
+When a user logs in on a Linux or other UNIX-like system on the command line, they start in their home directory:  `/home/<username>`
 
-`/home/<username>`
+In that directory they will have the necessary privileges to create new folders, files and edit existing ones. There are a set of basic commands which every Linux command-line user must know. All commands come with options expressed as: `<command>  -<option[s]>` 
 
-In that directory they will have the necessary privileges to create new folders, files and edit existing ones. There are a set of basic commands which every Linux command-line user must know. All commands come with options expressed as:
+Wildcard characters can be used to substitute for any other characters in a string. The asterisk (`*`) substitutes as a wildcard character for any zero or more characters, and the question mark (?) usually substitutes as a wildcard character for any one character. 
 
-`<command>  -<option[s]>` 
-
-Wildcard characters can be used to substitute for any other characters in a string. The asterisk (*) substitutes as a wildcard character for any zero or more characters, and the question mark (?) usually substitutes as a wildcard character for any one character. 
-
-Linux also have very useful 'pipes' and redirect commands. To pipe one command through another use the '|' symbol. Input and output is usually from the screen. To redirect output use the '>' symbol. To redirect input (for example, to feed data to a command) use the '<'. Concatenation is achieved through the use of '>>' symbol. Examples of these pipes and redirects are included in the command summary that follows.
+Linux also have very useful 'pipes' and redirect commands. To pipe one command through another use the `|` symbol. Input and output is usually from the screen. To redirect output use the `>` symbol. To redirect input (for example, to feed data to a command) use the `<`. Concatenation is achieved through the use of '>>' symbol. Examples of these pipes and redirects are included in the command summary that follows.
 
 ### Basic Linux Commands and Options
 
-`at`
-"at"; Schedule commands to be executed once at a specified time.
-Examples: 
-`echo "ls" | at 1145 nov 29`
+`at` "at"; Schedule commands to be executed once at a specified time.
+Examples:  `echo "ls" | at 1145 nov 29`
 Echo a directory listing at 11.45 on November 29.
 													
-bg, fg	
-"background, foreground"; put a job into the background or foreground of output.
-Examples: 
-bg %1	
+`bg`, `fg` "background, foreground"; put a job into the background or foreground of output.
+Examples:  `bg %1`   	
 Put job in background where output can be run without interrupting standard input.
-fg %1	
+`fg %1`   	
 Brings job back into the foreground.
 
 
@@ -3413,90 +3401,43 @@ Finds all files with the suffix .txt and searches them for the phrase “foo”
 
 The  general layout of a Linux system is called the Filesystem Hierarchy Standard (FHS), defining the main directories and their contents in most Linux-based computer operating systems.
 
-Directory
-Description 
-/ 
-Root directory of the entire file system. 
-/bin/
-Essential command binaries for all users. 
-/boot/
-Boot loader files. 
-/dev/
-Devices. 
-/etc/
-Host-specific system-wide configuration files 
-/home/
-Users' home directories and personal settings. 
-/lib/
-Libraries essential for the binaries in /bin/ and /sbin/. 
-/media/
-Mount points for removable media such as CD-ROMs. 
-/mnt/
-Temporarily mounted filesystems (e.g., for dual boot systems). 
-/opt/
-Optional application software packages. 
-/proc/
-Virtual filesystem documenting kernel and process status as text files. 
-/root/
-Home directory for the root user. 
-/sbin/
-Essential system binaries (e.g., init, route, ifup). 
-/srv/
-Site-specific data which is served by the system. 
-/tmp/
-Temporary files (see also /var/tmp). 
-/usr/
-Secondary hierarchy for user data; contains the majority of utilities, applications, libraries and the like. 
-/var/
-Variable files, such as logs, spool files, and temporary e-mail files. 
+| Directory	| Description			 		|
+|:--------------|-----------------------------------------------|
+| `/` 		| Root directory of the entire file system. 	|
+| `/bin`	| Essential command binaries for all users. 	|
+| `/boot`	| Boot loader files. 				|
+| `/dev`	| Devices.					| 
+| `/etc`	| Host-specific system-wide configuration files.|
+| `/home` 	| Users' home directories and personal settings.|
+| `/lib`	| Libraries essential for the binaries in `/bin` and `/sbin`. |
+| `/media`	| Mount points for removable media such as CD-ROMs. |
+| `/mnt`	| Temporarily mounted filesystems (e.g., for dual boot systems). |
+| `/opt`	| Optional application software packages. 	|
+| `/proc`	| Virtual filesystem documenting kernel and process status as text files. |
+| `/root`	| Home directory for the root user. 		|
+| `/sbin`	| Essential system binaries (e.g., init, route, ifup). |
+| `/srv`	| Site-specific data which is served by the system. |
+| `/tmp`	| Temporary files (see also `/var/tmp`).	| 
+| `/usr`	| Secondary hierarchy for user data; contains the majority of utilities, applications, libraries and the like.  |
+| `/var`	| Variable files, such as logs, spool files, and temporary e-mail files. |
 
 ## 7.4 Queuing Commands
 
-TORQUE/PBSPro
-SLURM
-Description
-qstat | less
-squeue -a | less
-Information about queues and jobs, piped through less.
-showq | less
-showq | less
-squeue
-Displays information about active, eligible, blocked, and/or recently completed jobs, piped through less. This command is not available in PBSPro.
-showq -w user=[username]
-showq -u [username]
-showq -u
-squeue -u
-Showq with a constraint, in this case, user. Also not available in PBSPro.
-qstat -q
-sinfo -a
-List all queues
-qstat -Q
-sinfo -a
-Queue limits.
-qstat -a
-squeue -A <account>
-List all jobs in alternative format.
-qstat -au
-squeue -A <account>
-List all jobs of a particular user, e.g., qstat -au mike
-qstat -s | less
-squeue -a | less
-All jobs with status comments, piped through less
-qstat -r | less
-squeue -t R | less
-All running jobs, piped through less
-qstat -f <jobid>
-squeue -j <jobid>
-Information concerning a particular job.
-qsub <pbsscript>
-sbatch <jobname>
-Submits job script
-qsub -I
-sinteractive
-Submit an interactive batch job.
-qdel <jobid>
-scanel <jobid>
-Deletes a job. SLURM allows one to delete all jobs belonging to a user wit the -u option.
+| TORQUE/PBSPro	| SLURM		| Description							|
+|:--------------|---------------|---------------------------------------------------------------|
+| `qstat`	| `squeue -a`	| Information about queues and jobs, piped through less.	|
+| `showq`	| `showq`	| Information about active, eligible, blocked, and/or recently completed jobs, piped through less. This command is not available in PBSPro and is available as a wrapper application in SLURM.			|
+| `showq -u [username]` | `squeue -u` | Showq with a constraint, in this case, user. Also not available in PBSPro. |
+| `qstat -q`	| `sinfo -a`	| List all queues.						|
+| `qstat -Q`	| `sinfo -a`	| Queue limits.							|
+| `qstat -a`	| `squeue -A <account>` | List all jobs in alternative format.			|
+| `qstat -au` 	| `squeue -A <account>`	| List all jobs of a particular user, e.g., qstat -au mike	|
+| `qstat -s`	| `squeue -a`	| All jobs with status comments					|
+| `qstat -r`	| `squeue -t R`	| All running jobs						|
+| qstat -f <jobid> squeue -j <jobid> Information concerning a particular job.
+| qsub <pbsscript> sbatch <jobname> Submits job script
+| qsub -I sinteractive Submit an interactive batch job.
+| qdel <jobid> scanel <jobid> Deletes a job. SLURM allows one to delete all jobs belonging to a user wit the -u option.
 
 ## 7.5 References
 
