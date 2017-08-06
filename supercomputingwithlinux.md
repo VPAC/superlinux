@@ -2900,7 +2900,7 @@ bash-4.2$  tr a-z A-Z << END_TEXT
 > igneous   
 > sedimentary   
 > metamorphic   
-> END_TEXT   
+\> END_TEXT   
 IGNEOUS   
 SEDIMENTARY   
 METAMORPHIC   
@@ -2960,39 +2960,36 @@ The `qdel`, `qhold`, and `qrls` commands from TORQUE and PBS can operate on arra
 |:--------------|---------------|-----------------------|-------------------------------|
 | qdel ID[3]	| qdel ID[3]	| scancel ID_3		| Cancel third element of the job array specified by job ID. |
 
-In the Octave array example below, the input files are names from the PBS array identifiers. The Octave script produces a small set of random numbers, each of which are appended to the same output file. Examples are provided for TORQUE and PBSPro.
+In the Octave array example below, the input files are names from the PBS array identifiers. The Octave script produces a small set of random numbers, each of which are appended to the same output file. Examples are provided for TORQUE, PBSPro, and SLURM, with the latter in comment order.
 
 ```
 #!/bin/bash    
 #PBS -N octave-array    
-# TORQUE CPU Request   
+## PBS -N octave-array
+### SBATCH --job-name="octave-array"   
+
 #PBS -l nodes=1   
-# PBSPro CPU Request   
-# PBS -l ncpus=1   
-#PBS -l walltime=00:01:00    
-# TORQUE Array Request    
+## PBS -l ncpus=1   
+### SBATCH ntasks=1   
+
+#PBS -l walltime=00:01:00     
+## PBS -l walltime=00:01:00       
+### SBATCH -t=00:01:00   
+
 #PBS -t 1-10    
-# PBSPro Array Request  
-# PBS -J 1-10   
-cd $PBS_O_WORKDIR    
-module load octave    
-# TORQUE Request for ArrayID   
+## PBS -J 1-10   
+### SBATCH --array=1-10   
+
+cd $PBS\_O_WORKDIR    
+## Identical for PBSPro   
+### Not needed in SLURM
+
+module load octave/3.8.2    
+# Identical for PBSPro and SLURM
+
 octave file-${PBS_ARRAYID}.oct    
-# PBSPro Request for the same   
-# octave file-${PBS_ARRAY_INDEX}.oct   
-```
-[EDIT]
-
-The equivalent in SLURM would be the following.
-
-```
-#!/bin/bash    
-#SBATCH --job-name="octave-array"   
-#SBATCH -n=1   
-#SBATCH -t=00:01:00   
-#SBATCH --array=1-10   
-module load octave    
-octave file-${SLURM_ARRAY_TASK_ID}.oct   
+## octave file-${PBS_ARRAY_INDEX}.oct   
+### octave file-${SLURM_ARRAY_TASK_ID}.oct   
 ```
 
 In all cases the GNU Octave files, octave-1.oct through to octave-10.oct are identical:
@@ -3135,38 +3132,41 @@ Linux also have very useful 'pipes' and redirect commands. To pipe one command t
 
 ### Basic Linux Commands and Options
 
-`at` "at"; Schedule commands to be executed once at a specified time.
-Examples:  `echo "ls" | at 1145 nov 29`
-Echo a directory listing at 11.45 on November 29.
+`at` 
+"at"; Schedule commands to be executed once at a specified time.   
+Examples:  
+`echo "ls" | at 1145 nov 29`   
+Echo a directory listing at 11.45 on November 29.   
 													
-`bg`, `fg` "background, foreground"; put a job into the background or foreground of output.
-Examples:  `bg %1`   	
-Put job in background where output can be run without interrupting standard input.
+`bg`, `fg` 
+"background, foreground"; put a job into the background or foreground of output.   
+Examples:  
+`bg %1`   	
+Put job in background where output can be run without interrupting standard input.   
 `fg %1`   	
-Brings job back into the foreground.
+Brings job back into the foreground.   
 
+`cat`
+Concatenate files and print to standard output. Don't put cat in a pipe! It wastes keystrokes and adds processes (e.g., `cat | wc -l filename`)   
+Examples:   
+`cat textfile1.txt textfile2.txt textfile3.txt > textfileall.txt`   
+Concatenates files   
+`cat > textfilenew.txt`   
+`Let's type in some data!`   
+`Cntrl-D`   
+Creates a new textfile from entered text.   
+`cat -nA textfileall.txt`   
+Display line numbers and special non-printing characters.   
 
-cat
-Concatenate files and print to standard output. Don't put cat in a pipe! It wastes keystrokes and adds processes (e.g., cat | wc -l filename)
-Examples:
-cat textfile1.txt textfile2.txt textfile3.txt > textfileall.txt
-Concatenates files
-cat > textfilenew.txt
-Let's type in some data!
-Cntrl-D
-Creates a new textfile from entered text.
-cat -nA textfileall.txt
-Display line numbers and special non-printing characters.
-
-cd 
-"Change directory"; Change working directory from directory to another. 
-Examples: 
-cd <directory> 	
-Move to the directory if it is a sub-directory of the current directory, or use
-cd /path/to/directory
-cd ~ 			
-Returns to the /home/<username> directory. Very handy when you're lost! 
-cd .				
+`cd`   
+"Change directory"; Change working directory from directory to another.    
+Examples:    
+`cd <directory>` 	
+Move to the directory if it is a sub-directory of the current directory, or use;   
+`cd /path/to/directory`   
+`cd ~`   
+Returns to the `/home/<username>` directory. Very handy when you're lost!    
+`cd .`   
 Changes to the current directory; this initially doesn't seem very useful but it's handy to remember that the '.' represents the current directory.
 													
 cp <source> <target>	 				
