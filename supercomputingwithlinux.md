@@ -3169,141 +3169,134 @@ Returns to the `/home/<username>` directory. Very handy when you're lost!
 `cd .`   
 Changes to the current directory; this initially doesn't seem very useful but it's handy to remember that the '.' represents the current directory.
 													
-cp <source> <target>	 				
+`cp <source> <target>`	 				
 "Copy"; makes a copy of file or directory from one place to another. Requires two arguments, one is the source file/directory (or multiple instances), and the other is target file/directory. 
-Examples: 
-cp filename1 filename2 filename3 directory/ 			
+Examples:    
+`cp filename1 filename2 filename3 directory/`    			
 Copies filename1 filename2 filename3 in the current directory to the sub directory) 
-
-cp -a directory1 directory2		
+`cp -a directory1 directory2`   		
 Copies directory1 in archive mode; includes all files, keeps timestamps and ownership, does not follow symbolic links. Equivalent of; 
-cp -dpr directory1 directory2		
+`cp -dpr directory1 directory2`   		
 
-chmod	
-"change mode"; Alters permissions and modes. Can be expressed in symbolic or octal form.
+`chmod`   	
+"change mode"; Alters permissions and modes. Can be expressed in symbolic or octal form.   
 Examples: 
-chmod -R a+rx *
+`chmod -R a+rx *`   
 Give all read and execute access to files in the current directory and sub-directories.
-chmod 0644 filename.html
+`chmod 0644 filename.html`   
 Gives read/write access to the user, read access to the group and others.
-chmod 0755 directory/
+`chmod 0755 directory/`   
 Gives read/write/execute access to the user, read and execute to the group and others.
 
+`cut`   
+Remove sections from each line of files and prints to standard output (does not change original file).   
+Examples:   
+`cut -c2-5 gattaca.txt`   
+Cut the 2nd to 5th character of each line in the file `gattaca.txt`.						
 
-cut
-Remove sections from each line of files.
-Examples:
-cut -c2-5 test.txt
-Cut the 2nd to 5th character of each line in the file test.txt						
+`date`    
+Print (or set for privileged users) the system date and time   
 
-date 
-Print (or set for privileged users) the system date and time
+`du`   
+"disk usage"; Estimation of file space usage of working directory and sub-directories., default in kilobytes.    
+Examples:    
+`du -sh *`   
+Disk usage of working directory and sub-directories. in summary and human-readable form.   
 
-du
-"disk usage"; Estimation of file space usage of working directory and sub-directories., default in kilobytes. 
-Examples: 
-du -sh *
-Disk usage of working directory and sub-directories. in summary and human-readable form.
+`file`   
+Determine file type (e.g., text, executable, archive)   
+Examples:   
+`file class.tar.gz`
 
-file
-determine file type
-Examples:
-file class.tar.gz
+`find <path> <expression>`				
+"Find";  finds a file in the directory tree starting at the given pathname according to name, type, size etc., depending on the options stated.    
+Examples:    
+`find directory/ -name "*.txt"` 	
+Finds and displays all files with the "*.txt" in the directory and all over sub-directories. 
+`find ~ -mmin -10`		
+Find (and print to standard output) all files in the home directory that have been modified in the last ten minutes.
 
-find <path> <expression>				
-"Find";  finds a file in the directory tree starting at the given pathname according to name, type, size etc., depending on the options stated. 
-Examples: 
-find directory/ -name "*.txt" 	
-Finds and displays all files with the "*.txt" in the subdirectory directory/ and all over sub-directories. of directory/. 
-find ~ -mmin -10		
-Find (and print to screen) all files in the home directory that have been modified in the last ten minutes.
+`grep <pattern> <file>`   	
+Originally "global search for regular expression and print" g/re/p in the editor ed).  Searches and prints specified text from a list of files or standard input. The command understands regular expressions.   
+Examples:    
+`grep string directory/*` 			
+Finds and prints lines that contain the string in the directory.   
+`grep -i root < /etc/passwd`	  
+Searches for root (regardless of case) with the file `/etc/password` redirected as the command. Functionally similar to: `grep -i root /etc/password`, but illustrating input redirection.   
+`grep '\<c...h\>' /usr/share/dict/words`   	
+Find an prints all words that start with 'c' end in 'h' and have five letters. Handy for crosswords.   
 
-file <filename>
-The file command tests to see what sort of file is identified (text, executable, archive)
+`head <filename>`   
+Print the first ten lines of a file.  See also tail.   
+Examples:   
+`head -n15 quakes.csv`   
+Print the first fifteen lines of quakes.csv (default is 10).   
 
-grep <pattern> <file>	
-Originally "global search for regular expression and print" g/re/p in the editor ed).  Searches and prints specified text from a list of files or standard input. The command understands regular expressions.
-Examples: 
-grep string directory/* 			
-Finds and prints lines that contain the string in the directory/.
-grep -i root < /etc/passwd	
-Searches for root (regardless of case) with the file /etc/password redirected as the command. Functionally similar to: grep -i root /etc/password, but illustrating input redirection.
-grep '\<c...h\>' /usr/share/dict/words	
-Find an prints all words that start with 'c' end in 'h' and have five letters. Handy for crosswords.
+`hostname`   
+Print (or set for privileged users) the system hostname.   
 
-head <filename>
-Print the first ten lines of a file.  See also tail.
-Examples:
-head -n15 <filename>
-Print the first fifteen lines instead.
+`less <filename>`	 
+Prints a file to one screen at a time with cursor movement and searching. Quit using 'q'. A replacement for 'more'.   
 
-hostname
-Print (or set for privileged users) the system hostname.
-
-less <filename>	 
-Prints a file to one screen at a time with cursor movement and searching. Quit using 'q'. A replacement for 'more'.
-
-ln
-"link"; Creates pseudonyms (links) to files.
-Examples: 
-ln file1 file2
-Creates a "hard link" from file1 to file2. Refers to the specific location of the physical data.
-ln -s file1 file2
-Creates a "soft link" from file1 to file2. Refers a symbolic path.
+`ln`   
+"link"; Creates pseudonyms (links) to files.   
+Examples:    
+`ln file1 file2`   
+Creates a "hard link" from file1 to file2. Refers to the specific location of the physical data.   
+`ln -s file1 file2`   
+Creates a "soft link" from file1 to file2. Refers a symbolic path.   
 													
-ls 		
-"List"; lists contents for particular directory, the current directory by default. 
-Examples: 
-ls -ltr				 
-list with long format, including file permissions, reverse  order, by modification time.
-ls -sa				
-list with file size in blocks and specify all files, including hidden files (those that start with a '.' including profile files). 
-ls -ltr > list.txt		
-list with long format, including file permissions, reverse  order, by modification time and redirect output to the list.txt file.
-ls -ltr >> list.txt		
-list with long format, including file permissions, reverse  order, by modification time and adds to the end of the exiting list.txt file.
+`ls` 		
+"List"; lists contents for particular directory, the current directory by default.    
+Examples:    
+`ls -ltr`				 
+List with long format, including file permissions, reverse  order, by modification time.   
+`ls -sa`				
+List with file size in blocks and specify all files, including hidden files (those that start with a '.' including profile files).    
+`ls -ltr > list.txt`		
+List with long format, including file permissions, reverse  order, by modification time and redirect output to the `list.txt` file.   
+`ls -ltr >> list.txt`		
+List with long format, including file permissions, reverse  order, by modification time and adds to the end of the exiting list.txt file.   
 
-lsb_release
-"Linux Standard Base release"; Information on the specific Linux distribution.
-Examples: 
-lsb_release -a
-Print release, codename, description, and version.
+`lsb_release`   
+"Linux Standard Base release"; Information on the specific Linux distribution.   
+Examples:    
+`lsb_release -a`   
+Print release, codename, description, and version.   
 												 
-pwd		 
-"Print working directory";  prints the directory where you're currently in.	
+`pwd`		 
+"Print working directory";  prints the directory where you're currently in.   	
 													
-mkdir 	
-"Make directory"; create new directory to hold files or  sub-directories., if they do not already exist. 
-Examples;
-mkdir <directory>						 
-Creates a directory in the existing home directory.
-mkdir -p ./subdir1/subdir2/subdir3 	
-Creates sub-directories. 1, 2, 3 as a single branch from the current directory. The 'p' option stands for 'parents' i.e., create parent directories if they do not exist)
-mkdir subdir1 subdir2 subdir3			
-Creates the sub-directories. 1, 2 and 3 as separate branches the current working directory.
+`mkdir` 	
+"Make directory"; create new directory to hold files or  sub-directories., if they do not already exist.    
+Examples;   
+`mkdir <directory>`						 
+Creates a directory in the existing home directory.   
+`mkdir -p ./subdir1/subdir2/subdir3` 	
+Creates sub-directories. 1, 2, 3 as a single branch from the current directory. The 'p' option stands for 'parents' i.e., create parent directories if they do not exist)   
+`mkdir subdir1 subdir2 subdir3`			
+Creates the sub-directories. 1, 2 and 3 as separate branches the current working directory.   
 													
-man 	<command>		
-(manual):  The man command provides online access to  the system's reference pages. It displays the reference pages for the commands and also system calls.
-Example:
-man -a intro		
-Display, in succession, all of the available intro manual pages contained within the manual.  It is possible to quit between successive displays or skip any of them.
-						 
+`man <command>`		
+The manual command provides online access to  the system's reference pages. It displays the reference pages for the commands and also system calls.   
+Example:   
+`man -a intro`		
+Display, in succession, all of the available intro manual pages contained within the manual.  It is possible to quit between successive displays or skip any of them.   
+						 												
+`mv <source> <target>`	   
+"Move"; moves files or directories from one place to another, this has the effect of moving rather than copying the file.  It can also be used to rename a file, by moving the file to the same directory, but giving it different name.    
+Examples:    
+`mv file directory/newfilename` 			
+Renames and moves to a new directory.    
+`mv -u file directory/file`		
+'Update'; move the file to directory/file only if the source file is newer.   
+
+`ps`		 		
+"Process Status"; gives a snapshot of running processes. Useful to check the load status of the current system, cpu and memory use.    
+Example:   
+`ps -ejH` 			
+Lists all current processes and subprocesses as a tree.   
 												
-mv <source> <target>	
-"Move"; moves files or directories from one place to another, this has the effect of moving rather than copying the file.  It can also be used to rename a file, by moving the file to the same directory, but giving it different name. 
-Examples: 
-mv file directory/newfilename 			
-Renames and moves to a new directory. 
-mv -u file directory/file		
-'Update'; move the file to directory/file only if the source file is newer.
-
-ps		 		
-"Process Status"; gives a snapshot of running processes. Useful to check the load status of the current system, cpu and memory use. 
-Example:
-ps -ejH 			
-Lists all current processes and subprocesses as a tree.
-
-													
 rm <target>		
 "Remove";  deletes files from the system. It can be used to remove the directory no matter it is empty or not. 
 Examples: 
@@ -3316,86 +3309,86 @@ rmdir
 "Remove directory"; remove empty directory. If there are files or directories existing under the directory, rmdir will fail. 
 Example: 
 rm <directory>					 
-Removes the directory if it is a subdirectory and there are no files in it, or use cd /path/to/directory.
-rm -p subdir1/subdir2/subdir3		
-Removes the directory and its ancestors; above has the same effect as; 
-rmdir subdir1/subdir2/subdir3 subdir1/subdir2 subdir1.
+Removes the directory if it is a subdirectory and there are no files in it, or use `cd /path/to/directory`.
+`rm -p subdir1/subdir2/subdir3`		
+Removes the directory and its ancestors; above has the same effect as;    
+`rmdir subdir1/subdir2/subdir3 subdir1/subdir2 subdir1`.   
 
-sed
-"stream editor"; performs manipulations on a stream of input text. 
-Examples: 
-sed -i 's/foo/bar/g' file.txt 
-Replaces all instances of 'foo' with 'bar' in the file.txt
+`sed`   
+"stream editor"; performs manipulations on a stream of input text.    
+Examples:    
+`sed -i 's/foo/bar/g' file.txt`   
+Replaces all instances of 'foo' with 'bar' in the file.txt   
 
-sort
-"sort"; sort prints the lines of its input in the argument list in sorted order. 
-Examples: 
-sort -r messyfile
-Will output messyfile according to reverse alphabetical order.
-ls -s | sort -n
-Will output current working directory according to file size
+`sort`   
+"sort"; sort prints the lines of its input in the argument list in sorted order.    
+Examples:    
+`sort -r messyfile.txt`   
+Will output messyfile according to reverse alphabetical order.   
+`ls -s | sort -n`   
+Will output current working directory according to file size.  
 													
-split
-"split"; Splits a file into equal-sized segments
-Examples: 
-split longfile shortfile
-Will split longfile into shortfileaa, shortfileab, shortfileac etc with each shortfilexx being 1000 lines.
+`split`   
+Splits a file into equal-sized segments.    
+Example:   
+`split longfile shortfile`  
+Will split longfile into shortfileaa, shortfileab, shortfileac etc with each shortfilexx being 1000 lines.   
 
-tar
-"tape archive"; Copies and restores files from an archive medium. 
-Examples: 
-tar cvfz homeuser.tar.gz /home/user/training01/
-Create a tar archive of /home/user/training01, be verbose and forceful, and compress with the gz compression. 
-tar xvf homeuser.tar.gz
-Extracts a "tarball" of homeuser.tar.gz into the active directory.
+`tar`
+"Tape archive"; Copies and restores files from an archive medium.    
+Examples:    
+`tar cvfz homeuser.tar.gz /home/user/training01/`   
+Create a tar archive of /home/user/training01, be verbose and forceful, and compress with the gz compression.    
+`tar xvf homeuser.tar.gz`   
+Extracts a "tarball" of homeuser.tar.gz into the active directory.   
 													
-tail filename
-Display the last ten lines of a file.
-Example
-tail -f door.sta
-The -f option (follow) allows for a continuous display to output; useful for a file that's being generated that you wish to observe.
+`tail filename`   
+Display the last ten lines of a file.   
+Example:   
+`tail -f door.sta`    
+The -f option (follow) allows for a continuous display to output; useful for a file that's being generated that you wish to observe.   
 								
-tee
-Read from standard input and write to standard output and to a file as a parameter .
-Example.
+`tee`   
+Read from standard input and write to standard output and to a file as a parameter.   
+Example.   
+`ls | tee files.txt`   
+Shows a directory listing to standard output and to `files.txt`.   
 
-tree
-Tree; list contents of directories in a tree-like format.
-Examples: 
-tree /home/train01
-Shows directories, sub-directories., and files of the train01 home directory.  
+`tree`   
+Tree; list contents of directories in a tree-like format.   
+Examples:     
+`tree /home/train01 | less`   
+Shows directories, sub-directories., and files of the train01 home directory, piped through `less`.  
 
-uname
-"UNIX name". Prints system information.
-Examples: 
-uname -a
-Provides, in order, kernel name, network node name, kernel release and version, machine hardware name, processor and hardware platform, and operating system.
+`uname`   
+"UNIX name"; prints system information.   
+Examples:    
+`uname -a`   
+Provides, in order, kernel name, network node name, kernel release and version, machine hardware name, processor and hardware platform, and operating system.   
 
-w
-The command 'w' acts like a combination of who, uptime and ps -a. It displays  information  about the users currently on the machine, and their processes.  The header shows, the  current  time, how  long  the  system  has been running, how many users are currently logged on, and the system load averages for the past 1, 5, and 15  minutes.
+`w`   
+The command 'w' acts like a combination of who, uptime and ps -a. It displays  information  about the users currently on the machine, and their processes.  The header shows, the  current  time, how  long  the  system  has been running, how many users are currently logged on, and the system load averages for the past 1, 5, and 15  minutes.   
 													
-who
-Show who is currently logged into the system.
-Examples:
-who -u | less
-Show who is logged on, how long they've been idle and piped through the less command.
+`who`   
+Show who is currently logged into the system.   
+Examples:   
+`who -u | less`
+Show who is logged on, how long they've been idle and piped through the less command.   
 													
-whoami
-Prints the effective user ID.
-
-who | tee who.out | grep mike		
-The output of who is saved to the file who.out which is searched for the 
-user mike.
-
+`whoami`   
+Prints the effective user ID.   
+Examples:   
+`who | tee who.out | grep mike`		
+The output of who is saved to the file who.out which is searched for the  user mike.   
 													
-uptime
-Prints how long the system has been running, how many users are logged in and recent system load averages.
+`uptime`   
+Prints how long the system has been running, how many users are logged in and recent system load averages.   
 
-xargs
-"execute arguments"; Executes command lines from standard input.  
-Examples: 
-find . -name "*.txt" | xargs grep foo
-Finds all files with the suffix .txt and searches them for the phrase “foo”
+`xargs`
+"Execute arguments"; executes command lines from standard input.  
+Examples:    
+`find . -name "*.txt" | xargs grep foo`   
+Finds all files with the suffix .txt and searches them for the phrase “foo”   
 																				
 ## 7.3 File System
 
@@ -3441,35 +3434,35 @@ The  general layout of a Linux system is called the Filesystem Hierarchy Standar
 
 ## 7.5 References
 
-Adaptive Computing, TORQUE Resource Manager Administrator Guide 4.2.10, 2015
+Adaptive Computing, *TORQUE Resource Manager Administrator Guide 4.2.10*, 2015
 
-Altair Engineering, PBS Professional 12.0 Reference Guide, 2013
+Altair Engineering, *PBS Professional 12.0 Reference Guide*, 2013
 
-Carl Albing, et. al., bash Cookbook, O'Reilly, 2007
+Carl Albing, et. al., *bash Cookbook*, O'Reilly, 2007
 
-Amy Apon, Standley Ahalt, Vijay Dantuluri, et. al., High Performance Computing Instrumentation and Research Productivity in U.S. Universities, Journal of Information Technology Impact, Vol 10, No 2, pp87-98, 2010
+Amy Apon, Standley Ahalt, Vijay Dantuluri, et. al., *High Performance Computing Instrumentation and Research Productivity in U.S. Universities*, Journal of Information Technology Impact, Vol 10, No 2, pp87-98, 2010
 
-Mendel Cooper, Advanced Bash-Scripting Guide v10, The Linux Documentation Project, 2014
+Mendel Cooper, *Advanced Bash-Scripting Guide v10*, The Linux Documentation Project, 2014
 
-MJA Eugster, J Knaus, et al., "Hands-on tutorial for parallel computing with R", Computational Statistics, Jun 2011, Vol 26, pp 219-239
+MJA Eugster, J Knaus, et al., *Hands-on tutorial for parallel computing with R*, Computational Statistics, Jun 2011, Vol 26, pp 219-239
 
-Machtelt Garrels, Bash Guide for Beginners v1.11, The Linux Documentation Project, 2008
+Machtelt Garrels, *Bash Guide for Beginners v1.11*, The Linux Documentation Project, 2008
 
-Yiannis Georgiou, Resource Management with Linux Control Groups in HPC Clusters, Proceedings of the 6th Linux Collaboration Summit, 2012
+Yiannis Georgiou, *Resource Management with Linux Control Groups in HPC Clusters*, Proceedings of the 6th Linux Collaboration Summit, 2012
 
-Martin Hilbert, Priscila López. The World’s Technological Capacity to Store, Communicate, and Compute Information, Science Vol. 332 no. 6025 1 April 2011, pp. 60-65
+Martin Hilbert, Priscila López. *The World’s Technological Capacity to Store, Communicate, and Compute Information*, Science Vol. 332 no. 6025 1 April 2011, pp. 60-65
 
-Brian W. Kernighan, Rob Pike. The Unix Programming Environment, Prentice-Hall, 1984
+Brian W. Kernighan, Rob Pike. *The Unix Programming Environment*, Prentice-Hall, 1984
 
-Lev Lafayette 2015 Software Tools Compared To User Education in High Performance Computing. Proceedings of The Higher Education Agenda conference, Gold Coast, May, 2015 
+Lev Lafayette. *Software Tools Compared To User Education in High Performance Computing*. Proceedings of The Higher Education Agenda conference, Gold Coast, May, 2015 
 
-Lev Lafayette 2015  Skill Improvements versus Interface Designs for eResearchers. Proceedings of eResearch New Zealand, 25th March, 2015
+Lev Lafayette. *Skill Improvements versus Interface Designs for eResearchers*. Proceedings of eResearch New Zealand, 25th March, 2015
 
-Gordon E. Moore "Cramming more components onto integrated circuits", Electronics, April 19, 1965, p114-117.
+Gordon E. Moore, *Cramming more components onto integrated circuits*, Electronics, April 19, 1965, p114-117.
 
-Paul Sheer, Linux: Rute User's Tutorial and Exposition, Prentice-Hall, 2002
+Paul Sheer, *Linux: Rute User's Tutorial and Exposition*, Prentice-Hall, 2002
 
-Greg Wilson, High Performance Computing Considered Harmful, 22nd International Symposium on High Performance Computing Systems and Applications, 2008
+Greg Wilson, *High Performance Computing Considered Harmful*, 22nd International Symposium on High Performance Computing Systems and Applications, 2008
 
 **Images**
 													
