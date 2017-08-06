@@ -15,5 +15,5 @@ As VPAC comes to a close, the following publication compiles some of the materia
 The most recent version of "Supercomputing with Linux" (ISBN 978-0-9943373-0-6) is kept on the VPAC Github (`https://github.com/VPAC/superlinux`). Job submission scripts and other associated files are included in each directory according to the chapter number.
 
 
-![ISBN Barcode](https://github.com/VPAC/superlinux/blob/master/isbn-978-0-9943373-0-6.png)
+![ISBN Barcode](https://github.com/VPAC/superlinux/blob/master/images/isbn-978-0-9943373-0-6.png)
 
