@@ -941,6 +941,8 @@ Be very careful with rm, especially with the -rf option and especially with wild
 
 Modulefiles also have the advantages of being shared on many users on a system (such as an HPC system) and easily allowing multiple installations of the same application but with different versions and compilation options. Sometimes users want the latest and greatest of a particular version of an application for the feature-set they offer. In other cases, such as someone who is participating in a research project, a consistent version of an application is desired. Having multiple version of applications available on a system is essential in research computing.
 
+When you are operating on a Linux system the user has a certain environment; this can be checked with the `env` command. This will include particular a set of paths, which indicate where binary executables, libraries, etc will be found. Environment modules allow the user to dynamically change what is in their path.
+
 **Module commands**
 
 Some basic module commands include the following:
@@ -3198,10 +3200,13 @@ Cut the 2nd to 5th character of each line in the file `gattaca.txt`.
 Print (or set for privileged users) the system date and time   
 
 `du`   
-"disk usage"; Estimation of file space usage of working directory and sub-directories., default in kilobytes.    
+"Disk Usage"; Estimation of file space usage of working directory and sub-directories., default in kilobytes.    
 Examples:    
 `du -sh *`   
-Disk usage of working directory and sub-directories. in summary and human-readable form.   
+Disk usage of working directory and sub-directories, in summary and human-readable form.   
+
+`env`
+"Environment"; when invoked without arguments provides the current environments. Can also be used to temporarily change or ignore an existing environment.
 
 `file`   
 Determine file type (e.g., text, executable, archive)   
