@@ -786,9 +786,13 @@ Rsync can be used in a synchronise mode with the --delete flag. This will delete
 
 `rsync -avz --delete --dry-run source/ username@remotemachine:/path/to/destination`
 
-Many people often use rsync on local machines as well, especially when copying large directories e.g.,
+Another popular option is the --update flage which only changes files in the destination that are newer in the source. This will mean that you won't accidentally delete any files in the destination, but it it also means that you may end up with old files in the destination that you already have removed in the source.
 
-`rsync -avz source/ destination/`
+`rsync -avz --update username@remotemachine:/path/to/src .`
+
+Many people often use rsync on local machines as well, especially when copying large directories. e.g.,
+
+`rsync -av source/ destination/`
 
 A GUI interface for rsync is also available, grysnc.
 
