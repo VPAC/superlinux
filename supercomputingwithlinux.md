@@ -2728,6 +2728,26 @@ The value can be extracted from an array with an index for the number of consect
 Elements can be appended to an array by evoking the entire array as a variable with new elements; for example `ashley=("${ashley[@]}" "ashley05.edward.unimelb.edu.au", "ashley06.edward.unimelb.edu.au")`, followed by `echo ${ashley[6]}` will result in `ashley06.edward.unimelb.edu.au`.
 Elements can be removed with the `unset` command; for example `unset ashley[6]` will clear the previously last element, whereas `unset ashley` would delete the entire array.
 
+**Functions**
+
+Functions are used to group code sections as a subroutine in a logical manner or for recursion. A function takes the form of `function name { codeblock }`. Parameters may be parsed to the function, either with the script or as variables when the script is run. For example, the `hellofunction.sh` script:
+
+```
+#!/bin/bash
+# Enter two names when invoking script
+# Define your function here
+# Firstname and Surname are first two parameters.
+Hello () {
+   echo "Hello World ${1} ${2}"
+   return $(bc -l <<< ${#1}+${#2})
+}
+# Capture value returned by last command
+echo The name has this many characters $?
+exit
+```
+
+An interesting example of a function in use is the `/etc/profile` file which typically includes a `pathmunge` function which differentiates between the root user and other users, adding particular directories to the path of the former.
+
 ## 5.5 Better Bash Scripting
 
 **Scripts With Variables**
@@ -2802,6 +2822,14 @@ less $OUTPUT | \
 sort | uniq   
 exit   
 ```
+
+**Functions for Debugging**
+
+Functions aid readability and modularisation of scripts, in many ways creating an organised table of contents. The subroutines themselves are descriptive, providing the principle of code reusability. Sourcing a library of related functions will save a great deal of time when writing a script. A recommended example from The Linux Documentation Project is to have an `/etc/functions` directory and to include a `. /etc/functions` line at the start of scripts that use those functions.
+
+Debugging each subroutine is a lot easier with `set -x` and `set +x`. Redirections can also be added to a function call, furthering and debugging and analysis (e.g., `myfunction () { code; } > log`). In addition it very convenient to use a HEREDOC with a function to be called when necessary (e.g., `cat <<- EOF ... EOF`).
+
+Functions also have the advantage of providing variable scope, which should be used whenever possible to enforce a stronger sense of namespace. A variable within a function can be declared with with `local varname=value` within the function and is not accessible outside it. Unlike a number of other programming languages, a Bash variable declared inside a function is local only if declared as such.
 
 **Metacharacters**
 
