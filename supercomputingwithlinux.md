@@ -2699,6 +2699,35 @@ select opt in $OPTIONS; do
 done 
 ```
 
+**Arrays**
+
+An array can be thought of as a extended variable which contains multiple values of multiple types. An array takes the form of `name[index]=value`, where 'name' is the name of the array, 'index' refers to the array index value, an expression or value which resolves to an integer from 0 and greater, and 'value' equals the assignment. A very simple example would be a list of nodes in a cluster's partion, all of which in this example would be of the same string type. The elements of an array can be specified individually, but it is easier to state them using the `declare` statement; the `-a` option specifies an indexed array and `-A` for an associative array. The entire array can be specified with `@` or `*`, and the length of an array name with the special parameter `$#`; without an index it represents the first element of the array. 
+
+```
+#!/bin/bash
+# An example of an array in bash
+ashley[0]='ashley00.edward.unimelb.edu.au'
+ashley[1]='ashley01.edward.unimelb.edu.au'
+ashley[2]='ashley02.edward.unimelb.edu.au'
+ashley[3]='ashley03.edward.unimelb.edu.au'
+ashley[4]='ashley04.edward.unimelb.edu.au'
+echo ${ashley[1]}
+```
+
+```
+#!/bin/bash
+# An better example of an array in bash
+declare -a ashley=(ashley00.edward.unimelb.edu.au ashley01.edward.unimelb.edu.au ashley02.edward.unimelb.edu.au ashley03.edward.unimelb.edu.au ashley04.edward.unimelb.edu.au);
+echo ${ashley[1]}
+echo $(ashley[@]}
+echo ${#ashley[4]} 
+```
+
+The value can be extracted from an array with an index for the number of consective array elements with `[@]:index:increment}` e.g., `echo ${ashley[@]:1:2}`, will extract 2 elements starting from index 1. Always remember that indices start at 0. To extract characters from an array element, specifiy the index, the offset and the length. For example, `echo ${ashley[1]:0:8}` will result in `ashley01`. 
+
+Elements can be appended to an array by evoking the entire array as a variable with new elements; for example `ashley=("${ashley[@]}" "ashley05.edward.unimelb.edu.au", "ashley06.edward.unimelb.edu.au")`, followed by `echo ${ashley[6]}` will result in `ashley06.edward.unimelb.edu.au`.
+Elements can be removed with the `unset` command; for example `unset ashley[6]` will clear the previously last element, whereas `unset ashley` would delete the entire array.
+
 ## 5.5 Better Bash Scripting
 
 **Scripts With Variables**
