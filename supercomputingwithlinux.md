@@ -2283,7 +2283,7 @@ Ctrl-Z
 
 In order to make the best use of these scripting languages knowledge of regular expressions, also known as regex or regexp, is a powerful tool. Scripts and utility commands search strings of text for regular expressions of characters which then can be expressed or manipulated. The main command for searching with regular expressions is `grep`, a "global search for regular expression and print to standard output", encountered earlier in a simple form. The command `sed`, in contrast, is a "stream editor" whose output involves a transformation to the input file. A furthe command, `awk` is explored in the following section. Between them, `grep`, `sed`, and `awk` are extremely powerful and entire books have been written just exploring their capabilities. Here, only a minimal subset of searching, transforming, and reporting is provided.
 
-There are also deprecated utilities called `egrep`, `fgrep`, and `rgrep` that are the same functionality as `grep -E`, `grep -F`, and `grep -r` respectively. The command `grep -E` provides extended regular expressions, whereas `grep -F` interpret as pattern of fixed strings, as opposed to a regular expression as such. With a standard `grep` metacharacters will need to be escaped; this is not the case with `egrep`. As previously illustrated `grep -r` is a recursive grep searching for the specified directory and subdirectories. In GNU implementations of `grep` there is no difference between basic and extended syntaxes. If PCRE (perl-compatible regular expressions) is available on the system, `grep` can be extended further. 
+There are also deprecated utilities called `egrep`, `fgrep`, and `rgrep` that are the same functionality as `grep -E`, `grep -F`, and `grep -r` respectively. The command `grep -E` provides extended regular expressions, whereas `grep -F` interpret as pattern of fixed strings, as opposed to a regular expression as such. With a standard `grep` metacharacters will need to be escaped; this is not the case with `egrep`. As previously illustrated `grep -r` is a recursive grep searching for the specified directory and subdirectories. In GNU implementations of `grep` there is no difference between basic and extended syntaxes. If PCRE (perl-compatible regular expressions) is available on the system, `grep` can be extended further. For example compare `grep +K gattaca.txt` and `grep -E +K gattaca.txt`
 
 A simple example of is the unstructured regular expression "row"; in searching a certain document this could be identified with "brown", "crow", "drown", "microwaves" etc, to use an some examples from the command "grep row /usr/share/dict/words". Whilst simple expressions have a literal character to character match ("a"="a"), regular expressions also have meta-characters, some of which are described below using the file `gattaca.txt`. 
 
@@ -2293,11 +2293,15 @@ A simple example of is the unstructured regular expression "row"; in searching a
 | $		| End-of-line anchor		| WSGS$			| All lines ending with WSGS		|
 | .		| Matches one character		| A.........S		Lines containing an A, followed by nine characters, followed by an S | 
 | *		| Matches zero characters 	| ATVK*			| The pattern ATVK plus any additional characters	| 
+| +		| Matches one or more times	| +K			| All lines with K			|
 | [ ]		| Matches one in the set	| AT[VE]K		| The pattern ATVK or ATEK		|
 | [x-y]		| Matches within a range	| [A–Z]TVK		| A through Z followed by TVK		|
 | [^ ]		| Matches not in the set	| [^A–Z]		| Any character not in the range between A and Z	|
 | \		| Escape a metacharacter	| WSGS\./		| Sequence WSGS, followed by a literal period	|
-
+| {N}		| Matches exactly N times	| T\{1,\}     		| All expressions with 1 T characters	|
+| {N,}		| Matches N or more times	| T\{2,\}		| All expressions with 1 or more TT characters	|
+| {,M}		| Matches at most M times	| T\{,3\}		| All expressions with with T or TT characters |
+| {N,M}		| Matches from N-M times	| T\{1,5\}		| All expressions from T to TTTTT |
 
 Metachatacters can be combined. For example, to search for a sequence of characters from the system dictionary that starts with "brown" and has additional six letters the following command is invoked: 
 
