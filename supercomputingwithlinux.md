@@ -2504,7 +2504,7 @@ BU=homeuser$(date +%Y%m%d).tgz
 tar cvfz $BU /home/train[01..12]
 ```
 
-Thus, a variable is prefaced by a dollar sign ($) to refer to its value. It can also be assigned with an equals sign, without whitespaces on either side. 
+Thus, a variable is prefaced by a dollar sign ($) to refer to its value. It can also be assigned with an equals sign, without whitespaces on either side. In bash variables are global by default unless explicitly declared as local in a function (see below).
 
 ```
 $ Ubh="Unbihexium"
