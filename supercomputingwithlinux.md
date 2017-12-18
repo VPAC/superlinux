@@ -2496,7 +2496,11 @@ tar cvfz homeuser.tgz /home/train[01..12]
 
 **Variables**
 
-This is, of course, no different to typing the command at the prompt. Not much of a script, although even at this level of simplicity time has been saved if it is used more than once. A simple alteration would be to make use the preset date and time commands to add to the file to provide an archive with a timestamp within the filename as variables and, indeed, make the file itself a variable name. Note the space between "date" and the addition sign!
+This is, of course, no different to typing the command at the prompt. Not much of a script, although even at this level of simplicity time has been saved if it is used more than once. A simple alteration would be to make use the preset date and time commands to add to the file to provide an archive with a timestamp within the filename as variables and, indeed, make the file itself a variable name. Note the space between "date" and the addition sign! 
+
+Also, note the lack of space between the variable name and the value. A rule of bash variables is that there cannot be whitespace separating the variable name or its value from the assignment (otherwise, how would it know whether the whitespace character was part of the variable or the value?). 
+
+All bash variables must begin with alphanumeric character or underscore character. If the variable starts with an underscore it must have at least one more alphanumeric character or underscore character. Like filenames, variable names in bash are case-sensitive. Unlike filenames, special characters (e.g., `?`, `*`, ` `, etc) cannot be used in bash variable names. They *shouldn't* be used in filenames either! 
 
 ```
 #!/bin/bash          
@@ -2504,12 +2508,29 @@ BU=homeuser$(date +%Y%m%d).tgz
 tar cvfz $BU /home/train[01..12]
 ```
 
-Thus, a variable is prefaced by a dollar sign ($) to refer to its value. It can also be assigned with an equals sign, without whitespaces on either side. In bash variables are global by default unless explicitly declared as local in a function (see below).
+Thus, a variable is prefaced by a dollar sign ($) to refer to its value. It can also be assigned with an equals sign, without whitespaces on either side. In bash variables are global by default unless explicitly declared as local in a function (see below). Variable names *should* be illusrative of their function, although for very simple assignment an equally simple illusration - or abbreviation - is enough.
+
+The value of a variable can be checked with via the echo command (`echo $variable`). However, it should *only* be run if one is reasonably sure that the content of the variable is not harmful. Variables only have a scope in the bash process that they are declared in, unless exported. The command `export -p` will print all current exported variable values. The `unset` command will remove variable assignment.
 
 ```
 $ Ubh="Unbihexium"
 $ echo $Ubh 
   Unbihexium
+$ bash
+$ echo $Ubh 
+
+$ exit
+$ echo $Ubh 
+  Unbihexium
+$ export Ubh="Unbihexium"
+$ bash
+$ echo $Ubh 
+  Unbihexium
+$ exit
+$ export -p
+$ unset Ubh
+$ echo $Ubh
+
 ```
 
 **Loops**
@@ -2519,9 +2540,9 @@ In addition to variable assignments, bash scripting allows for  loops (for/do, w
 The until/do loop conducts the same action, but with the count in reverse. The next until/do produces the same results as the first, but not the difference in the conditional test. The main difference between while/do and until/do is that the while/do loop repeats the code block while the conditional is true whilst the until/do loop repeats the block whilst the expression is false.
 
 `for file in *.mp3 ; do ffmpeg -i "${file}" "${file/%mp3/ogg}" ; done`
-`for i in *.jpeg ; do convert "$i" "${i%.*}.png" ; done`
+`for file in *.jpeg ; do convert "$file" "${i%.*}.png" ; done`
 
-Note the use of command substitution by using $(command); sometimes you will find the use of backticks instead (e.g., `for i in * ; do mv $i \`echo $i | tr "A-Z" "a-z"\` ; done);` this is *not* recommended. The use of backticks (a) not a POSIX standard, (b) can be difficult to read with deep escapes and (c) can be *very* dangerous if mistaken for strong quotes.
+Note the use of command substitution by using $(command); sometimes you will find the use of backticks instead (e.g., `for file in * ; do mv $file \`echo $file | tr "A-Z" "a-z"\` ; done);` this is *not* recommended. The use of backticks (a) not a POSIX standard, (b) can be difficult to read with deep escapes and (c) can be *very* dangerous if mistaken for strong quotes.
 
 The following are examples of loops with conditional tests.
 
@@ -2537,10 +2558,11 @@ Even short, single line, scripts like these can be turned into permanent bashscr
 # Warning! Warning! Will overwrite *existing* files with the same lower-case name!
 for i
 do 
-	mv $i $(echo $i | tr "A-Z" "a-z")
+	mv $file $(echo $file | tr "A-Z" "a-z")
 done
 exit
 ```
+
 The until/do loop can serve as a trigger for events. In the following script, access to a system is tested with ping every few minutes until a connection is made whereupon it opens an SSH session. 
 
 ```
@@ -2577,7 +2599,7 @@ There are several conditional expressions that could be used to test with the fi
 
 There are also a number of special characters in bash scripting. Quoting disables these characters for the content within the quotes. Both single and double quotes can be used, and single quotes can be used to incorporate double quotes. Again, "backtick" quotation marks can be used for command substitution within the script for historical reasons but should be avoided. Special characters include `;` for command separators, `{}` for command blocks, `|` for a pipe, `< > &` as redirection symbols, `$` for variables, and `#` for comments. Compare the following:
 
-`echo 'The "Sedimentary" and the "Igenuous" argue about contributions to metamorphism'`
+`echo 'The "Sedimentary" and the "Igneuous" argue about contributions to metamorphism'`
 `echo "There are $(ls | wc -l) files in $(pwd)"`
 `echo 'There are $(ls | wc -l) files in $(pwd)'`
 
@@ -2598,12 +2620,12 @@ The following example was used by Mike Kuiper; a directory held a large number o
 
 ```
 #!/bin/bash 
- for i in *.plot.dat; do 
-	if [ -f $i.tmp ]; then 
+ for file in *.plot.dat; do 
+	if [ -f $file.tmp ]; then 
 	  : 
  	else 
-          	touch $i.tmp 
- 	"/usr/local/vmd/1.8.7-gcc/lib/tachyon_LINUXAMD64" -aasamples 2 -rescale_lights 0.38 -add_skylight 1.0 -res 1280 720 $i -format TARGA -o $i.tga 
+          	touch $file.tmp 
+ 	"/usr/local/vmd/1.8.7-gcc/lib/tachyon_LINUXAMD64" -aasamples 2 -rescale_lights 0.38 -add_skylight 1.0 -res 1280 720 $i -format TARGA -o $file.tga 
 	fi; 
  done 
 ```
@@ -2615,39 +2637,38 @@ Conditionals can also be interrupted and resumed using the 'break' and 'continue
 LIMIT=19  # Upper limit 
 echo 
 echo "Printing Numbers 1 through 20 (but not 3 and 11)." 
-a=0 
-while [ $a -le "$LIMIT" ] 
+count=0 
+while [ "$count" -le "$LIMIT" ] 
 do 
- a=$(($a+1)) 
+ count=$(($count+1)) 
 
- if [ "$a" -eq 3 ] || [ "$a" -eq 11 ]  # Excludes 3 and 11. 
+ if [ "$count" -eq 3 ] || [ "$count" -eq 11 ]  # Excludes 3 and 11. 
  then 
    continue      # Skip rest of this particular loop iteration. 
  fi 
-
- echo -n "$a "   # This will not execute for 3 and 11. 
+ echo -n "$count "   # This will not execute for 3 and 11. 
 done 
+echo;
+exit 0
 ```
 
 The following is the same loop, but substituting 'break' for 'continue'.
 
 ```
-a=0
-
-while [ "$a" -le "$LIMIT" ]
+#!/bin/bash
+LIMIT=19  # Upper limit 
+echo "Printing Numbers 1 through 20 (but breaks loop at 3)." 
+count=0
+while [ "$count" -le "$LIMIT" ]
 do
- a=$(($a+1))
-
- if [ "$a" -gt 2 ]
+ count=$(($count+1))
+ if [ "$count" -gt 2 ]
  then
    break  # Skip entire rest of loop.
  fi
-
- echo -n "$a "
+ echo -n "$count "
 done
-
-echo; echo; echo
-
+echo;
 exit 0
 ```
 
@@ -2748,6 +2769,25 @@ exit
 
 An interesting example of a function in use is the `/etc/profile` file which typically includes a `pathmunge` function which differentiates between the root user and other users, adding particular directories to the path of the former.
 
+It is good practise to get into the habit of using functions to modularise a shell script (see "Functions" under the following section, "Better Bash Scripting"). Certainly if a script is short and only does one main action it is not entirely necessary. But as soon as a level of complexity is reached, it helps to break up a bash script into multiple functions - and to invoke those functions through a `main()` function. For example:
+
+```
+#!/bin/bash
+subroutineA {
+    codeblock
+}
+subroutineB() {
+    codeblock
+}
+main() {
+    subroutineA
+    subroutineB
+}
+main
+exit 0
+```
+
+
 ## 5.5 Better Bash Scripting
 
 > A Big Ball of Mud is a haphazardly structured, sprawling, sloppy, duct-tape-and-baling-wire, spaghetti-code jungle. These systems show unmistakable signs of unregulated growth, and repeated, expedient repair. Information is shared promiscuously among distant elements of the system, often to the point where nearly all the important information becomes global or duplicated. The overall structure of the system may never have been well defined. If it was, it may have eroded beyond recognition. Programmers with a shred of architectural sensibility shun these quagmires. Only those who are unconcerned about architecture, and, perhaps, are comfortable with the inertia of the day-to-day chore of patching the holes in these failing dikes, are content to work on such systems.    
@@ -2755,26 +2795,26 @@ An interesting example of a function in use is the `/etc/profile` file which typ
 
 **Scripts With Variables**
 
-The simplest script is simply one that runs a list of system commands. At least this saves the time of retyping the sequence each time it is used, and reduces the possibility of error. For example, in the Intermediate course, the following script was recommended to calculate the disk use in a directory. It's a good script, very handy, but how often would you want to type it? Instead, type enter it once and keep it. You will recall of course, that a script starts with an invocation of the shell, followed by commands.
+The simplest script is simply one that runs a list of system commands. At least this saves the time of retyping the sequence each time it is used, and reduces the possibility of error. For example, the following script was recommended to calculate the disk use in a directory. It's a good script, very handy, but how often would you want to type it? Instead, type enter it once, make it executable (e.g., `chmod +x diskuse.sh`) and keep it. You will recall of course, that a script starts with an invocation of the shell, followed by commands.
 
 ```
 #!/bin/bash
 du -sk * | sort -nr | cut -f2 | xargs -d "\n" du -sh  > diskuse.txt
 ```
 
-`chmod +x diskuse.sh`
-
 The script runs a disk usage in summary, sorts in order of size, extracting the second field, parses the values in delimited form to run as disk usage summary in human form, and then exports to the file `diskuse.txt`. The `\n` is to ignore spaces in filenames.
 
-Whilst sometimes making the script a little more complex, variables are usually better than hard-coded values. There are two potential variables in this script, the wildcard `*` and the exported filename `diskuse.txt`. In the former case, the wildcard can be kept as it allows a certain portibility of the script - it can run in any directory it is invoked from. For the latter case however, the date command can be used so that a history of diskuse can be created which can be reviewed for changes. It's also good practise to alert the user when the script is completed and, although it is often necessary, it is also good practise to cleanly finish any script with with an `exit` statement.
+Whilst sometimes making the script a little more complex, variables are usually better than hard-coded values. There are two potential variables in this script, the wildcard `*` and the exported filename `diskuse.txt`. In the former case, the wildcard can be kept as it allows a certain portibility of the script - it can run in any directory it is invoked from. For the latter case however, the date command can be used so that a history of diskuse can be created which can be reviewed for changes. It is good practise to alert the user when the script is completed and, although it is often necessary, it is also good practise to cleanly finish any script with with an `exit 0` statement.
 
 ```
 #!/bin/bash   
 DU=diskuse$(date +%Y%m%d).txt   
 du -sk * | sort -nr | cut -f2 | xargs -d "\n" du -sh  > $DU   
 echo "Disk summary completed and sorted."   
-exit
+exit 0
 ```
+
+As a matter of useful convention global variables should be written in upper-case, and local variables in lower case, if the script makes use of functions to differentiate between variable scope. In shorter scripts this may not be necessary.
 
 **Conditionals**
 
@@ -2798,7 +2838,7 @@ sed -i 's/$/,/g' $OUTPUT
 sort -u $OUTPUT -o $OUTPUT   
 sed -i '{:q;N;s/\n/ /g;t q}' $OUTPUT   
 echo "Data file extracted to" $OUTPUT   
-exit   
+exit 0   
 ```
 
 Test this file with `hidden.txt` in the chapter resources directory as the input text and `found.csv` as the output text. The `hidden.txt` file is mostly nonsense text with the occasional email address included. The output will include a final comma on the last line but this is potentially useful if one wants to run the script with several input files and append to the same output file (simply change the single redirection in the grep statement to an double appended redirection.
@@ -2823,7 +2863,7 @@ if [ $? -eq 0 ]; then
 less $OUTPUT | \   
 # Output file, piped through sort and uniq.    
 sort | uniq   
-exit   
+exit 0   
 ```
 
 **Functions for Debugging**
@@ -2858,11 +2898,11 @@ esac
 In contrast, the colon acts as a null command. Whilst this obviously has a variety of uses (e.g., an alternative to the touch command, a really practical advantage of this is that comes with a true exit status, and as such it can be used as placeholder in if/then tests. An as prior illustrated example;
 
 ```
-for i in *.plot.dat; do     
-	if [ -f $i.tmp ]; then     
+for file in *.plot.dat; do     
+	if [ -f $file.tmp ]; then     
 	  : # do nothing and exit if-then    
  	else    
-          	touch $i.tmp    
+          	touch $file.tmp    
 ```
 
 The use of the null command as a test at the beginning of a loop will cause it to run endlessley (e.g., `while : do ... done`) as the test always evaluates as true. Note that the colon is also used as a field separator in /etc/passwd and in the $PATH variable. 
@@ -2897,11 +2937,11 @@ do
 done   
 ```
 
-For example, a strict single quoted directory listing of ls with a wildcard will only provide files that are expressed by the symbol (which isn't a very good file name at all, and *not* recommended!). Compare `ls *` with `ls '*'`. This example will also worth with double quote and indeed, double-quotes are generally preferable as they prevent reinterpretation of all special characters except `$`, `/``, and `\.` This are usually the symbols which are wanted in their interpreted mode. Related to quoting is the use of the backslash (`\`) used to escape single characters. Do not confuse it with the forward slash (`/`) has multiple uses as both the separator in pathnames (e.g., (`/home/train01`), but also a the division operator.
+For example, a strict single quoted directory listing of ls with a wildcard will only provide files that are expressed by the symbol (which isn't a very good file name at all, and *not* recommended!). Compare `ls *` with `ls '*'`. This example will also worth with double quote and indeed, double-quotes are generally preferable as they prevent reinterpretation of all special characters except `$`, `/``, and `\` . These are usually the symbols which are wanted in their interpreted mode. Related to quoting is the use of the backslash (`\`) used to escape single characters. Do not confuse it with the forward slash (`/`) has multiple uses as both the separator in pathnames (e.g., (`/home/train01`), but also a the division operator.
 
-In some scripts backticks (`) are used for command substitution, where the output of a command can be assigned to a variable. Whilst this is not a POSIX standard, it does exist for historical reasons. Nesting commands with backticks also requires escape characters; the deeper the nesting the more escape characters required, which is difficult to read. The preferred and POSIX standard method is to use the dollar sign and parentheses. e.g., echo `"Hello, $(whoami)"`. 
+In some scripts backticks are used for command substitution, where the output of a command can be assigned to a variable. Whilst this is not a POSIX standard, it does exist for historical reasons. Nesting commands with backticks also requires escape characters; the deeper the nesting the more escape characters required, which is difficult to read. The preferred and POSIX standard method is to use the dollar sign and parentheses. e.g., echo `"Hello, $(whoami)"`. 
 
-Overall, metacharacters are a very important tool to your *nix-knowledge, providing you the ability to extend a utility, application, or set of shell commands. However, their meta-character meaning is contextual, and awareness and knowledge of that context is required to use them properly. 
+Overall, metacharacters are a very important tool to one's Linux knowledge, providing the ability to extend a utility, application, or set of shell commands. However, their meta-character meaning is contextual, and awareness and knowledge of that context is required to use them properly. 
 
 # 6.0 Alternative Job Submission Options
 

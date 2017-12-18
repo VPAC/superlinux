@@ -1,5 +1,0 @@
-#!/bin/bash
-# An better example of an array in bash
-declare -a ashley=(ashley01.edward.unimelb.edu.au ashley02.edward.unimelb.edu.au ashley03.edward.unimelb.edu.au ashley04.edward.unimelb.edu.au)
-echo ${ashley[1]}
-
