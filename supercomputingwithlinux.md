@@ -2441,7 +2441,7 @@ Like `sed` a popular list of one-line awk commands is available. They are includ
 
 The core software to any operating system is the kernel, which provides a bridge between applications and the hardware and manages system resources. An operating system's "shell" is that software that provides an interface for users of the operating system to access the kernel, whether for interactive use, customisation or programming. Examples include the *nix-universal Bourne shell (sh) Bourne-Again shell (bash), Z shell (zsh), Korn shell (ksh), extended C shell (tcsh) and the friendly interactive shell (fish). There is even an amusing attempt to develop a shell into a text-based adventure game (Adventure shell, available at `http://nadvsh.sourceforge.net/`).
 
-To check what shells are available on VPAC's Trifid system the following is a directory listing. Note that `csh` is now a symlink to `tsch` (extended cshell) which was implemented due to a variety of problems with the former (see the document, Csh Programming Considered Harmful" `https://www-uxsup.csx.cam.ac.uk/misc/csh.html`) and that the original shell (`sh`) is now a symlink to `bash` given limitations to the former. The other shell systems listed include korn shell (`ksh`, `ksh93`) and Z shell (`zsh`).
+To check what shells are available on VPAC's Trifid system, for example, the following is a directory listing. Note that `csh` is now a symlink to `tsch` (extended cshell) which was implemented due to a variety of problems with the former (see the document, Csh Programming Considered Harmful" `https://www-uxsup.csx.cam.ac.uk/misc/csh.html`) and that the original shell (`sh`) is now a symlink to `bash` given limitations to the former. The other shell systems listed include korn shell (`ksh`, `ksh93`) and Z shell (`zsh`).
 
 ```
 $ ls -l /bin/*sh* 
@@ -2482,6 +2482,12 @@ Bash has certain shortcut features; in the introductory course we already visite
 | ctrl+d	| Quick logout.					| 
 | ctrl+r	| Recursive search through your history to locate previous commands. |
 | ctrl+z	| Stop the current process. 			|
+
+There are different types of commands within the shell. In bash firstly there are "builtin" commands, which are part of the shell itself. This includes commands like `alias`, `bg`, `cd`, `echo`, `fg`, `help`, `history`, `jobs`, `kill`, `logout`, `pwd`, `set`, `source`, `time`, `umask`, etc. These are essentially commands to operate on the shell environment itself, and are detailed in the `man builtins` help page, which can be invoked by any member (e.g., `man cd`). 
+
+Secondly, there are external commands, many of which are part of the operating system itself. These are typically stored in directories such as `/bin` (command binaries), `/sbin`/ (system binaries). Other external commands are from those additional applications which have been installed on the system which are usually found in `/usr/` and its subdirectories, such as `/usr/local/bin` and `/usr/local/sbin` for non-essential command or system binaries, and those binaries directories in applications in `/usr/local/$application/bin`. 
+
+Just as the `file $filename` command can be used to determine what sort of file is being evaluated, the `type $command` command can be used to determine whether a command is a shell builtin or keyword, or external command, or aliased.
 
 ## 5.4 Shell Scripting with bash
 
