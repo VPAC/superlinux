@@ -2534,7 +2534,7 @@ Even short, single line, scripts like these can be turned into permanent bashscr
 ```
 #!/bin/bash
 # Will change every file in the existing directory to lower-case.
-# Warning! Will overwrite *existing* files with the same lower-case name!
+# Warning! Warning! Will overwrite *existing* files with the same lower-case name!
 for i
 do 
 	mv $i $(echo $i | tr "A-Z" "a-z")
@@ -2750,6 +2750,9 @@ An interesting example of a function in use is the `/etc/profile` file which typ
 
 ## 5.5 Better Bash Scripting
 
+> A Big Ball of Mud is a haphazardly structured, sprawling, sloppy, duct-tape-and-baling-wire, spaghetti-code jungle. These systems show unmistakable signs of unregulated growth, and repeated, expedient repair. Information is shared promiscuously among distant elements of the system, often to the point where nearly all the important information becomes global or duplicated. The overall structure of the system may never have been well defined. If it was, it may have eroded beyond recognition. Programmers with a shred of architectural sensibility shun these quagmires. Only those who are unconcerned about architecture, and, perhaps, are comfortable with the inertia of the day-to-day chore of patching the holes in these failing dikes, are content to work on such systems.    
+- Brian Foote and Joseph Yoder, "Big Ball of Mud", *Fourth Conference on Patterns Languages of Programs (PLoP '97/EuroPLoP '97)*, Monticello, Illinois, September 1997
+
 **Scripts With Variables**
 
 The simplest script is simply one that runs a list of system commands. At least this saves the time of retyping the sequence each time it is used, and reduces the possibility of error. For example, in the Intermediate course, the following script was recommended to calculate the disk use in a directory. It's a good script, very handy, but how often would you want to type it? Instead, type enter it once and keep it. You will recall of course, that a script starts with an invocation of the shell, followed by commands.
@@ -2827,7 +2830,9 @@ exit
 
 Functions aid readability and modularisation of scripts, in many ways creating an organised table of contents. The subroutines themselves are descriptive, providing the principle of code reusability. Sourcing a library of related functions will save a great deal of time when writing a script. A recommended example from The Linux Documentation Project is to have an `/etc/functions` directory and to include a `. /etc/functions` line at the start of scripts that use those functions.
 
-Debugging each subroutine is a lot easier with `set -x` and `set +x`. Redirections can also be added to a function call, furthering and debugging and analysis (e.g., `myfunction () { code; } > log`). In addition it very convenient to use a HEREDOC with a function to be called when necessary (e.g., `cat <<- EOF ... EOF`).
+A bash script can be started in debug mode with `bash -x scriptname.sh`. Debugging is activated with the command `set -x` in the script and deactivated afterwards with `set +x`. Debugging each subroutine is a lot easier with `set -x` at the start of a function and `set +x` at the end of the function. 
+
+Redirections can also be added to a function call, furthering and debugging and analysis (e.g., `myfunction () { code; } > log`). In addition it very convenient to use a HEREDOC with a function to be called when necessary (e.g., `cat <<- EOF ... EOF`).
 
 Functions also have the advantage of providing variable scope, which should be used whenever possible to enforce a stronger sense of namespace. A variable within a function can be declared with with `local varname=value` within the function and is not accessible outside it. Unlike a number of other programming languages, a Bash variable declared inside a function is local only if declared as such.
 
