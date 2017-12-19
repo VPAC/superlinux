@@ -870,14 +870,9 @@ The diff command is often used by programmers to create a patch file between two
 
 ## 2.7 Searches and Wildcards
 
-Often you will want to search for files or search within files for a particular phrase. The find command, which will find files according to the directory and sub-directories offered, by name, modification time, size etc, and with filter operations, all of which are available through man find. To find all files with the suffix .txt on your supercomputer account use the following command:
+Often you will want to search for files or search within files for a particular phrase. The find command, which will find files according to the directory and sub-directories offered, by name, modification time, size etc, and with filter operations, all of which are available through man find. To find all files with the suffix .txt on your supercomputer account change to the home directory use the following command: `find . -name '*.txt'`. Note that the filter is within quotes, to ensure that the command is not expanded due to the wildcard. 
 
-```
-cd ~
-find . -name '*.txt'
-```
-
-Note that the filter is within quotes, to ensure that the command is not expanded due to the wildcard. 
+The `find` command is differentiated from the `locate` and `whereas` commands which also find files. The `find` command is searches for files by filename in the directories and with the options assigned. It is best for finding files that a users and within a limited directory range. In comparison the `locate` command searches through a database that must be regularly updated, typically by administrators (`updatedb`). It is best for files that are used regularly without change, or for quick search that may not be the most up-to-date. Finally, `whereis` finds source, binary and manual files by name and should be used for such searches.
 	
 To search within a collection of files use the grep command. It originally an abbreviation of "global search for a regular expression and print to standard output". The command searches the named input files for lines containing a match to the given pattern, including regular expressions, and prints the matching lines. As usual there are a variety of options available through man grep. The following command will search for the pattern 'ATEK', ignoring case, within the directory braf. Enter the following on the supercomputer:
 
@@ -950,7 +945,7 @@ Some basic module commands include the following:
 
 `module avail` : This option lists all the modules which are available to be loaded. Notice that many of them have version numbers associated with them. Modules makes it easy to switch compiler application versions. The module name without a version number is the production default. 
 
-One particular nuissance is that the output of a module avail is treated as a standard error, rather than standard output. Thus to pipe the output of module avail to less, one has to redirect standard error to standard output. This can also be used for providing an output of module whatis  i.e.,
+One particular nuissance is that the output of a module avail is treated as a standard error, rather than standard output in the standard environment modules application. Thus to pipe the output of module avail to less, one has to redirect standard error to standard output. This can also be used for providing an output of `module whatis`  i.e.,
 
 ```
 module avail 2>&1 | less
@@ -972,7 +967,7 @@ prepend-path	 FREESURFER_HOME /usr/local/freesurfer/4.5.0
 prepend-path	 SUBJECTS_DIR /usr/local/freesurfer/4.5.0/subjects 
 ```
 
-`module load <modulefile>` : This adds one or more modulefiles to the user's current environment (some modulefiles load other modulefiles, e.g., module load vpac or module load gcc). You can load multiple modules simultaneously. For example, to load the default version NAMD one would use the command: `module load namd`. If you load the generic name of a module, you will get the default version. To load a specific version, load the module using its full specification. for example; `module load namd/2.9-openmpi-gcc`. It is almost always better to use the precise version to ensure consistency in scripts and resuls. The default version should only be used for testing purposes.
+`module load <modulefile>` : This adds one or more modulefiles to the user's current environment (some modulefiles load other modulefiles, e.g., module load vpac or module load gcc). You can load multiple modules simultaneously. For example, to load NAMD one would use the command: `module load namd`.  If you load the generic name of a module, you will get the default version. To load a specific version, load the module using its full specification. for example; `module load namd/2.9-openmpi-gcc`. It is almost always better to use the precise version to ensure consistency in scripts and resuls. The default version should only be used for testing purposes. 
 
 As an example of how the changes occur, check the version and path when loading a module. For example:
 
@@ -1090,7 +1085,7 @@ To submit according to a particular queue in TORQUE or PBSPro use `#PBS -q queue
 
 **Nodes and Performance**
 
-Requesting more nodes or cores for a particular job does not necessarily mean better performance or faster completion. This depends on how well parallelised the program is. Also, requesting large numbers of cores may result in the job waiting in the queue for days while the scheduler allows for resources to become available.  The number of nodes requested can be distinguished between a number of cores from anywhere on the system, or within a single system unit, or another combination. It is also possible to request specific nodes on the entire system, although the instances where this is necessary are fairly rare. Another option with OpenMPI is to launch the job with  `--hostfile $hostfile`.
+Requesting more nodes or cores for a particular job does not necessarily mean better performance or faster completion. This depends on how well parallelised the program is. Also, requesting large numbers of cores may result in the job waiting in the queue for days while the scheduler allows for resources to become available.  The number of nodes requested can be distinguished between a number of cores from anywhere on the system, or within a single system unit, or another combination. It is also possible to request specific nodes on the system, although the instances where this is necessary are usually limited to debugging, assuming that queues have been established appropriately.. Another option with OpenMPI is to launch the job with  `--hostfile $hostfile`.
 
 Note that with TORQUE the nodes request is for system units (except when expressed in the singular, when it is processors) and in PBSPro it is "chunks", which may or may not be specific system units.
 
@@ -1507,7 +1502,7 @@ Overall, when submitting jobs it really is a case of trial and error initially f
 
 ## 4.1 Login Files
 
-One of the first commands introduced was how to generate directory listing when a user logged in on the command line i.e., ls. We also learned how to get a more complete directory listing by applying options to a basic command, for example one which is ls -lart (list with long format, including file permissions (l), all files (a), sorted in reverse order (r), by modification time (t). Start up a terminal window, login to the supercomputer and run a long directory listing: `ls -lart` 
+One of the first commands introduced was how to generate directory listing when a user logged in on the command line i.e., ls. We also learned how to get a more complete directory listing by applying options to a basic command, for example one which is ls -lart (list with long format, including file permissions (l), all files (a), sorted in reverse order (r), by modification time (t).  Start up a terminal window, login to the supercomputer and run a long directory listing: `ls -lart` 
 
 Two of the hidden files are .bash_profile and .bashrc . These are startup files for the Bash shell (Bourne-again shell). The shell is a program that acts as command interpreter between the user and the operating system. Users can interact directly with the shell, or with an application which interacts with the shell as the image portrays (image from opensuse.org). A user submits their commands to the shell, which then either executes them directly or passes them on to other programs. These programs in turn request lower-level services from the kernel. Unlike some operating systems, Linux has a number of different shells available to users some of which we'll briefly explore in this course; the default most of these days is bash. 
 
@@ -1521,8 +1516,6 @@ Typically an startup file for an interactive shell will include startup commands
 Usually a `~/.bash_profile` contains a line to ensure that options in `.bashrc` are included with an interactive login; but not the other way around. For example, if one checks `.bash_profile` they should see the line: 
 
 `if  [ -f ~/.bashrc ]; then . ~/.bashrc; fi` 
-
-What else is there? 
 
 ```
 [root@trifid-m train01]# cat .bash_profile 
@@ -1554,9 +1547,14 @@ Once you get past the comments (which are always a good idea) there isn't too mu
 
 ```
 alias ls='ls -F' 
-alias cp='cp -i'
-alias ll='ls -laxp' 
+alias cp='cp -i' 
+alias rm='rm -i'
+alias mv='mv -i'
+alias ln='ln -i'
+alias ll='ls -lashrt' 
 alias lo='exit' 
+alias mount='mount |column -t'
+alias now='date +"%Y-%m-%d-%T"'
 # --------------------- 
 # Undocumented feature which sets the size to "unlimited". 
 # http://stackoverflow.com/questions/9457233/unlimited-bash-history 
@@ -1570,6 +1568,8 @@ export HISTFILE=~/.bash_eternal_history
 # http://superuser.com/questions/20900/bash-history-loss 
 PROMPT_COMMAND="history -a; $PROMPT_COMMAND" 
 ```
+
+It should be mentioned that aliases don't have to established in such files; a temporary alias can be estabslished as part of a bash process using the same command structure. An alias can be removed from a process with the `unalias` command.
 
 Apart from some extra aliases, this bash_profile also adds commands to a .bash_eternal_history file, so that there is a record of every command typed, dating back years.  Given that quite often a complex command desired is often similar to a command that has been typed in the past, the eternal history allows for a search for this archive. It will grow over time of course, but as a pure text document, it's going to be a long time before the space it takes up is too much.
 
@@ -2299,7 +2299,8 @@ The caret symbol can also be used to call an exception to a class of characters.
 `grep -i "^[^a-z]" /usr/share/dict/words`
 `grep -v "[aeiou]" /usr/share/dict/words`
 
-As mentioned `sed` is a stream-editor, of which the unstated important component is that it is non-interactive. The following is a basic example of of substitution, which makes up the most common use of the `sed` command.
+
+As mentioned `sed` is a stream-editor, of which the unstated important component is that it is non-interactive. The general form of a script is `Command/RegExp/Replacement/Flags`. The most common command is `s` for `substitute`, and the most common flags are `g` for global replacement thoughout each line and `I` to ignore case.  Some common options are `e` (multiple scripts per command), `-f` (add script file) and `-i` (in-place editing). The following is a basic example of of substitution, which makes up the most common use of the `sed` command.
 
 `sed 's/ATVK/ATEKS/g' gattaca.txt`	
 
@@ -2324,6 +2325,12 @@ Due to competing standards many decades ago, various forms of *nix (Linux, MacOS
 
 `sed -i 's/$/\r/g' filename` 	# *nix to MS-Windows, adds CR. 
 `sed -i 's/\r$//g' filename`	# MS-Windows to *nix, removes CR 
+
+Note that when using many variables (e.g., $PWD), not only must the variable be double quoted to ensure substitution, and alternative delimited should be used as any directory path will include the sed delimited, `/`. Sed offers three alternative delimiters in its scripts; `/`, `:`, or `|`
+
+* Sed has alternative three alternative delimiters in its scripts; '/', ':', or '|'
+
+
 
 The `sed` command is extremely versatile, and over the years a number of common and popular one-line sed commands have been compiled. These can ge found at the following URL, and are included with in the resources direcory of the git repository for this book.
 
@@ -2354,7 +2361,7 @@ It is quite possible to pipe other commands within as well outside an `awk` scri
 
 `awk -F"," '{print $1 " " $3 | "sort"}' quakes.csv | less`
 
-Not however, because awk takes filenames as arguments in many cases you can avoid the use of pipes and new processes. For example, grep is usually unnecessary. Rather than `grep 2013p049577 /var/log/messages | awk '{ print $1 }'`, for example, one can use `awk '2013p049577 { print $1 }' quakes.csv`.
+Note however, because awk takes filenames as arguments in many cases you can avoid the use of pipes and new processes. For example, grep is usually unnecessary. Rather than `grep 2013p049577 /var/log/messages | awk '{ print $1 }'`, for example, one can use `awk '2013p049577 { print $1 }' quakes.csv`.
 
 Often you will want to manipulate or display structured data but without reference to the first row which is typically the header information for the file. In this case use NR (number of records). In the first example we use count the total number of rows after the last line is read. In the second example we display all three columns in reverse order using comma-separated values, but without the first row displayed. The third example illustrates the use of logical or (`||`) and logical and (`&&`).
 
@@ -2730,7 +2737,6 @@ The value can be extracted from an array with an index for the number of consect
 
 Elements can be appended to an array by evoking the entire array as a variable with new elements; for example `ashley=("${ashley[@]}" "ashley05.edward.unimelb.edu.au", "ashley06.edward.unimelb.edu.au")`, followed by `echo ${ashley[6]}` will result in `ashley06.edward.unimelb.edu.au`.
 Elements can be removed with the `unset` command; for example `unset ashley[6]` will clear the previously last element, whereas `unset ashley` would delete the entire array.
-
 
 **Functions**
 
