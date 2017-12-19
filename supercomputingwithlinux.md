@@ -1255,9 +1255,7 @@ This example of parallel processing with R is taken from Eugster and Knaus (2011
 
 ## 3.8 Parallel Job with License : ANSYS Finite Element Analysis
 
-ANSYS is an engineering simulation for general-purpose finite element analysis and computational fluid dynamics. The following example is an Oscillating Plate with Two-Way Fluid-Structure Interaction from the ANSYS tutorials, but modified as a task for parallel computation. 
-
-This tutorial uses an example of an oscillating plate simulation involving two-way Fluid-Structure Interaction (FSI). The structural physics is set up in the Transient Structural analysis system and the fluid physics is set up in Fluid Flow (CFX) analysis system, but both structural and fluid physics are solved together under the Solution cell of the Fluid system. Coupling between two analysis systems is required throughout the solution to model the interaction between structural and fluid systems as time progresses. The framework for the coupling is provided by the ANSYS Multi-field solver using the MFX setup. 
+ANSYS is an engineering simulation for general-purpose finite element analysis and computational fluid dynamics. The following example is an Oscillating Plate with Two-Way Fluid-Structure Interaction from the ANSYS tutorials, but modified as a task for parallel computation. This tutorial uses an example of an oscillating plate simulation involving two-way Fluid-Structure Interaction (FSI). The structural physics is set up in the Transient Structural analysis system and the fluid physics is set up in Fluid Flow (CFX) analysis system, but both structural and fluid physics are solved together under the Solution cell of the Fluid system. Coupling between two analysis systems is required throughout the solution to model the interaction between structural and fluid systems as time progresses. The framework for the coupling is provided by the ANSYS Multi-field solver using the MFX setup. 
 
 The geometry consists of a 2D closed cavity and a thin plate, 1 m high, that is anchored. An initial pressure of 100 Pa is applied to one side of the thin plate for 0.5 seconds in order to distort it. Once this pressure is released, the plate oscillates backwards and forwards as it attempts to regain its equilibrium (vertical) position. The surrounding fluid damps the plate oscillations, thereby decreasing the amplitude of oscillations with time. The CFX solver calculates how the fluid responds to the motion of the plate, and the ANSYS solver calculates how the plate deforms as a result of both the initial applied pressure and the pressure resulting from the presence of the fluid. Coupling between the two solvers is required since the structural deformation affects the fluid solution, and the fluid solution affects the structural deformation. 
 
@@ -2339,10 +2337,6 @@ Due to competing standards many decades ago, various forms of *nix (Linux, MacOS
 
 Note that when using many variables (e.g., $PWD), not only must the variable be double quoted to ensure substitution, and alternative delimited should be used as any directory path will include the sed delimited, `/`. Sed offers three alternative delimiters in its scripts; `/`, `:`, or `|`
 
-* Sed has alternative three alternative delimiters in its scripts; '/', ':', or '|'
-
-
-
 The `sed` command is extremely versatile, and over the years a number of common and popular one-line sed commands have been compiled. These can ge found at the following URL, and are included with in the resources direcory of the git repository for this book.
 
 `http://sed.sourceforge.net/sed1line.txt`
@@ -2475,7 +2469,9 @@ Bash has certain shortcut features;such as using ~ to represent the home directo
 | ctrl+r	| Recursive search through your history to locate previous commands. |
 | ctrl+z	| Stop the current process. 			|
 
-There are different types of commands within the shell. In bash firstly there are "builtin" commands, which are part of the shell itself. This includes commands like `alias`, `bg`, `cd`, `echo`, `fg`, `help`, `history`, `jobs`, `kill`, `logout`, `pwd`, `set`, `source`, `time`, `umask`, etc. These are essentially commands to operate on the shell environment itself, and are detailed in the `man builtins` help page, which can be invoked by any member (e.g., `man cd`). 
+There are different types of commands within the shell. In bash firstly there are "builtin" commands, which are part of the shell itself. This includes commands like `alias`, `bg`, `cd`, `echo`, `fg`, `help`, `history`, `jobs`, `kill`, `logout`, `pwd`, `set`, `source`, `time`, `umask`, etc. These are essentially commands to operate on the shell environment itself, and are detailed in the `man builtins` help page, which can be invoked by any member (e.g., `man cd`). There are also builtin variables, which the following illustrates a selection:
+
+`echo "You are user $UID on $HOSTNAME, your home directory is $HOME and your host, $HOSTNAME, is running $OSTYPE"`
 
 Secondly, there are external commands, many of which are part of the operating system itself. These are typically stored in directories such as `/bin` (command binaries), `/sbin`/ (system binaries). Other external commands are from those additional applications which have been installed on the system which are usually found in `/usr/` and its subdirectories, such as `/usr/local/bin` and `/usr/local/sbin` for non-essential command or system binaries, and those binaries directories in applications in `/usr/local/$application/bin`. 
 
