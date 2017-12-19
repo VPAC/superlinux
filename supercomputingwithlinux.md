@@ -700,6 +700,10 @@ You may be wondering why the command to display the contents of a file to the sc
 
 `who -u | more` : "Who" shows who is logged on, how long they've been idle and piped through the more command, followed by the man page more.
 
+Another common option for displaying a file's contents to the screen is `cat`, which concatenate any files listed and print on the standard output. There is a common novice practise of taking the output of cat and putting into a pipe. For example, `cat | wc -l filename` will count (wc) the number of lines (-l) in a file, and print to standard output - it doesn't even need the `cat |` component, which simply starts up another process. The removal of unnecessary `cat` statements is known as "demoggification".
+
+<img src="https://raw.githubusercontent.com/VPAC/superlinux/master/images/pipcat.jpg"
+
 Another environment feature to explore is the ps or process status command.  A number of programs can be run by a one or more users simultaneously, including helping programs called daemons. If no options are added ps selects all processes with the same effective user ID (euid=EUID) as the current user and associated with the same terminal as the invoker. To see what is running, who is running it, the process ID, and how much CPU they are using  use:
 
 `ps afux | less` : "ps" provides a list of current processes. The 'a' option list the processes of all users, the 'f' shows job hierarchy, the 'u' option provides additional information about each process, and the 'x' option includes non-user programs such as daemons. This is piped through less.
@@ -819,9 +823,7 @@ We are going to copy the file gattaca.txt from the supercomputer to the local ma
 
 Be sure to replace <username> with your username on the supercomputer (e.g., train01, train02, train03 etc). When the transfer is complete check on the local machine that the file has transferred with ls.
 
-We know have gattaca.txt on the local computer. Let's add some new material to it before sending it back to the supercomputer. On the local computer enter:
-
-`nano gattaca.txt`
+We know have gattaca.txt on the local computer. Let's add some new material to it before sending it back to the supercomputer. On the local computer enter: `nano gattaca.txt`
 
 Move to the first column on the third line and change the letters ATVK to ATEK. Then write out the file (Cntrl-O) and exit (Cntrl-X).
 
@@ -1088,7 +1090,7 @@ To submit according to a particular queue in TORQUE or PBSPro use `#PBS -q queue
 
 **Nodes and Performance**
 
-Requesting more nodes or cores for a particular job does not necessarily mean better performance or faster completion. This depends on how well parallelised the program is. Also, requesting large numbers of cores may result in the job waiting in the queue for days while the scheduler allows for resources to become available.  The number of nodes requested can be distinguished between a number of cores from anywhere on the system, or within a single system unit, or another combination. It is also possible to request specific nodes on the entire system, although the instances where this is necessary are fairly rare.
+Requesting more nodes or cores for a particular job does not necessarily mean better performance or faster completion. This depends on how well parallelised the program is. Also, requesting large numbers of cores may result in the job waiting in the queue for days while the scheduler allows for resources to become available.  The number of nodes requested can be distinguished between a number of cores from anywhere on the system, or within a single system unit, or another combination. It is also possible to request specific nodes on the entire system, although the instances where this is necessary are fairly rare. Another option with OpenMPI is to launch the job with  `--hostfile $hostfile`.
 
 Note that with TORQUE the nodes request is for system units (except when expressed in the singular, when it is processors) and in PBSPro it is "chunks", which may or may not be specific system units.
 
@@ -2466,7 +2468,7 @@ There are different types of commands within the shell. In bash firstly there ar
 
 Secondly, there are external commands, many of which are part of the operating system itself. These are typically stored in directories such as `/bin` (command binaries), `/sbin`/ (system binaries). Other external commands are from those additional applications which have been installed on the system which are usually found in `/usr/` and its subdirectories, such as `/usr/local/bin` and `/usr/local/sbin` for non-essential command or system binaries, and those binaries directories in applications in `/usr/local/$application/bin`. 
 
-Just as the `file $filename` command can be used to determine what sort of file is being evaluated, the `type $command` command can be used to determine whether a command is a shell builtin or keyword, or external command, or aliased.
+Just as the `file $filename` command can be used to determine what sort of file is being evaluated, the `type $command` command can be used to determine whether a command is a shell builtin or keyword, or external command, or aliased. Rather than directly calling external commands it is more efficient to use bash builtin commands. As a trivial example, bash has `echo` built in - and there is also a `/bin/echo` and a `/usr/bin/echo`. Whenever possible the builtin should be used instead. Thus `echo "Hello World"` rather than `/bin/echo "Hello World"`.
 
 ## 5.4 Shell Scripting with bash
 
@@ -2529,13 +2531,13 @@ The until/do loop conducts the same action, but with the count in reverse. The n
 
 Note the use of command substitution by using $(command); sometimes you will find the use of backticks instead (e.g., `for file in * ; do mv $file \`echo $file | tr "A-Z" "a-z"\` ; done);` this is *not* recommended. The use of backticks (a) not a POSIX standard, (b) can be difficult to read with deep escapes and (c) can be *very* dangerous if mistaken for strong quotes.
 
-The following are examples of loops with conditional tests.
+The following are examples of loops with conditional tests. Also note the use of bash's integer arithmetic, and especially the use of spacing and bracketing.
 
 `x=1; while [ $x -le 5 ]; do echo "While-do count up $x"; x=$(( $x + 1 )); done`
 `x=5; until [ $x -le 0 ]; do echo "Until-do count down $x"; x=$(( $x - 1 )); done`
 `x=1; until [ $x = 6 ]; do echo "Until-do count up $x"; x=$(( $x + 1 )); done`
 
-Even short, single line, scripts like these can be turned into permanent bashscripts if they are used regularly enough. It is good practise, for example, to convert them to executables and save them in a local `bin` directory (`/home/<username>/bin`) or similar in the user's PATH. For example, for a script `lowercase.sh`.
+Even short, single line, scripts like these can be turned into permanent bashscripts if they are used regularly enough. It is good practise, for example, to convert them to executables and save them in a local `bin` directory (`/home/<username>/bin`) or similar in the user's PATH. For example, for a script `lowercase.sh`. 
 
 ```
 #!/bin/bash
@@ -2772,13 +2774,12 @@ main
 exit 0
 ```
 
-
 ## 5.5 Better Bash Scripting
 
 > A Big Ball of Mud is a haphazardly structured, sprawling, sloppy, duct-tape-and-baling-wire, spaghetti-code jungle. These systems show unmistakable signs of unregulated growth, and repeated, expedient repair. Information is shared promiscuously among distant elements of the system, often to the point where nearly all the important information becomes global or duplicated. The overall structure of the system may never have been well defined. If it was, it may have eroded beyond recognition. Programmers with a shred of architectural sensibility shun these quagmires. Only those who are unconcerned about architecture, and, perhaps, are comfortable with the inertia of the day-to-day chore of patching the holes in these failing dikes, are content to work on such systems.    
 - Brian Foote and Joseph Yoder, "Big Ball of Mud", *Fourth Conference on Patterns Languages of Programs (PLoP '97/EuroPLoP '97)*, Monticello, Illinois, September 1997
 
-**Scripts With Variables**
+**Using Variables**
 
 The simplest script is simply one that runs a list of system commands. At least this saves the time of retyping the sequence each time it is used, and reduces the possibility of error. For example, the following script was recommended to calculate the disk use in a directory. It's a good script, very handy, but how often would you want to type it? Instead, type enter it once, make it executable (e.g., `chmod +x diskuse.sh`) and keep it. You will recall of course, that a script starts with an invocation of the shell, followed by commands.
 
@@ -2799,9 +2800,9 @@ echo "Disk summary completed and sorted."
 exit 0
 ```
 
-As a matter of useful convention global variables should be written in upper-case, and local variables in lower case, if the script makes use of functions to differentiate between variable scope. In shorter scripts this may not be necessary.
+As a matter of useful stylistic convention global variables should be written in upper-case, and local variables in lower case, if the script makes use of functions to differentiate between variable scope. In shorter scripts this may not be necessary. As a general principle global variables should kept to a minimum and in longer scripts, the should be constants which can be enforced with the `readonly` statement. For example, to state the name of the script throughtthe script itself use `readonly PROGNAME=$(basename $0)`.
 
-**Conditionals**
+**Using Conditionals**
 
 Another example is a script with conditionals as well as variables. A common conditional, and sadly often forgotten, is whether or not a script has the requiste files for input and output specified. If an input file is not specified a script that performs an action on the file will simple go idle and never complete. If an output file is hardcoded, then the person running the script runs the risk of unknowingly overwriting a file with the same name, which could be a disaster.
 
@@ -2830,7 +2831,7 @@ Test this file with `hidden.txt` in the chapter resources directory as the input
 
 The output will show a weakness of the script. It will gather any string with the '@' symbol in it, regardless of whether it's a well-formed email address or not. So it's not *quite* suitable for screen-scraping usenet for email address to turn into a spammers list; but it's getting close.
 
-*Reads for User Input*
+**Reads for User Input**
 
 The `read` command simply reads a line from standard input. By applying the -n option is can read in a number of characters, rather than a whole line, so `-n1` is "read a single character". The use of the `-r` option reads the input as raw input, so that the backslash key (for example) doesn't act like a a newline escape character, and the `-p` option displays the prompt. Plus, a `-t` timeout in seconds option can also added. Combined, can be used in the effect of "press any key to continue", with a limited timeframe.
 
@@ -2851,7 +2852,99 @@ sort | uniq
 exit 0   
 ```
 
-**Functions for Debugging**
+
+
+
+
+Tools like Grep, Awk and Sed will take files as arguments. There is rarely a need to use /bin/cat. For instance, the following is unnecessary:
+
+# avoid this
+cat /etc/hosts | grep localhost
+
+Instead, use Grep's native ability to read files:
+
+grep localhost /etc/hosts
+
+
+If using Awk, you can often eliminate the need for grep. Try not to pipe Grep to Awk:
+
+# avoid this
+grep error /var/log/messages | awk '{ print $4 }'
+
+Use Awk's native ability to parse text and save yourself a command.
+
+awk '/error/ { print $4 }' /var/log/messages
+
+
+ed can take more than one command in a single execution. Avoid piping sed to sed.
+
+# avoid this
+sed 's/hello/goodbye/g' filename | sed 's/monday/friday/g'
+
+Instead, use sed -e or delimit the sed expressions with a semicolon (;)
+
+sed -e 's/hello/goodbye/g' -e 's/monday/friday/g' filename
+sed -e 's/hello/goodbye/g; s/monday/friday/g' filename
+
+Use Double Brackets for Compound and Regex Tests
+
+The [ or test built-ins can be used to test expressions, but the [[ built-in operator additionally provides compound commands and regular expression matching.
+
+if [[ expression1 || expression2 ]]; then do_something; fi
+if [[ string =~ regex ]]; then do_something; fi
+
+Use Functions for Repetitive Tasks
+
+Break your script up into pieces and use functions to conduct repetitive tasks. Functions can be declared like so:
+
+function_name() {
+  do_something
+  return $?
+}
+
+Make your functions usable by more than one shell script by sourcing a functions file from the various scripts. You can source another file in Bash using the . built-in.
+
+#!/bin/bash
+. /path/to/shared_functions
+
+See the Bash man page.
+
+Use Arrays Instead of Multiple Variables
+
+Bash arrays are very powerful. Avoid using unnecessary variables:
+
+# avoid this
+color1='Blue'
+color2='Red'
+echo $color1
+echo $color2
+
+Instead, use Bash arrays.
+
+colors=('Blue' 'Red')
+echo ${colors[0]}
+echo ${colors[1]}
+
+Use /bin/mktemp to Create Temp Files
+
+Need a temporary file? Use /bin/mktemp to create temporary files or folders.
+
+tempfile=$(/bin/mktemp)
+tempdir=$(/bin/mktemp -d)
+
+Use /bin/egrep or /bin/sed for Regex Pattern Matching
+
+Think you need Perl? Check out Sed or Egrep (grep -e) for regex pattern matching.
+
+# grep for localhost or 127.0.0.1 in /etc/hosts
+egrep 'localhost|127\.0\.0\.1' /etc/hosts
+ 
+# print pattern localhost.* in /etc/hosts
+sed -n 's/localhost.*/&/p' /etc/hosts
+
+
+
+**Using Functions for Debugging**
 
 Functions aid readability and modularisation of scripts, in many ways creating an organised table of contents. The subroutines themselves are descriptive, providing the principle of code reusability. Sourcing a library of related functions will save a great deal of time when writing a script. A recommended example from The Linux Documentation Project is to have an `/etc/functions` directory and to include a `. /etc/functions` line at the start of scripts that use those functions.
 
