@@ -49,7 +49,7 @@ All trademarks are property of their respective owners.
 3.7 Extended Application for Parallel Processing: R: A Statistical Package
 3.8 Parallel Job with License : ANSYS Finite Element Analysis
 3.9 Standard Job with License : Abaqus Finite Element Analysis
-3.10 Standard Job With Local Visualisation : NAMD and VMD
+3.1- Standard Job With Local Visualisation : NAMD and VMD
 
 4.0 Intermediate Linux
 4.1 Login Files
@@ -702,9 +702,9 @@ You may be wondering why the command to display the contents of a file to the sc
 
 Another common option for displaying a file's contents to the screen is `cat`, which concatenate any files listed and print on the standard output. There is a common novice practise of taking the output of cat and putting into a pipe. For example, `cat | wc -l filename` will count (wc) the number of lines (-l) in a file, and print to standard output - it doesn't even need the `cat |` component, which simply starts up another process. The removal of unnecessary `cat` statements is known as "demoggification".
 
-<img src="https://raw.githubusercontent.com/VPAC/superlinux/master/images/pipcat.jpg"
+<img src="https://raw.githubusercontent.com/VPAC/superlinux/master/images/pipcat.jpg" />
 
-Another environment feature to explore is the ps or process status command.  A number of programs can be run by a one or more users simultaneously, including helping programs called daemons. If no options are added ps selects all processes with the same effective user ID (euid=EUID) as the current user and associated with the same terminal as the invoker. To see what is running, who is running it, the process ID, and how much CPU they are using  use:
+Another environment feature to explore is the `ps` or process status command.  A number of programs can be run by a one or more users simultaneously, including helping programs called daemons. If no options are added ps selects all processes with the same effective user ID (euid=EUID) as the current user and associated with the same terminal as the invoker. To see what is running, who is running it, the process ID, and how much CPU they are using  use:
 
 `ps afux | less` : "ps" provides a list of current processes. The 'a' option list the processes of all users, the 'f' shows job hierarchy, the 'u' option provides additional information about each process, and the 'x' option includes non-user programs such as daemons. This is piped through less.
 
@@ -762,6 +762,8 @@ This however doesn't quite give the full story. Both the source or the destinati
 The following is a more elaborate version of scp:
 
 `scp source.address:/path/to/source destination.address:/path/to/destination/`
+
+Note when typing out the address make use of the tab-completion feature, which provides suggested options for command and file completion, plus Cntl-R or direction keys to recursively search through a history of previously used commands.
 
 If you are using MS-Windows, we recommend using WinSCP, or, if using certain applications such as MATLAB, the PuTTY Secure Copy client PSCP.  WinSCP comes with a intuitive GUI that provides basic file management functionality in addition to Secure Shell and Secure Copy functions.
 
@@ -859,7 +861,7 @@ The output should be something like the following:
 4c4 
 < ATVKSRWSGS HQFEQLSGSI LWMAPEVIRM QDKNPYSFQS DVYAFGIVLY 
 --- 
-> ATEKSRWSGS HQFEQLSGSI LWMAPEVIRM QDKNPYSFQS DVYAFGIVLY 
+\> ATEKSRWSGS HQFEQLSGSI LWMAPEVIRM QDKNPYSFQS DVYAFGIVLY 
 ```
 
 For a side-by-side representation use the command sdiff instead.
@@ -919,8 +921,7 @@ rmdir braf
 Then on the local computer we'll use a shortcut; a command which deletes the entire directory, all sub-directories and all files within the directory tree. This is remove with the recursive and force options.
 
 ```
-cd ~
-rm -rf braf
+rm -rf braf/
 ```
 
 Be very careful with rm, especially with the -rf option and especially with wildcards. Consider what would happen to someone who wishes to delete all their backup files in a directory with the helpful suffix .BAK. Choosing a wildcard and the suffix they intend to type rm *.BAK but instead, they mistype the command and type rm * .BAK. The result of this typing error is that they have just deleted everything in that directory. Worse still imagine a user running as root thinking that they are about to delete a directory and instead types rm -rf / ; a command that will delete everything or, more commonly rm -rf ./ ; a command which deletes the current directory and all sub-directories. 
@@ -1076,6 +1077,8 @@ The following is a sample PBS script for TORQUE and with comments for script for
 | # Launching the job!		| Another comment line. 					|
 | mpiexec namd2 configfile	| Launching the executable “namd2”  with the file “configfile”. |
 | # srun namd2 configfile	| Launching the executable “namd2”  with the file “configfile” using srun for Slurm. |
+
+In addition to using text files for PBS job submission a graphic user interface is available if one has logged in with X-windows forwarding, `xpbs`. However there is not much to gained from this; a GUI is only truly useful if (a) there are tasks that can be simplified, and (b) the user doesn't need to understand what is happening 'behind the scenes'. Neither is true with high performance computing.
 
 **Queues and Partitions**
 
@@ -2179,7 +2182,7 @@ The command `df` will generate a report of file system disk space usage. If a fi
 
 **head and tail**
 
-The command `head` and `tail` print the first and last ten lines of a file by default. The standard syntax is `[command] [option] [file]`. The `head` command is often useful to determine what sort of file one is looking at, as comments are often contained in that area or to peek at a set of record titles. The `tail` command can be used when compiling programs to see the output in real-time, for example `tail -f compile.log`.
+The command `head` and `tail` print the first and last ten lines of a file by default. The standard syntax is `[command] [option] [file]`. The `head` command is often useful to determine what sort of file one is looking at, as comments are often contained in that area or to peek at a set of record titles. The `tail` command can be used when compiling programs to see the output in real-time, for example `tail -F compile.log`.
 
 **uname**
 
@@ -2445,7 +2448,7 @@ Each shell has different features and often slightly different syntax, which is 
 
 As explained at the start of this course, every time a user logs in, bash executes `~/.bash_profile`, `~/.bash_login`, or `~/.login` then `~/.bashrc` as start-up files. These are examples of basic shell scripting, rather like the job submission files we've already seen. Indeed, job submission scripts are shell scripts (they invoke a shell) but with directives for the scheduler which are interpreted as comments (and thus ignored) by the shell.
 
-Bash has certain shortcut features; in the introductory course we already visited some of these such as using ~ to represent the home directory, the period, "." to represent the current directory, a double period ".." for one level up in the file system hierarchy, and tab-completion of pathnames. The following is a more complete listing worthy of practising.
+Bash has certain shortcut features;such as using ~ to represent the home directory, the period, "." to represent the current directory, a double period ".." for one level up in the file system hierarchy, and tab-completion of pathnames. The following is a more complete listing worthy of practising.
 
 | Shortcut	| Effect					|
 |:--------------|-----------------------------------------------|
