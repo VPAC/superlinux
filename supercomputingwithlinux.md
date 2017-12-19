@@ -1554,7 +1554,7 @@ Once you get past the comments (which are always a good idea) there isn't too mu
 
 ```
 alias ls='ls -F' 
-alias cp='cp -i' 
+alias cp='cp -i'
 alias ll='ls -laxp' 
 alias lo='exit' 
 # --------------------- 
@@ -1954,16 +1954,7 @@ This appending is the equivalent is the equivalent of the following:
 `module avail >> modulelist.txt`
 `less modulelist.txt`
 
-A pipe is used to connect the standard input of one command with the standard input of another. It has the same effect as redirecting the standard output of a command to a file then using that file as the input to another command. In the introductory tutorial we used it as follows:
-
-`who -u | less`
-
-This is the equivalent of:
-
-`who -u > whofile.txt`
-`less < whofile.txt`
-
-Except a tempfile isn't needed! 
+A pipe is used to connect the standard input of one command with the standard input of another. It has the same effect as redirecting the standard output of a command to a file then using that file as the input to another command. In the introductory tutorial we used it as follows: `who -u | less` . This is the equivalent of: `who -u > whofile.txt` and `less < whofile.txt`, without the need of creating the temporary `whofile.txt` - and on that note, the utility `mktmp` (or `mktmp -d` for directories), is a far better way of generating short term files and directories for temporary storage - they're stored in `/tmp` and discarded when no longer needed.
 
 Pipes are especially good for creating custom commands on the fly for example
 
@@ -2533,7 +2524,7 @@ The until/do loop conducts the same action, but with the count in reverse. The n
 
 Note the use of command substitution by using $(command); sometimes you will find the use of backticks instead (e.g., `for item in * ; do mv $item \`echo $file | tr "A-Z" "a-z"\` ; done);` this is *not* recommended. The use of backticks (a) not a POSIX standard, (b) can be difficult to read with deep escapes and (c) can be *very* dangerous if mistaken for strong quotes.
 
-The following are examples of loops with conditional tests. Also note the use of bash's integer arithmetic, and especially the use of spacing and bracketing. Note that in the loop the single brackets can be used to test expressions i.e., `if [[ expression1 || expression2 ]]; then codeblock; fi`, a double-bracket conditional allows for compound commands and regular expression matching, e.g.,  `if [[ string =~ regex ]]; then codeblock; fi`
+The following are examples of loops with conditional tests. Also note the use of bash's integer arithmetic, and especially the use of spacing and bracketing. 
 
 `x=1; while [ $x -le 5 ]; do echo "While-do count up $x"; x=$(( $x + 1 )); done`
 `x=5; until [ $x -le 0 ]; do echo "Until-do count down $x"; x=$(( $x - 1 )); done`
@@ -2711,7 +2702,9 @@ done
 
 **Arrays**
 
-An array can be thought of as a extended variable which contains multiple values of multiple types. An array takes the form of `name[index]=value`, where 'name' is the name of the array, 'index' refers to the array index value, an expression or value which resolves to an integer from 0 and greater, and 'value' equals the assignment. A very simple example would be a list of nodes in a cluster's partion, all of which in this example would be of the same string type. The elements of an array can be specified individually, but it is easier to state them using the `declare` statement; the `-a` option specifies an indexed array and `-A` for an associative array. The entire array can be specified with `@` or `*`, and the length of an array name with the special parameter `$#`; without an index it represents the first element of the array. 
+An array can be thought of as a extended variable which contains multiple values of multiple types. An array takes the form of `name[index]=value`, where 'name' is the name of the array, 'index' refers to the array index value, an expression or value which resolves to an integer from 0 and greater, and 'value' equals the assignment. Use of arrays is good coding practise, as it can be used to group associated variables together into a set, rather than having them scattered throughout the script.
+
+A very simple example would be a list of nodes in a cluster's partion, all of which in this example would be of the same string type. The elements of an array can be specified individually, but it is easier to state them using the `declare` statement; the `-a` option specifies an indexed array and `-A` for an associative array. The entire array can be specified with `@` or `*`, and the length of an array name with the special parameter `$#`; without an index it represents the first element of the array. 
 
 ```
 #!/bin/bash
@@ -2737,6 +2730,7 @@ The value can be extracted from an array with an index for the number of consect
 
 Elements can be appended to an array by evoking the entire array as a variable with new elements; for example `ashley=("${ashley[@]}" "ashley05.edward.unimelb.edu.au", "ashley06.edward.unimelb.edu.au")`, followed by `echo ${ashley[6]}` will result in `ashley06.edward.unimelb.edu.au`.
 Elements can be removed with the `unset` command; for example `unset ashley[6]` will clear the previously last element, whereas `unset ashley` would delete the entire array.
+
 
 **Functions**
 
@@ -2829,7 +2823,9 @@ echo "Data file extracted to" $OUTPUT
 exit 0   
 ```
 
-Test this file with `hidden.txt` in the chapter resources directory as the input text and `found.csv` as the output text. The `hidden.txt` file is mostly nonsense text with the occasional email address included. The output will include a final comma on the last line but this is potentially useful if one wants to run the script with several input files and append to the same output file (simply change the single redirection in the grep statement to an double appended redirection.
+Note that in the loop the single brackets can be used to test expressions i.e., `if [[ expression1 || expression2 ]]; then codeblock; fi`, a double-bracket conditional allows for compound commands and regular expression matching, e.g.,  `if [[ string =~ regex ]]; then codeblock; fi`
+
+Test this script with `hidden.txt` in the chapter resources directory as the input text and `found.csv` as the output text. The `hidden.txt` file is mostly nonsense text with the occasional email address included. The output will include a final comma on the last line but this is potentially useful if one wants to run the script with several input files and append to the same output file (simply change the single redirection in the grep statement to an double appended redirection.
 
 The output will show a weakness of the script. It will gather any string with the '@' symbol in it, regardless of whether it's a well-formed email address or not. So it's not *quite* suitable for screen-scraping usenet for email address to turn into a spammers list; but it's getting close.
 
