@@ -72,8 +72,9 @@ All trademarks are property of their respective owners.
 
 6.0 Alternative Job Submission Options
 6.1 Job Scripts with Shell Scripting
-6.2 Autogenerating PBS Scripts with a Heredoc
-6.3 PBS Job Arrays, Dependencies, and Interactive Jobs
+6.2 Autogeneration PBS Scripts with sed and loops
+6.3 Autogenerating PBS Scripts with a Heredoc
+6.4 PBS Job Arrays, Dependencies, and Interactive Jobs
 
 7.0 Command Summary and References
 7.1 Linux Commands
@@ -3003,7 +3004,61 @@ mv pbs_*.e* JobLog/;
 mv pbs_*.o* JobLog/;     
 ```
 
-## 6.2 Autogenerating PBS Scripts with a Heredoc
+## 6.2 Autogeneration PBS Scripts with sed and loops
+
+This example is from Joshua Christie at the University of Sydney who generated it after attending the VPAC course after the establishment of the "Artemis" cluster and is used with permission. It establishes a base Rfilename, runs a loop with sed for file name alteration and echoes the output to individual job scripts which are then submitted.
+
+```
+#!/bin/bash
+# set parameter values to be explored
+n_array=( 50 500 )
+k_array=( 0.001 0.01 0.1 )
+fit_array=( 1 2 3)
+Rfilename=/home/jchr1495/BPI_scripts/B_n50_k1_fit1_bot25.R 
+for var1 in "${n_array[@]}"
+do    
+# the value of bot depends on the value of var1 (n)
+bot_array=( $((var1/2)) $((var1/10)) $((var1/25)) )
+
+for var2 in "${k_array[@]}"
+do
+	for var3 in "${fit_array[@]}"	   		
+	do   
+		for var4 in "${bot_array[@]}"	   		
+		do
+#find line setting parameter value and replace it with new parameter value
+		sed -i "s/^n <-.*/n <- $var1/" $Rfilename
+		sed -i "s/^k <-.*/k <- $var2/" $Rfilename
+		sed -i "s/^fit_func <-.*/fit_func <- $var3/" $Rfilename
+		sed -i "s/^bot <-.*/bot <- $var4/" $Rfilename
+		var5=$(printf "%.0f" $(echo "scale=5;$var2*1000" | bc)) 
+#so that k is an integer for use in R file name
+
+# produce new R file (so that I can check for errors if required)
+		newRfile=B_n${var1}_k${var5}_fit${var3}_bot${var4}.R
+		cp $Rfilename /home/jchr1495/BPI_scripts/$newRfile
+		job_name=n${var1}k${var5}f${var3}b${var4}
+# create PBS script 
+		FILE=/home/jchr1495/BPI_scripts/$job_name.sh
+		echo "#PBS -q compute" > $FILE
+		echo "#PBS -l ncpus=24" >> $FILE
+		echo "#PBS -l walltime=48:00:00" >> $FILE
+		echo "#PBS -l pmem=2GB" >> $FILE
+		echo "#PBS -N $job_name" >> $FILE
+		echo "module load R/3.1.2" >> $FILE
+		echo "cd /home/jchr1495/BPI_scripts/" >> $FILE
+		echo "R CMD BATCH $newRfile" >> $FILE
+		chmod +x $job_name.sh
+		#submit job
+		qsub $job_name.sh
+		done
+	done
+done
+done 
+```
+
+
+## 6.3 Autogenerating PBS Scripts with a Heredoc
 
 A heredoc (also known as a here-string or here document) is a file or input literal, a section of source code that is treated as a separate file with specified delimiters. In various Unix shells the `<<` with a delimiter name will treat subsequent code until the identifier as reached as a separate file. With the addition of a minus sign, leading tabs are ignored which aid formatting.
 
@@ -3051,7 +3106,7 @@ EOF
 done   
 ```
 
-## 6.3 PBS Job Arrays, Dependencies, and Interactive Jobs
+## 6.4 PBS Job Arrays, Dependencies, and Interactive Jobs
 
 ### Job Arrays
 
