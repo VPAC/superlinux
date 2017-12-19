@@ -1604,7 +1604,7 @@ if [ -f /etc/bashrc ]; then
 fi 
 ```
 
-Even less! But there's a another link in the home directory for `.bashrc` for global definitions sourced in `/etc/bashrc`! So what's in there? Apparently, quite a lot!
+Here there's a another link in the home directory for `.bashrc` for global definitions sourced in `/etc/bashrc`
 
 ```
 $ less /etc/bashrc 
@@ -1619,6 +1619,8 @@ There's also a reference to /etc/profile. What's there?
 $ less /etc/profile
 <output snipped>
 ```
+
+The main point of this is to illustrate how much of an environment is determined as a user's session is invoked. It also illustrates a hierarchy from general rules and specific rules. As can be expected, where there is a conflict, the specific rule applies, if permissions allow it. For example, a user can set their own `umask` that differs their `.bashrc` from the default from `/etc/bashrc`.
 
 When a login shell exits, Bash reads and executes commands from the file ~/.bash_logout, if it exists. 
 
