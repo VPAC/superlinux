@@ -476,7 +476,7 @@ Desmond: Desmond is a software package developed at D.E. Shaw Research to perfor
 
 **MVAPICH** and **MVAPICH2**: MVAPICH/MVAPICH2 are implementations of MPI for computing systems and servers using InfiniBand, 10GigE/iWARP and RoCE & etc networking technologies. 
 
-**Mpiexec**: Mpiexec is a replacement program for the script mpirun, which is part of the mpich package. It is used to initialize a parallel job from within a PBS batch or interactive environment. 
+**Mpiexec**: Mpiexec is a replacement program for the script mpirun, which is part of the mpich package. It is used to initialize a parallel job from within a PBS batch or interactive environment. Open MPI's mpirun and mpiexec are synonyms for the underlying launcher, orterun (the Open Run-Time Environment layer in Open MPI, or ORTE).
 
 **MrBayes**: MrBayes conducts Bayesian estimation of phylogeny based on the posterior probability distribution of trees, which is the probability of a tree conditioned on the observations. 
 
@@ -502,7 +502,7 @@ Desmond: Desmond is a software package developed at D.E. Shaw Research to perfor
 
 **OpenFOAM**: Open Field Operation and Manipulation (OpenFOAM) is primarily a C++ toolbox for the customisation and extension of numerical solvers for continuum mechanics problems, including computational fluid dynamics. 
 
-**OpenMPI**: Open MPI is a message passing interface that combines the merger of three major MPI implementations (FT-MPI, LA-MPI, and LAM/MPI) to create a complete MPI-2 implementation. MPI is a language-independent communications protocol used to program parallel computers. 
+**OpenMPI**: Open MPI is a message passing interface that combines the merger of three major MPI implementations (FT-MPI, LA-MPI, and LAM/MPI) to create a complete MPI implementation. MPI is a language-independent communications protocol used to program parallel computers. 
 
 **Padb**: Padb works as a parallel front end to gdb allowing it to target parallel applications. 
 
@@ -3215,7 +3215,6 @@ srun: job 211916 queued and waiting for resources
 srun: job 211916 has been allocated resources   
 [lev@spartan-water01 ~]$ 
 ```
-
 
 # 7.0 Command Summary and References
 
