@@ -1121,6 +1121,11 @@ Sometimes you will require more or less memory that is typical for a job. In the
 
 Many schedulers and resource managers use a backfilling algorithm to improve system utilisation and maximise job throughout. When more resource intensive (e.g., multiple node) jobs are running it is possible that gaps ends up in the resource allocation. To fill these gaps a best effort is made for low-resource jobs to slot into these spaces.
 
+**qpeek**
+
+The `qpeek` command can show output of a running PBS job is generating without having to wait for completion and for PBS to deliver the standard output and standard error. This is particularly useful for debugging purposes. The command is simply: `qpeek $jobid`
+
+
 ## 3.3 Frequently Used PBS and Scheduler Commands
 
 | TORQUE/PBSPro		| SLURM		| Description					|
