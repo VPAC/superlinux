@@ -981,6 +981,8 @@ module load gcc/4.9.2
 gcc (GCC) 4.9.2
 ```
 
+Note that if multiple versions of the same application are loaded then it will be the last one that is loaded which will apply. However, if they are referenced files in previous versions it will search for those as well which can lead to some unexpected results. For this reason it is highly recommended that only one version of an application remains loaded at any point in time.
+
 `module list` : This lists all the modules which are currently loaded into the users environment. 
 
 `module unload <modulefile>` : This removes any listed modules from the user's current environment. Multiple modules can be unloaded simultaneously. e.g., `module unload gcc namd`
