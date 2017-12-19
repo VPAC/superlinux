@@ -2543,7 +2543,7 @@ Even short, single line, scripts like these can be turned into permanent bashscr
 #!/bin/bash
 # Will change every file in the existing directory to lower-case.
 # Warning! Warning! Will overwrite *existing* files with the same lower-case name!
-for i
+for file
 do 
 	mv $file $(echo $file | tr "A-Z" "a-z")
 done
@@ -2851,98 +2851,6 @@ less $OUTPUT | \
 sort | uniq   
 exit 0   
 ```
-
-
-
-
-
-Tools like Grep, Awk and Sed will take files as arguments. There is rarely a need to use /bin/cat. For instance, the following is unnecessary:
-
-# avoid this
-cat /etc/hosts | grep localhost
-
-Instead, use Grep's native ability to read files:
-
-grep localhost /etc/hosts
-
-
-If using Awk, you can often eliminate the need for grep. Try not to pipe Grep to Awk:
-
-# avoid this
-grep error /var/log/messages | awk '{ print $4 }'
-
-Use Awk's native ability to parse text and save yourself a command.
-
-awk '/error/ { print $4 }' /var/log/messages
-
-
-ed can take more than one command in a single execution. Avoid piping sed to sed.
-
-# avoid this
-sed 's/hello/goodbye/g' filename | sed 's/monday/friday/g'
-
-Instead, use sed -e or delimit the sed expressions with a semicolon (;)
-
-sed -e 's/hello/goodbye/g' -e 's/monday/friday/g' filename
-sed -e 's/hello/goodbye/g; s/monday/friday/g' filename
-
-Use Double Brackets for Compound and Regex Tests
-
-The [ or test built-ins can be used to test expressions, but the [[ built-in operator additionally provides compound commands and regular expression matching.
-
-if [[ expression1 || expression2 ]]; then do_something; fi
-if [[ string =~ regex ]]; then do_something; fi
-
-Use Functions for Repetitive Tasks
-
-Break your script up into pieces and use functions to conduct repetitive tasks. Functions can be declared like so:
-
-function_name() {
-  do_something
-  return $?
-}
-
-Make your functions usable by more than one shell script by sourcing a functions file from the various scripts. You can source another file in Bash using the . built-in.
-
-#!/bin/bash
-. /path/to/shared_functions
-
-See the Bash man page.
-
-Use Arrays Instead of Multiple Variables
-
-Bash arrays are very powerful. Avoid using unnecessary variables:
-
-# avoid this
-color1='Blue'
-color2='Red'
-echo $color1
-echo $color2
-
-Instead, use Bash arrays.
-
-colors=('Blue' 'Red')
-echo ${colors[0]}
-echo ${colors[1]}
-
-Use /bin/mktemp to Create Temp Files
-
-Need a temporary file? Use /bin/mktemp to create temporary files or folders.
-
-tempfile=$(/bin/mktemp)
-tempdir=$(/bin/mktemp -d)
-
-Use /bin/egrep or /bin/sed for Regex Pattern Matching
-
-Think you need Perl? Check out Sed or Egrep (grep -e) for regex pattern matching.
-
-# grep for localhost or 127.0.0.1 in /etc/hosts
-egrep 'localhost|127\.0\.0\.1' /etc/hosts
- 
-# print pattern localhost.* in /etc/hosts
-sed -n 's/localhost.*/&/p' /etc/hosts
-
-
 
 **Using Functions for Debugging**
 
