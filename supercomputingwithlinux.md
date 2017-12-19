@@ -608,12 +608,11 @@ Regrettably a great deal of software – and sometimes common and popular softwa
 
 An example license is that for Gaussian which was required for all VPAC users to agree to.
 
-> Use of the Gaussian software is conditional upon acceptance of the following conditions: 
-> 1. I am not a member of a research group developing software competitive to Gaussian. 
-> 2. I will stop using Gaussian on VPAC systems immediately and will notify VPAC (help@vpac.org) if there >is a change in my situation that would bring into 
->question my status with respect to point 1. above. 
-> 3. I will not copy the Gaussian software, nor make it available to anyone else. 
-> 4. I will acknowledge Gaussian Inc. in published works to which Gaussian calculations on the VPAC >systems contributed.
+> Use of the Gaussian software is conditional upon acceptance of the following conditions:    
+1. I am not a member of a research group developing software competitive to Gaussian.    
+2. I will stop using Gaussian on VPAC systems immediately and will notify VPAC (help@vpac.org) if there >is a change in my situation that would bring into question my status with respect to point 1. above.    
+3. I will not copy the Gaussian software, nor make it available to anyone else.    
+4. I will acknowledge Gaussian Inc. in published works to which Gaussian calculations on the VPAC >systems contributed.   
 
 Most HPC clusters will have a team of systems administrators to provided assistance to users and most of those will have some sort of ticketing system (e.g., Request Tracker) to manage those issue requests. This means that there will be one email address to contact for help (e.g., help@vpac.org)
 
@@ -645,11 +644,9 @@ In the 'Host Name' box, enter the server you want to connect to (e.g., trifid.vp
 
 Generally, the other Putty settings will be fine as they are. One thing you might need if you are going to be using XWindows (to display a graphical interface from the HPC cluster on your desktop) is to turn on XForwarding. Note however that there is a general rule of thumb that X-forwarding is not usually recommended for a cluster, due to the latency of operating over a WAN link. Do your computation on the cluster, copy the files, and do your visualisation using local resources.
 
-However, if you do need to do remote visualisation, you will also need some sort of "XWindows Server" installed on your desktop, if you are using MS-Windows. A possible free option is XMing, http://www.straightrunning.com/XmingNotes/
+However, if you do need to do remote visualisation, you will also need some sort of "XWindows Server" installed on your desktop, if you are using MS-Windows. A possible free option is XMing, `http://www.straightrunning.com/XmingNotes/`
 
-With Mac or Linux simply open the terminal client and enter your username and the machine you wish to connect to, followed by the password when connected. For example; 
-
-`ssh <your username>@trifid.vpac.org`
+With Mac or Linux simply open the terminal client and enter your username and the machine you wish to connect to, followed by the password when connected. For example;  `ssh <your username>@trifid.vpac.org`
 
 Secure shell opens a connection to a remote system. Replace trifid.vpac.org with the HPC cluster that you are connecting to.
 	
@@ -687,10 +684,11 @@ Linux commands come with `man` (manual) pages, which provide a terse description
 Both man and info can exited with `q` for quit.
 
 `man ls` : Display the manual entry for the command "ls"
-`apropos <command>` : Search for a particular command. Equivalent to "man -k <command>"
+`apropos ls` : Search for the "ls" command. Equivalent to "man -k <command>"
 `info ls` : Display the more verbose hypertext entry for the command "ls"
+`whats ls` : Display a terse definition of the command "ls".
 
-Linux also have very useful 'pipes' and redirect commands. To pipe one command through another use the `|` symbol.
+In addition to commands by themselves, Linux also have very useful pipes and redirects for commands. To pipe one command through another use the `|` symbol.
 
 For example, the who command how who is currently logged into the system. You may suspect that this will differ on the supercomputer and the local system! Run the command on the local computer and then 'pipe' the who command through 
 
@@ -836,10 +834,9 @@ Change to the braf directory and check the contents of the directory. The output
 
 ## 2.6 Files Differences
 
-The next step will be to copy the directory and its contents from the local computer to the supercomputer. This uses the scp command again, but this time with the -r (recursive) option, which will copy the directory and all sub-directories and files within it. On the local computer enter the following commands:
+The next step will be to copy the directory and its contents from the local computer to the supercomputer. This uses the scp command again, but this time with the -r (recursive) option, which will copy the directory and all sub-directories and files within it. On the local computer change to the home directory and recursively copy the directory. Note the colon at the end of the scp command.
 
-`cd ~`
-`scp -r braf/ <username>@trifid.vpac.org:`
+ `scp -r braf/ <username>@trifid.vpac.org:`
 
 Now on the supercomputer do a directory listing but specify the file you want and with the time option. You should see a gattaca.txt in your home directory (the original one) and a braf directory. Move into the braf directory and run a directory listing again with the same option. There should be another gattaca.txt file, the one you just moved, but you will notice it has a different timestamp.
 
@@ -894,9 +891,7 @@ cd ~
 grep -w ARSLPK braf/*
 ```
 
-This will prevent a search for `zip`, finding `gzip`, `bzip` etc. for example.
-
-Note that the files being searched must be specified, even with a wildcard character. Simply stating a directory is insufficient. Where there are multiple results, grep will also display the filename. Compressed or gzipped files can be searched with `zgrep`. If one wants to search a PDF file, then either the `poppler-utils` needs to be installed, or `pdfgrep`.
+Note that the files being searched must be specified, even with a wildcard character. Simply stating a directory is insufficient. Where there are multiple results, grep will also display the filename. Compressed or gzipped files can be searched with `zgrep`. If one wants to search a PDF file, then either the `poppler-utils` needs to be installed, or `pdfgrep`. A binary file can also be searched for text in the binary format with the `strings` command.
 
 The wildcard you see most often is * (asterisk), but we'll start with something simpler: ? (question mark). When it appears in a filename, the ? matches any single character. For example, letter? refers to any filename that begins with letter and has one character after that. This would include letterA, letter1, as well as filenames with a non-printing character as their last letter, like letter^C. 
 
@@ -933,11 +928,9 @@ rm -rf braf
 
 Be very careful with rm, especially with the -rf option and especially with wildcards. Consider what would happen to someone who wishes to delete all their backup files in a directory with the helpful suffix .BAK. Choosing a wildcard and the suffix they intend to type rm *.BAK but instead, they mistype the command and type rm * .BAK. The result of this typing error is that they have just deleted everything in that directory. Worse still imagine a user running as root thinking that they are about to delete a directory and instead types rm -rf / ; a command that will delete everything or, more commonly rm -rf ./ ; a command which deletes the current directory and all sub-directories. 
 
-> **Why The File Differences Mattered**
-> 
-> BRAF is a human gene that makes a protein (imaginatively) named B-Raf. This protein is involved in >sending signals inside cells, which are involved in directing cell growth. In 2002, it was shown to be >faulty (mutated) in human cancers. 
-> 
-> In particular the difference that between the two files "ATVKSRWSGS" and "ATEKSRWSGS" is the difference which leads to susceptibility to metastatic melanoma. Fortunately, because of high performance computing, massive databases, and molecular modelling applications, science has begun to develop  specific inhibitors of mutated B-raf protein for anticancer treatments.
+> **Why The File Differences Mattered**   
+BRAF is a human gene that makes a protein (imaginatively) named B-Raf. This protein is involved in sending signals inside cells, which are involved in directing cell growth. In 2002, it was shown to be faulty (mutated) in human cancers.    
+In particular the difference that between the two files "ATVKSRWSGS" and "ATEKSRWSGS" is the difference which leads to susceptibility to metastatic melanoma. Fortunately, because of high performance computing, massive databases, and molecular modelling applications, science has begun to develop  specific inhibitors of mutated B-raf protein for anticancer treatments.
 
 # 3.0 Modules, PBS, and Example Jobs
 
@@ -977,30 +970,24 @@ prepend-path	 FREESURFER_HOME /usr/local/freesurfer/4.5.0
 prepend-path	 SUBJECTS_DIR /usr/local/freesurfer/4.5.0/subjects 
 ```
 
-`module load <modulefile>` : This adds one or more modulefiles to the user's current environment (some modulefiles load other modulefiles, e.g., module load vpac or module load gcc). You can load multiple modules simultaneously.
+`module load <modulefile>` : This adds one or more modulefiles to the user's current environment (some modulefiles load other modulefiles, e.g., module load vpac or module load gcc). You can load multiple modules simultaneously. For example, to load the default version NAMD one would use the command: `module load namd`. If you load the generic name of a module, you will get the default version. To load a specific version, load the module using its full specification. for example; `module load namd/2.9-openmpi-gcc`. It is almost always better to use the precise version to ensure consistency in scripts and resuls. The default version should only be used for testing purposes.
 
-For example, to load NAMD one would use the command: `module load namd`
+As an example of how the changes occur, check the version and path when loading a module. For example:
 
-If you load the generic name of a module, you will get the default version. To load a specific version, load the module using its full specification. for example;
-
-`module load namd/2.9-openmpi-gcc`
-
-It is almost always better to use the precise version to ensure consistency in scripts and resuls. The default version should only be used for testing purposes.
+```
+which gcc
+/usr/bin/gcc
+gcc --version
+gcc (GCC) 4.4.5
+module load gcc/4.9.2
+gcc (GCC) 4.9.2
+```
 
 `module list` : This lists all the modules which are currently loaded into the users environment. 
 
-`module unload <modulefile>` : This removes any listed modules from the user's current environment. Multiple modules can be unloaded simultaneously.
-
-e.g., `module unload gcc namd`
+`module unload <modulefile>` : This removes any listed modules from the user's current environment. Multiple modules can be unloaded simultaneously. e.g., `module unload gcc namd`
 	
-Note that unloading a module does not necessarily automatically remove additional modules loaded by the original module file, depending on the configuration of the modules on a particular system. For example;
-
-```
-module load gcc
-module list
-module unload gcc
-module list
-```
+Note that unloading a module does not necessarily automatically remove additional modules loaded by the original module file, depending on the configuration of the modules on a particular system.
 
 `module switch <modulefile1> <modulefile2>` : This unloads one modulefile (modulefile1) and loads another (modulefile2). This is very handy for testing behavior across different versions of the same program. 
 
@@ -1518,22 +1505,16 @@ Overall, when submitting jobs it really is a case of trial and error initially f
 
 ## 4.1 Login Files
 
-One of the first commands introduced was how to generate directory listing when a user logged in on the command line i.e., ls. We also learned how to get a more complete directory listing by applying options to a basic command, for example one which is ls -lart (list with long format, including file permissions (l), all files (a), sorted in reverse order (r), by modification time (t). Start up a terminal window, login to the supercomputer and run a long directory listing:
+One of the first commands introduced was how to generate directory listing when a user logged in on the command line i.e., ls. We also learned how to get a more complete directory listing by applying options to a basic command, for example one which is ls -lart (list with long format, including file permissions (l), all files (a), sorted in reverse order (r), by modification time (t). Start up a terminal window, login to the supercomputer and run a long directory listing: `ls -lart` 
 
-`ls -lart` 
+Two of the hidden files are .bash_profile and .bashrc . These are startup files for the Bash shell (Bourne-again shell). The shell is a program that acts as command interpreter between the user and the operating system. Users can interact directly with the shell, or with an application which interacts with the shell as the image portrays (image from opensuse.org). A user submits their commands to the shell, which then either executes them directly or passes them on to other programs. These programs in turn request lower-level services from the kernel. Unlike some operating systems, Linux has a number of different shells available to users some of which we'll briefly explore in this course; the default most of these days is bash. 
 
-Two of the hidden files are .bash_profile and .bashrc . These are startup files for the Bash shell (Bourne-again shell). The shell is a program that acts as command interpreter between the user and the operating system. 
-
-Users can interact directly with the shell, or with an application which interacts with the shell as the image portrays (image from opensuse.org). A user submits their commands to the shell, which then either executes them directly or passes them on to other programs. These programs in turn request lower-level services from the kernel. Unlike some operating systems, Linux has a number of different shells available to users some of which we'll briefly explore in this course; the default most of these days is bash. 
-
-`.bash_profile` is executed when you login. 
-`.bashrc` is typically used for non login shells. 
+The `.bash_profile` file is executed when you login. This is a good place to include configurations for the user.
+The `.bashrc` is used for nonlogin shells and typically used for configurations to the bash environment itself. For example if a second-bash process is initiated after a user has already logged in.
 
 When Bash is invoked as an interactive login shell it first reads and executes commands from the file `/etc/profile`, if that file exists. After reading that file, it looks for `~/.bash_profile`, `~/.bash_login`, and `~/.profile`, in that order, and reads and executes commands from the first one that exists and is readable. 
 
-Typically an startup file for an interactive shell will include startup commands, paths and environment variables, aliases and terminal colours. 
-
-When an interactive shell that is not a login shell is started (for example, a person who has the rights to 'su', substitute user, running a script), Bash reads and executes commands from `~/.bashrc`, if that file exists. 
+Typically an startup file for an interactive shell will include startup commands, paths and environment variables, aliases and terminal colours. When an interactive shell that is not a login shell is started (for example, a person who has the rights to 'su', substitute user, running a script), Bash reads and executes commands from `~/.bashrc`, if that file exists. 
 
 Usually a `~/.bash_profile` contains a line to ensure that options in `.bashrc` are included with an interactive login; but not the other way around. For example, if one checks `.bash_profile` they should see the line: 
 
@@ -1935,11 +1916,9 @@ touch dir2/file3; touch dir2/file4; touch dir2/file5
 diff -u <(ls dir1) <(ls dir2) 
 ```
 
-Will display a diff of files in the root of dir1 and dir2 . It is the results of the ls commands that have been redirected. 
+Will display a diff of files in the root of dir1 and dir2 . It is the results of the ls commands that have been redirected. Note that modern implementations of diff will be able to carry this out automatically with simply `diff dir1 dir2`, or with subdirectories, `diff -r dir1 dir2`. However redirection is required if the diff is being carried out over ssh, for example comparing a locate and remote data directory.
 
-Note that modern implementations of diff will be able to carry this out automatically.
-
-`diff dir1 dir2`
+`diff <(ssh user@trifid.vpac.org ls -R /home/lev/data) <(ls -R /home/lev/workdata)`
 
 Redirections require some grounding in theory; the concept of terminal as a file and as standard input and output. We are by now familiar with the concept of ordinary files and directories. In UNIX-like operating systems devices are a type of file as well, and are structured under the /dev directory. For example, a directory listing of /dev will list as files internals like cpu and ram, peripherals like disk and dvd, and terminal connections tty, tty0, tty1 etc. For example simply run ls /dev on your desktop or on the cluster. 
 
@@ -3124,18 +3103,18 @@ save -append demo-result.txt k;
 
 It is not unusual for a user to make the launch of one job dependent on the successful completion of another job. The most common example is when a user wishes to make the output of one job the input of a second job. They might launch both jobs simultaneously, but they do not want the second job to run before the first job has completed successfully. In other words, they want a conditional dependency on the job.
 
-PBS allows a several conditional directives to be placed on a job which are tested prior to the job being intiatied, which are summarised as after, afterok, afternotok, before, beforeok, and beforenotok (e.g., `PBS -W depend=afterok:xxxxx`). Multiple jobs can be listed as dependencies with colon separated values (e.g., `#PBS -W depend=before:jobid0:jobid1`). Fortunately nobody has been to have dependency of "during"!
+PBS allows a several conditional directives to be placed on a job which are tested prior to the job being intiatied, which are summarised as after, afterok, afternotok, before, beforeok, and beforenotok (e.g., `PBS -W depend=afterok:xxxxx`). Multiple jobs can be listed as dependencies with colon separated values (e.g., `#PBS -W depend=before:jobid0:jobid1`).
 
 | Directive	| Description 									|
 |:--------------|-------------------------------------------------------------------------------|
-| after		| This job may be scheduled after jobs jobid have started 			|
-| afterok 	| This job may be scheduled after jobs jobid have completed with no errors	|	
-| afternotok 	| This job may be scheduled after jobs jobid have completed with errors 	|
-| afterany 	| This job may be scheduled after jobs jobid have completed with or without errors |
-| before 	| After this job begins, jobs jobid may be scheduled 				|
-| beforeok 	| After this job completes without errors, jobs jobid may be scheduled 		|
-| beforenotok 	| After this job completes with errors, jobs jobid may be scheduled 		|
-| beforeany 	| After this job completes with or without errors, jobs jobid may be scheduled 	|
+| after		| This job may start after specified jobs started 				|
+| afterok 	| This job may start after specified jobs have completed without errors		|	
+| afternotok 	| This job may start after specified jobs have completed with errors 		|
+| afterany 	| This job may start after specified jobs have completed with or without errors |
+| before 	| This job may start before specified jobs have started 			|
+| beforeok 	| This job may start before specified jobs have completes without errors 	|
+| beforenotok 	| This job may start before specified jobs have completes with errors 		|
+| beforeany 	| This job may start before specified jobs have completes with or without errors|
 
 There are two alternatives on how submit jobs with dependencies. The first is to set the job id as a variable (e.g., `#PBS -W x=depend:afterok:myfirstjob`). The second is to set the job id as a variable as part of a job submission (e.g., `qsub -W depend=afterany:$FIRST myjob5.pbs`). 
 
