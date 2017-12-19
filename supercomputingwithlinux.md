@@ -2363,6 +2363,8 @@ It is quite possible to pipe other commands within as well outside an `awk` scri
 
 `awk -F"," '{print $1 " " $3 | "sort"}' quakes.csv | less`
 
+Not however, because awk takes filenames as arguments in many cases you can avoid the use of pipes and new processes. For example, grep is usually unnecessary. Rather than `grep 2013p049577 /var/log/messages | awk '{ print $1 }'`, for example, one can use `awk '2013p049577 { print $1 }' quakes.csv`.
+
 Often you will want to manipulate or display structured data but without reference to the first row which is typically the header information for the file. In this case use NR (number of records). In the first example we use count the total number of rows after the last line is read. In the second example we display all three columns in reverse order using comma-separated values, but without the first row displayed. The third example illustrates the use of logical or (`||`) and logical and (`&&`).
 
 `awk -F"," 'END {print NR}' quakes.csv`
@@ -2526,12 +2528,12 @@ In addition to variable assignments, bash scripting allows for  loops (for/do, w
 
 The until/do loop conducts the same action, but with the count in reverse. The next until/do produces the same results as the first, but not the difference in the conditional test. The main difference between while/do and until/do is that the while/do loop repeats the code block while the conditional is true whilst the until/do loop repeats the block whilst the expression is false.
 
-`for file in *.mp3 ; do ffmpeg -i "${file}" "${file/%mp3/ogg}" ; done`
-`for file in *.jpeg ; do convert "$file" "${i%.*}.png" ; done`
+`for item in *.mp3 ; do ffmpeg -i "${item}" "${file/%mp3/ogg}" ; done`
+`for item in *.jpeg ; do convert "$item" "${item%.*}.png" ; done`
 
-Note the use of command substitution by using $(command); sometimes you will find the use of backticks instead (e.g., `for file in * ; do mv $file \`echo $file | tr "A-Z" "a-z"\` ; done);` this is *not* recommended. The use of backticks (a) not a POSIX standard, (b) can be difficult to read with deep escapes and (c) can be *very* dangerous if mistaken for strong quotes.
+Note the use of command substitution by using $(command); sometimes you will find the use of backticks instead (e.g., `for item in * ; do mv $item \`echo $file | tr "A-Z" "a-z"\` ; done);` this is *not* recommended. The use of backticks (a) not a POSIX standard, (b) can be difficult to read with deep escapes and (c) can be *very* dangerous if mistaken for strong quotes.
 
-The following are examples of loops with conditional tests. Also note the use of bash's integer arithmetic, and especially the use of spacing and bracketing.
+The following are examples of loops with conditional tests. Also note the use of bash's integer arithmetic, and especially the use of spacing and bracketing. Note that in the loop the single brackets can be used to test expressions i.e., `if [[ expression1 || expression2 ]]; then codeblock; fi`, a double-bracket conditional allows for compound commands and regular expression matching, e.g.,  `if [[ string =~ regex ]]; then codeblock; fi`
 
 `x=1; while [ $x -le 5 ]; do echo "While-do count up $x"; x=$(( $x + 1 )); done`
 `x=5; until [ $x -le 0 ]; do echo "Until-do count down $x"; x=$(( $x - 1 )); done`
@@ -2543,9 +2545,9 @@ Even short, single line, scripts like these can be turned into permanent bashscr
 #!/bin/bash
 # Will change every file in the existing directory to lower-case.
 # Warning! Warning! Will overwrite *existing* files with the same lower-case name!
-for file
+for item
 do 
-	mv $file $(echo $file | tr "A-Z" "a-z")
+	mv $item $(echo $item | tr "A-Z" "a-z")
 done
 exit
 ```
@@ -2607,11 +2609,11 @@ The following example was used by Mike Kuiper; a directory held a large number o
 
 ```
 #!/bin/bash 
- for file in *.plot.dat; do 
-	if [ -f $file.tmp ]; then 
+ for item in *.plot.dat; do 
+	if [ -f $item.tmp ]; then 
 	  : 
  	else 
-          	touch $file.tmp 
+          	touch $item.tmp 
  	"/usr/local/vmd/1.8.7-gcc/lib/tachyon_LINUXAMD64" -aasamples 2 -rescale_lights 0.38 -add_skylight 1.0 -res 1280 720 $i -format TARGA -o $file.tga 
 	fi; 
  done 
