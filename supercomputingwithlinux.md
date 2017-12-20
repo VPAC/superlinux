@@ -2725,7 +2725,7 @@ What `extract.sh` does is test whether a variable is a file and, if it is, runs 
     fi 
 ```
 
-Finally, the select command with conditionals can be used to create simple menus for users which prompts them for their input. 
+Finally, the select command with conditionals can be used to create simple menus for users which prompts them for their input. Tow examples are given here, one which provides a terse dictionary selection based on the choice, and another which simulates a multi-choices exam.
 
 ```
 #!/bin/bash 
@@ -2744,6 +2744,28 @@ select opt in $OPTIONS; do
 	echo "Select again; 1, 2, 3 or 4" 
 	fi 
 done 
+exit
+```
+
+```
+#!/bin/bash
+echo "Which of the following rocks is igneous?"
+select ANSWER in granite sandstone slate
+do
+	if [ "$ANSWER" == "" ]; then
+	echo -e "You need to enter an answer\n"
+		continue
+	elif [ "$ANSWER" != granite ]; then
+	echo -e "Sorry. Incorrect\n"
+	echo "1. Incorrect" >> rockexam.txt
+		break
+	elif [ "$ANSWER" == granite ]; then
+	echo -e "Congratulations! That is the correct answer\n"
+	echo "No. 1 - Correct" >> rockexam.txt
+		break
+	fi
+done
+exit
 ```
 
 **Arrays**
