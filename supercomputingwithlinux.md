@@ -2167,7 +2167,7 @@ A variation is `csplit` ("context split") which breaks up a file according to co
 
 **Cut and Paste**
 
-Having made their way into general computing parlance, the `cut` and `paste` commands are somewhat different in the Linux command context. The `cut` command removes secion from each line of a file, based on the arguments parsed to it, whereas `paste` merges lines of files together. The `cut` command can operate on characters, delimiters (tab by default), or fields. For example, the first command establishes the comma, `,`, as a delimiter for the cut and will extract the third field. It would print to standard output but is redirected to `latitude.txt`.  The following command does the same for the fourth field, redirecting to the file, `longitude.txt`. The third command pastes the `latitude.txt` and longitude.txt files together, adding a space a delimiter, and redirects the output to `quakelist.txt`.
+Having made their way into general computing parlance, the `cut` and `paste` commands are somewhat different in the Linux command context. The `cut` command copies a secion from each line of a file, based on the arguments parsed to it, whereas `paste` merges lines of files together. The `cut` command can operate on characters, delimiters (tab by default), or fields. For example, the first command establishes the comma, `,`, as a delimiter for the cut and will extract the third field. It would print to standard output but is redirected to `latitude.txt`.  The following command does the same for the fourth field, redirecting to the file, `longitude.txt`. The third command pastes the `latitude.txt` and longitude.txt files together, adding a space a delimiter, and redirects the output to `quakelist.txt`.
 
 `cut -d',' -f3 quakes.csv > latitude.txt`
 `cut -d',' -f4 quakes.csv > longitude.txt`
@@ -3364,11 +3364,11 @@ Gives read/write access to the user, read access to the group and others.
 `chmod 0755 directory/`   
 Gives read/write/execute access to the user, read and execute to the group and others.
 
-`cut`   
-Remove sections from each line of files and prints to standard output (does not change original file).   
-Examples:   
-`cut -c2-5 gattaca.txt`   
-Cut the 2nd to 5th character of each line in the file `gattaca.txt`.						
+`cut` 
+Copies a secion from each line of a file, based on the arguments parsed to it (e.g., characters, delimiters etc) and prints to standard output.
+Example:
+`cut -f 1-2,4-5 data.dat`
+Prints to standard output fields 1-2, 4-5, of tab-separated data from data.dat
 
 `date`    
 Print (or set for privileged users) the system date and time   
@@ -3442,6 +3442,12 @@ List with long format, including file permissions, reverse  order, by modificati
 Examples:    
 `lsb_release -a`   
 Print release, codename, description, and version.   
+
+`paste`
+Merges lines of corresponding lines of each file, separated by tabs, to standard output. Delimiters maybe specified.
+Example:
+`paste file1.lst file2.lst`
+Prints to standard output file1.lstand file2.lst separate by tabs.
 												 
 `pwd`		 
 "Print working directory";  prints the directory where you're currently in.   	
@@ -3461,7 +3467,7 @@ The manual command provides online access to  the system's reference pages. It d
 Example:   
 `man -a intro`		
 Display, in succession, all of the available intro manual pages contained within the manual.  It is possible to quit between successive displays or skip any of them.   
-						 												
+												
 `mv <source> <target>`	   
 "Move"; moves files or directories from one place to another, this has the effect of moving rather than copying the file.  It can also be used to rename a file, by moving the file to the same directory, but giving it different name.    
 Examples:    
@@ -3476,20 +3482,20 @@ Example:
 `ps -ejH` 			
 Lists all current processes and subprocesses as a tree.   
 												
-rm <target>		
+`rm <target>`		
 "Remove";  deletes files from the system. It can be used to remove the directory no matter it is empty or not. 
 Examples: 
-rm directory/filename	 		
+`rm` directory/filename	 		
 Removes the file filename from the subdirectory directory.  
-rm -rf directory		
+`rm -rf` directory		
 Remove the entire directory, sub-directories. and files (with recursion and force). Note that there is no 'undelete' when using the command line on Linux. Use this command with caution!
 												 
-rmdir 		
-"Remove directory"; remove empty directory. If there are files or directories existing under the directory, rmdir will fail. 
+`rmdir` 		
+"Remove directory"; remove empty directory. If there are files or directories existing under the directory, the command will fail. 
 Example: 
-rm <directory>					 
+`rmdir` <directory>					 
 Removes the directory if it is a subdirectory and there are no files in it, or use `cd /path/to/directory`.
-`rm -p subdir1/subdir2/subdir3`		
+`rmdir -p subdir1/subdir2/subdir3`		
 Removes the directory and its ancestors; above has the same effect as;    
 `rmdir subdir1/subdir2/subdir3 subdir1/subdir2 subdir1`.   
 
