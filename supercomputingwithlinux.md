@@ -2165,13 +2165,15 @@ A variation is `csplit` ("context split") which breaks up a file according to co
 
 `csplit quakes.csv '/-37./' {*}`
 
-**Cut and Paste**
+**Cut, Paste, and Join**
 
 Having made their way into general computing parlance, the `cut` and `paste` commands are somewhat different in the Linux command context. The `cut` command copies a secion from each line of a file, based on the arguments parsed to it, whereas `paste` merges lines of files together. The `cut` command can operate on characters, delimiters (tab by default), or fields. For example, the first command establishes the comma, `,`, as a delimiter for the cut and will extract the third field. It would print to standard output but is redirected to `latitude.txt`.  The following command does the same for the fourth field, redirecting to the file, `longitude.txt`. The third command pastes the `latitude.txt` and longitude.txt files together, adding a space a delimiter, and redirects the output to `quakelist.txt`.
 
 `cut -d',' -f3 quakes.csv > latitude.txt`
 `cut -d',' -f4 quakes.csv > longitude.txt`
 `paste -d " " latitude.txt longitude.txt > quakelist.txt`
+
+A variation on the `paste` command is the `join` command. Like `paste`, `join` will take two files and combine the fields. Unlike `paste` however `join` will only do if there is a common field. The common field however is only included once in the standard output.
 
 **Sort and Uniq**
 
@@ -2550,12 +2552,11 @@ The until/do loop conducts the same action, but with the count in reverse. The n
 
 Note the use of command substitution by using $(command); sometimes you will find the use of backticks instead (e.g., `for item in * ; do mv $item \`echo $file | tr "A-Z" "a-z"\` ; done);` this is *not* recommended. The use of backticks (a) not a POSIX standard, (b) can be difficult to read with deep escapes and (c) can be *very* dangerous if mistaken for strong quotes.
 
-Early in this book it was recommended that spaces should be avoided in filenames. Part of this is due to poorly designed scripts that make use of the `ls` command. In a nutshell, `ls` can't differentiate in a script what is a filename and what is a space.
+Early in this book it was recommended that spaces should be avoided in filenames. Part of this is due to poorly designed scripts that make use of the `ls` command. In a nutshell, `ls` can't differentiate in a script what is a filename and what is a space. It is, of course, unnecessary. Worse still, if any of the directories have files the process will generate the files inside the directories as well.
 
 `touch "a file with lots of spaces in the name"`
 `for item in $(ls *); do echo ${item}; done`
 `for item in *; do echo ${item}; done`
-
 
 The following are examples of loops with conditional tests. Also note the use of bash's integer arithmetic, and especially the use of spacing and bracketing. 
 
@@ -3432,6 +3433,9 @@ Print the first fifteen lines of quakes.csv (default is 10).
 
 `hostname`   
 Print (or set for privileged users) the system hostname.   
+
+`join`
+Combine files with a common field and print to standard output; common field is printed once.
 
 `less <filename>`	 
 Prints a file to one screen at a time with cursor movement and searching. Quit using 'q'. A replacement for 'more'.   
