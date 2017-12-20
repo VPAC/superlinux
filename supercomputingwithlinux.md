@@ -3221,6 +3221,19 @@ k=svd(M);
 save -append demo-result.txt k;   
 ```
 
+In section 3.2 it was mentioned that when writing a job script the scheduler directives should be expressed first. The following is a code snipped from a Slurm job array where they were not. No matter what variations on the actual array task the user attempted it would still generate an array that the file could not be found - even if it was reduced to an array element of one! 
+
+`/var/spool/slurm/job658376/slurm_script: line 9: SSI_dimensional_Jen_task.m: No such file or directory`
+
+```
+module load MATLAB/2016a
+#SBATCH --array=1-10
+matlab -nodesktop -nodisplay -nosplash< SSI_dimensional_Jen_task${SLURM_ARRAY_TASK_ID}.m
+```
+
+The issue was that MATLAB was being loaded before the array declared. When this was reversed, and all the scheduler directives were declared before the bash directives, the job ran as expected.
+
+
 ### Job Dependencies
 
 It is not unusual for a user to make the launch of one job dependent on the successful completion of another job. The most common example is when a user wishes to make the output of one job the input of a second job. They might launch both jobs simultaneously, but they do not want the second job to run before the first job has completed successfully. In other words, they want a conditional dependency on the job.
