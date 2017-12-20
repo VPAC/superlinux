@@ -3614,10 +3614,10 @@ The  general layout of a Linux system is called the Filesystem Hierarchy Standar
 | `qstat -au` 	| `squeue -A <account>`	| List all jobs of a particular user, e.g., qstat -au mike	|
 | `qstat -s`	| `squeue -a`	| All jobs with status comments					|
 | `qstat -r`	| `squeue -t R`	| All running jobs						|
-| qstat -f <jobid> squeue -j <jobid> Information concerning a particular job.
-| qsub <pbsscript> sbatch <jobname> Submits job script
-| qsub -I sinteractive Submit an interactive batch job.
-| qdel <jobid> scanel <jobid> Deletes a job. SLURM allows one to delete all jobs belonging to a user wit the -u option.
+| `qstat -f <jobid>` | `squeue -j <jobid>` | Information concerning a particular job.		|
+| `qsub <pbsscript>` | `sbatch <jobname>`  | Submits job script					|
+| `qsub -I sinteractive ` | salloc -p <partition>` | Submit an interactive batch job.		|
+| `qdel <jobid>` | scacnel <jobid>` | Deletes a job. SLURM allows one to delete all jobs belonging to a user with the -u option.	|
 
 ## 7.5 References
 
