@@ -2768,9 +2768,9 @@ done
 exit
 ```
 
-**Arrays**
+**Bash Arrays**
 
-An array can be thought of as a extended variable which contains multiple values of multiple types. An array takes the form of `name[index]=value`, where 'name' is the name of the array, 'index' refers to the array index value, an expression or value which resolves to an integer from 0 and greater, and 'value' equals the assignment. Use of arrays is good coding practise, as it can be used to group associated variables together into a set, rather than having them scattered throughout the script.
+An bash array (not to be confused with a job array) can be thought of as a extended variable which contains multiple values of multiple types. An array takes the form of `name[index]=value`, where 'name' is the name of the array, 'index' refers to the array index value, an expression or value which resolves to an integer from 0 and greater, and 'value' equals the assignment. Use of arrays is good coding practise, as it can be used to group associated variables together into a set, rather than having them scattered throughout the script.
 
 A very simple example would be a list of nodes in a cluster's partion, all of which in this example would be of the same string type. The elements of an array can be specified individually, but it is easier to state them using the `declare` statement; the `-a` option specifies an indexed array and `-A` for an associative array. The entire array can be specified with `@` or `*`, and the length of an array name with the special parameter `$#`; without an index it represents the first element of the array. 
 
@@ -3172,6 +3172,8 @@ Job arrays can be sent with a varying range and step number. The following table
 |:--------------|---------------|-----------------------|-------------------------------|
 |`#PBS -t 1-10` |`#PBS -J 1-10`	| #sbatch --array=1-10	| Submit job array by ID 1 to 10|
 |`#PBS -t 1,3,5,7,9` | `#PBS -J 1-10:2` | `#sbatch –array=1-10:2` | Submit job array by ID 1, 3, 5, 7, 9|
+
+Whilst by default there is only limits set on the scheduler on how many subjobs can run on an array, it is possible to limit this with an optional slot limit which limits the amount of jobs that can run concurrently in the job array. The slot limit must be the last parameter specified in the array_request and is delimited from the array by a percent sign (%). The following will submit a job array from 1 to 299, but only 5 will run concurrently; `qsub script.sh -t 1-299%5`. The same rule applies in SLURM.
 
 The `qdel`, `qhold`, and `qrls` commands from TORQUE and PBS can operate on array - either the entire array or a range of that array, just as the equivalent job control commands in SLURM would operate, as the jobs receive both a JobID and an ArrayTaskID (e.g., `scancel`, `suspend`, `resume`).  Any job in the array may be accessed normally by using that job's ID, just as you would with any other job. Each job is considered independent in terms of launch and walltime. Job deletion or cancellation can occur, for example, if one of the jobs in the array has an error or corruption in the input file. The rest of the jobs can continue running. 
 
