@@ -3637,6 +3637,8 @@ Machtelt Garrels, *Bash Guide for Beginners v1.11*, The Linux Documentation Proj
 
 Yiannis Georgiou, *Resource Management with Linux Control Groups in HPC Clusters*, Proceedings of the 6th Linux Collaboration Summit, 2012
 
+Georg Hager, Gerhard Wellein, *Introduction to High Perfomance Computing for Scientists and Engineers*, CRC Press, 2011
+
 Martin Hilbert, Priscila López. *The World’s Technological Capacity to Store, Communicate, and Compute Information*, Science Vol. 332 no. 6025 1 April 2011, pp. 60-65
 
 Brian W. Kernighan, Rob Pike. *The Unix Programming Environment*, Prentice-Hall, 1984
