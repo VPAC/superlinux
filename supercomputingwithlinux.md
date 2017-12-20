@@ -2165,6 +2165,14 @@ A variation is `csplit` ("context split") which breaks up a file according to co
 
 `csplit quakes.csv '/-37./' {*}`
 
+**Cut and Paste**
+
+Having made their way into general computing parlance, the `cut` and `paste` commands are somewhat different in the Linux command context. The `cut` command removes secion from each line of a file, based on the arguments parsed to it, whereas `paste` merges lines of files together. The `cut` command can operate on characters, delimiters (tab by default), or fields. For example, the first command establishes the comma, `,`, as a delimiter for the cut and will extract the third field. It would print to standard output but is redirected to `latitude.txt`.  The following command does the same for the fourth field, redirecting to the file, `longitude.txt`. The third command pastes the `latitude.txt` and longitude.txt files together, adding a space a delimiter, and redirects the output to `quakelist.txt`.
+
+`cut -d',' -f3 quakes.csv > latitude.txt`
+`cut -d',' -f4 quakes.csv > longitude.txt`
+`paste -d " " latitude.txt longitude.txt > quakelist.txt`
+
 **Sort and Uniq**
 
 Again with a descriptive name, sort will organise a text file into an order specified by options and output to a specific file, if desired. The general syntax is `sort [option] [input file] -o [filename]`. Some of the options include -b (ignore beginning spaces), -d (use dictionary order, ignore punctuation), -m (merge two input files into one sorted output, and -r (sort in reverse order). An interesting option for sort is for natural language ordering (e.g., 1, 10, 2, 20); for this case use sort -g filename (generic) or -V (version number).
