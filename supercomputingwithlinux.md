@@ -2153,13 +2153,17 @@ However on Debian derived it is part of the Perl programming language, which wou
 
 `rename 's/\.txt$/\.bak'/' *.txt`
 
-**Split**
+**Split and CSplit**
 
 There are a number of commands that manipulate not just the names of files, but the contents as well. For example, the command `split` can be used to split large files into smaller components, such as a large data file that needs to be split into smaller components for editing.  
 
 The general syntax is `split [OPTION]... [INPUT [PREFIX]]`. Options include byte (-b #) or linecount (-l #, default of 1000) for the new files, the input is the filename and the prefix is the output, `PREFIXaa`, `PREFIXab etc`. 
 
-The command `split -d -l100 filename newfilename` will split a file into new files of 100 lines indicated in order by a numeric suffix. e.g., `split -d -l100 quakes.csv newquakes`
+The command `split -d -l100 filename newfilename` will split a file into new files of 100 lines indicated in order by a numeric suffix. e.g., `split -d -l100 quakes.csv newquakes`.
+
+A variation is `csplit` ("context split") which breaks up a file according to context. Whereas split breaks up files according to fixed size or line number, `csplit` breaks up files into irregular sizes according to the expression. The following example looks for the regular expression '-37.' (a latitude) and breaks files up accordingly.
+
+`csplit quakes.csv '/-37./' {*}`
 
 **Sort and Uniq**
 
@@ -3496,10 +3500,12 @@ Will output messyfile according to reverse alphabetical order.
 Will output current working directory according to file size.  
 													
 `split`   
-Splits a file into equal-sized segments.    
+Splits a file into equal-sized segments. The variation `csplit` breaks up the file according to context and over differing iterations.
 Example:   
 `split longfile shortfile`  
 Will split longfile into shortfileaa, shortfileab, shortfileac etc with each shortfilexx being 1000 lines.   
+`csplit longfile '/REGEXP/' {$iterations}`
+Will split longfile into one or more files depending on the regular expression and the number of iterations requested. The value `{*}` is without limit.
 
 `tar`
 "Tape archive"; Copies and restores files from an archive medium.    
@@ -3512,7 +3518,7 @@ Extracts a "tarball" of homeuser.tar.gz into the active directory.
 `tail filename`   
 Display the last ten lines of a file.   
 Example:   
-`tail -f door.sta`    
+`tail -F door.sta`    
 The -f option (follow) allows for a continuous display to output; useful for a file that's being generated that you wish to observe.   
 								
 `tee`   
