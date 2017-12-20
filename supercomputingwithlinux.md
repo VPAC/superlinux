@@ -891,7 +891,7 @@ cd ~
 grep -w ARSLPK braf/*
 ```
 
-Note that the files being searched must be specified, even with a wildcard character. Simply stating a directory is insufficient. Where there are multiple results, grep will also display the filename. Compressed or gzipped files can be searched with `zgrep`. If one wants to search a PDF file, then either the `poppler-utils` needs to be installed, or `pdfgrep`. A binary file can also be searched for text in the binary format with the `strings` command.
+Note that the files being searched must be specified, even with a wildcard character. Simply stating a directory is insufficient. Where there are multiple results, grep will also display the filename. Compressed or gzipped files can be searched with `zgrep`; there are other "z" tools, including `zcat`, `zdiff` etc. If one wants to search a PDF file, then either the `poppler-utils` needs to be installed, or `pdfgrep`. A binary file can also be searched for text in the binary format with the `strings` command.
 
 The wildcard you see most often is * (asterisk), but we'll start with something simpler: ? (question mark). When it appears in a filename, the ? matches any single character. For example, letter? refers to any filename that begins with letter and has one character after that. This would include letterA, letter1, as well as filenames with a non-printing character as their last letter, like letter^C. 
 
@@ -2179,7 +2179,7 @@ Again with a descriptive name, sort will organise a text file into an order spec
 
 The `sort` command also have a very useful option for sorting by columns. Delimites can be established with the `-t` option (e.g., `-t,` for comma separated values) and fields with the the `-k` option (e.g., sort by the second field in numeric order in a comma separated file would be `sort -t, -nk2 fiename.csv`)
 
-To filter repeated lines in a text file use `uniq`. The standard syntax is `uniq [options] [input file] [output file]`. A simple example is `uniq repeats.txt unique.txt`. It is sometimes with sort to create a sorted file of unique lines, e.g., `sort repeats.txt | uniq > sortuniq.txt`, although `sort` also can do this with the `-u` option.
+To filter repeated lines in a text file use `uniq`. The standard syntax is `uniq [options] [input file] [output file]`. A simple example is `uniq repeats.txt unique.txt`. It is sometimes with sort to create a sorted file of unique lines, e.g., `sort repeats.txt | uniq > sortuniq.txt`. The combination of `sort` and `uniq` can be used to remove from the content file in the removals files(e.g., `sort content.txt removals.txt | uniq -u`).
 
 ## 4.9 System Information Commands
 
@@ -2211,7 +2211,7 @@ A typical command to access system information is `uname` (unix name), with the 
 Linux tango.vpac.org 2.6.32.23edac #1 SMP Thu Sep 30 12:14:41 EST 2010 x86_64 x86_64 x86_64 GNU/Linux
 ```
 
-**/proc**
+**Proc Directory**
 
 Another useful source for system information is the `/proc` directory. The directory doesn't actually contain 'real' files but runtime system information. Running `ls -l` on `/proc` will display a number of files with a size of 0 bytes; one exception is `/proc/kcore`, which an image of the actual memory in a system. Combined with the simple program `less` a range of information about a system can be accessed from the `/proc` directory. Some examples are given below:
 
@@ -2347,7 +2347,7 @@ Due to competing standards many decades ago, various forms of *nix (Linux, MacOS
 `sed -i 's/$/\r/g' filename` 	# *nix to MS-Windows, adds CR. 
 `sed -i 's/\r$//g' filename`	# MS-Windows to *nix, removes CR 
 
-Note that when using many variables (e.g., $PWD), not only must the variable be double quoted to ensure substitution, and alternative delimited should be used as any directory path will include the sed delimited, `/`. Sed offers three alternative delimiters in its scripts; `/`, `:`, or `|`
+Note that when using many variables (e.g., $PWD), not only must the variable be double quoted to ensure substitution, and alternative delimited should be used as any directory path will include the sed delimited, `/`. Sed offers three alternative delimiters in its scripts; `/`, `:`, or `|`. 
 
 The `sed` command is extremely versatile, and over the years a number of common and popular one-line sed commands have been compiled. These can ge found at the following URL, and are included with in the resources direcory of the git repository for this book.
 
@@ -2543,12 +2543,19 @@ $ echo $Ubh
 
 In addition to variable assignments, bash scripting allows for  loops (for/do, while/do, util/do) and conditionals (if/then/else/fi, case). For example, the first for/do one-line script (which, like all scripts, can be run directly from the bash shell), moves all files in the working directory to lower case; a second example copies all .oga files to .ogg - the format is identical and recommended, but some music players might not recognise it. 
 
-The until/do loop conducts the same action, but with the count in reverse. The next until/do produces the same results as the first, but not the difference in the conditional test. The main difference between while/do and until/do is that the while/do loop repeats the code block while the conditional is true whilst the until/do loop repeats the block whilst the expression is false.
+The until/do loop conducts the same action, but with the count in reverse. The next until/do produces the same results as the first, but not the difference in the conditional test. The main difference between while/do and until/do is that the while/do loop repeats the code block while the conditional is true whilst the until/do loop repeats the block whilst the expression is false. In the first script, brace expansion is used to refer to file names, and the conversion from mp3 to ogg.
 
 `for item in *.mp3 ; do ffmpeg -i "${item}" "${file/%mp3/ogg}" ; done`
 `for item in *.jpeg ; do convert "$item" "${item%.*}.png" ; done`
 
 Note the use of command substitution by using $(command); sometimes you will find the use of backticks instead (e.g., `for item in * ; do mv $item \`echo $file | tr "A-Z" "a-z"\` ; done);` this is *not* recommended. The use of backticks (a) not a POSIX standard, (b) can be difficult to read with deep escapes and (c) can be *very* dangerous if mistaken for strong quotes.
+
+Early in this book it was recommended that spaces should be avoided in filenames. Part of this is due to poorly designed scripts that make use of the `ls` command. In a nutshell, `ls` can't differentiate in a script what is a filename and what is a space.
+
+`touch "a file with lots of spaces in the name"`
+`for item in $(ls *); do echo ${item}; done`
+`for item in *; do echo ${item}; done`
+
 
 The following are examples of loops with conditional tests. Also note the use of bash's integer arithmetic, and especially the use of spacing and bracketing. 
 
@@ -2620,6 +2627,18 @@ then
 else 
 	echo -e "File $file doesn't exists" 
 fi 
+```
+
+Conditional with brace expansion can be used to search for multiple directories. For example, in the search for a specific image (bunny.jpg) which the user has unfortunately forgotten which directory it is in.
+
+```
+#! /bin/bash 
+mypicture=bunny.jpg
+for file in /home/Pictures/{pets,family,unsorted}/"$the_file"; do 
+   if [[ -e $file ]]; then
+      printf '%s found in %s:\n' "$the_file" "${file%/*}"
+   fi
+done
 ```
 
 The following example was used by Mike Kuiper; a directory held a large number of data files which he wished to convert into .tga files using vmd. The conditional statement stepped through all files with *.plot.dat, creating a new file them with a *.tmp and then running the command. If the *.tmp already existed it skipped that file and went to the next one.
@@ -3648,6 +3667,8 @@ Lev Lafayette. *Software Tools Compared To User Education in High Performance Co
 Lev Lafayette. *Skill Improvements versus Interface Designs for eResearchers*. Proceedings of eResearch New Zealand, 25th March, 2015
 
 Gordon E. Moore, *Cramming more components onto integrated circuits*, Electronics, April 19, 1965, p114-117.
+
+Henry Neeman, *Supercomputing in Plain English*, University of Oklahoma, 2015
 
 Paul Sheer, *Linux: Rute User's Tutorial and Exposition*, Prentice-Hall, 2002
 
