@@ -1160,7 +1160,7 @@ DL_POLY is a general purpose classical molecular dynamics (MD) simulation softwa
 
 The following example runs a job for phase-state transition in potassium chloride from the cubic rock salt structure at ambient temperature to the cesium chloride structure under high pressure. The example DL Poly files are from CCLRC Daresbury Laboratory in the UK.
 
-Copy the test files to an appropriate directory and extract:
+Copy the test files to an appropriate directory and extract. Whilst using this example of the `wget` network downloader, it's worth mentioning in passing if one wants to download an entire directory and subdirectories they should use `wget -r --no-parent`; otherwise `wget` will follow the link to the directory index and download the parent directory as well.
 
 ```
 cd /home/train01/
@@ -2276,7 +2276,7 @@ Ctrl-Z
 
 ## 5.1 Regular Expressions with grep and sed
 
-In order to make the best use of these scripting languages knowledge of regular expressions, also known as regex or regexp, is a powerful tool. Scripts and utility commands search strings of text for regular expressions of characters which then can be expressed or manipulated. The main command for searching with regular expressions is `grep`, a "global search for regular expression and print to standard output", encountered earlier in a simple form. The command `sed`, in contrast, is a "stream editor" whose output involves a transformation to the input file. A furthe command, `awk` is explored in the following section. Between them, `grep`, `sed`, and `awk` are extremely powerful and entire books have been written just exploring their capabilities. Here, only a minimal subset of searching, transforming, and reporting is provided.
+In order to make the best use of these scripting languages knowledge of regular expressions, also known as regex or regexp, is a powerful tool. Scripts and utility commands search strings of text for regular expressions of characters which then can be expressed or manipulated. The main command for searching with regular expressions is `grep`, a "global search for regular expression and print to standard output", encountered earlier in a simple form. The command `sed`, in contrast, is a "stream editor" whose output involves a transformation to the input file. A furthe command, `awk` is explored in the following section. Between them, `grep`, `sed`, and `awk` are extremely powerful and entire books have been written just exploring their capabilities. It is worth recognising that entire books are written on their extensive capabilities. Here, only a minimal subset of searching, transforming, and reporting is provided.
 
 There are also deprecated utilities called `egrep`, `fgrep`, and `rgrep` that are the same functionality as `grep -E`, `grep -F`, and `grep -r` respectively. The command `grep -E` provides extended regular expressions, whereas `grep -F` interpret as pattern of fixed strings, as opposed to a regular expression as such. With a standard `grep` metacharacters will need to be escaped; this is not the case with `egrep`. As previously illustrated `grep -r` is a recursive grep searching for the specified directory and subdirectories. In GNU implementations of `grep` there is no difference between basic and extended syntaxes. If PCRE (perl-compatible regular expressions) is available on the system, `grep` can be extended further. For example compare `grep +K gattaca.txt` and `grep -E +K gattaca.txt`
 
