@@ -2489,7 +2489,7 @@ There are different types of commands within the shell. In bash firstly there ar
 
 Secondly, there are external commands, many of which are part of the operating system itself. These are typically stored in directories such as `/bin` (command binaries), `/sbin`/ (system binaries). Other external commands are from those additional applications which have been installed on the system which are usually found in `/usr/` and its subdirectories, such as `/usr/local/bin` and `/usr/local/sbin` for non-essential command or system binaries, and those binaries directories in applications in `/usr/local/$application/bin`. 
 
-Just as the `file $filename` command can be used to determine what sort of file is being evaluated, the `type $command` command can be used to determine whether a command is a shell builtin or keyword, or external command, or aliased. Rather than directly calling external commands it is more efficient to use bash builtin commands. As a trivial example, bash has `echo` built in - and there is also a `/bin/echo` and a `/usr/bin/echo`. Whenever possible the builtin should be used instead. Thus `echo "Hello World"` rather than `/bin/echo "Hello World"`.
+Just as the `file $filename` command can be used to determine what sort of file is being evaluated, the `type $command` command can be used to determine whether a command is a shell builtin or keyword, or external command, or aliased. Rather than directly calling external commands it is more efficient to use bash builtin commands. As a trivial example, bash has `echo` built in - and there is also a `/bin/echo` and a `/usr/bin/echo`. Whenever possible the builtin should be used instead. Thus `echo "Hello World"` rather than `/bin/echo "Hello World"`. The builtin's are a lot faster. 
 
 ## 5.4 Shell Scripting with bash
 
@@ -2563,6 +2563,13 @@ The following are examples of loops with conditional tests. Also note the use of
 `x=1; while [ $x -le 5 ]; do echo "While-do count up $x"; x=$(($x+1)); done`
 `x=5; until [ $x -le 0 ]; do echo "Until-do count down $x"; x=$(($x-1)); done`
 `x=1; until [ $x = 6 ]; do echo "Until-do count up $x"; x=$(( $x+1)); done`
+
+When dealing with large loops, shell expansion makes typing easier and is quicker to run. For example:
+
+`time for i in {1..1000}; do echo "Linux is the best operating system"; done`
+`time for i in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24... etc 996 997 998 999 1000; do echo "Linux is the best operating system"; done`
+
+To generate the numbers in the second example use: `printf "%d " {1..1000}`
 
 Even short, single line, scripts like these can be turned into permanent bashscripts if they are used regularly enough. It is good practise, for example, to convert them to executables and save them in a local `bin` directory (`/home/<username>/bin`) or similar in the user's PATH. For example, for a script `lowercase.sh`. 
 
