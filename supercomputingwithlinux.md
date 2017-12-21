@@ -2558,11 +2558,11 @@ Early in this book it was recommended that spaces should be avoided in filenames
 `for item in $(ls *); do echo ${item}; done`
 `for item in *; do echo ${item}; done`
 
-The following are examples of loops with conditional tests. Also note the use of bash's integer arithmetic, and especially the use of spacing and bracketing. 
+The following are examples of loops with conditional tests. Also note the use of bash's integer arithmetic, and especially the use of spacing and bracketing. There is actually an astounding number of ways of doing arithmetic in bash; the version used here is a good combination of legibility and speed.
 
-`x=1; while [ $x -le 5 ]; do echo "While-do count up $x"; x=$(( $x + 1 )); done`
-`x=5; until [ $x -le 0 ]; do echo "Until-do count down $x"; x=$(( $x - 1 )); done`
-`x=1; until [ $x = 6 ]; do echo "Until-do count up $x"; x=$(( $x + 1 )); done`
+`x=1; while [ $x -le 5 ]; do echo "While-do count up $x"; x=$(($x+1)); done`
+`x=5; until [ $x -le 0 ]; do echo "Until-do count down $x"; x=$(($x-1)); done`
+`x=1; until [ $x = 6 ]; do echo "Until-do count up $x"; x=$(( $x+1)); done`
 
 Even short, single line, scripts like these can be turned into permanent bashscripts if they are used regularly enough. It is good practise, for example, to convert them to executables and save them in a local `bin` directory (`/home/<username>/bin`) or similar in the user's PATH. For example, for a script `lowercase.sh`. 
 
