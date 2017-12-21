@@ -2564,6 +2564,15 @@ The following are examples of loops with conditional tests. Also note the use of
 `x=5; until [ $x -le 0 ]; do echo "Until-do count down $x"; x=$(($x-1)); done`
 `x=1; until [ $x = 6 ]; do echo "Until-do count up $x"; x=$(( $x+1)); done`
 
+A loop can be combined with other commands. For example, when searching for lines that contain a particular sequence in a file (e.g., from `grep`), reading those lines for processing can be accomplished with the something like the following:
+
+```
+grep sequence datafile.dat | while read -r line ; do
+    echo "Processing $line"
+    # Processing code #
+done
+```
+
 When dealing with large loops, shell expansion makes typing easier and is quicker to run. For example:
 
 `time for i in {1..1000}; do echo "Linux is the best operating system"; done`
