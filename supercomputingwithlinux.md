@@ -2860,14 +2860,18 @@ du -sk * | sort -nr | cut -f2 | xargs -d "\n" du -sh  > diskuse.txt
 
 The script runs a disk usage in summary, sorts in order of size, extracting the second field, parses the values in delimited form to run as disk usage summary in human form, and then exports to the file `diskuse.txt`. The `\n` is to ignore spaces in filenames.
 
-Whilst sometimes making the script a little more complex, variables are usually better than hard-coded values. There are two potential variables in this script, the wildcard `*` and the exported filename `diskuse.txt`. In the former case, the wildcard can be kept as it allows a certain portibility of the script - it can run in any directory it is invoked from. For the latter case however, the date command can be used so that a history of diskuse can be created which can be reviewed for changes. It is good practise to alert the user when the script is completed and, although it is often necessary, it is also good practise to cleanly finish any script with with an `exit 0` statement.
+Whilst sometimes making the script a little more complex, variables are usually better than hard-coded values. There are two potential variables in this script, the wildcard `*` and the exported filename `diskuse.txt`. In the former case, the wildcard can be kept as it allows a certain portibility of the script - it can run in any directory it is invoked from. For the latter case however, the date command can be used so that a history of diskuse can be created which can be reviewed for changes. It is good practise to alert the user when the script is completed and, although it is often necessary, it is also good practise to cleanly finish any script with with an `exit` statement. An `exit` statement can vary to indicate success (0) or failure (1) - in this case checking to see if the file was created.
 
 ```
 #!/bin/bash   
 DU=diskuse$(date +%Y%m%d).txt   
 du -sk * | sort -nr | cut -f2 | xargs -d "\n" du -sh  > $DU   
 echo "Disk summary completed and sorted."   
-exit 0
+if [ -f $DU ]; then
+		exit 0
+else
+		exit 1
+fi
 ```
 
 As a matter of useful stylistic convention global variables should be written in upper-case, and local variables in lower case, if the script makes use of functions to differentiate between variable scope. In shorter scripts this may not be necessary. As a general principle global variables should kept to a minimum and in longer scripts, the should be constants which can be enforced with the `readonly` statement. For example, to state the name of the script throughtthe script itself use `readonly PROGNAME=$(basename $0)`.
