@@ -1913,7 +1913,7 @@ tar cvfj class.tar.bz2 *.class
 tar cvfj homeuser.tar.bz2 /home/user
 ```
 
-## 4.5 Redirection and Tee
+## 4.5 Redirection, Process Substitution, and Tee
 
 Earlier, we learned the basic commands for redirection and piping. To redirect output use the '>' symbol. To redirect input (for example, to feed data to a command) use the '<'. Concatenation is achieved through the use of '>>' symbol. Like other Linux commands, redirects can be used multiple times for useful effects. 
 
@@ -1927,7 +1927,7 @@ touch dir2/file3; touch dir2/file4; touch dir2/file5
 diff -u <(ls dir1) <(ls dir2) 
 ```
 
-Will display a diff of files in the root of dir1 and dir2 . It is the results of the ls commands that have been redirected. Note that modern implementations of diff will be able to carry this out automatically with simply `diff dir1 dir2`, or with subdirectories, `diff -r dir1 dir2`. However redirection is required if the diff is being carried out over ssh, for example comparing a locate and remote data directory.
+This use of redirection symbols is process substitution. It will display a diff of files in the root of dir1 and dir2 . It is the results of the ls commands that have been redirected. Note that modern implementations of diff will be able to carry this out automatically with simply `diff dir1 dir2`, or with subdirectories, `diff -r dir1 dir2`. However process substitution is required if the diff is being carried out over ssh, for example comparing a locate and remote data directory.
 
 `diff <(ssh user@trifid.vpac.org ls -R /home/lev/data) <(ls -R /home/lev/workdata)`
 
