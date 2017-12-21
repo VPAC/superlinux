@@ -2558,7 +2558,7 @@ Early in this book it was recommended that spaces should be avoided in filenames
 `for item in $(ls *); do echo ${item}; done`
 `for item in *; do echo ${item}; done`
 
-The following are examples of loops with conditional tests. Also note the use of bash's integer arithmetic, and especially the use of spacing and bracketing. There is actually an astounding number of ways of doing arithmetic in bash; the version used here is a good combination of legibility and speed.
+The following are examples of loops with conditional tests. Also note the use of bash's integer arithmetic, and especially the use of spacing and bracketing. There is actually an astounding number of ways of doing arithmetic in bash; the version used here is a good combination of legibility and speed. These count can, of course, be varied to indicate step sizes.
 
 `x=1; while [ $x -le 5 ]; do echo "While-do count up $x"; x=$(($x+1)); done`
 `x=5; until [ $x -le 0 ]; do echo "Until-do count down $x"; x=$(($x-1)); done`
