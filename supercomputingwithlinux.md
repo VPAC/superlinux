@@ -691,7 +691,7 @@ Both man and info can exited with `q` for quit.
 
 In addition to commands by themselves, Linux also have very useful pipes and redirects for commands. To pipe one command through another use the `|` symbol.
 
-For example, the who command how who is currently logged into the system. You may suspect that this will differ on the supercomputer and the local system! Run the command on the local computer and then 'pipe' the who command through 
+For example, the who command shows who is currently logged into the system. You may suspect that this will differ on the supercomputer and the local system! Run the command on the local computer and then 'pipe' the who command through 
 
 Run this command on the supercomputer.
 
@@ -3641,6 +3641,8 @@ Show who is currently logged into the system.
 Examples:   
 `who -u | less`
 Show who is logged on, how long they've been idle and piped through the less command.   
+`who -r`   
+Shows the current runlevel.    
 													
 `whoami`   
 Prints the effective user ID.   
@@ -3664,7 +3666,7 @@ The  general layout of a Linux system is called the Filesystem Hierarchy Standar
 | Directory	| Description			 		|
 |:--------------|-----------------------------------------------|
 | `/` 		| Root directory of the entire file system. 	|
-| `/bin`	| Essential command binaries for all users. 	|
+| `/bin`	| Essential command binaries for all users. Non-essential binaries are in `/usr/bin` and non-essential system binaries in `/usr/sbin` 	|
 | `/boot`	| Boot loader files. 				|
 | `/dev`	| Devices.					| 
 | `/etc`	| Host-specific system-wide configuration files.|
@@ -3678,7 +3680,7 @@ The  general layout of a Linux system is called the Filesystem Hierarchy Standar
 | `/sbin`	| Essential system binaries (e.g., init, route, ifup). |
 | `/srv`	| Site-specific data which is served by the system. |
 | `/tmp`	| Temporary files (see also `/var/tmp`).	| 
-| `/usr`	| Secondary hierarchy for user data; contains the majority of utilities, applications, libraries and the like.  |
+| `/usr`	| Secondary hierarchy for user data; contains the majority of utilities, applications, libraries and the like. Teriary, local, hierarchy in `/usr/local`. |
 | `/var`	| Variable files, such as logs, spool files, and temporary e-mail files. |
 
 ## 7.4 Queuing Commands
