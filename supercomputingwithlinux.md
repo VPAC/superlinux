@@ -47,12 +47,13 @@ All trademarks are property of their respective owners.
 3.5 Two Standard Jobs with Graphic Output: GNU Octave and MATLAB(R)
 3.6 Standard Job with PDF Output: R, A Statistical Package
 3.7 Extended Application for Parallel Processing: R: A Statistical Package
-3.8 Parallel Job with License : ANSYS Finite Element Analysis
-3.9 Standard Job with License : Abaqus Finite Element Analysis
-3.1- Standard Job With Local Visualisation : NAMD and VMD
+3.8 Parallel Job: Rattus Norvegicus ESTs with BLAST and Slurm
+3.9 Parallel Job with License : ANSYS Finite Element Analysis
+3.10 Standard Job with License : Abaqus Finite Element Analysis
+3.11 Standard Job With Local Visualisation : NAMD and VMD
 
 4.0 Intermediate Linux
-4.1 Login Files
+4.1 Logins and Login Files
 4.2 Editing With Vim
 4.3 Editing with Emacs	
 4.4 Archiving Files
@@ -511,7 +512,7 @@ Desmond: Desmond is a software package developed at D.E. Shaw Research to perfor
 
 **Paraview**: ParaView is a data analysis and visualisation application. The data exploration can be done interactively in 3D or programmatically using ParaView's batch processing capabilities. ParaView was developed to analyze extremely large datasets. 
 
-**PBSssh**: PBSssh: Is a Bourne-Again shell executable for Portable Batch Script. 
+**PBSssh**: PBSssh is a Bourne-Again shell executable for Portable Batch Script. 
 
 **PHYLIP**: PHYLIP (the PHYLogeny Inference Package) is a package of programs for inferring phylogenies (evolutionary trees). 
 
@@ -650,8 +651,7 @@ However, if you do need to do remote visualisation, you will also need some sort
 With Mac or Linux simply open the terminal client and enter your username and the machine you wish to connect to, followed by the password when connected. For example;  `ssh <your username>@trifid.vpac.org`
 
 Secure shell opens a connection to a remote system. Replace trifid.vpac.org with the HPC cluster that you are connecting to.
-	
-If you want to enable graphic enabling you can use the -X or -Y (secure) options e.g., `ssh -Y <your username>@trifid.vpac.org`
+If graphic enabling is desired one can use the -X or -Y (secure) options e.g., `ssh -Y <your username>@trifid.vpac.org`
 
 Open up two terminal windows. In the first terminal window we'll explore some of the basic commands on the local machine In the second terminal window we'll do the same, but on the supercomputer.
 
@@ -681,6 +681,9 @@ Run this command on both the local computer and the supercomputer.
 `ls -lart` : "List" with long format, including file permissions (l), include hidden files ('a', for all), sorted by reverse  order ('r'), by modification time ('t').
 
 Linux commands come with `man` (manual) pages, which provide a terse description of the meaning and options available to a command. To view the appropriate man page simply enter the word man followed by the command. Specific sections of a man page can also be invoked. A more verbose alternative to man with a simple hypertext system is info. 
+
+> "If you're having trouble with a unix command, type in "man <command>" and it'll be mansplained to you!"   
+-- David Ma, *Introduction to Linux and HPC* class, Jun 26, 2016
 
 Both man and info can exited with `q` for quit.
 
@@ -865,48 +868,38 @@ The output should be something like the following:
 \> ATEKSRWSGS HQFEQLSGSI LWMAPEVIRM QDKNPYSFQS DVYAFGIVLY 
 ```
 
-For a side-by-side representation use the command sdiff instead.
+For a side-by-side representation use the command sdiff instead. If multiple files are being tested use the `-q` (quiet) option with `--from-file` (e.g., `diff -q --from-file file1 file2 file3 file4`).
 
-The diff command is often used by programmers to create a patch file between two programs. For example, if one wanted to a patch of braf/gattaca.txt to gattaca.txt one would generate the patch file like follows:
+In addition, the diff command is often used by programmers to create a patch file between two programs. For example, if one wanted to a patch of braf/gattaca.txt to gattaca.txt one would generate the patch file like follows:
 
 `diff -u gattaca.txt braf/gattaca.txt > gattaca.patch`
 
-## 2.7 Searches and Wildcards
+## 2.7 Searches and Wildcards 
 
-Often you will want to search for files or search within files for a particular phrase. The find command, which will find files according to the directory and sub-directories offered, by name, modification time, size etc, and with filter operations, all of which are available through man find. To find all files with the suffix .txt on your supercomputer account change to the home directory use the following command: `find . -name '*.txt'`. Note that the filter is within quotes, to ensure that the command is not expanded due to the wildcard. 
+Often you will want to search for files or search within files for a particular phrase. The find command, which will find files according to the directory and sub-directories offered, by name, modification time, size etc, and with filter operations, all of which are available through `man find`. To find all files with the suffix .txt on your supercomputer account change to the home directory use the following command: `find . -name './*.txt'`. Note that the filter is within quotes, to ensure that the command is not expanded due to the wildcard. The `find` command can also be used with grep for a search for words in a particular selection of files, by using `xargs` which runs the second command over all results from the first. For example, to search for BRAF in all `.txt` files the following could be used: `find . -maxdepth 1 -name '*.txt' | xargs grep -i BRAF`. Or - to introduce the `sort` command - to count all the words in `.txt` files in a directory and order according to size use: `find . -maxdepth 1 -name '*.txt' | xargs wc -w | sort -g | less`. Another advanced example is to pipe `find` with GNU `parallel`; `find . -type f | parallel -j4 grep BRAF` which would start four multiple grep searches for the term. For simple searches this is not recommended because of the start up and conclusion overhead.
 
 The `find` command is differentiated from the `locate` and `whereas` commands which also find files. The `find` command is searches for files by filename in the directories and with the options assigned. It is best for finding files that a users and within a limited directory range. In comparison the `locate` command searches through a database that must be regularly updated, typically by administrators (`updatedb`). It is best for files that are used regularly without change, or for quick search that may not be the most up-to-date. Finally, `whereis` finds source, binary and manual files by name and should be used for such searches.
 	
-To search within a collection of files use the grep command. It originally an abbreviation of "global search for a regular expression and print to standard output". The command searches the named input files for lines containing a match to the given pattern, including regular expressions, and prints the matching lines. As usual there are a variety of options available through man grep. The following command will search for the pattern 'ATEK', ignoring case, within the directory braf. Enter the following on the supercomputer:
+To search within a collection of files use the grep command. It originally an abbreviation of "global search for a regular expression and print to standard output". The command searches the named input files for lines containing a match to the given pattern, including regular expressions, and prints the matching lines. As usual there are a variety of options available through man grep. The following command will search for the pattern 'ATEK', ignoring case, within the directory braf. Enter the following on the supercomputer: `grep -i ATEK braf/*`
 
-```
-cd ~
-grep -i ATEK braf/*
-```
-
-The search is for a regular expression, which means any sequence of characters that includes the letters ATEK. If one wishes to search for a word the -w option can be invoked:
-
-```
-cd ~
-grep -w ARSLPK braf/*
-```
+The search is for a regular expression, which means any sequence of characters that includes the letters ATEK. If one wishes to search for a word the -w option can be invoked: `grep -w ARSLPK braf/*`
 
 Note that the files being searched must be specified, even with a wildcard character. Simply stating a directory is insufficient. Where there are multiple results, grep will also display the filename. Compressed or gzipped files can be searched with `zgrep`; there are other "z" tools, including `zcat`, `zdiff` etc. If one wants to search a PDF file, then either the `poppler-utils` needs to be installed, or `pdfgrep`. A binary file can also be searched for text in the binary format with the `strings` command.
 
-The wildcard you see most often is * (asterisk), but we'll start with something simpler: ? (question mark). When it appears in a filename, the ? matches any single character. For example, letter? refers to any filename that begins with letter and has one character after that. This would include letterA, letter1, as well as filenames with a non-printing character as their last letter, like letter^C. 
-
-The * wildcard matches any character or group of zero or more characters. For example, *.txt matches all files whose names end with .txt, *.c matches all files whose names end with .c (by convention, source code for programs in the C language), and so on.
+The use of wildcards is known as *globbing*, or filename expansion.  The wildcard you see most often is `*` (asterisk). The `*` wildcard matches any character or group of zero or more characters. For example, `*.txt` matches all files whose names end with .txt, `*.c` matches all files whose names end with .c (by convention, source code for programs in the C language), and so on. Anther common alternative is the wildcard, `?`. When it appears in a filename, the `?` matches any single character. For example, letter? refers to any filename that begins with letter and has one character after that. This would include `letterA`, `letter1`, as well as filenames with a non-printing character as their last letter, like `letter^C`. However it will not expand to include "dotfiles", unless the dot is explicitly stated as literal character. 
 
 | Wildcard	| Matches 	 				|
 |---------------|-----------------------------------------------|
 | ?		| Any single character 				|
 | *		| Any group of zero or more characters 		|
+| ^		| Negate sense of a match			|
 | [ab]		| Either a or b 				|
 | [a-z]		| Any character between a and z, inclusive 	|
 
+
 ## 2.8 Deletions
 
-Sometimes you'll want to remove files and directories from your account. Be very careful and very selective with this because when you're operating on the command line there's no "trashcan" to easily undelete files. Somewhere, delete really means what it says, and that somewhere is here.
+Sometimes you'll want to remove files and directories from your account. Be very careful and very selective with this because when you're operating on the command line there's no "trashcan" to easily undelete files. Somewhere, delete really means what it says, and that somewhere is here. *Technically* it is possible to recover files at this step; kick *everyone* off the the supercomputer system, have the administrators reboot into single-user mode and, painfully and slowly, scan the disks in a desparate attempt to find the data although there is no filename association. Given how utterly unlikely this is, the best solution is to backup files, backup often, and don't delete files unless you have to. Disk is relatively cheap, and certainly cheaper in a lot of cases that reconstructing data.
 
 On the supercomputer we'll carefully delete the file in the home directory and then change the directory to braf and delete the file there. We'll delete the file in that directory, change out of that directory and delete the directory.
 
@@ -925,7 +918,7 @@ Then on the local computer we'll use a shortcut; a command which deletes the ent
 rm -rf braf/
 ```
 
-Be very careful with rm, especially with the -rf option and especially with wildcards. Consider what would happen to someone who wishes to delete all their backup files in a directory with the helpful suffix .BAK. Choosing a wildcard and the suffix they intend to type rm *.BAK but instead, they mistype the command and type rm * .BAK. The result of this typing error is that they have just deleted everything in that directory. Worse still imagine a user running as root thinking that they are about to delete a directory and instead types rm -rf / ; a command that will delete everything or, more commonly rm -rf ./ ; a command which deletes the current directory and all sub-directories. 
+Again, be very careful with `rm`, especially with the `-rf` option and especially with wildcards. Consider what would happen to someone who wishes to delete all their backup files in a directory with the helpful suffix .BAK. Choosing a wildcard and the suffix they intend to type `rm *.BAK` but instead, they mistype the command and type `rm * .BAK`. The result of this typing error is that they have just deleted everything in that directory. Worse still imagine a user running as root thinking that they are about to delete a directory and instead types `rm -rf /` ; a command that will delete everything or, more commonly `rm -rf ./` ; a command which deletes the current directory and all sub-directories. 
 
 > **Why The File Differences Mattered**   
 BRAF is a human gene that makes a protein (imaginatively) named B-Raf. This protein is involved in sending signals inside cells, which are involved in directing cell growth. In 2002, it was shown to be faulty (mutated) in human cancers.    
@@ -937,7 +930,7 @@ In particular the difference that between the two files "ATVKSRWSGS" and "ATEKSR
 
 Modulefiles also have the advantages of being shared on many users on a system (such as an HPC system) and easily allowing multiple installations of the same application but with different versions and compilation options. Sometimes users want the latest and greatest of a particular version of an application for the feature-set they offer. In other cases, such as someone who is participating in a research project, a consistent version of an application is desired. Having multiple version of applications available on a system is essential in research computing.
 
-When you are operating on a Linux system the user has a certain environment; this can be checked with the `env` command. This will include particular a set of paths, which indicate where binary executables, libraries, etc will be found. Environment modules allow the user to dynamically change what is in their path.
+When you are operating on a Linux system the user has a certain environment; this can be checked with the `env` command. This will include particular a set of paths, which indicate where binary executables, libraries, etc will be found. Environment modules allow the user to dynamically change what is in their path. For a user to see what their current path is the command `echo $PATH` can be used.
 
 **Module commands**
 
@@ -947,7 +940,7 @@ Some basic module commands include the following:
 
 `module avail` : This option lists all the modules which are available to be loaded. Notice that many of them have version numbers associated with them. Modules makes it easy to switch compiler application versions. The module name without a version number is the production default. 
 
-One particular nuissance is that the output of a module avail is treated as a standard error, rather than standard output in the standard environment modules application. Thus to pipe the output of module avail to less, one has to redirect standard error to standard output. This can also be used for providing an output of `module whatis`  i.e.,
+One particular nuissance is that the output of a module avail is treated as a standard error, rather than standard output, in the standard environment modules application. Thus to pipe the output of module avail to less, one has to redirect standard error to standard output. This can also be used for providing an output of `module whatis`  i.e.,
 
 ```
 module avail 2>&1 | less
@@ -1019,7 +1012,9 @@ If the `module load` line is found in multiple shell initialization files, all o
 
 A batch system, often expressed as 'Portal Batch System' or PBS) is the name of a utility software that performs job scheduling by assigning unattended background tasks expressed as batch jobs, among the available resources. A batch system typically consists of a resource manager (e.g., TORQUE) and a job scheduler (e.g., Maui, Moab), or a combination (e.g., PBSPro, Slurm). The scheduler provides for paramterisation of computer resources, an automatic submission of execution tasks, and a notification system for incidents. The resource manager is responsible for managing the resources of the cluter, such as the the availble nodes and processors, memory etc, and to ensure that jobs do not overlap on such resources.
 
-The original Portable Batch System was developed by MRJ Technology Solutions under contract to NASA in the early 1990s. In 1998 the original version of PBS was released as an open-source product as OpenPBS. This was forked by Adaptive Computing (formally, Cluster Resources) who developed TORQUE (Terascale Open-source Resource and QUEue Manager). Many of the original engineering team and what commercial property of exists from the original product is now part of Altair Engineering who have their own version, PBSPro. In addition to this the popular job scheduler SLURM (Simple Linux Utility for Resource Management) also uses batch script where are very similar in intent and style to PBS scripts.
+The contemporary Portable Batch System was developed by MRJ Technology Solutions under contract to NASA in the early 1990s. In 1998 the original version of PBS was released as an open-source product as OpenPBS. OpenPBS, for those truly interested, is still available although not in particularly active development. `http://www.mcs.anl.gov/research/projects/openpbs/`.
+
+OpenPBS was forked by Adaptive Computing (formally, Cluster Resources) who developed TORQUE (Terascale Open-source Resource and QUEue Manager). Many of the original engineering team and what commercial property of exists from the original product is now part of Altair Engineering who have their own version, PBSPro. In addition to this the popular job scheduler SLURM (Simple Linux Utility for Resource Management) also uses batch script where are very similar in intent and style to PBS scripts.
 
 In addition to this variety of implementations of batch submission systems in different institutions may also make further elaborations and specifications to their submission filters (e.g., site-specific queues, user projects for accounting). This means that job scripts that one may find from other sources are not always completely compatible. The user needs to pay attention to what implementation is being used on their system and to determine site-specific options have been enabled. 
 
@@ -1028,7 +1023,7 @@ The batch command file does not need to be an executable. In the case of paralle
 Submitting and running jobs is a relatively straight-forward process consisting of:
 
 1) Setup and launch
-2) Monitor results
+2) Monitor run
 3) Retrieve results and analyse.
 
 Remember that this is a shared environment, hence the need for a resource requesting system. There could be hundreds or thousands of individuals with accounts on an HPC cluster, and they all will want resources. Policies are typically established to ensure that everyone has access to a "fair share" of these resources (e.g., a limit on how many processors an individual may access at any one time). One thing that is invariably requested by administrators of HPC clusters:
@@ -1039,7 +1034,9 @@ Whilst the entire cluster is a shared resource, the login node is a particularly
 
 The graphic presented below (from an otherwise fairly formal book on queue management by IBM) gives an amusing representation of what occurs; the jobs are launched by the user (the initial rabbits) which then go into a queue. The scheduler (the dog) determines when they can run, they dash off to the compute machines and, after computation, collect their results (the carrots).
 
-1. Setup and Launch
+<img src="https://raw.githubusercontent.com/VPAC/superlinux/master/images/rabbitjobs.png" />
+
+**Setup and Launch**
 
 When uploading files in preparation for launching a HPC job it is good practice to keep each job in separate folders, labeled in an intuitive way, such as:    NAMD_albumin_run_01 . Writing all files to the top level of the home directory will very quickly become difficult to follow and easy to make mistakes. Use the mkdir command learned in the previous section to do this.
 
@@ -1062,9 +1059,9 @@ The following is a sample PBS script for TORQUE and with comments for script for
 | #PBS -l nodes=8		| Asking for any 8 cores for TORQUE.				|
 | # PBS -l ncpus=8		| The same resource request, but for PBSPro.			|
 | # SBATCH -ntasks=8		| Again, the same resource requests, but this time for SLURM.	|
-| # PBS -M example@example.com	| The email address that notifications should be sent to for TORQUE and PBSPro. Currently commented out. Make sure this is entered correctly.				|
+| # PBS -M example@example.com	| The email address that notifications should be sent to for TORQUE and PBSPro. Currently commented out. Make sure this is entered correctly. Multiple addresses possible with comma separation. 	|
 | # SBATCH --mail-user=example@example.com	| The same command as above, except for SLURM.	|
-| # PBS -m abe			| Mail user if job aborts (a), begins (b) or ends (e). Currently commented out. 			|
+| # PBS -m abe			| Mail user if job aborts (a), begins (b) or ends (e). Anther option is never (n). Currently commented out. 			|
 | # SBATCH –mail-type=FAIL	| |
 | # SBATCH --mail-type=BEGIN	| |
 | # SBATCH –mail-type=END	| |
@@ -1122,16 +1119,15 @@ Sometimes you will require more or less memory that is typical for a job. In the
 
 Many schedulers and resource managers use a backfilling algorithm to improve system utilisation and maximise job throughout. When more resource intensive (e.g., multiple node) jobs are running it is possible that gaps ends up in the resource allocation. To fill these gaps a best effort is made for low-resource jobs to slot into these spaces.
 
-
 ## 3.3 Frequently Used PBS and Scheduler Commands
 
 | TORQUE/PBSPro		| SLURM		| Description					|
 |-----------------------|---------------|-----------------------------------------------|
 | qstat			| squeue	| Show status of jobs   			|
-| showq			| squeue	| Displays information about active, eligible, blocked, and/or recently completed jobs.					|
-| showq -u user=[username] |	squeue -u | Showq with a constraint, in this case, user. Not available in PBSPro [EDIT].									|
+| showq			| squeue	| Displays information about active, eligible, blocked, and/or recently completed jobs |
+| showq -u 		| squeue -u 	| Showq with a constraint, in this case, user	|
 | qstat -q		| sinfo -a	| List all queues or partitions 		|
-| qstat -Q		| sinfo -a	| Queue limits.					|
+| qstat -Q		| sinfo -a	| Queue limits, queue and partition status	|
 | qstat -a		| squeue -A 	| List all jobs in alternative format.		|
 | qstat -au		| squeue -A <account> | List all jobs of a particular user, e.g., qstat -au mike|
 | qstat -s 		| squeue -a	| All jobs with status comments			|
@@ -1190,21 +1186,21 @@ Assuming all goes well, DLPOLY will read in the CONFIG, CONTROL, and FIELD data,
 
 GNU Octave is a mathematical application and programming language that is highly compatible with MATLAB(R) but without the licensing restrictions. The following compares (using TORQUE examples) two job scripts written for the respective languages that generate the same result. 
 
-```
-#!/bin/sh
-#PBS -l nodes=1:ppn=1
+```   
+#!/bin/bash   
+#PBS -l nodes=1:ppn=1   
 #PBS -l walltime=00:10:00
 module load matlab
 cd $PBS\_O\_WORKDIR 
 matlab -nodesktop -nodisplay -nosplash < polar-plot.m
 ```
 
-```
-#!/bin/sh 
-#PBS -l nodes=1:ppn=1 
+```   
+#!/bin/bash     
+#PBS -l nodes=1:ppn=1
 #PBS -l walltime=00:10:00 
 module load octave
-cd $PBS\_O\_WORKDIR
+cd $PBS_O_WORKDIR
 octave polar-plot.m
 ```
 
@@ -1253,7 +1249,87 @@ In the file `xvalidate.R`, the R script calls the special library extension snow
 
 This example of parallel processing with R is taken from Eugster and Knaus (2011).
 
-## 3.8 Parallel Job with License : ANSYS Finite Element Analysis
+## 3.8 Single Node Parallel Job: Rattus Norvegicus ESTs with BLAST and Slurm
+
+<img src="https://raw.githubusercontent.com/VPAC/superlinux/master/images/2011tricky-naughty.jpg" />
+
+The following is a short tutorial on using BLAST with Slurm (rather than PBS Torque or PBSPro) using fasta nucleic acid (fna) FASTA formatted sequence files for Rattus Norvegicus. It assumes that BLAST (Basic Local Alignment Search Tool) is already installed.
+
+First, create a database directory, download the datafile, extract, and load the environment variables for BLAST.
+
+```
+mkdir -r ~/applicationtests/BLAST/dbs
+cd ~/applicationtests/BLAST/dbs
+wget ftp://ftp.ncbi.nih.gov/refseq/R_norvegicus/mRNA_Prot/rat.1.rna.fna.gz
+gunzip rat.1.rna.fna.gz
+module load BLAST/2.2.26-Linux_x86_64
+```
+Having extracted the file, there will be a fna formatted sequence file, rat.1.rna.fna. An example header line for a sequence:
+
+`NM_175581.3 Rattus norvegicus cathepsin R (Ctsr), mRNA`
+
+The next step is to format the file using `formatdb`. This simply formats protein or nucleotide source databases before these databases can be searched by BLAST. There is a plethora of options available with this versitile command. In a nutshell however, the following reads in an input file (`-i`, this is always required), specifies the type of file (`-p F`, nucleotide), and parse options (`-o T`, parse SeqId and create indexes).
+
+`formatdb -i rat.1.rna.fna -p F -o T`
+
+After formatting there will a larger collection of files (including four binary packed data) in the database directory and a log file.
+
+```
+total 390836
+drwxr-xr-x 4 lev unimelb 4096 Nov 13 08:45 ..
+-rw-r--r-- 1 lev unimelb 306886177 Nov 13 09:32 rat.1.rna.fna
+-rw-r--r-- 1 lev unimelb 0 Nov 13 09:33 rat.1.fna.nhr
+-rw-r--r-- 1 lev unimelb 0 Nov 13 09:33 rat.1.fna.nin
+-rw-r--r-- 1 lev unimelb 0 Nov 13 09:33 rat.1.fna.ntm
+-rw-r--r-- 1 lev unimelb 1 Nov 13 09:33 rat.1.fna.nsq
+-rw-r--r-- 1 lev unimelb 4067346 Nov 13 09:36 rat.1.rna.fna.nsd
+drwxr-xr-x 2 lev unimelb 4096 Nov 13 09:36 .
+-rw-r--r-- 1 lev unimelb 86416 Nov 13 09:36 rat.1.rna.fna.nsi
+-rw-r--r-- 1 lev unimelb 13032873 Nov 13 09:36 rat.1.rna.fna.nhr
+-rw-r--r-- 1 lev unimelb 1094580 Nov 13 09:36 rat.1.rna.fna.nin
+-rw-r--r-- 1 lev unimelb 73425470 Nov 13 09:36 rat.1.rna.fna.nsq
+-rw-r--r-- 1 lev unimelb 765 Nov 13 09:36 formatdb.log
+```
+
+The next step to acquire the Express Sequence Tags, a short sub-sequence of cDNA sequence used to identify gene transcripts, used for gene discovery and gene-sequence determination. Create the directory, download, and extract.
+
+```
+mkdir -r ~/applicationtests/BLAST/rat-ests
+cd ~/applicationtests/BLAST/rat-ests
+wget http://mirrors.vbi.vt.edu/mirrors/ftp.ncbi.nih.gov/genomes/Rattus_norveg...
+gunzip rn_est
+```
+A sample header takes the following format:
+
+`gi|1154902|emb|X94495.1|X94495 RNSAP11G Rat brain, postnatal day 25 Rattus norvegicus cDNA clone sap11g, mRNA sequence /len=231`
+
+The final step is to run the Slurm script. The following example uses the default queue, a single node, eight cores in the node (each with one task each each), and for ten hours.
+
+```
+cd ~/applicationtests/BLAST/
+sbatch blast.slurm
+```
+
+The script load the BLAST module and runs the blastall command, taking in the `rn_est` as input query file, the `rat.1.rna.fna` file as the database, running a `blastn` (nucleotide vs. nucleotide) search with a 0.05 expectation value, seaching for five database sequences (this is a test), outputting a tabular alignment with comment lines, with the output file name `rat_blast_tab.txt`, and using 8 processor cores. Note that this must be specified even though it has been allocated by the Slurm script. Just because one allocates cores, the program doesn't automatically scale unless it is explicitly told to do so!
+
+```
+#!/bin/bash
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=8
+#SBATCH --time=10:00:00
+module load BLAST/2.2.26-Linux_x86_64
+blastall -i ./rat-ests/rn_est -d ./dbs/rat.1.rna.fna -p blastn -e 0.05 -v 5 -b 5 -T F -m 9 -o rat_blast_tab.txt -a 8
+```
+
+In addition to the output file specified, there will elso be an `error.log` file and a Slurm output file (e.g., `slurm-1405519.out`). The output head of `rat_blast_tab.txt` takes the following format:
+
+```
+# BLASTN 2.2.26 [Sep-21-2011]
+# Query: gi|1154902|emb|X94495.1|X94495 RNSAP11G Rat brain, postnatal day 25 Rattus norvegicus cDNA clone sap11g, mRNA sequence /len=231
+```
+
+
+## 3.9 Parallel Job with License : ANSYS Finite Element Analysis
 
 ANSYS is an engineering simulation for general-purpose finite element analysis and computational fluid dynamics. The following example is an Oscillating Plate with Two-Way Fluid-Structure Interaction from the ANSYS tutorials, but modified as a task for parallel computation. This tutorial uses an example of an oscillating plate simulation involving two-way Fluid-Structure Interaction (FSI). The structural physics is set up in the Transient Structural analysis system and the fluid physics is set up in Fluid Flow (CFX) analysis system, but both structural and fluid physics are solved together under the Solution cell of the Fluid system. Coupling between two analysis systems is required throughout the solution to model the interaction between structural and fluid systems as time progresses. The framework for the coupling is provided by the ANSYS Multi-field solver using the MFX setup. 
 
@@ -1282,7 +1358,7 @@ This is what sets the resources for an ANSYS job. It will not run without it. Fo
 
 You should be now able to check your output file, `OscillatingPlate.db`. Two other ANSYS jobs you can launch and view results include `pbs-script-pvm` and `pbs-cfx-benchmark`. 
 
-## 3.9 Standard Job with License : Abaqus Finite Element Analysis
+## 3.10 Standard Job with License : Abaqus Finite Element Analysis
 
 The Abaqus FEA suite is commonly used in automatic engineering problems using a common model data structure and integrated solver technology. As licensed software it requires a number of license tokens based on the number of cores required, which can be calculated by the simple formula int(5 x N^0.422), where N is the number of cores. Device Analytics offers an online calculator at http://deviceanalytics.com/abaqus-token-calculator .
 
@@ -1323,22 +1399,18 @@ The following procedure can be used to plot the crash models deformed shape:
  * Select [Plot Deformed Shape] in the Toolbox area. By default, the final step is displayed. It should be noted that the Deformation Scale Factor is 1 by default in explicit analyses.
 * Select [Animate: Time History] to animate the crash event. The frame rate can be adjusted by clicking [Animation Options] and moving the slider in the Player tab to the desired speed.
 
-## 3.10 Standard Job With Local Visualisation : NAMD and VMD
+## 3.11 Standard Job With Local Visualisation : NAMD and VMD
 
-NAMD is a parallel, molecular dynamics simulation program used to model large biomolecular systems using high performance computing clusters which is freely available for academic work.  If you are interested in running NAMD simulations you should also install a local copy of VMD on your own computer.  VMD is a molecular viewer program that can be used to help set up NAMD simulation and to help analyse and visualize NAMD output. 
+NAMD is a parallel, molecular dynamics simulation program used to model large biomolecular systems using high performance computing clusters which is freely available for academic work.  If one is interested in running NAMD simulations they should also install a local copy of VMD on their own computer.  VMD is a molecular viewer program that can be used to help set up NAMD simulation and to help analyse and visualize NAMD output. 
 
+NAMD can be freely obtained from: `http://www.ks.uiuc.edu/Research/namd/`
 VMD can be freely obtained from:  `http://www.ks.uiuc.edu/Research/vmd/`
 
 Additional tutorials and information about NAMD are available at: `http://www.ks.uiuc.edu/Research/namd/`
 
 **Molecular Dynamics Simulation**
 
-We have an example of Ubiquitin protein, in a vacuum,  ready to download and run.  Normally we would do this with water and salt ions, but we need the simulation to run quickly for demonstration purposes. 
-
-Change into this directory and launch the job with the command `qsub` and the pbs script for TORQUE or PBSPro, or `sbatch` for SLURM. 
-
-`cd namd`
-`qsub pbs_example_script`
+An example of Ubiquitin protein, in a vacuum is available in the github site for this book. A job script is also provided. Launching the script is is with `qsub` for TORQUE or PBS or `sbatch` for SLURM.  e.g., `qsub pbs_example_script`
  
 This particular job is very short compared to a regular NAMD simulation and should be finished in a few minutes. As the job runs, various output files are produced but the main one you will be interested in is the trajectory file with the  .dcd suffix.  The business end of the script is in the last line: 
 
@@ -1358,7 +1430,7 @@ coordinates		1ubq_example.pdb
 outputName		1ubq_example_output_01
 ```
 
- Further down you will see: 
+Further down you will see: 
 
 ```
 set temp           310
@@ -1507,14 +1579,53 @@ Overall, when submitting jobs it really is a case of trial and error initially f
 
 # 4.0 Intermediate Linux
 
-## 4.1 Login Files
+## 4.1 Logins and Login Files
 
-One of the first commands introduced was how to generate directory listing when a user logged in on the command line i.e., ls. We also learned how to get a more complete directory listing by applying options to a basic command, for example one which is ls -lart (list with long format, including file permissions (l), all files (a), sorted in reverse order (r), by modification time (t).  Start up a terminal window, login to the supercomputer and run a long directory listing: `ls -lart` 
+To this point all Linux logins have been through a username and password combination. Two common extensions to a standard login are *passwordless* SSH and an SSH *configuration*. 
+
+For the former, as the name indicates, it allows logins without a password by providing a pair of authentication keys. Firstly on the local machine, a public/private key is generated. The passphrase should be secure. The private key is kept on the local machine and not shared with anyone, ever. The public key however is appended to the the supercomputer's authorized keys list for that account.
+
+```
+lev@localhost:~> ssh-keygen -t rsa
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/lev/.ssh/id_rsa): 
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /home/a/.ssh/id_rsa.
+Your public key has been saved in /home/a/.ssh/id_rsa.pub.
+lev@local:~> ssh lev@trifid.vpac.org mkdir -p .ssh
+lev@trifid.vpac.org's password: 
+lev@localhost:~> cat .ssh/id_rsa.pub | ssh lev@trifid.vpac.org 'cat >> .ssh/authorized_keys'
+lev@trifid.vpac.org's password: 
+```
+
+An SSH configuration file is even simpler. This is rather lika an alias to a name which can, among other things, provide a shortcut to a username and hostname combination. This is particularly useful if one has several user names and complex hostnames. An SSH configuration is stored in the home directory of the host machine. The following is a sample snippet:
+
+```
+cat ~/.ssh/config
+Host edward
+	Hostanme edward.hpc.unimelb.edu.au
+	User lev 
+Host nci
+	Hostname raijin.nci.org.au
+	User ll7341
+Host ninjadan
+    	Hostname 128.250.116.168
+    	User lev
+...
+Host spartan
+	Hostname spartan.hpc.unimelb.edu.au
+	User lev
+Host trifid
+	Hostname trifid.vpac.org
+	User lev
+```	
+
+One of the first commands introduced was how to generate directory listing when a user logged in on the command line i.e., ls. We also learned how to get a more complete directory listing by applying options to a basic command, for example one which is ls -lart (list with long format, including file permissions (l), all files (a), sorted in reverse order (r), by modification time (t).  Start up a terminal window, login to the supercomputer and run a long directory listing: `ls -lart`. In some cases files are many years old and there may be confusion over which *year* is being described in the modification time. In these situations use `ls -alr --full-time` 
 
 Two of the hidden files are .bash_profile and .bashrc . These are startup files for the Bash shell (Bourne-again shell). The shell is a program that acts as command interpreter between the user and the operating system. Users can interact directly with the shell, or with an application which interacts with the shell as the image portrays (image from opensuse.org). A user submits their commands to the shell, which then either executes them directly or passes them on to other programs. These programs in turn request lower-level services from the kernel. Unlike some operating systems, Linux has a number of different shells available to users some of which we'll briefly explore in this course; the default most of these days is bash. 
 
-The `.bash_profile` file is executed when you login. This is a good place to include configurations for the user.
-The `.bashrc` is used for nonlogin shells and typically used for configurations to the bash environment itself. For example if a second-bash process is initiated after a user has already logged in.
+The `.bash_profile` file is executed when you login. This is a good place to include configurations for the user. The `.bashrc` is used for nonlogin shells and typically used for configurations to the bash environment itself. For example if a second-bash process is initiated after a user has already logged in. The "rc" is a historic term for "run control".
 
 When Bash is invoked as an interactive login shell it first reads and executes commands from the file `/etc/profile`, if that file exists. After reading that file, it looks for `~/.bash_profile`, `~/.bash_login`, and `~/.profile`, in that order, and reads and executes commands from the first one that exists and is readable. 
 
@@ -1715,6 +1826,7 @@ For example, to change the contents in a column of text, select the column with 
 Like .bash_profile and .bashrc an equivalent can be created with a .vimrc.  The following is a small and simple example; you will note that " is a comment marker.  Other options  can be found by going to :help options in vim itself.
 
 ```
+color desert "List of colour options at /usr/share/vim/vim74/colors/
 set nocompatible "use vim defaults rather than force compatibility with vi
 set incsearch  "Incremental searching; vim will search for text as you enter it
 set tabstop=4 "Sets tabs to four characters (default is eight)
@@ -1902,7 +2014,7 @@ Note that when directories are archived they are also extracted in the order tha
 
 `tar tf tarbomb.tar | xargs rm -rf`
 
-This xargs command takes the output of the tar table of contents and uses that as an input for the rm -rf command. Usual caveats apply with using 'rm' - be very careful that you don't delete something that you actually want to keep! 
+This `xargs` command takes the output of *all* the results in the tar table of contents and uses that as an input for the `rm -rf` command. Usual caveats apply with using 'rm' - be very careful that you don't delete something that you actually want to keep! 
 
 Another common compression algorithm that Linux users are likely to encounter with regularity is bzip2. It is particularly notable for the efficiency of the files it compresses, but at a cost of decompression speed. Like gzip, bzip2 is not an archiver; again you have to use tar for that. The commands however are remarkably similar. Drawing from the previous examples just provided you would have commands like the following;
 
@@ -1939,7 +2051,7 @@ The default behaviour is to accept inputs from the terminal (standard input) and
 
 Which is, of course, identical to the command `grep -i 3639992 quakes.csv > 3639992.txt`, but it illustrates the use of multiple redirection. 
 
-In any shell derived from the original Bourne shell (such as bash), redirections can be further modified by placing a number next immediately before the redirector, which affects which stream is being used for redirection. These numbers are 0 for standard input, 1 for standard output and 2 for standard error. 
+In any shell derived from the original Bourne shell (such as bash), redirections can be further modified by placing a number next immediately before the redirector, which affects which stream is being used for redirection. These numbers are 0 for standard input, 1 for standard output and 2 for standard error. There other file descriptors optionally available (from 3 to 9) which are rarely used (e.g., assigning one of these additional file descriptors to stdin, stdout, or stderr as a temporary duplicate link).
 
 Standard error is just another output stream. Unlike standard output, it provides error messages rather than results. Like standard output it is typically sent to the terminal by default, but it can be redirected to a file. e.g., run the ifconfig command on tango, then run it again with the error message redirected. As an example, let us try to list a directory that doesn't exist.
 
@@ -2095,7 +2207,7 @@ This most common option is -s, to create a symbolic link. The source is the orig
 With a hard link: File1 -> Data1 and File2 -> Data1    
 With a symbolic link: File2 -> File1 -> Data1
 
-This means that if the original file is deleted with hard links, any new hardlinked files will still be able to access the data. However if the original file for a symbolic link is deleted, it will create a "dead link". The symlink points to the now deleted file, not the data itself! Despite this apparent fragility, the ability for symlinks to traverse file systems is seen as a significant advantage and they are usually more commonly used than hard links.
+This means that if the original file is deleted with hard links, any new hardlinked files will still be able to access the data. However if the original file for a symbolic link is deleted, it will create a "dead link". The symlink points to the now deleted file, not the data itself! Despite this apparent fragility, the ability for symlinks to traverse file systems is seen as a significant advantage and they are usually more commonly used than hard links. Note also that symlinks can be overwritten with an additional `-f` option. 
 
 The above is a bit of a simplification. To be more precise, a Linux file consists of a filename and an inode reference. The reference maps to the actual inode. The inode contains the permissions, and data address. More than one filename can have the same inode reference; thus files can be hardlinked. i.e.,
 
@@ -2545,17 +2657,17 @@ $ echo $Ubh
 
 In addition to variable assignments, bash scripting allows for  loops (for/do, while/do, util/do) and conditionals (if/then/else/fi, case). For example, the first for/do one-line script (which, like all scripts, can be run directly from the bash shell), moves all files in the working directory to lower case; a second example copies all .oga files to .ogg - the format is identical and recommended, but some music players might not recognise it. 
 
-The until/do loop conducts the same action, but with the count in reverse. The next until/do produces the same results as the first, but not the difference in the conditional test. The main difference between while/do and until/do is that the while/do loop repeats the code block while the conditional is true whilst the until/do loop repeats the block whilst the expression is false. In the first script, brace expansion is used to refer to file names, and the conversion from mp3 to ogg.
+The until/do loop conducts the same action, but with the count in reverse. The next until/do produces the same results as the first, but not the difference in the conditional test. The main difference between while/do and until/do is that the while/do loop repeats the code block while the conditional is true whilst the until/do loop repeats the block whilst the expression is false. In the first script, brace expansion is used to refer to file names, and the conversion from mp3 to ogg. The `./` before the glob `*` exists to prevent bad filenames causing problems.
 
-`for item in *.mp3 ; do ffmpeg -i "${item}" "${file/%mp3/ogg}" ; done`
-`for item in *.jpeg ; do convert "$item" "${item%.*}.png" ; done`
+`for item in ./*.mp3 ; do ffmpeg -i "${item}" "${file/%mp3/ogg}" ; done`
+`for item in ./*.jpeg ; do convert "$item" "${item%.*}.png" ; done`
 
-Note the use of command substitution by using $(command); sometimes you will find the use of backticks instead (e.g., `for item in * ; do mv $item \`echo $file | tr "A-Z" "a-z"\` ; done);` this is *not* recommended. The use of backticks (a) not a POSIX standard, (b) can be difficult to read with deep escapes and (c) can be *very* dangerous if mistaken for strong quotes.
+Note the use of command substitution by using $(command); sometimes you will find the use of backticks instead (e.g., `for item in ./* ; do mv $item \`echo $file | tr "A-Z" "a-z"\` ; done);` this is *not* recommended. The use of backticks (a) not a POSIX standard, (b) can be difficult to read with deep escapes and (c) can be *very* dangerous if mistaken for strong quotes.
 
 Early in this book it was recommended that spaces should be avoided in filenames. Part of this is due to poorly designed scripts that make use of the `ls` command. In a nutshell, `ls` can't differentiate in a script what is a filename and what is a space. It is, of course, unnecessary. Worse still, if any of the directories have files the process will generate the files inside the directories as well.
 
 `touch "a file with lots of spaces in the name"`
-`for item in $(ls *); do echo ${item}; done`
+`for item in $(ls ./*); do echo ${item}; done`
 `for item in *; do echo ${item}; done`
 
 The following are examples of loops with conditional tests. Also note the use of bash's integer arithmetic, and especially the use of spacing and bracketing. There is actually an astounding number of ways of doing arithmetic in bash; the version used here is a good combination of legibility and speed. These count can, of course, be varied to indicate step sizes.
@@ -2633,6 +2745,14 @@ There are also a number of special characters in bash scripting. Quoting disable
 `echo "There are $(ls | wc -l) files in $(pwd)"`
 `echo 'There are $(ls | wc -l) files in $(pwd)'`
 
+Note that within a script, `pwd` will refer to wherever the action is occuring, not where the script is located. For the latter, consider using the `dirname` command, as follows:
+
+```
+#!/bin/bash
+echo "The script you are running has basename `basename $0`, dirname `dirname $0`"
+echo "The present working directory is `pwd`"
+```
+
 The following simple example tests a conditional on whether a specified file exists at the location stated.
 
 ```
@@ -2662,7 +2782,7 @@ The following example was used by Mike Kuiper; a directory held a large number o
 
 ```
 #!/bin/bash 
- for item in *.plot.dat; do 
+ for item in ./*.plot.dat; do 
 	if [ -f $item.tmp ]; then 
 	  : 
  	else 
@@ -2864,7 +2984,7 @@ The simplest script is simply one that runs a list of system commands. At least 
 
 ```
 #!/bin/bash
-du -sk * | sort -nr | cut -f2 | xargs -d "\n" du -sh  > diskuse.txt
+du -sk ./* | sort -nr | cut -f2 | xargs -d "\n" du -sh  > diskuse.txt
 ```
 
 The script runs a disk usage in summary, sorts in order of size, extracting the second field, parses the values in delimited form to run as disk usage summary in human form, and then exports to the file `diskuse.txt`. The `\n` is to ignore spaces in filenames.
@@ -2874,7 +2994,7 @@ Whilst sometimes making the script a little more complex, variables are usually 
 ```
 #!/bin/bash   
 DU=diskuse$(date +%Y%m%d).txt   
-du -sk * | sort -nr | cut -f2 | xargs -d "\n" du -sh  > $DU   
+du -sk ./* | sort -nr | cut -f2 | xargs -d "\n" du -sh  > $DU   
 echo "Disk summary completed and sorted."   
 if [ -f $DU ]; then
 		exit 0
@@ -2883,7 +3003,9 @@ else
 fi
 ```
 
-As a matter of useful stylistic convention global variables should be written in upper-case, and local variables in lower case, if the script makes use of functions to differentiate between variable scope. In shorter scripts this may not be necessary. As a general principle global variables should kept to a minimum and in longer scripts, the should be constants which can be enforced with the `readonly` statement. For example, to state the name of the script throughtthe script itself use `readonly PROGNAME=$(basename $0)`.
+Note that the glob, `*` has been prefixed with a `./`; this is to protect the shell expansion limiting it to the directory that it is calling and with the specific command, regardless of the utility being invoked. Imagine, for example a `cat` command invoked on a directory with a bad file called `-n` - which would read the command as `cat -n`, or the presence of any directory with a file named `-`.
+
+Also, as a matter of useful stylistic convention global variables should be written in upper-case, and local variables in lower case, if the script makes use of functions to differentiate between variable scope. In shorter scripts this may not be necessary. As a general principle global variables should kept to a minimum and in longer scripts, the should be constants which can be enforced with the `readonly` statement. For example, to state the name of the script throughtthe script itself use `readonly PROGNAME=$(basename $0)`.
 
 **Using Conditionals**
 
@@ -2947,6 +3069,25 @@ Redirections can also be added to a function call, furthering and debugging and 
 
 Functions also have the advantage of providing variable scope, which should be used whenever possible to enforce a stronger sense of namespace. A variable within a function can be declared with with `local varname=value` within the function and is not accessible outside it. Unlike a number of other programming languages, a Bash variable declared inside a function is local only if declared as such.
 
+**Terminate Signals in A Job**
+
+Signals can be send to processes. In job submission a recommended signal is TERM, which can be used to kill a process. This is typically carried out by a scheduling system when a job has exceeded walltime or a `qdel` has been issues on the job. This is another example of using a function for debugging, but within a job itself, as all jobscripts are also shell scripts.
+
+``
+#!/bin/bash
+#PBS -l walltime=10:00:00
+#PBS -l nodes=2
+#PBS -l ppn=2
+terminator()
+{
+        echo "Terminator function called.  Exiting"
+        # Cleanup actions
+        exit -1
+}
+
+trap 'terminator' TERM
+```
+
 **Metacharacters**
 
 Scripts essentially consist of commands, keywords, and meta-characters. Meta-characters have meaning beyond their literal meaning (a meta-meaning, if you like). 
@@ -2969,7 +3110,7 @@ esac
 In contrast, the colon acts as a null command. Whilst this obviously has a variety of uses (e.g., an alternative to the touch command, a really practical advantage of this is that comes with a true exit status, and as such it can be used as placeholder in if/then tests. An as prior illustrated example;
 
 ```
-for file in *.plot.dat; do     
+for file in ./*.plot.dat; do     
 	if [ -f $file.tmp ]; then     
 	  : # do nothing and exit if-then    
  	else    
@@ -3159,7 +3300,7 @@ IGNEOUS SEDIMENTARY METAMORPHIC
 
 It is often used to invoke the bc calculator language. e.g.,
 
-```bc -l <<< 2,736^9/22```
+`bc -l <<< 2,736^9/22`
 
 Heredocs can also be used however to create job submission scripts. The following example creates one hundred identical PBS scripts. The script itself is trivial of course, but the generation process is rapid and with the use of variables can allows for some quick association with data files.
 
@@ -3207,30 +3348,30 @@ In the Octave array example below, the input files are names from the PBS array 
 #!/bin/bash    
 #PBS -N octave-array    
 ## PBS -N octave-array
-### SBATCH --job-name="octave-array"   
+## SBATCH --job-name="octave-array"   
 
 #PBS -l nodes=1   
 ## PBS -l ncpus=1   
-### SBATCH ntasks=1   
+## SBATCH ntasks=1   
 
 #PBS -l walltime=00:01:00     
 ## PBS -l walltime=00:01:00       
-### SBATCH -t=00:01:00   
+## SBATCH -t=00:01:00   
 
 #PBS -t 1-10    
 ## PBS -J 1-10   
-### SBATCH --array=1-10   
+## SBATCH --array=1-10   
 
 cd $PBS\_O_WORKDIR    
 ## Identical for PBSPro   
-### Not needed in SLURM
+## Not needed in SLURM
 
 module load octave/3.8.2    
 # Identical for PBSPro and SLURM
 
 octave file-${PBS_ARRAYID}.oct    
 ## octave file-${PBS_ARRAY_INDEX}.oct   
-### octave file-${SLURM_ARRAY_TASK_ID}.oct   
+## octave file-${SLURM_ARRAY_TASK_ID}.oct   
 ```
 
 In all cases the GNU Octave files, octave-1.oct through to octave-10.oct are identical:
@@ -3281,7 +3422,7 @@ The following example is for TORQUE for mysecondjob.pbs. It differs from myfirst
 #PBS -l walltime=000:02:00   
 #PBS -l nodes=1:ppn=1    
 #PBS -W x=depend:afterok:myfirstjob    
-cd $PBS\_O\_WORKDIR    
+cd $PBS_O_WORKDIR    
 echo $(hostname ) $PBS_JOBNAME running $PBS_JOBID >> hostname.txt     
 sleep 60   
 ```
