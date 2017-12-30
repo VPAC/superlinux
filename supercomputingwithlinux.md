@@ -3046,7 +3046,7 @@ Functions also have the advantage of providing variable scope, which should be u
 
 Signals can be send to processes. In job submission a recommended signal is TERM, which can be used to kill a process. This is typically carried out by a scheduling system when a job has exceeded walltime or a `qdel` has been issues on the job. This is another example of using a function for debugging, but within a job itself, as all jobscripts are also shell scripts.
 
-``
+```
 #!/bin/bash   
 #PBS -l walltime=10:00:00   
 #PBS -l nodes=2   
