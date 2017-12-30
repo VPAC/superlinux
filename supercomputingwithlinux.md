@@ -8,7 +8,7 @@ Supercomputing with Linux by Lev Lafayette, 2015 (online). This edition 2017 (re
 
 Published by the Victorian Partnership for Advanced Computing (trading as V3 Alliance) .
 
-Cover art composed by Michael D'Silva, featuring several clusters operated by the Victorian Partnership for Advanced Computing. Middle image (Spartan) by Craig West. Other images from Chris Samuel, et. al. from VPAC and Randall Munroe (under license, see: `https://xkcd.com/license.html`).
+Cover art composed by Michael D'Silva, featuring several clusters operated by the Victorian Partnership for Advanced Computing. Middle image (Trifid) by Craig West. Other images from Chris Samuel, et. al. from VPAC and Randall Munroe (under license, see: `https://xkcd.com/license.html`).
 
 Cray-1 image by Clemens Pfeiffer. Licensed under CC BY 2.5 via Commons - https://commons.wikimedia.org/wiki/File:Cray-1-deutsches-museum.jpg#/media/File:Cray-1-deutsches-museum.jpg   
 
