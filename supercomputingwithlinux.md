@@ -1,3 +1,6 @@
+
+![HPC Cover](https://github.com/VPAC/superlinux/blob/master/images/hpccover.png)
+
 by Lev Lafayette
 
 ISBN-10: 0-9943373-0-2
