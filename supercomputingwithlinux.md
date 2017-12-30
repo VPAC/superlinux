@@ -730,9 +730,7 @@ Linux expresses its files as words made up of pretty much any characters, except
 
 Linux is case-sensitive with its filenames. This means that that list.txt is a different file to LIST.TXT, or even lisT.txT. Files do not usually require a program association suffix, although you may find this convenient (a C compiler like files to have .c in their suffix, for example). The file list can be opened by a text-editor just as easily as list.txt.
 
-The type of file can be determined with the file command. The type returned will usually be text, executable binaries, archives, or a catch-all "data" file.
-
-`file <filename>`
+The type of file can be determined with the file command. The type returned will usually be text, executable binaries, archives, or a catch-all "data" file. `file <filename>`. 
 
 There are three text editors usually available on Linux systems. The first is nano, a very easy to use clone from the Pine email client that uses control keys with a the equivalent of a "shortcut bar". Others include Vim (Vi improved) which is a series of enhancements build on the "screen orientated" text editor vi, which was first introduced in 1976. Vim is generally understood to be a modal editor, operating either in a insert mode (where typed text becomes part of the document) or command mode (where keystrokes are interpreted as commands that control the edit session). Vi or Vim are often installed as the default text editor. Also written in 1976, the hefty EMacs (Editor Macros) editor and environment is a feature-rich program, to the extent that it is even considered by some to be a virtual machine in its own right. With appropriate plugins, it can act as an email client, web browser, IDE, and even comes with a Rogerian psychotherapist.
 
@@ -1986,11 +1984,7 @@ As you've probably guessed by now there are a number of utilities available to a
 
 Let's begin with the file `class.tar.gz` You'll notice the file has a double-barrelled suffix, `.tar.gz`. This is because it was archived with tar and compressed with gz. The former, as the name suggests, was originally designed for tape archives. That program concatenates  one or more files with a header that and preserves file system information such as user and group permissions, dates, and directory structures. The latter (gzip) is any of several software applications used for file compression and decompression, in this case meaning the GNU Project's implementation ("GNU Zip"). 
 
-Typically both tar and gzip are used in conjunction with each other. A group of files is concatenated with tar, and then the (new, single) file is compressed. This is often represented as a `*.tar.gz` file, although it can also appear as a `*.tgz` file. Both `*.tar` or `*.tar.gz` (or `*.tgz`) are often referred to as 'tarballs'.
-
-As an aside, the type of a file can often be determined by the file command.
-
-`file class.tar.gz`
+Typically both tar and gzip are used in conjunction with each other. A group of files is concatenated with tar, and then the (new, single) file is compressed. This is often represented as a `*.tar.gz` file, although it can also appear as a `*.tgz` file. Both `*.tar` or `*.tar.gz` (or `*.tgz`) are often referred to as 'tarballs'. The type of a file can often be determined by the `file` command: `file class.tar.gz`
 
 To illustrate the difference between archiving and compression let's uncompress the class.tar.gz file and have a look at its size. First however let's see what is inside it; as it is both an archived and compressed file we need the `t` option (table of contents), the `z` option (for compression), and the `f` option (file). If it was just a tar file we wouldn't need the `z`.
 
@@ -2662,13 +2656,17 @@ The until/do loop conducts the same action, but with the count in reverse. The n
 `for item in ./*.mp3 ; do ffmpeg -i "${item}" "${file/%mp3/ogg}" ; done`
 `for item in ./*.jpeg ; do convert "$item" "${item%.*}.png" ; done`
 
-Note the use of command substitution by using $(command); sometimes you will find the use of backticks instead (e.g., `for item in ./* ; do mv $item \`echo $file | tr "A-Z" "a-z"\` ; done);` this is *not* recommended. The use of backticks (a) not a POSIX standard, (b) can be difficult to read with deep escapes and (c) can be *very* dangerous if mistaken for strong quotes.
+Note the use of command substitution by using $(command); sometimes you will find the use of backticks instead (e.g., `for item in ./* ; do mv $item \`echo $file | tr "A-Z" "a-z"` ; done);` this is *not* recommended. The use of backticks (a) not a POSIX standard, (b) can be difficult to read with deep escapes and (c) can be *very* dangerous if mistaken for strong quotes.
 
 Early in this book it was recommended that spaces should be avoided in filenames. Part of this is due to poorly designed scripts that make use of the `ls` command. In a nutshell, `ls` can't differentiate in a script what is a filename and what is a space. It is, of course, unnecessary. Worse still, if any of the directories have files the process will generate the files inside the directories as well.
 
 `touch "a file with lots of spaces in the name"`
 `for item in $(ls ./*); do echo ${item}; done`
 `for item in *; do echo ${item}; done`
+
+Removing such characters can be achieved through scripts. The following examples remove spaces from filenames and apostrophes. The script is designed to prevent expansion from the wildcard, but remember that a `mv` command will overwrite existing files that have the same name.
+
+`for item in ./*; do mv "$item" "$(echo "$item" | tr -d " ")"; done`
 
 The following are examples of loops with conditional tests. Also note the use of bash's integer arithmetic, and especially the use of spacing and bracketing. There is actually an astounding number of ways of doing arithmetic in bash; the version used here is a good combination of legibility and speed. These count can, of course, be varied to indicate step sizes.
 
