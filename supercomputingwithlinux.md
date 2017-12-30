@@ -2502,18 +2502,18 @@ $ cat simple3.txt
 
 The utilities of `awk` are vast; it can act as a search tool, the first example printing the lines which contains "20031211234000" in the second field. It can, like `sed`, conduct substitutions. It can delete entire fields; in the third example, the second column is deleted, leaving just the characters and the year of appearance. It can act like the command uniq; with the fourth example. With selective printing, it can act like head and tail.
 
-`awk -F"," '$2 == "20031211234000"' quakes.csv`
-`awk '{gsub(/foo|Foo|/, "Bar")}; 1' filename`
-`awk -F"\t" '{ $2 = ""; print }' filename`
-`awk 'a != $0; { a = $0 }' filename`
-`awk 'NR < 11' filename`
+`awk -F"," '$2 == "20031211234000"' quakes.csv`   
+`awk '{gsub(/foo|Foo|/, "Bar")}; 1' filename`   
+`awk -F"\t" '{ $2 = ""; print }' filename`   
+`awk 'a != $0; { a = $0 }' filename`   
+`awk 'NR < 11' filename`   
 
 Other useful awk one-liners make use of the arithmetic functions of this programming language. 
 
 `awk '{totalf = totalf + NF }; END {print totalf}' $file`			
-`# print the total number of fields in $file.` 
-`awk '{sum=0; for (i=1; i<=NF; i++) sum=sum+$i; print sum}' $file`	
-`# print the sum of the fields (columns) of every line (row); NF is number of field.`
+`# print the total number of fields in $file.`    
+`awk '{sum=0; for (i=1; i<=NF; i++) sum=sum+$i; print sum}' $file`   	
+`# print the sum of the fields (columns) of every line (row); NF is number of field.`   
 
 Like `sed` a popular list of one-line awk commands is available. They are included with the chapter resources on the repository for this book and can be found at the following URL:
 
