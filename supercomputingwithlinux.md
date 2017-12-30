@@ -1,3 +1,4 @@
+# Supercomputing with Linux
 
 ![HPC Cover](https://github.com/VPAC/superlinux/blob/master/images/hpccover.png)
 
