@@ -8,9 +8,15 @@ Supercomputing with Linux by Lev Lafayette, 2015 (online). This edition 2017 (re
 
 Published by the Victorian Partnership for Advanced Computing (trading as V3 Alliance) .
 
-Cover art composed by Michael D'Silva, featuring several clusters operated by the Victorian Partnership for Advanced Computing.
+Cover art composed by Michael D'Silva, featuring several clusters operated by the Victorian Partnership for Advanced Computing. Middle image (Spartan) by Craig West. Other images from Chris Samuel, et. al. from VPAC and Randall Munroe (under license, see: `https://xkcd.com/license.html`).
+
+Cray-1 image by Clemens Pfeiffer. Licensed under CC BY 2.5 via Commons - https://commons.wikimedia.org/wiki/File:Cray-1-deutsches-museum.jpg#/media/File:Cray-1-deutsches-museum.jpg   
+
+Structure of the BRAF protein by Emw (Wikipedia User). Creative Commons Attribution-Share Alike 3.0 Unported license. https://commons.wikimedia.org/wiki/File:Protein_BRAF_PDB_1uwh.png 
 
 Supercomputing with Linux, is licensed under a Creative Commons Attribution 4.0 International License. 
+
+![CCSA License](https://github.com/VPAC/superlinux/blob/master/images/ccsa.png)
 
 All trademarks are property of their respective owners.
 
@@ -127,7 +133,7 @@ Obviously a book like this is at least in part derived from a variety of sources
 
 There may be an expectation that much of the content of this book is time-dependent, but an effort has been made to provide grounding in concepts as well as contemporary examples. There will doubtless be new releases of scientific applications, new releases of compilers and programming languages, new releases of the Linux kernel and various GNU utilities, new shell implementations, new releases of schedulers and resource managers. But regardless of such changes grounded principles can retain utility. Books like The C Programming Language Kernighan and Ritchie, 1978), The UNIX Programming Environment (Kernighan and Pike, 1984), are still useful to read for the concepts they provide. Obviously it is not suggested that this introductory book is even remotely of the same calibre as these classics, but rather they are cited in recognition of being inspirational texts.
 
-Further material from this manual draws upon training manuals produced at the Victorian Partnership for Advanced Computing over the past several years, including material written by Mike Kuiper, Andy Botting, David Bannon, Chris Samuel, and Hu Ping. I also wish to thank several other contributors from the Victorian Partnership for Advanced Computing who assisted in this manuscript, including Andrew Charmers, Michael D'Silva, and Craig West. All errors and omissions are my own.
+Further material from this manual draws upon training manuals produced at the Victorian Partnership for Advanced Computing over the past several years, including material written by Mike Kuiper, Andy Botting, David Bannon, Chris Samuel, and Hu Ping. I also wish to thank several other contributors from the Victorian Partnership for Advanced Computing who assisted in this manuscript, including Andrew Chalmers, Michael D'Silva, and Craig West. All errors and omissions are my own.
 
 This book is part of a series designed to assist researchers, systems administrators, and managers in a variety of advanced computational tasks. Other books that will be published in this series include: Sequential and Parallel Programming., Mathematical Applications and Programming., Data Management Tools for eResearchers., Building HPC Clusters and Clouds., Teaching Research Computing to Advanced Learners., Quality Assurance in Technical Organisations., Technical Project Management, and A History of the Victorian Partnership of Advanced Computing.
 
@@ -146,6 +152,8 @@ In comparison, VeRSI, the Victorian eResearch Strategic Initiative, was establis
 In 2013, VPAC and VeRSI merged to become the V3 Alliance with a spin-off commercial company, VPAC Innovations, becoming the third part of the V3. The V3 Alliance is thus a merger of the Victorian Partnership for Advanced Computing (VPAC) and the Victorian eResearch Strategic Initiative. The Victorian Partnership for Advanced Computing remains the legal name for the organisation, and V3 Alliance as a trading name.
 
 In late 2015 the VPAC Board made a decision not to continue the organisation after the end of the 2016 financial year, which would coincide with the contractual end of the Trifid cluster.  This book is part of a series of publications produced by the Victorian Partnership of Advanced Computing in its last months, a decision to return to the computational community the opportunities for new minds and hands to take advantage of the knowledge developed and to contribute further in improving our collective intelligence.
+
+![VPAC Members](https://github.com/VPAC/superlinux/blob/master/images/logocollection.png)
 
 ## 1.2 VPAC Case Studies
 
@@ -177,6 +185,8 @@ Multi-Disciplinary Optimisation (MDO) is a common technique in automotive engine
  
 GM Holden reduced manual set-up time for a large-scale MDO study from an estimated 6 weeks to 1.5 weeks and greatly reduced the number of failed HPC simulations. The client therefore realised large time and cost savings for both staff and HPC resources and successfully accelerated its innovation process.
 
+![Deformed Door](https://github.com/VPAC/superlinux/blob/master/images/crash_simulation.png)
+
 **VisLab for social research**
 
 Researchers at Victoria University’s Centre for Cultural Diversity and Wellbeing (CCDW) examine issues relating to diversity, creativity and health in both local and global contexts. The use of technologies enabling greater 'connectedness' is central to their exploration of these areas.
@@ -189,6 +199,8 @@ VisLab12, the new Social Technologies Lab developed for the CCDW by V3 Alliance,
 * The lab will enable the Food, health, memory and African Australian transitions research team to digitally map and visualise African-Australian foodscapes in the west of Melbourne. Researchers will be able to collect and display sensory, visual and mobile data, analyse crowdsourced data and images, and disseminate visual and sensory research in order to understand the importance of food in African-Australian wellbeing.
 
 VisLab12 is one of a series of visualisation laboratories developed and custom-built by V3 in conjunction with La Trobe University and Victoria University, to meet the needs of researchers in specific disciplines.
+
+![VisLab](https://github.com/VPAC/superlinux/blob/master/images/vislab.png)
 
 ## 1.3 VPAC's Supercomputer Systems
 
@@ -203,6 +215,8 @@ http://www.top500.org/site/49239
 http://www.top500.org/system/173431
 http://www.top500.org/system/166873
 
+![Tango](https://github.com/VPAC/superlinux/blob/master/images/tango.png)
+
 #1.4 Some Supercomputing Definitions
 
 A supercomputer is a rather nebulous term for any computer system that is at the frontline of current processing capacity, particularly speed of calculation. High-performance computing (HPC), as the name indicates, is any computer system whose architecture allows for above average performance. In general however the two terms are treated as if they were synonymous; when one talks about a "supercomputer" they could easily mean a "high performance computer", despite the fact that even a single desktop system, with sufficient optimisation, could be considered "high performance", and a system that is one of the most powerful in the world, but is poorly designed, could be a "supercomputer". 
@@ -210,6 +224,8 @@ A supercomputer is a rather nebulous term for any computer system that is at the
 The earliest supercomputers from the 1960s were single system units whose impressive performance was due to material innovations and architecture. For example, the IBM 7030 Stretch (1961) made heavily use of transitor technologies instead of vacuum tubes. Operating three times faster, the CDC 6600 (1964) made extensive use of peripheral processes and refrigeration, leaving IBM somewhat shocked that a such small company of 34 could produce a machine.
 
 Without doubt the most amazing machine of the period was the Cray-1, chiefly designed by Seymour Cray, who had formed his own company from Control Data Corporation.  First released in 1975, this series of supercomputers used integrated circuits, vector processing with registers, and liquid Freon for cooling. Its replacement, the Cray X-MP, was a direct successor in terms of architecture, where its successor, the Cray 2, was released in 1985 had a new design. Between them, the three systems (Cray 1, Cray X-MP, Cray 2), were the most powerful systems in the world from 1975 to 1990.
+
+![Cray-1](https://github.com/VPAC/superlinux/blob/master/images/cray-1.png)
 
 Supercomputers from this era typically only had a relatively small number of processors. Massive processing in a single system unit became dominant in the 1990s, starting with systems like the Numerical Wind Tunnel of Japan which had a pipeline of 166 vector processors, the Intel Paragon, which could have up to 4000 processors on a grid, and eventually the mesh-based ASCI Red, the latter being particularly famous for being the first machine to reach over 1 teraflop, and which operated for almost ten years.
 
@@ -232,6 +248,8 @@ Floating point operations per second is a well known metric, but not necessarily
 In contrast, scientific computing is the software applications used by the scientific community to aid research. Scientific computing does not necessarily equate with high performance computing, or the use of clusters; it is whatever scientists use and do which usually is not high performance computing (even if it should be – hence this and related books). This skills gap is a major problem and must be addressed because as the volume, velocity, and variety of datasets increases then researchers will need to be able to process this data.
 
 The following image displays a simplified version of a high-performance compute cluster. There are two "head" nodes, the login node for users and the management node for system administrators. Smaller clusters may only have one head node which combines user logins and management. In this particular schema however, two are assumed. The management node includes the job scheduler which decides when and where jobs will run. It receives updates from a resource manager which keeps track of what's being used and typically has a daemon process on each compute node. Users connect to the login node and submit their jobs which makes resource requests and is then sent to the scheduler. When the scheduler. decides the job can run it is submitted to one or more compute nodes, which can communicate to each other within each node or between each other through the switching fabric. Depending on the configuration, they may also be connecting to network attached storage devices for data. 
+
+![Generic Cluster](https://github.com/VPAC/superlinux/blob/master/images/genericcluster.png)
 
 ## 1.5 Supercomputers and FOSS
 
@@ -257,51 +275,51 @@ It is valuable for any user to have recorded the system specifications of the hi
 
 A configuration of the Trifid cluster (2015), would include the following as an example:
 
-> 220 total system unit "nodes" (218 compute, login, and management).
-> 3,008 cores of Intel E5-2670 (trifid001-trifid179) 
-> 5 nodes with GPUs MICs (trifid180-tridid184)
-> 500 cores of Intel E5-2660v2 (trifid191-trifid218)
-> 4 GB PC1600 memory per core (64-80 GB per node), with 6 nodes having 16 GB per core (256 GB per node)
-> FDR Infiniband
-> CentOS 6 Linux
-> 40TB NFS for home
-> 165TB Lustre DDN S2A high-performance array
+> 220 total system unit "nodes" (218 compute, login, and management).   
+3,008 cores of Intel E5-2670 (trifid001-trifid179)    
+5 nodes with GPUs MICs (trifid180-tridid184)   
+500 cores of Intel E5-2660v2 (trifid191-trifid218)   
+4 GB PC1600 memory per core (64-80 GB per node), with 6 nodes having 16 GB per core (256 GB per node)   
+FDR Infiniband   
+CentOS 6 Linux   
+40TB NFS for home   
+165TB Lustre DDN S2A high-performance array
 
 There is close to four hundred scientific software applications and versions installed, including compiler suites (GCC, Intel, PGI), computational chemistry (Gromacs, LAMMPS, Schrodinger, VMD), bioinformatics (BEAST, BLAST, MrBayes), Math Libraries (ATLAS, Boost, FFTW, LAPACK, Scalapack), fluid dynamics and engineering (Abaqus, Ansys, Fluent, OpenFOAM), mathematics and statistics (Octave, R, Matlab), climate and weather modelling (Geant, WRF), and many more. A complete list will be illustrated through the use of the module command, illustrated later in this manual.
 
-The following is a non-comprehensive list of the software that's often available on on HPC clusters. It is taken from the software that was on VPAC's last two clusters, Tango and Trifid, but serves as an illustrative collection.
+The following is a non-comprehensive list of the compiled software that's often available on on HPC clusters. It is taken from the software that was on VPAC's last two clusters, Tango and Trifid, but serves as an illustrative collection.
 
-**Abaqus**: Abaqus is a package for finite element analysis, usually applied in mechanical engineering. Abaqus is available at the following URL : http://www.3ds.com/products-services/simulia/products/abaqus/
+**Abaqus**: Abaqus is a package for finite element analysis, usually applied in mechanical engineering.
 
-**ABWT**: The AB WT (Whole Transcriptome) Analysis Pipeline is an off-instrument SOLiD data analysis software package for the analysis of experiments run. It maps reads from a transcript sample to a reference genome and assigning tag counts to features of the reference genome. ABWT is available at the following URL: http://solidsoftwaretools.com/gf/project/transcriptome/
+**ABWT**: The AB WT (Whole Transcriptome) Analysis Pipeline is an off-instrument SOLiD data analysis software package for the analysis of experiments run. It maps reads from a transcript sample to a reference genome and assigning tag counts to features of the reference genome. 
 
-**ACML**: The AMD Core Math Library (ACML) is a set of optimised and threaded math routines, especially useful for computational-intensive tasks. The AMD Core Math Library is available at the following URL: http://developer.amd.com/tools-and-sdks/archive/amd-core-math-library-acml/
+**ACML**: The AMD Core Math Library (ACML) is a set of optimised and threaded math routines, especially useful for computational-intensive tasks.
 
-**AFNI**: AFNI (Analysis of Functional NeuroImages) is a set of C programs for processing, analyzing, and displaying functional MRI (FMRI) data - a technique for mapping human brain activity. AFNI is available at the following URL: https://afni.nimh.nih.gov/afni/
+**AFNI**: AFNI (Analysis of Functional NeuroImages) is a set of C programs for processing, analyzing, and displaying functional MRI (FMRI) data - a technique for mapping human brain activity.
 
-**AMBER**: Assisted Model Building with Energy Refinement (AMBER) is a family of force fields for molecular dynamics of biomolecules. AMBER is also the name for the molecular dynamics software package that simulates these force fields. AMBER is available at the following URL: http://ambermd.org/
+**AMBER**: Assisted Model Building with Energy Refinement (AMBER) is a family of force fields for molecular dynamics of biomolecules. AMBER is also the name for the molecular dynamics software package that simulates these force fields.
 
-**ANSYS**: ANSYS is an engineering simulation for general-purpose finite element analysis and computational fluid dynamics. ANSYS can be found at the following URL: http://www.ansys.com/
+**ANSYS**: ANSYS is an engineering simulation for general-purpose finite element analysis and computational fluid dynamics.
 
-**Ant**: Apache Ant as an automated software build processes, like Make etc, but is implemented using the Java language, requiring the Java platform, and best suited to building Java projects. Ant can be found at the following URL: http://ant.apache.org/
+**Ant**: Apache Ant as an automated software build processes, like Make etc, but is implemented using the Java language, requiring the Java platform, and best suited to building Java projects.
 
-**Armadillo**: Armadillo is a C++ linear algebra library (matrix maths) that supports integer, floating point and complex numbers, as well as a subset of trigonometric and statistics functions. Armadillo can be found at the following URL: http://arma.sourceforge.net/
+**Armadillo**: Armadillo is a C++ linear algebra library (matrix maths) that supports integer, floating point and complex numbers, as well as a subset of trigonometric and statistics functions. 
 
-**Atlas**: Automatically Tuned Linear Algebra Software (ATLAS) is a software library for linear algebra, providing an open source implementation of BLAS APIs for C and Fortran77. ATLAS is available at the following URL: http://math-atlas.sourceforge.net/
+**Atlas**: Automatically Tuned Linear Algebra Software (ATLAS) is a software library for linear algebra, providing an open source implementation of BLAS APIs for C and Fortran77. 
 
-**Autodock**: AutoDock is a suite of docking tools designed to predict how small molecules, such as substrates or drug candidates, bind to a receptor of known 3D structure. AutoDock is available at the following URL: http://autodock.scripps.edu/
+**Autodock**: AutoDock is a suite of docking tools designed to predict how small molecules, such as substrates or drug candidates, bind to a receptor of known 3D structure. 
 
-**AutoGrow**: AutoGrow uses AutoDock as the selection operator. For each generation, all ligand files are docked to the target protein, and for each dock, AutoDock returns a predicted binding affinity. AutoGrow (Java DOCK), uses fragment-based growing, docking, and evolutionary techniques. AutoGrow is available from the following URL: http://autogrow.ucsd.edu/
+**AutoGrow**: AutoGrow uses AutoDock as the selection operator. For each generation, all ligand files are docked to the target protein, and for each dock, AutoDock returns a predicted binding affinity. AutoGrow (Java DOCK), uses fragment-based growing, docking, and evolutionary techniques. 
 
-**BEAM**: BEAMnrc is a general purpose Monte Carlo simulation system for modelling radiotherapy sources which is based on the EGSnrcMP code system for modelling coupled electron and photon transport. BEAMnrc is available at the following URL: http://www.nrc-cnrc.gc.ca/eng/solutions/advisory/beam_index.html
+**BEAM**: BEAMnrc is a general purpose Monte Carlo simulation system for modelling radiotherapy sources which is based on the EGSnrcMP code system for modelling coupled electron and photon transport. 
 
-**BigDFT**: BigDFT is a Density Functional Theory (DFT) parallel electronic structure code using a wavelet basis set. Wavelets form a real space basis set distributed on an adaptive mesh. Surfaces and isolated systems can be simulated with the proper boundary conditions and GTH or HGH pseudopotentials are used to remove the core electrons. BigDFT is available at the following URL: http://bigdft.org/
+**BigDFT**: BigDFT is a Density Functional Theory (DFT) parallel electronic structure code using a wavelet basis set. Wavelets form a real space basis set distributed on an adaptive mesh. Surfaces and isolated systems can be simulated with the proper boundary conditions and GTH or HGH pseudopotentials are used to remove the core electrons.
 
-**Binutils**: The GNU Binary Utilities, or binutils, is a collection of programming tools for the manipulation of object code in various object file formats. They are typically used in conjunction with GNU Compiler Collection, make, and GDB. The GNU Binutils are available from the following URL: https://www.gnu.org/software/binutils/
+**Binutils**: The GNU Binary Utilities, or binutils, is a collection of programming tools for the manipulation of object code in various object file formats. They are typically used in conjunction with GNU Compiler Collection, make, and GDB. 
 
 **BLAST**: The NCBI Basic Local Alignment Search Tool (BLAST) finds regions of local similarity between DNA sequences sequences and can be used to infer functional and evolutionary relationships between sequences as well as help identify members of gene families. 
 
-**Blender**: Blender is a 3D graphics application used for modeling, UV unwrapping, texturing, rigging, water simulations, skinning, animating, rendering, particle, and other simulations, non-linear editing, compositing, and creating interactive 3D applications. The image (right) was created with Blender. 
+**Blender**: Blender is a 3D graphics application used for modeling, UV unwrapping, texturing, rigging, water simulations, skinning, animating, rendering, particle, and other simulations, non-linear editing, compositing, and creating interactive 3D applications.
 
 **BLT**: The BLT library is an extension to Tcl/Tk. that adds plotting widgets, a geometry manager, a canvas item, and several new commands to Tk. 
 
@@ -324,7 +342,8 @@ The following is a non-comprehensive list of the software that's often available
 **CUDA**: The NVIDIA CUDA Toolkit includes accelerated BLAS and FFT implementations, parallel thread execution and CUDA command line compiler. CUDA (an acronym for Compute Unified Device Architecture) is a parallel computing architecture developed by NVIDIA, the computing engine in NVIDIA graphics processing units (GPUs). 
 
 **DAWN**: Drawer for Academic WritiNgs (DAWN) is a renderer which reads 3D geometrical data and visualizes with a vectorized 3D PostScript processor with analytical hidden line/surface removal. 
-Desmond: Desmond is a software package developed at D.E. Shaw Research to perform high-speed molecular dynamics simulations of biological systems on parallel systems that is available as part of Schrodinger or as a stand-alone package. 
+
+**Desmond**: Desmond is a software package developed at D.E. Shaw Research to perform high-speed molecular dynamics simulations of biological systems on parallel systems that is available as part of Schrodinger or as a stand-alone package. 
 
 **DeMon**: DeMon (Density of Montréal) is a software package for density functional theory (DFT) calculations. It uses the linear combination of Gaussian-type orbital (LCGTO) approach for the self-consistent solution of the Kohn-Sham (KS) DFT equations. The calculation of the four-center electron repulsion integrals is avoided by introducing an auxiliary function basis for the variational fitting of the Coulomb potential. 
 
@@ -462,7 +481,7 @@ Desmond: Desmond is a software package developed at D.E. Shaw Research to perfor
 
 **Modules**: The environment modules package package provides for the dynamic modification of a user's environment. 
 
-**Molden**: Molden displays molecular density from the ab initio packages GAMESS and GAUSSIAN and others. Molden reads all the required information from the GAMESS / GAUSSIAN outputfile. Molden is capable of displaying molecular orbitals, electron density and molecular minus atomic density. 
+**Molden**: Molden displays molecular density from the ab initio packages GAMESS and GAUSSIAN and others. Molden reads all the required information from the GAMESS and GAUSSIAN outputfiles. Molden is capable of displaying molecular orbitals, electron density and molecular minus atomic density. 
 
 **Molekel**: Molekel is a molecular visualization program that import and exports data using OpenBabel and displays molecules with different rendering styles, generates iosurfaces, and animates. 
 
@@ -606,7 +625,7 @@ By way of two examples, at VPAC, we allowed any researcher who was from a member
 
 Usually users will belong to one of more groups, which may represent research projects. This is actually built into the operating system itself and will be discussed further as we delve into this subject matter. Often groups will have their own shared directories for common files, which all members of that group will have access to, in addition to one's own home, or personal, directory.
 
-Regrettably a great deal of software – and sometimes common and popular software – comes with various restrictive licenses. In some cases these will be organised and paid for on the institutional level. In others, it will simply a case of ticking a box and agreeing to use it for academic and research purposes only – typically they want some recognition for this.
+Regrettably a great deal of software – and sometimes common and popular software – comes with various restrictive licenses. In some cases these will be organised and paid for on the institutional level. In others, it will simply a case of ticking a box and agreeing to use it for academic and research purposes only – typically they want some recognition for this, so please include them in relevant publications, and of course, include the HPC centre as well!
 
 An example license is that for Gaussian which was required for all VPAC users to agree to.
 
@@ -616,74 +635,69 @@ An example license is that for Gaussian which was required for all VPAC users to
 3. I will not copy the Gaussian software, nor make it available to anyone else.    
 4. I will acknowledge Gaussian Inc. in published works to which Gaussian calculations on the VPAC >systems contributed.   
 
-Most HPC clusters will have a team of systems administrators to provided assistance to users and most of those will have some sort of ticketing system (e.g., Request Tracker) to manage those issue requests. This means that there will be one email address to contact for help (e.g., help@vpac.org)
+Most HPC clusters will have a team of systems administrators to provided assistance to users and most of those will have some sort of ticketing system (e.g., Request Tracker) to manage those issue requests. This means that there will be one email address to contact for help (e.g., `help@vpac.org`)
 
 The importance of using this email address should not be underestimated. An issue raised through this address is seen by a number of systems administrators, so they may all act and comment on the issue, even if you are only in correspondence with a single person. It is best not to email a single systems administrator. Not only will the issue not receive the collective attention and knowledge of the team, the individual in question may be away or otherwise busy. Plus, it causes issues with the owning institutions record keeping, recall, and metrics. 
 
-When emailing the help desk use one correspondence thread per issue. If you have three distinctly different matters, initiate three tickets. This is because different people may take primary responsibility for different issues. Please note the term "distinctly different"; you can submit a ticket with multiple, but related issues. For example "When I submit this job across multiple nodes it crashes and I run it successfully on a single core, it generates an error", counts two related issues. The request "When I submit this job across multiple nodes it crashes, and can you book me in the next intermediate training course" counts as "distinctly different" issues. On a related matter, when initiating a ticket do not go through an email archive and reopen a ticket unless it actually is the same issue. 
+When emailing the help desk use one correspondence thread per issue. If a user has distinctly different matters, they should initiate three separate tickets. This is because different people may take primary responsibility for different issues. Please note the term "distinctly different"; you can submit a ticket with multiple, but related issues. For example "When I submit this job across multiple nodes it crashes and I run it successfully on a single core, it generates an error", counts two related issues. The request "When I submit this job across multiple nodes it crashes, and can you book me in the next intermediate training course?" counts as "distinctly different" issues. On a related matter, when initiating a ticket do not go through an email archive and reopen a ticket unless it actually is the same issue. 
 
-When submitting a ticket be as clear and as informative as possible in the ticket. A ticket that says "My job died, why?" is difficult to diagnose. One that says "My job ID 28807 on trifid died. My PBS script is located in ~/openfoam/openfoam_par and my input file was simpleFoam" tells us a great deal! Also, as we'll learn later, jobs often produce useful diagnostic error information. These are worth checking. 
+When submitting a ticket be as clear and as informative as possible in the ticket. A ticket that says "My job died, why?" is difficult to diagnose. One that says "My job ID 28807 on trifid died. My PBS script is located in `~/openfoam/openfoam_par` and my input file was `simpleFoam`" tells the helpdesk operators a great deal! Also, as we'll learn later, jobs often produce useful diagnostic error information. These are worth checking. 
 
 The other request we have is please be patient and accepting. Diagnosing failures in high performance and parallel computing is somewhat far from trivial. Whilst system administrators have a wide range of experience in operations and network administration, resource and cluster management, and scientific programming, they are not experts on all scientific disciplines or even all applications - not even collectively. Often users will have great familiarity and expertise in the application that they're using and almost invariably, the will have greater expertise in the discipline in question.
 
 # 2.0 The Linux Environment
 
-In this introduction to Linux part of the course we will engage in several tasks. The first will be to log into a Linux system and familiarise ourselves with the environment. We will then create some files on the local machine and copy those files to the supercomputer. We will then log on to the supercomputer, modify those files and copy them back the local computer. Back on the local computer we'll create a directory, move the files to that directory and run some very basic search functions.
+This introduction will engage in several tasks. It makes no assumption of the user's familiarity with Linux or the Linux command-line. In order to use a contemporary supercomputer however, it is pretty much essential that a user has these skills. Nearly every supercomputer on the planet runs Linux, and every current supercomputer at VPAC uses this operating system. 
 
-For users who are familiar with the command line, this chapter may seem a little trivial. However for those who do not have this necessary background, it is essential. More and more researchers are reaching the postgraduate level with very little exposure to the command line, simply because of extensive GUI developments in general use operating systems. However, in order to use HPC clusters effectively, this knowledge is required. Best of all, it's knowledge that can remain for the rest of your computing life - many of the core commands illustrated here date from the 1970s and show no sign of being replaced any time soon.
+The basic activities will be to log into a Linux system and familiarise one's self with the environment. Then the user will create some files on the local machine and copy those files to the supercomputer. They will then log on to the supercomputer, modify those files and copy them back the local computer. Learning to distinguish between the local environment and the remote environment is an essential skill. After that the user will create a directory, move the files to that directory and run some very basic search functions.
+
+For users who are familiar with the command line, this chapter may seem trivial. However for those who do not have this necessary background, it is essential. More and more researchers are reaching the postgraduate level with very little exposure to the command line, simply because of extensive GUI developments in general use operating systems. However, in order to use HPC clusters effectively, this knowledge is required. Best of all, it's knowledge that can remain for the rest of a user's computing life - many of the core commands illustrated here date from the 1970s and are still in active development.
 
 ## 2.1 Logging On
 
-To log on to a HPC system, you will need a user account and password and a Secure Shell (ssh) client. Most HPC cluster administrators do not allow connections with protocols such as Telnet, FTP or RSH as they insecurely send passwords in plain-text  over the network, which is easily captured by packet analyser tools (e.g., Wireshark). 
+To log on to a HPC system, a user will need an account, a password, and a Secure Shell (ssh) client. Most HPC cluster administrators do not allow connections with protocols such as Telnet, FTP or RSH as they insecurely send passwords in plain-text over the network, which is easily captured by packet analyser tools (e.g., Wireshark). 
 
-Linux distributions almost always include SSH as part of the default installation as does Mac OS 10.x, although you may also wish to use the Fugu SSH client. For MS-Windows users, the free PuTTY client is recommended. 
+Linux distributions almost always include SSH as part of the default installation as does Mac OS 10.x, although one may also wish to use the Fugu SSH client. For MS-Windows users, the free PuTTY client is a recommended option, as is MobaXterm. 
 
-If using Mac OS 10.x, you will probably want to add a terminal alias to your dock. From the  Macintosh HDD and go to the Applications folder, then Utilities from within that. Terminal is in the Utilities folder. Drag it to an empty space in the Dock, and the operating system will put an alias there. If you are using a graphic interface for Linux, like GNOME or KDE, you may wish to do the same with one of the terminal clients and panels. 
+If using Mac OS 10.x, a user will probably want to add a terminal alias to your dock. From the Macintosh HDD and go to the Applications folder, then Utilities from within that. Terminal is in the Utilities folder. Drag it to an empty space in the Dock, and the operating system will put an alias there. If graphic interface for Linux is being used, like GNOME or KDE, a similar shortcut can be implemented. 
 
-If you're using MS-Windows, download PuTTY. In the 'Host Name' box, enter the server you want to connect to (e.g., trifid.vpac.org) and select SSH from the 'Connection type' radio button. Verify the host key when connecting for the first time. You will also probably want to have X-forwarding enabled for any connections that require graphic forwarding. 
+If you're using MS-Windows, download PuTTY or another SSH client. If PuTTY is being used, in the 'Host Name' box, enter the server (e.g., `trifid.vpac.org`) and select SSH from the 'Connection type' radio button. Verify the host key when connecting for the first time. Enabling X-forwarding enabled is recommended for any connections that require graphic forwarding. It is very useful to enter a session name, (e.g., "Trifid") in the above case and save it so the details are saved for future connections.
 
-In the 'Host Name' box, enter the server you want to connect to (e.g., trifid.vpac.org) and select ssh from the 'Connection type' radio button. Its useful to enter a session name, "Trifid" in the above case and save it so you don't need to remember the details next time.
+Generally, the other Putty settings will be fine as they are. One thing a MS-Windows user might need if they are going to be using XWindows (to display a graphical interface from the HPC cluster on the local system) is to turn on XForwarding. Note however that there is a general rule of thumb that X-forwarding is not usually recommended for a cluster, due to the latency of operating over a WAN link. The general rule is do computation on the cluster, copy the files, and do visualisation using local resources. However, if visualisation is necessary, the users will also need some sort of "XWindows Server" installed on your local system if they are using MS-Windows. A possible free option is XMing, `http://www.straightrunning.com/XmingNotes/`
 
-Generally, the other Putty settings will be fine as they are. One thing you might need if you are going to be using XWindows (to display a graphical interface from the HPC cluster on your desktop) is to turn on XForwarding. Note however that there is a general rule of thumb that X-forwarding is not usually recommended for a cluster, due to the latency of operating over a WAN link. Do your computation on the cluster, copy the files, and do your visualisation using local resources.
+With Mac or Linux a user can simply open the terminal client and enter their username and the machine they wish to connect to, followed by the password when connected. For example;  `ssh <your username>@trifid.vpac.org`. Secure shell opens a connection to a remote system. If graphic forwarding is desired then one can use the -X or -Y (secure) options e.g., `ssh -Y <your username>@trifid.vpac.org`
 
-However, if you do need to do remote visualisation, you will also need some sort of "XWindows Server" installed on your desktop, if you are using MS-Windows. A possible free option is XMing, `http://www.straightrunning.com/XmingNotes/`
-
-With Mac or Linux simply open the terminal client and enter your username and the machine you wish to connect to, followed by the password when connected. For example;  `ssh <your username>@trifid.vpac.org`
-
-Secure shell opens a connection to a remote system. Replace trifid.vpac.org with the HPC cluster that you are connecting to.
-If graphic enabling is desired one can use the -X or -Y (secure) options e.g., `ssh -Y <your username>@trifid.vpac.org`
-
-Open up two terminal windows. In the first terminal window we'll explore some of the basic commands on the local machine In the second terminal window we'll do the same, but on the supercomputer.
+Whilst stepping through the tutorial components of this publication it is best to have two terminal windows open, whether seperate or in tabbed form. One terminal client window will be for the remote system and one for the local system.
 
 ## 2.2 Exploring The Environment
 
-The first thing we'll do is explore the environment of the command-line on both our local machine and the supercomputer. On both these systems, run the following commands.
+The first thing a user can do is explore the environment of the command-line on both our local machine and the remote supercomputer. On both these systems, the following commands should be entered.
 
 `whoami` : "Who Am I?; prints the effective user id.
-`pwd` : "Print working directory";  prints the directory where you're currently in.
+`pwd` : "Print working directory";  prints the directory where the user is currently in.
 
-Now you know who you are (useful if you are logged on to several machines at the same time with different user names) and where you are.
+Now they know who they are (useful if one logged on to several machines at the same time with different user names) and where they are.
 
-When a user logs in on a Linux or other UNIX-like system on the command line, they start in their home directory. The output of the above command should be: /home/<username> . A full standard directory listing is available at the back of this manual. For users from a MS-Windows background, one of the first things that one will notice is that there is no drive letters (e.g., C:). As the catch-phrase says: "Everything in the UNIX system is a file" (Kernighan and Pike, 1984, p41) - which means that files, directories, and any input-output resources (disks, keyboard, memory, etc) are treated as a stream of bytes through the filesystem.
+When a user logs in on a Linux or other UNIX-like system on the command line, they start in their home directory. The output of the above command should be: `/home/<username>`. A standard directory listing is available in the reference section of this publication. For users from a MS-Windows background, one of the first things that they may notice is that there is no drive letters (e.g., C:). As the catch-phrase says: "Everything in the UNIX system is a file" (Kernighan and Pike, 1984, p41). Which means that files, directories, and any input-output resources (disks, keyboard, memory, etc) are treated as a stream of bytes through the filesystem.
 					
-Now let's run a listing for the directory on both the local computer and the supercomputer:
+A directory listing can be run on both the local computer and the remote supercomputer:
 
 `ls` : "List"; lists contents for particular directory, the current directory by default.
 
-Now you know 'Who am I'? 'Where am I?' and 'What's here'? 
+Now they know 'Who am I'? 'Where am I?' and 'What's here'? Fairly fundamental steps!
 
 Linux commands often come with options expressed as:
 
 `<command> -<option[s]>`
 
-Run this command on both the local computer and the supercomputer.
+Run this command on both the local computer and the supercomputer. Unlike the previous command a number of other files and file information should be present.
 
 `ls -lart` : "List" with long format, including file permissions (l), include hidden files ('a', for all), sorted by reverse  order ('r'), by modification time ('t').
 
 Linux commands come with `man` (manual) pages, which provide a terse description of the meaning and options available to a command. To view the appropriate man page simply enter the word man followed by the command. Specific sections of a man page can also be invoked. A more verbose alternative to man with a simple hypertext system is info. 
 
 > "If you're having trouble with a unix command, type in "man <command>" and it'll be mansplained to you!"   
--- David Ma, *Introduction to Linux and HPC* class, Jun 26, 2016
+-- David Ma, *Introduction to Linux and HPC* class, University of Melbourne, Jun 26, 2016
 
 Both man and info can exited with `q` for quit.
 
@@ -694,27 +708,27 @@ Both man and info can exited with `q` for quit.
 
 In addition to commands by themselves, Linux also have very useful pipes and redirects for commands. To pipe one command through another use the `|` symbol.
 
-For example, the who command shows who is currently logged into the system. You may suspect that this will differ on the supercomputer and the local system! Run the command on the local computer and then 'pipe' the who command through 
+For example, the `who` command shows who is currently logged into the system. This will differ on the supercomputer and the local system! Run the command on the local computer and then 'pipe' the `who` command through `less`.
 
 Run this command on the supercomputer.
 
 `who -u | less` : "Who" shows who is logged on, how long they've been idle and piped through the less command.
 
-You may be wondering why the command to display the contents of a file to the screen is called "less". This is a pun on the expression "less is more"; once upon a time the command to display information to the screen was "more <filename>. But it was only one screen at at time and could not scroll backwards! Take the opportunity to display the same command using 'more', and also read the man page for that utility – check the last time it was updated!
+One may be wonder why the command to display the contents of a file to the screen is called "less". This is a pun on the expression "less is more"; once upon a time the command to display information to the screen was `more <filename`>. But it was only one screen at at time and could not scroll backwards. Take the opportunity to display the same command using 'more', and also read the `man` page for that utility – check the last time it was updated! On Trifid it is December 1993. 
 
 `who -u | more` : "Who" shows who is logged on, how long they've been idle and piped through the more command, followed by the man page more.
 
-Another common option for displaying a file's contents to the screen is `cat`, which concatenate any files listed and print on the standard output. There is a common novice practise of taking the output of cat and putting into a pipe. For example, `cat | wc -l filename` will count (wc) the number of lines (-l) in a file, and print to standard output - it doesn't even need the `cat |` component, which simply starts up another process. The removal of unnecessary `cat` statements is known as "demoggification".
+Another common option for displaying a file's contents to the screen is `cat`, which concatenate any files listed and print on the standard output. There is a common novice practise of taking the output of cat and putting into a pipe. For example, `cat | wc -l filename` will count (wc) the number of lines (-l) in a file, and print to standard output. However the `wc -l` command doesn't even need the `cat |` component, which simply starts up another process. The removal of unnecessary `cat` statements is known as "demoggification". As a general rule, don't pipe `cat`!
 
-<img src="https://raw.githubusercontent.com/VPAC/superlinux/master/images/pipcat.jpg" />
+![Cat Pipe](https://github.com/VPAC/superlinux/blob/master/images/pipecat.png)
 
 Another environment feature to explore is the `ps` or process status command.  A number of programs can be run by a one or more users simultaneously, including helping programs called daemons. If no options are added ps selects all processes with the same effective user ID (euid=EUID) as the current user and associated with the same terminal as the invoker. To see what is running, who is running it, the process ID, and how much CPU they are using  use:
 
 `ps afux | less` : "ps" provides a list of current processes. The 'a' option list the processes of all users, the 'f' shows job hierarchy, the 'u' option provides additional information about each process, and the 'x' option includes non-user programs such as daemons. This is piped through less.
 
-Note that "ps -aux" is different to "ps aux". The POSIX and UNIX standards require that "ps -aux" print all processes owned by a user named "x". If the user named "x" does not exist, this ps might interpret the command as "ps aux" instead and print a warning, depending on the version of Linux being used.
+Note that `ps -aux` is different to `ps aux`. The POSIX and UNIX standards require that `ps -aux` print all processes owned by a user named "x". If the user named "x" does not exist, this ps might interpret the command as `ps aux` instead and print a warning, depending on the version of Linux being used. It is a small exception to the standard expectation of `command -option`.
 
-To redirect output use the `>` symbol. To redirect input (for example, to feed data to a command) use the `<`. Concatenation is achieved through the use of `>>` symbol.
+In addition to piping one command through another, the output and input of commands can be redirected. For example, to redirect output from standard output (i.e., the screen) to somewhere else (e.g., a file) use the `>` symbol. To redirect input (for example, to feed data to a command) use the `<`. Concatenation is achieved through the use of `>>` symbol.
 
 Run this command on the supercomputer.
 
@@ -722,25 +736,27 @@ Run this command on the supercomputer.
 
 This command lists the  current  time, how  long  the  system  has been running, how many users are currently logged on, and the system load averages for the past 1, 5, and 15  minutes and redirects this information to the file list.txt
 
-If the command is run a second time, it will overwrite the first `list.txt`. If it is run with `w >> list.txt` it will append the result to the existing file.
+If the command is run a second time, it will overwrite the first `list.txt`. If it is run with `w >> list.txt` it will append the second result to the existing file.
 
 ## 2.3 Files and Text Editing
 
-Linux expresses its files as words made up of pretty much any characters, excepting the slash (/) which is used for directory navigation. In general however it is a good idea to avoid filenames with punctuation marks, non-printing characters (including spaces, tabs etc) as these can lead to some difficulties and annoyances, especially on the command-line level. It is a convention to use underscores instead of spaces or CamelCase e.g., this_is_a_long_name.txt or ThisIsALongFileName.txt
+Linux expresses its files as words made up of pretty much any characters, excepting the slash (/) which is used for directory navigation. In general however it is a *really* good idea to avoid filenames with punctuation marks, non-printing characters (including spaces, tabs etc) as these can lead to some difficulties and annoyances, especially on the command-line level. It is a convention to use underscores instead of spaces or CamelCase e.g., `this_is_a_long_name.txt` or `ThisIsALongFileName.txt`.
 
-Linux is case-sensitive with its filenames. This means that that list.txt is a different file to LIST.TXT, or even lisT.txT. Files do not usually require a program association suffix, although you may find this convenient (a C compiler like files to have .c in their suffix, for example). The file list can be opened by a text-editor just as easily as list.txt.
+Linux is case-sensitive with its filenames. This means that that list.txt is a different file to LIST.TXT, or even lisT.txT. Files do not usually require a program association suffix, although you may find this convenient (a C compiler like files to have .c in their suffix, for example). The file `list` can be opened by a text-editor just as easily as `list.txt`. The type of file can be determined with the `file` command. The type returned will usually be text, executable binaries, archives, or a catch-all "data" file. `file <filename>`. 
 
-The type of file can be determined with the file command. The type returned will usually be text, executable binaries, archives, or a catch-all "data" file. `file <filename>`. 
+There are three text editors usually available on Linux systems. The first is `nano`, a very easy to use clone from the Pine email client that uses control keys with a the equivalent of a "shortcut bar". Others include `vim` (Vi improved) which is a series of enhancements build on the "screen orientated" text editor `vi`, which was first introduced in 1976. Vim is generally understood to be a modal editor, operating either in a insert mode (where typed text becomes part of the document) or command mode (where keystrokes are interpreted as commands that control the edit session). Typicall the default text editor is `vi` or `vim`. Also written in 1976, the hefty `emacs` (Editor Macros) editor and environment is a feature-rich program, to the extent that it is even considered by some to be a virtual machine in its own right. With appropriate plugins, it can act as an email client, web browser, IDE, and even comes with a Rogerian psychotherapist.
 
-There are three text editors usually available on Linux systems. The first is nano, a very easy to use clone from the Pine email client that uses control keys with a the equivalent of a "shortcut bar". Others include Vim (Vi improved) which is a series of enhancements build on the "screen orientated" text editor vi, which was first introduced in 1976. Vim is generally understood to be a modal editor, operating either in a insert mode (where typed text becomes part of the document) or command mode (where keystrokes are interpreted as commands that control the edit session). Vi or Vim are often installed as the default text editor. Also written in 1976, the hefty EMacs (Editor Macros) editor and environment is a feature-rich program, to the extent that it is even considered by some to be a virtual machine in its own right. With appropriate plugins, it can act as an email client, web browser, IDE, and even comes with a Rogerian psychotherapist.
+In "UNIX culture" `emacs` and `vim` are considered favourites among experienced users, with `nano` considered the best for beginners. There are also long-running, and largely tongue-in-cheek, "editor wars" with various proponents debating the relative merits of the different editors. 
 
-In "UNIX culture" EMacs and Vim are considered favourites among experienced users, with nano considered the best for beginners. There are also long-running, and largely tongue-in-cheek, "editor wars" with various proponents debating the relative merits of different editors. 
+![XKCD Real Programmers](https://github.com/VPAC/superlinux/blob/master/images/real_programmers.png)
 
 **Nano; A Simple Text Editor**
 
-With nano editing is very intuitive. Start with nano <filename> on the command prompt. One can type straight to the display and editing is a simple function of simultaneously using Ctrl and a keystroke. Previously we created a file list.txt - you may wish to experiment with nano's options using this file.
+With nano editing is very intuitive. Start with nano <filename> on the command prompt. One can type straight to the display and editing is a simple function of simultaneously using Ctrl and a keystroke. Early a file was created named `list.txt` - one may experiment with nano's options using this file.
 
 The most commonly used key combinations are available on the bottom of the screen, including cutting (^K) and pasting ("uncutting", ^U) lines of text, searching ("where is", ^W), opening ("read a file", ^R), saving files ("write out", ^O), scrolling up and down the text (^Y, ^V).  Further commands can be displayed through invoking help ("get help", ^G) such as search and replace (M-R, ie., meta key, usually Esc and 'R'). 
+
+![Nano Example](https://github.com/VPAC/superlinux/blob/master/images/nano_example.png)
 
 ## 2.4 Copying and Transferring Files
 
@@ -750,14 +766,16 @@ To get a copy of all these files (including this book, in plain-text format) use
 
 `git clone https://github.com/levlafayette/superlinux`
 
-To copy a file from within a system use the cp command. The following is an example: 
+Copying code and data from github repositories is a fairly common activity in supercomputing, so it's worth learning right away how to do this. Copying *books* is less common, but far from unknown.
+
+To copy a file from within a system use the `cp` command. The following is an example: 
 
 `cp /common/introductory/gattaca.txt .` : Copy the file gattaca.txt from the directory path /common/introductory/ to the current working directory, represented by the `.` symbol.
 
-There is a great deal of options that can are part of the cp command; some of the more common include a recursive copy for all files in a series of directories and sub-directories (e.g., `cp -r /common/introductory .`) and a copy as an archive, with permissions, recursive, and links (e.g., `cp -a /common/introductory .`) . To copy a long file name or directory, use the tab key for auto-completion of the path and options.
+There is a great deal of options that can are part of the `cp` command; some of the more common include a recursive copy for all files in a series of directories and sub-directories (e.g., `cp -r /common/introductory .`) and a copy as an archive, with permissions, recursive, and links (e.g., `cp -a /common/introductory .`) . To copy a long file name or directory, use the tab key for auto-completion of the path and options. The tab key for auto-completion is your friend. Use it a lot.
 
 To move files to and from the supercomputer and one's desktop you need to use an SCP (secure copy protocol) or SFTP (secure file transfer protocol) over SSH. If you are using Linux or Mac, you will be able to do this with the standard command-line interface with the general procedure of; 
-scp source destination
+`scp source destination`.
 
 This however doesn't quite give the full story. Both the source or the destination may include a username and address, although if one is running the command the source or destination machine the account information does not have to be entered for that machine. Often a path to the files and directories will be required as well. However remembering the order source then destination is good shorthand.
 
@@ -767,11 +785,9 @@ The following is a more elaborate version of scp:
 
 Note when typing out the address make use of the tab-completion feature, which provides suggested options for command and file completion, plus Cntl-R or direction keys to recursively search through a history of previously used commands.
 
-If you are using MS-Windows, we recommend using WinSCP, or, if using certain applications such as MATLAB, the PuTTY Secure Copy client PSCP.  WinSCP comes with a intuitive GUI that provides basic file management functionality in addition to Secure Shell and Secure Copy functions.
+If you are using MS-Windows, we recommend using WinSCP, or, if using certain applications such as MATLAB, the PuTTY Secure Copy client PSCP.  WinSCP comes with a intuitive GUI that provides basic file management functionality in addition to Secure Shell and Secure Copy functions. Linux and Mac users can also use a GUI for secure file transfers. For Linux users this is typically inbuilt with the file browser application. For Mac users you might wish to consider Fugu or Cyberduck. Filezilla is a good GUI option for file transfers for all three operating systems because it has the same general "look and feel"! This is, of course, in addition to the suite of features it provides.
 
-Linux and Mac users can also use a GUI for secure file transfers. For Linux users this is typically inbuilt with the file browser application. For Mac users you might wish to consider Fugu or Cyberduck. Filezilla is a good GUI option for file transfers for all three operating systems because it has the same general "look and feel"! This is, of course, in addition to the suite of features it provides.
-
-An alternative transfer option is rsync. Rsync provides a way to keep two repositories of files "in sync", one of these repositories may be on your desktop, the other your home directory on the cluster. The nice feature of rsync is that it is very fast - after the initial backup. The reason for this is that it tracks changes. There is no point copying and re-writing an entire file when only a handful of characters have changed.
+An alternative transfer option is `rsync`. Rsync provides a way to keep two repositories of files "in sync", one of these repositories may be on your desktop, the other your home directory on the cluster. The nice feature of rsync is that it is very fast - after the initial backup. The reason for this is that it tracks changes. There is no point copying and re-writing an entire file when only a handful of characters have changed.
 
 The general sequence is: `rsync options source destination`
 
@@ -788,11 +804,11 @@ For greater  security in the transmission specify ssh encryption.
 
 `rsync -avze ssh username@remotemachine:/path/to/source .`
 
-Rsync can be used in a synchronise mode with the --delete flag. This will delete anything in the destination that is not in source directory. Handle with care! You may wish to also run rsync with the -n or --dry-run option to see what it will do first, before running the command for real.
+Rsync can be used in a synchronise mode with the `--delete` flag. This will delete anything in the destination that is not in source directory. Handle with care! You may wish to also run `rsync` with the `-n` or `--dry-run` option to see what it will do first, before running the command for real.
 
 `rsync -avz --delete --dry-run source/ username@remotemachine:/path/to/destination`
 
-Another popular option is the --update flage which only changes files in the destination that are newer in the source. This will mean that you won't accidentally delete any files in the destination, but it it also means that you may end up with old files in the destination that you already have removed in the source.
+Another popular option is the `--update` flage which only changes files in the destination that are newer in the source. This will mean that one won't accidentally delete any files in the destination, but it it also means that one may end up with old files in the destination that you already have removed in the source.
 
 `rsync -avz --update username@remotemachine:/path/to/src .`
 
@@ -800,7 +816,7 @@ Many people often use rsync on local machines as well, especially when copying l
 
 `rsync -av source/ destination/`
 
-A GUI interface for rsync is also available, grysnc.
+A GUI interface for rsync is also available, `grysnc`.
 
 One may wonder why we aren't running the command on the supercomputer (a "put", rather than a "get"). It must be remembered that in order for a copy of files to occur, both machines have to know where the other one is, translated from hostnames and Internet Protocol (IP) addresses. In most cases, local machines use private IP addresses, not public addresses. For example, if you were on the supercomputer and wanted to copy the file to a local machine you might think the following could work, as it follows the suggested format of source and destination and uses the correct command:
 
@@ -811,6 +827,7 @@ The problem is, which of the multitudes of computers out there with a private ad
 The applications mentioned in this discussion are available at the following URLs
 
 Putty is available from: `http://www.putty.org/`
+MobaXterm is available from: `http://mobaxterm.mobatek.net/`
 Filezilla is available from: `http://filezilla-project.org`
 Rsync is available from: `https://rsync.samba.org/`
 Grsync is available from: `http://www.opbyte.it/grsync/`
@@ -821,38 +838,34 @@ OpenSSH is available from: `http://www.openssh.com/`
 
 ## 2.5 Creating Directories, Moving Files
 
-We are going to copy the file gattaca.txt from the supercomputer to the local machine. From the local machine enter the following command:
+To copy the file `gattaca.txt` from the supercomputer to the local machine the following command is entered:
 
 `scp <username>@trifid.vpac.org:gattaca.txt .`
 
-Be sure to replace <username> with your username on the supercomputer (e.g., train01, train02, train03 etc). When the transfer is complete check on the local machine that the file has transferred with ls.
+Replace <username> with the user's actual name on the supercomputer (e.g., train01, train02, train03 etc). When the transfer is complete check on the local machine that the file has transferred with `ls`. When the presence of `gattaca.txt` is confirmed on the local computer, new material is added to it before sending it back to the supercomputer. 
 
-We know have gattaca.txt on the local computer. Let's add some new material to it before sending it back to the supercomputer. On the local computer enter: `nano gattaca.txt`
+On the local computer enter: `nano gattaca.txt`. Move to the first column on the third line and change the letters ATVK to ATEK. Then write out the file (Cntrl-O) and exit (Cntrl-X).
 
-Move to the first column on the third line and change the letters ATVK to ATEK. Then write out the file (Cntrl-O) and exit (Cntrl-X).
-
-Our next step will be to create a directory to put this file in and then move the file into that directory. The navigate to the directory and make sure that it is there. On the local computer enter:
+The next step will be to create a directory to put this file in and then move the file into that directory. The navigate to the directory and make sure that it is there. On the local computer enter:
 
 `mkdir braf`
 `mv gattaca.txt braf/`
 
-Change to the braf directory and check the contents of the directory. The output should be the `gattaca.txt` file from the ls command and `/home/<user>/braf` from the `pwd` command.
+Change to the `braf` directory and check the contents of the directory. The output should be the `gattaca.txt` file from the `ls` command and `/home/<user>/braf` from the `pwd` command.
 
 ## 2.6 Files Differences
 
-The next step will be to copy the directory and its contents from the local computer to the supercomputer. This uses the scp command again, but this time with the -r (recursive) option, which will copy the directory and all sub-directories and files within it. On the local computer change to the home directory and recursively copy the directory. Note the colon at the end of the scp command.
+The next step will be to copy the directory and its contents from the local computer to the supercomputer. This uses the `scp` command again, but this time with the `-r` (recursive) option, which will copy the directory and all sub-directories and files within it. On the local computer change to the home directory and recursively copy the directory. Note the colon at the end of the `scp` command. This indicates that a remote destination is desired (see `man scp`). 
 
- `scp -r braf/ <username>@trifid.vpac.org:`
+`scp -r braf/ <username>@trifid.vpac.org:`
 
-Now on the supercomputer do a directory listing but specify the file you want and with the time option. You should see a gattaca.txt in your home directory (the original one) and a braf directory. Move into the braf directory and run a directory listing again with the same option. There should be another gattaca.txt file, the one you just moved, but you will notice it has a different timestamp.
+Now on the supercomputer do a directory listing but specify the file with the long-listing option. The `gattaca.txt` file should be in the home directory (the original one) but there is also a `braf` directory. Change into the braf directory and run a directory listing again with the same options. There should be *another* `gattaca.txt` file, the one you just moved, but with a different timestamp.
 
 `ls -l gattaca.txt`
 `cd braf`
 `ls -l gattaca.txt`
 
-Sometimes you may wish to compare the content of files as well as when they were created. To do this use the diff command. This compares files line-by-line and prints the differences to the screen. As usual there are a number of options which can be ascertained from the command man diff, but for now we'll just use the basic command. The command uses brackets to indicate where additional material is located. To illustrate this, let's add some lines to the first list.txt file and then run the diff comparison.
-
-Write out (Cntrl-O) and exit (Cntl-X) and run the diff command.
+Sometimes one wishes to compare the content of files as well as when they were created. To do this use the `diff` command. This compares files line-by-line and prints the differences to the screen. As usual there are a number of options which can be ascertained from the command `man diff`, but for now just the basic command is necessary. The command uses brackets to indicate where additional material is located. 
 
 `diff gattaca.txt braf/gattaca.txt`
 	
@@ -862,27 +875,28 @@ The output should be something like the following:
 [lev@trifid ~]$ diff gattaca.txt braf/gattaca.txt 
 4c4 
 < ATVKSRWSGS HQFEQLSGSI LWMAPEVIRM QDKNPYSFQS DVYAFGIVLY 
---- 
-\> ATEKSRWSGS HQFEQLSGSI LWMAPEVIRM QDKNPYSFQS DVYAFGIVLY 
+> ATEKSRWSGS HQFEQLSGSI LWMAPEVIRM QDKNPYSFQS DVYAFGIVLY 
 ```
 
-For a side-by-side representation use the command sdiff instead. If multiple files are being tested use the `-q` (quiet) option with `--from-file` (e.g., `diff -q --from-file file1 file2 file3 file4`).
+For a side-by-side representation use the command `sdiff` instead. If multiple files are being tested use the `-q` (quiet) option with `--from-file` (e.g., `diff -q --from-file file1 file2 file3 file4`).
 
-In addition, the diff command is often used by programmers to create a patch file between two programs. For example, if one wanted to a patch of braf/gattaca.txt to gattaca.txt one would generate the patch file like follows:
+In addition, the `diff` command is often used by programmers to create a patch file between two programs. For example, if one wanted to a patch of `braf/gattaca.txt` to `gattaca.txt` one would generate the patch file like follows:
 
 `diff -u gattaca.txt braf/gattaca.txt > gattaca.patch`
 
 ## 2.7 Searches and Wildcards 
 
-Often you will want to search for files or search within files for a particular phrase. The find command, which will find files according to the directory and sub-directories offered, by name, modification time, size etc, and with filter operations, all of which are available through `man find`. To find all files with the suffix .txt on your supercomputer account change to the home directory use the following command: `find . -name './*.txt'`. Note that the filter is within quotes, to ensure that the command is not expanded due to the wildcard. The `find` command can also be used with grep for a search for words in a particular selection of files, by using `xargs` which runs the second command over all results from the first. For example, to search for BRAF in all `.txt` files the following could be used: `find . -maxdepth 1 -name '*.txt' | xargs grep -i BRAF`. Or - to introduce the `sort` command - to count all the words in `.txt` files in a directory and order according to size use: `find . -maxdepth 1 -name '*.txt' | xargs wc -w | sort -g | less`. Another advanced example is to pipe `find` with GNU `parallel`; `find . -type f | parallel -j4 grep BRAF` which would start four multiple grep searches for the term. For simple searches this is not recommended because of the start up and conclusion overhead.
+Often a user will want to search for files or search within files for a particular phrase ("regular expression"). The `find` command, will find files according to the directory and sub-directories offered, by name, modification time, size etc, and with filter operations, all of which are available through `man find`. 
+
+To find all files with the suffix `.txt` on your supercomputer account change to the home directory use the following command: `find . -name './*.txt'`. Note that the filter is within quotes, to ensure that the command is not expanded due to the wildcard. 
 
 The `find` command is differentiated from the `locate` and `whereas` commands which also find files. The `find` command is searches for files by filename in the directories and with the options assigned. It is best for finding files that a users and within a limited directory range. In comparison the `locate` command searches through a database that must be regularly updated, typically by administrators (`updatedb`). It is best for files that are used regularly without change, or for quick search that may not be the most up-to-date. Finally, `whereis` finds source, binary and manual files by name and should be used for such searches.
 	
-To search within a collection of files use the grep command. It originally an abbreviation of "global search for a regular expression and print to standard output". The command searches the named input files for lines containing a match to the given pattern, including regular expressions, and prints the matching lines. As usual there are a variety of options available through man grep. The following command will search for the pattern 'ATEK', ignoring case, within the directory braf. Enter the following on the supercomputer: `grep -i ATEK braf/*`
-
-The search is for a regular expression, which means any sequence of characters that includes the letters ATEK. If one wishes to search for a word the -w option can be invoked: `grep -w ARSLPK braf/*`
+To search *within* a collection of files use the `grep` command. It originally an abbreviation of "global search for a regular expression and print to standard output". The command searches the named input files for lines containing a match to the given pattern, including regular expressions, and prints the matching lines. As usual there are a variety of options available through man grep. The following command will search for the pattern 'ATEK', ignoring case, within the directory braf. Enter the following on the supercomputer: `grep -i ATEK braf/*` . The search is for a regular expression, which means any sequence of characters that includes the letters ATEK. If one wishes to search for a word the -w option can be invoked: `grep -w ARSLPK braf/*`
 
 Note that the files being searched must be specified, even with a wildcard character. Simply stating a directory is insufficient. Where there are multiple results, grep will also display the filename. Compressed or gzipped files can be searched with `zgrep`; there are other "z" tools, including `zcat`, `zdiff` etc. If one wants to search a PDF file, then either the `poppler-utils` needs to be installed, or `pdfgrep`. A binary file can also be searched for text in the binary format with the `strings` command.
+
+The `find` command can also be used with `grep` for a search for words in a particular selection of files, by using `xargs` which runs the second command over all results from the first. For example, to search for BRAF in all `.txt` files the following could be used: `find . -maxdepth 1 -name '*.txt' | xargs grep -i BRAF`. Or - to introduce the `sort` command - to count all the words in `.txt` files in a directory and order according to size use: `find . -maxdepth 1 -name '*.txt' | xargs wc -w | sort -g | less`. Another advanced example is to pipe `find` with GNU `parallel`; `find . -type f | parallel -j4 grep BRAF` which would start four multiple grep searches for the term. For simple searches this is not recommended because of the start up and conclusion overhead.
 
 The use of wildcards is known as *globbing*, or filename expansion.  The wildcard you see most often is `*` (asterisk). The `*` wildcard matches any character or group of zero or more characters. For example, `*.txt` matches all files whose names end with .txt, `*.c` matches all files whose names end with .c (by convention, source code for programs in the C language), and so on. Anther common alternative is the wildcard, `?`. When it appears in a filename, the `?` matches any single character. For example, letter? refers to any filename that begins with letter and has one character after that. This would include `letterA`, `letter1`, as well as filenames with a non-printing character as their last letter, like `letter^C`. However it will not expand to include "dotfiles", unless the dot is explicitly stated as literal character. 
 
@@ -897,9 +911,9 @@ The use of wildcards is known as *globbing*, or filename expansion.  The wildcar
 
 ## 2.8 Deletions
 
-Sometimes you'll want to remove files and directories from your account. Be very careful and very selective with this because when you're operating on the command line there's no "trashcan" to easily undelete files. Somewhere, delete really means what it says, and that somewhere is here. *Technically* it is possible to recover files at this step; kick *everyone* off the the supercomputer system, have the administrators reboot into single-user mode and, painfully and slowly, scan the disks in a desparate attempt to find the data although there is no filename association. Given how utterly unlikely this is, the best solution is to backup files, backup often, and don't delete files unless you have to. Disk is relatively cheap, and certainly cheaper in a lot of cases that reconstructing data.
+Sometimes a user will want to remove files and directories from your account. One should be very careful and very selective with this because when when operating on the command line there's no "trashcan" to easily undelete files. Somewhere, "delete" really means "delete", and that somewhere is here. *Technically* it is possible to recover files at this step; kick *everyone* off the the supercomputer system, have the administrators reboot into single-user mode and, painfully and slowly, scan the disks in a desparate attempt to find the data although there is no filename association. Given how utterly unlikely this is, the best solution for a user is to backup files, backup often, and don't delete files unless they have to. Disk is relatively cheap, and certainly cheaper in a lot of cases that reconstructing data.
 
-On the supercomputer we'll carefully delete the file in the home directory and then change the directory to braf and delete the file there. We'll delete the file in that directory, change out of that directory and delete the directory.
+As an example, the following illustrates deletion of a the file in the home directory and then changing the directory to `braf` and deleting the file there. Then an example of deleting a directory is provided.
 
 ```
 cd ~
@@ -910,25 +924,27 @@ cd ~
 rmdir braf
 ```
 
-Then on the local computer we'll use a shortcut; a command which deletes the entire directory, all sub-directories and all files within the directory tree. This is remove with the recursive and force options.
+On the local computer a shortcut is provided; a command which deletes the entire directory, all sub-directories, and all files within the directory tree. This is remove with the recursive and force options.
 
 ```
 rm -rf braf/
 ```
 
-Again, be very careful with `rm`, especially with the `-rf` option and especially with wildcards. Consider what would happen to someone who wishes to delete all their backup files in a directory with the helpful suffix .BAK. Choosing a wildcard and the suffix they intend to type `rm *.BAK` but instead, they mistype the command and type `rm * .BAK`. The result of this typing error is that they have just deleted everything in that directory. Worse still imagine a user running as root thinking that they are about to delete a directory and instead types `rm -rf /` ; a command that will delete everything or, more commonly `rm -rf ./` ; a command which deletes the current directory and all sub-directories. 
+Again, great care is recommended with `rm`, *especially* with the `-rf` option and *especially* with wildcards. Consider what would happen to someone who wishes to delete all their backup files in a directory with the helpful suffix .BAK. Choosing a wildcard and the suffix they intend to type `rm *.BAK` but instead, they mistype the command and type `rm * .BAK`. The result of this typing error is that they have just deleted everything in that directory. Worse still imagine a user running as root thinking that they are about to delete a directory and instead types `rm -rf /` ; a command that will delete everything or, more commonly `rm -rf ./` ; a command which deletes the current directory and all sub-directories. 
 
 > **Why The File Differences Mattered**   
 BRAF is a human gene that makes a protein (imaginatively) named B-Raf. This protein is involved in sending signals inside cells, which are involved in directing cell growth. In 2002, it was shown to be faulty (mutated) in human cancers.    
 In particular the difference that between the two files "ATVKSRWSGS" and "ATEKSRWSGS" is the difference which leads to susceptibility to metastatic melanoma. Fortunately, because of high performance computing, massive databases, and molecular modelling applications, science has begun to develop  specific inhibitors of mutated B-raf protein for anticancer treatments.
 
+![BRAF Protein](https://github.com/VPAC/superlinux/blob/master/images/protein_BRAF.png)
+
 # 3.0 Modules, PBS, and Example Jobs
 
 ## 3.1 Environment Modules
 
-Modulefiles also have the advantages of being shared on many users on a system (such as an HPC system) and easily allowing multiple installations of the same application but with different versions and compilation options. Sometimes users want the latest and greatest of a particular version of an application for the feature-set they offer. In other cases, such as someone who is participating in a research project, a consistent version of an application is desired. Having multiple version of applications available on a system is essential in research computing.
+When one is operating on a Linux system the user has a certain environment; this can be checked with the `env` command. This will include particular a set of paths, which indicate where binary executables, libraries, etc will be found. Environment modules allow the user to dynamically change what is in their path. For a user to see what their current path is the command `echo $PATH` can be used. Environment modules are formed through modulefiles which specify these particular environment paths.
 
-When you are operating on a Linux system the user has a certain environment; this can be checked with the `env` command. This will include particular a set of paths, which indicate where binary executables, libraries, etc will be found. Environment modules allow the user to dynamically change what is in their path. For a user to see what their current path is the command `echo $PATH` can be used.
+Modulefiles have the advantage of being shared to the many users on a system (such as an HPC system) and easily allowing multiple installations of the same application but with different versions and compilation options. Sometimes users want the latest and greatest of a particular version of an application for the feature-set they offer. In other cases, such as someone who is participating in a research project, a consistent version of an application is deeply desired to ensure replication of results. Having multiple version of applications available on a system is essential in research computing.
 
 **Module commands**
 
@@ -938,39 +954,39 @@ Some basic module commands include the following:
 
 `module avail` : This option lists all the modules which are available to be loaded. Notice that many of them have version numbers associated with them. Modules makes it easy to switch compiler application versions. The module name without a version number is the production default. 
 
-One particular nuissance is that the output of a module avail is treated as a standard error, rather than standard output, in the standard environment modules application. Thus to pipe the output of module avail to less, one has to redirect standard error to standard output. This can also be used for providing an output of `module whatis`  i.e.,
+One particular nuissance is that the output of a module avail is treated as a standard error rather than standard output, in the standard environment modules application. Thus to pipe the output of module avail to less, one has to redirect standard error to standard output. This can also be used for providing an output of `module whatis`  i.e.,
 
 ```
-module avail 2>&1 | less
-module avail -l 2>&1 | less
-module whatis 2>&1 | less
+module avail 2>&1 | less   
+module avail -l 2>&1 | less   
+module whatis 2>&1 | less   
 ```
 
 `module whatis <modulefile>` : This option provides a description of the module listed. 
 
-`module display <modulefile>` : Use this command to see exactly what a given modulefile will do to your environment, such as what will be added to the PATH, MANPATH, etc. environment variables. 
+`module display <modulefile>` : This command displays the paths of the modulefile, and what will be changed if it is loaded. This includes what will be added to the PATH, MANPATH, etc. environment variables. 
 
-For example the command: module display freesurfer displays the following results:
+For example the command: `module display freesurfer` displays the following results:
 
 ```
-/usr/local/Modules/modulefiles/freesurfer/4.5.0: 
-module-whatis	 Set environment variables to use freesurfer version 4.5.0 
-prepend-path	 PATH /usr/local/freesurfer/4.5.0/bin 
-prepend-path	 FREESURFER_HOME /usr/local/freesurfer/4.5.0 
-prepend-path	 SUBJECTS_DIR /usr/local/freesurfer/4.5.0/subjects 
+/usr/local/Modules/modulefiles/freesurfer/4.5.0:    
+module-whatis	 Set environment variables to use freesurfer version 4.5.0    
+prepend-path	 PATH /usr/local/freesurfer/4.5.0/bin    
+prepend-path	 FREESURFER_HOME /usr/local/freesurfer/4.5.0    
+prepend-path	 SUBJECTS_DIR /usr/local/freesurfer/4.5.0/subjects    
 ```
 
-`module load <modulefile>` : This adds one or more modulefiles to the user's current environment (some modulefiles load other modulefiles, e.g., module load vpac or module load gcc). You can load multiple modules simultaneously. For example, to load NAMD one would use the command: `module load namd`.  If you load the generic name of a module, you will get the default version. To load a specific version, load the module using its full specification. for example; `module load namd/2.9-openmpi-gcc`. It is almost always better to use the precise version to ensure consistency in scripts and resuls. The default version should only be used for testing purposes. 
+`module load <modulefile>` : This adds one or more modulefiles to the user's current environment (some modulefiles load other modulefiles, e.g., `module load vpac` or `module load gcc`). Multiple modules can be loaded simultaneously. For example, to load NAMD one would use the command: `module load namd`.  If the generic name of a module if loaded the default version will be added to the user's environment. To load a specific version, load the module using its full specification. for example; `module load namd/2.9-openmpi-gcc`. It is almost always better to use the precise version to ensure consistency in scripts and resuls. The default version should only be used for testing purposes. 
 
 As an example of how the changes occur, check the version and path when loading a module. For example:
 
 ```
-which gcc
-/usr/bin/gcc
-gcc --version
-gcc (GCC) 4.4.5
-module load gcc/4.9.2
-gcc (GCC) 4.9.2
+which gcc   
+/usr/bin/gcc   
+gcc --version   
+gcc (GCC) 4.4.5   
+module load gcc/4.9.2   
+gcc (GCC) 4.9.2   
 ```
 
 Note that if multiple versions of the same application are loaded then it will be the last one that is loaded which will apply. However, if they are referenced files in previous versions it will search for those as well which can lead to some unexpected results. For this reason it is highly recommended that only one version of an application remains loaded at any point in time.
@@ -986,8 +1002,8 @@ Note that unloading a module does not necessarily automatically remove additiona
 For example, the following loads Octave v3.2.0, but the user then discovers that an earlier version better suits their needs. Rather than loading and unloading the different versions they can simply use module switch instead.
 
 ```
-module load octave/3.2.0
-module switch octave/3.2.0 octave/3.0.3 
+module load octave/3.2.0   
+module switch octave/3.2.0 octave/3.0.3    
 ```
 
 `module purge` : This removes all modules from the user's environment.
@@ -1008,7 +1024,7 @@ If the `module load` line is found in multiple shell initialization files, all o
 
 ## 3.2 Portable Batch System
 
-A batch system, often expressed as 'Portal Batch System' or PBS) is the name of a utility software that performs job scheduling by assigning unattended background tasks expressed as batch jobs, among the available resources. A batch system typically consists of a resource manager (e.g., TORQUE) and a job scheduler (e.g., Maui, Moab), or a combination (e.g., PBSPro, Slurm). The scheduler provides for paramterisation of computer resources, an automatic submission of execution tasks, and a notification system for incidents. The resource manager is responsible for managing the resources of the cluter, such as the the availble nodes and processors, memory etc, and to ensure that jobs do not overlap on such resources.
+'Portable Batch System' or PBS) is the name of a utility software that performs job scheduling by assigning unattended background tasks expressed as batch jobs, among the available resources. A batch system typically consists of a resource manager (e.g., TORQUE) and a job scheduler (e.g., Maui, Moab), or a combination (e.g., PBSPro, Slurm). The scheduler provides for paramterisation of computer resources, an automatic submission of execution tasks, and a notification system for incidents. The resource manager is responsible for managing the resources of the cluter, such as the the availble nodes and processors, memory etc, and to ensure that jobs do not overlap on such resources.
 
 The contemporary Portable Batch System was developed by MRJ Technology Solutions under contract to NASA in the early 1990s. In 1998 the original version of PBS was released as an open-source product as OpenPBS. OpenPBS, for those truly interested, is still available although not in particularly active development. `http://www.mcs.anl.gov/research/projects/openpbs/`.
 
@@ -1020,27 +1036,25 @@ The batch command file does not need to be an executable. In the case of paralle
 
 Submitting and running jobs is a relatively straight-forward process consisting of:
 
-1) Setup and launch
-2) Monitor run
+1) Setup and launch   
+2) Monitor run   
 3) Retrieve results and analyse.
 
-Remember that this is a shared environment, hence the need for a resource requesting system. There could be hundreds or thousands of individuals with accounts on an HPC cluster, and they all will want resources. Policies are typically established to ensure that everyone has access to a "fair share" of these resources (e.g., a limit on how many processors an individual may access at any one time). One thing that is invariably requested by administrators of HPC clusters:
+Remember that HPC clusters are a shared environment, hence the need for a resource requesting and job queueing system. There could be hundreds or thousands of individuals with accounts on an HPC cluster, and they all will want resources. Policies are typically established to ensure that everyone has access to a "fair share" of these resources (e.g., a limit on how many processors an individual may access at any one time). One thing that is invariably requested by administrators of HPC clusters:
 
 **Don't run jobs on the login node!**
 
-Whilst the entire cluster is a shared resource, the login node is a particularly shared resource. All users will access the login node in order to check their files, submit jobs etc. If one or more users start to run computationally or I/O intensive tasks on the login node (such as forwarding of graphics, copying large files, running multicore jobs), then that will make life difficult for everyone. Avoid it whenever possible. Instead, using the queuing system to submit jobs.
+Whilst the entire cluster is a shared resource, the login node is a *particularly* shared resource. All users will access the login node in order to check their files, submit jobs etc. If one or more users start to run computationally or I/O intensive tasks on the login node (such as forwarding of graphics, copying large files, running multicore jobs), then that will make life difficult for everyone. A good user will avoid this whenever possible and instead use the queuing system to submit jobs.
 
 The graphic presented below (from an otherwise fairly formal book on queue management by IBM) gives an amusing representation of what occurs; the jobs are launched by the user (the initial rabbits) which then go into a queue. The scheduler (the dog) determines when they can run, they dash off to the compute machines and, after computation, collect their results (the carrots).
 
-<img src="https://raw.githubusercontent.com/VPAC/superlinux/master/images/rabbitjobs.png" />
+![Rabbit Jobs](https://github.com/VPAC/superlinux/blob/master/images/rabbitjobs.png)
 
 **Setup and Launch**
 
-When uploading files in preparation for launching a HPC job it is good practice to keep each job in separate folders, labeled in an intuitive way, such as:    NAMD_albumin_run_01 . Writing all files to the top level of the home directory will very quickly become difficult to follow and easy to make mistakes. Use the mkdir command learned in the previous section to do this.
+When uploading files in preparation for launching a HPC job it is good practice to keep each job in separate folders, labeled in an intuitive way in the context, such as: `NAMD_albumin_run_01`. Writing all files to the top level of the home directory will very quickly become difficult to follow and easy to make mistakes. Use the `mkdir` command to do this.
 
-A pbs script allocates the compute nodes and time requested by the user. The user can edit this script to change the number of preferences including the number of cpus to use, the length of time to run the job and the name of the program executable.
-
-Lines that start with  `#PBS` pass a PBS command,  while adding a white space does not.   For example, compare the lines:
+A pbs script allocates the compute nodes and time requested by the user. The user can edit this script to change the number of preferences including the number of cpus to use, the length of time to run the job and the name of the program executable. Lines that start with `#PBS` pass a PBS command,  while adding a white space does not. For example, compare the lines:
 
 `#PBS -l walltime=24:0:0`
 `# PBS -l walltime=24:0:0` 
@@ -1059,19 +1073,19 @@ The following is a sample PBS script for TORQUE and with comments for script for
 | # SBATCH -ntasks=8		| Again, the same resource requests, but this time for SLURM.	|
 | # PBS -M example@example.com	| The email address that notifications should be sent to for TORQUE and PBSPro. Currently commented out. Make sure this is entered correctly. Multiple addresses possible with comma separation. 	|
 | # SBATCH --mail-user=example@example.com	| The same command as above, except for SLURM.	|
-| # PBS -m abe			| Mail user if job aborts (a), begins (b) or ends (e). Anther option is never (n). Currently commented out. 			|
+| # PBS -m abe			| Mail user if job aborts (a), begins (b) or ends (e). Anther option is never (n). Currently commented out. |
 | # SBATCH –mail-type=FAIL	| |
 | # SBATCH --mail-type=BEGIN	| |
 | # SBATCH –mail-type=END	| |
-| # SBATCH –mail-type=ALL	| The equivalent of the above for SLURM with the equivalent of the "abe" option represented by "all"	|
-|#PBS -l walltime=24:10:5	| Walltime for TORQUE and PBSPro. Set the job to run 24 hours 10 minutes and 5 seconds – a deliberately strange time request for the purposes of illustration. 		|
-| # SBATCH --time=24:10:5	| The same command as above but written for SLURM. SLURM also takes the format -t days-hours:minutes:seconds								|
-| #PBS -o output_file_name.txt	| |
-| #PBS -e error_file_name.txt	| For TORQUE and PBSPro, set output and error file name. Note that these are created with the job ID by default. In this format they can also be combined with #PBS -j oe (join error and output)		|
+| # SBATCH –mail-type=ALL	| The equivalent of the above for SLURM with the equivalent of the "abe" option represented by "all".	|
+|#PBS -l walltime=24:10:5	| Walltime for TORQUE and PBSPro. Set the job to run 24 hours 10 minutes and 5 seconds – a deliberately strange time request for the purposes of illustration. |
+| # SBATCH --time=24:10:5	| The same command as above but written for SLURM. SLURM also takes the format -t days-hours:minutes:seconds |
+| #PBS -o output_file_name.txt	| For TORQUE and PBSPro, set the output file name. |
+| #PBS -e error_file_name.txt	| For TORQUE and PBSPro, set the error file name. Note that these are created with the job ID by default. In this format they can also be combined with #PBS -j oe (join error and output)		|
 | # SBATCH -output		| |
-| # SBATCH -error		| The equivalent output and error filenames for SLURM. Where -o is specified without a -e SLURM assumes they are to be combined.					|
-| module load namd/2.9-openmpi-gcc	| Load the NAMD module					|
-| cd $PBS_O_WORKDIR		| For TORUE and PBSPro, change to the directory where the job was launched; otherwise it will try to run it in the home directory. SLURM assumes that you want to run in the directory where you launched the job from, so this command is not necessary.		|
+| # SBATCH -error		| The equivalent output and error filenames for SLURM. Where -o is specified without a -e SLURM assumes they are to be combined. |
+| module load namd/2.9-openmpi-gcc	| Load the NAMD module, version 2.9 compiled with GCC.		|
+| cd $PBS_O_WORKDIR		| For TORQUE and PBSPro, change to the directory where the job was launched; otherwise it will try to run it in the home directory. SLURM assumes that you want to run in the directory where you launched the job from, so this command is not necessary.		|
 | # Launching the job!		| Another comment line. 					|
 | mpiexec namd2 configfile	| Launching the executable “namd2”  with the file “configfile”. |
 | # srun namd2 configfile	| Launching the executable “namd2”  with the file “configfile” using srun for Slurm. |
@@ -1088,15 +1102,15 @@ To submit according to a particular queue in TORQUE or PBSPro use `#PBS -q queue
 
 Requesting more nodes or cores for a particular job does not necessarily mean better performance or faster completion. This depends on how well parallelised the program is. Also, requesting large numbers of cores may result in the job waiting in the queue for days while the scheduler allows for resources to become available.  The number of nodes requested can be distinguished between a number of cores from anywhere on the system, or within a single system unit, or another combination. It is also possible to request specific nodes on the system, although the instances where this is necessary are usually limited to debugging, assuming that queues have been established appropriately.. Another option with OpenMPI is to launch the job with  `--hostfile $hostfile`.
 
-Note that with TORQUE the nodes request is for system units (except when expressed in the singular, when it is processors) and in PBSPro it is "chunks", which may or may not be specific system units.
+Note that with TORQUE the nodes request is for system units (except when expressed in the singular, when it is processors - and which can be quite confusing) and in PBSPro it is "chunks", which may or may not be specific system units depending on the specific implementation, but with a similar effect.
 
-| TORQUE		| PBSPro	| SLURM			|Description				|
-|-----------------------|-----------------------|---------------|---------------------------------------|
-| #PBS -l nodes=16	| #PBS -l ncpus=16	| #SBATCH --ntasks=16 | Sixteen cores or tasks			|
+| TORQUE		| PBSPro		| SLURM			|Description				|
+|-----------------------|-----------------------|-----------------------|---------------------------------------|
+| #PBS -l nodes=16	| #PBS -l ncpus=16	| #SBATCH --ntasks=16 	| Sixteen cores or tasks.		|
 | #PBS -l nodes=1:ppn=16| #PBS -l select=1:ncpus=16 | #SBATCH --nodes=1 |					|
-|			|				| #SBATCH --ntasks-per-node=16 | Sixteen cores or tasks from a system unit.	|
+|			|			| #SBATCH --ntasks-per-node=16 | Sixteen cores or tasks from a system unit.	|
 | #PBS -l nodes=2:ppn=8 | #PBS -l select=2:ncpus=16 | #SBATCH --nodes=2	|				|
-|			|		| #SBATCH --ntasks-per-node=8		| Sixteen or tasks from two system units with eight each.	|
+|			|			    | #SBATCH --ntasks-per-node=8 | Sixteen or tasks from two system units with eight each.	|
 | #PBS -l nodes="trifid001"	| #PBS -l nodes="trifid001" |	#SBATCH -w, --nodelist=trifid001 | To run specifically on trifid001	|
 
 Note that the details of these resource requests may vary significantly between systems. Some implementations of PBSPro, for example, also require the statement: mpiprocs=n after selecting the quantity of processors specifically for MPI jobs.
@@ -1105,13 +1119,13 @@ Note that the details of these resource requests may vary significantly between 
 
 Walltime is the length of time specified in the pbs script for which the job will run. In a shared resource environment, the user who is submitting a job is making an agreement with other users: "This job will require x number of resources for y period of time". At the end of that time the job "hits a wall" and will stop. 
 
-So make sure that you have specified enough walltime for a particular job to complete!  Your job will end after the allocated walltime whether it is finished or not, sometimes resulting in lost data if the program does not check point restart files. If you are not sure how long a job will run, set a generous walltime, and then check the job status before the walltime expires. 
+A user should make sure that they have specified enough walltime for a particular job to complete. The job will end after the allocated walltime whether it is finished or not, sometimes resulting in lost data if the program does not checkpoint restart files or save data during the run. It is recommended that generous walltimes are initially allocated until a user has a good sense of how long jobs take to run, and check the job status before the walltime expires. 
 
-In a number of environments and email to the helpdesk with a request to extend walltime can be fulfilled. But don't rely on this, and certainly don't make it a habit. In effect when an extension is granted, it means that the user is jumping ahead in the queue, by way of extension of resource use. This is unfair to others. It is best to be generous with one's walltime to begin with and run a few test cases to see how long a dataset takes to process.
+In a number of environments an email to the helpdesk with a request to extend walltime can be fulfilled. When an extension is granted however, it means that the user is jumping ahead in the queue, by way of extension of resource use. This is unfair to others. 
 
 **Memory**
 
-Sometimes you will require more or less memory that is typical for a job. In these cases the resource requests memory for the total job (mem for TORQUE and PBSPro), or more commonly, for each processing task (pmem), may be useful. A standard resource request is used e.g., #PBS -l pmem=2000mb for TORQUE and PBS or #SBATCH --mem=20000 for SLURM.
+Sometimes a user will require more or less memory that is typical for a job. In these cases the resource requests memory for the total job (mem for TORQUE and PBSPro), or more commonly, for each processing task (pmem). A standard resource request is used e.g., #PBS -l pmem=2000mb for TORQUE and PBS or #SBATCH --mem=20000 for SLURM.
 
 **Backfilling**
 
@@ -1157,26 +1171,26 @@ The following example runs a job for phase-state transition in potassium chlorid
 Copy the test files to an appropriate directory and extract. Whilst using this example of the `wget` network downloader, it's worth mentioning in passing if one wants to download an entire directory and subdirectories they should use `wget -r --no-parent`; otherwise `wget` will follow the link to the directory index and download the parent directory as well.
 
 ```
-cd /home/train01/
-wget http://www.ccp5.ac.uk/DL_POLY/TUTORIAL/EXERCISES/TEST1.tar.gz 
-tar xvf TEST1.tar.gz 
+cd /home/train01/   
+wget http://www.ccp5.ac.uk/DL_POLY/TUTORIAL/EXERCISES/TEST1.tar.gz    
+tar xvf TEST1.tar.gz    
 ```
 Inside the TEST1 directory, create the following file 'dltest' with nano. 
 
 ```
-#!/bin/bash
-#PBS -N dlpoly1
-## Job resources
-#PBS -l nodes=1:ppn=4
-#PBS -l walltime=00:10:00
-module load dlpoly/4.03.2.1
-cd $PBS_O_WORKDIR
-mpiexec DLPOLY.Z
+#!/bin/bash   
+#PBS -N dlpoly1   
+## Job resources   
+#PBS -l nodes=1:ppn=4   
+#PBS -l walltime=00:10:00   
+module load dlpoly/4.03.2.1   
+cd $PBS_O_WORKDIR   
+mpiexec DLPOLY.Z   
 ```
 
 This job example is specific to TORQUE; if one is using PBSPro or SLURM, changes will need to be made as illustrated previously. 
 
-Once having written up the script, submit it according to the scheduler used (e.g., `qsub dltest`). There may be mistakes! Typing errors are very common in script writing, so be attentive to what you've written. The scheduler will generate error messages as appropriate. Take the opportunity to work through these to find out what went wrong.
+Once having written up the script, it should be submitted to the scheduler (e.g., `qsub dltest`). There may be mistakes! Typing errors are very common in script writing, so being attentive to what has been entered is important - and provides a good reason to reuse a working script with the minimum necessary modifications. The scheduler will generate error messages as appropriate. A user take the opportunity to work through these to find out what went wrong.
 
 Assuming all goes well, DLPOLY will read in the CONFIG, CONTROL, and FIELD data, and wait for the output. If successful the job will create OUTPUT, RDFDAT, REVCON, REVIVE, and STATIS files. 
 
@@ -1185,53 +1199,55 @@ Assuming all goes well, DLPOLY will read in the CONFIG, CONTROL, and FIELD data,
 GNU Octave is a mathematical application and programming language that is highly compatible with MATLAB(R) but without the licensing restrictions. The following compares (using TORQUE examples) two job scripts written for the respective languages that generate the same result. 
 
 ```   
-#!/bin/bash   
-#PBS -l nodes=1:ppn=1   
-#PBS -l walltime=00:10:00
-module load matlab
-cd $PBS\_O\_WORKDIR 
-matlab -nodesktop -nodisplay -nosplash < polar-plot.m
+#!/bin/bash      
+#PBS -l nodes=1:ppn=1       
+#PBS -l walltime=00:10:00   
+module load matlab   
+cd $PBS_O_WORKDIR    
+matlab -nodesktop -nodisplay -nosplash < polar-plot.m   
 ```
 
 ```   
-#!/bin/bash     
+#!/bin/bash       
 #PBS -l nodes=1:ppn=1
-#PBS -l walltime=00:10:00 
-module load octave
-cd $PBS_O_WORKDIR
-octave polar-plot.m
+#PBS -l walltime=00:10:00   
+module load octave   
+cd $PBS_O_WORKDIR   
+octave polar-plot.m   
 ```
 
 The Matlab example, more designed for a graphical interface, requires parameters to be passed to the executable to ensure that the output is conducted on the file itself. In both cases the .m file is polar-plot.m i.e.,
 
 ```
-angle = 0:.1*pi:3*pi;
-            radius = exp(angle/20);
-            polar(angle,radius),...
-            title('An Example Polar Plot'),...
-            grid
-print -deps polar-plot.ps;`
-quit;
+angle = 0:.1*pi:3*pi;   
+            radius = exp(angle/20);   
+            polar(angle,radius),...   
+            title('An Example Polar Plot'),...   
+            grid   
+print -deps polar-plot.ps;   
+quit;   
 ```
 
-Simply put the PBS job is submitted, which calls the polar-plot.m file, which runs it's own script, which then generates a polar-plot.ps file which can be downloaded and viewed.
+Simply put when the PBS job is submitted, it calls the polar-plot.m file, which runs its own script, which then generates a `polar-plot.ps` file which can be downloaded and viewed.
+
+![Polar Plot](https://github.com/VPAC/superlinux/blob/master/images/polar_plot.png)
 
 ## 3.6 Standard Job with PDF Output: R, A Statistical Package
 
 The data is used to indicate an estimate of biomass of ponderosa pine in a study performed by Dale W. Johnson, J. Timothy Ball, and Roger F. Walker who are associated with the Biological Sciences Center, Desert Research Institute, University of Nevada. The tutorial is partially derived from material by Kelly Black of Clarkson University.
 
-It consists of observation measurements and markers for 28 different measurements of a given tree. For example, the first number in each row is a number, either 1, 2, 3, or 4, which signifies a different level of exposure to carbon dioxide. The sixth number in every row is an estimate of the biomass of the stems of a tree. Note that the very first line in the file is a list of labels used for the different columns of data. 
+The example consists of observation measurements and markers for 28 different measurements of a given tree. For example, the first number in each row is a number, either 1, 2, 3, or 4, which signifies a different level of exposure to carbon dioxide. The sixth number in every row is an estimate of the biomass of the stems of a tree. Note that the very first line in the file is a list of labels used for the different columns of data. 
 
-A collection of files is available in the introductory directory, so change to that. Review the files that it references with less (`less pbs-script`, `less tutorial.R`, `less trees91.csv`, `less w1.dat`). The `tutorial.R` script, imports the w1.dat and trees91.csv files into appropriate variables. Then it plots a histogram, breaks, a box plot, normal quantiles, a scatter plot relationship. The output file will also record the correlation of the scatter diagram. 
+A collection of files is available in the introductory directory, so change to that. Review the files that it references with less (`less pbs-script`, `less tutorial.R`, `less trees91.csv`, `less w1.dat`). The `tutorial.R` script, imports the `w1.dat` and `trees91.csv` files into appropriate variables. Then it plots a histogram, breaks, a box plot, normal quantiles, a scatter plot relationship. The output file will also record the correlation of the scatter diagram. 
 
-Submit the job with: qsub pbs-script, check the status of the job (`qstat -u [username]`) until the job is completed. When it is complete note the directory listing (`ls`). You should have something like the following: 
+The job can be submitted with: `qsub pbs-script`, and the status checked (`qstat -u [username]`) until the job is completed. When it is complete note the directory listing (`ls`) and something the following should result:
 
 ```
-[lev@trifid R]$ ls
-MyJob.e32933  MyJob.o32933  pbs-script  Rplots.pdf  trees91.csv  tutorial.R  w1.dat
+[lev@trifid R]$ ls   
+MyJob.e32933  MyJob.o32933  pbs-script  Rplots.pdf  trees91.csv  tutorial.R  w1.dat   
 ```
 
-The two files `MyJob.e32933` and `MyJob.o32933` are the job error and output files, respectively. The error file in this case is empty, but can be useful for debugging purposes if a job fails. The output file in this instance documents the actions of the program, including the significant correlation result. The real output is Rplots.pdf, which can be copied from the cluster to the desktop and then displayed using the command evince Rplots.pdf. 
+The two files `MyJob.e32933` and `MyJob.o32933` are the job error and output files, respectively. The error file in this case is empty, but can be useful for debugging purposes if a job fails. The output file in this instance documents the actions of the program, including the significant correlation result. The real output is `Rplots.pdf`, which can be copied from the cluster to the desktop and then displayed using the command `evince Rplots.pdf`. 
 
 # 3.7 Extended Application for Parallel Processing: R: A Statistical Package
 
@@ -1239,9 +1255,9 @@ Many applications assume single-core usage and don't take advantage of parallel 
 
 In addition to the standard, single-core job in the R directory, there are also files for a parallel task that makes use of the snow (simple network of workstations) library that has been developed to extend the functionality of the R application. It is one of several R libraries which have been implemented to carry out parallel computation. 
 
-In this example a simple task on normal distribution using both a sequential process and a parallel process. The outline of the R script is contained in the file xvalidate.R and the pbs script itself is `r-parallel.pbs`; these should be reviewed (`less r-parallel.pbs`, `less xvalidate.R`)
+In this example a simple task on normal distribution using both a sequential process and a parallel process. The outline of the R script is contained in the file `xvalidate.R` and the pbs script itself is `r-parallel.pbs`; these should be reviewed (`less r-parallel.pbs`, `less xvalidate.R`)
 
-A review of the r-parallel.pbs script will indicate that that the job requests 4 cores, and 10 minutes of walltime. It also includes a call to the PBS variable `PBS_NODEFILE` which is the nodes (system units) that the cores are called from. It makes use of the applications R (as expected) but also openmpi-gcc, which are called as modules.
+A review of the `r-parallel.pbs` script will indicate that that the job requests 4 cores, and 10 minutes of walltime. It also includes a call to the PBS variable `PBS_NODEFILE` which is the nodes (system units) that the cores are called from. It makes use of the applications R (as expected) but also openmpi-gcc, which are called as modules.
 
 In the file `xvalidate.R`, the R script calls the special library extension snow to allow for parallel processing. It then creates a random data set and samples, fits the model to the samples, and eventually the mean squared difference – with a test to ensure that the results are equal. There are two output files in this case, one which is the results of the R script (`xvalidate.out`) and one which has a list of the `PBS_NODEFILE` (e.g., `R-parallel.o279816`)
 
@@ -1249,83 +1265,83 @@ This example of parallel processing with R is taken from Eugster and Knaus (2011
 
 ## 3.8 Single Node Parallel Job: Rattus Norvegicus ESTs with BLAST and Slurm
 
-<img src="https://raw.githubusercontent.com/VPAC/superlinux/master/images/2011tricky-naughty.jpg" />
+![Rats](https://github.com/VPAC/superlinux/blob/master/images/2011tricky-naughty.png)
 
-The following is a short tutorial on using BLAST with Slurm (rather than PBS Torque or PBSPro) using fasta nucleic acid (fna) FASTA formatted sequence files for Rattus Norvegicus. It assumes that BLAST (Basic Local Alignment Search Tool) is already installed.
+The following is a short tutorial on using BLAST with SLURM, rather than PBS Torque or PBSPro, using fasta nucleic acid (fna) FASTA formatted sequence files for Rattus Norvegicus. It assumes that BLAST (Basic Local Alignment Search Tool) is already installed.
 
 First, create a database directory, download the datafile, extract, and load the environment variables for BLAST.
 
 ```
-mkdir -r ~/applicationtests/BLAST/dbs
-cd ~/applicationtests/BLAST/dbs
-wget ftp://ftp.ncbi.nih.gov/refseq/R_norvegicus/mRNA_Prot/rat.1.rna.fna.gz
-gunzip rat.1.rna.fna.gz
-module load BLAST/2.2.26-Linux_x86_64
+mkdir -r ~/applicationtests/BLAST/dbs   
+cd ~/applicationtests/BLAST/dbs   
+wget ftp://ftp.ncbi.nih.gov/refseq/R_norvegicus/mRNA_Prot/rat.1.rna.fna.gz   
+gunzip rat.1.rna.fna.gz   
+module load BLAST/2.2.26-Linux_x86_64   
 ```
-Having extracted the file, there will be a fna formatted sequence file, rat.1.rna.fna. An example header line for a sequence:
+Having extracted the file, there will be a fna formatted sequence file, `rat.1.rna.fna`. An example header line for a sequence:
 
 `NM_175581.3 Rattus norvegicus cathepsin R (Ctsr), mRNA`
 
-The next step is to format the file using `formatdb`. This simply formats protein or nucleotide source databases before these databases can be searched by BLAST. There is a plethora of options available with this versitile command. In a nutshell however, the following reads in an input file (`-i`, this is always required), specifies the type of file (`-p F`, nucleotide), and parse options (`-o T`, parse SeqId and create indexes).
+The next step is to format the file using `formatdb`. This simply formats protein or nucleotide source databases before these databases can be searched by BLAST. There is a plethora of options available with this versitile command (see `http://nebc.nerc.ac.uk/bioinformatics/documentation/blast/formatdb.html`). In a nutshell however, the following reads in an input file (`-i`, this is always required), specifies the type of file (`-p F`, nucleotide), and parse options (`-o T`, parse SeqId and create indexes).
 
 `formatdb -i rat.1.rna.fna -p F -o T`
 
 After formatting there will a larger collection of files (including four binary packed data) in the database directory and a log file.
 
 ```
-total 390836
-drwxr-xr-x 4 lev unimelb 4096 Nov 13 08:45 ..
--rw-r--r-- 1 lev unimelb 306886177 Nov 13 09:32 rat.1.rna.fna
--rw-r--r-- 1 lev unimelb 0 Nov 13 09:33 rat.1.fna.nhr
--rw-r--r-- 1 lev unimelb 0 Nov 13 09:33 rat.1.fna.nin
--rw-r--r-- 1 lev unimelb 0 Nov 13 09:33 rat.1.fna.ntm
--rw-r--r-- 1 lev unimelb 1 Nov 13 09:33 rat.1.fna.nsq
--rw-r--r-- 1 lev unimelb 4067346 Nov 13 09:36 rat.1.rna.fna.nsd
-drwxr-xr-x 2 lev unimelb 4096 Nov 13 09:36 .
--rw-r--r-- 1 lev unimelb 86416 Nov 13 09:36 rat.1.rna.fna.nsi
--rw-r--r-- 1 lev unimelb 13032873 Nov 13 09:36 rat.1.rna.fna.nhr
--rw-r--r-- 1 lev unimelb 1094580 Nov 13 09:36 rat.1.rna.fna.nin
--rw-r--r-- 1 lev unimelb 73425470 Nov 13 09:36 rat.1.rna.fna.nsq
--rw-r--r-- 1 lev unimelb 765 Nov 13 09:36 formatdb.log
+total 390836   
+drwxr-xr-x 4 lev unimelb 4096 Nov 13 08:45 ..   
+-rw-r--r-- 1 lev unimelb 306886177 Nov 13 09:32 rat.1.rna.fna   
+-rw-r--r-- 1 lev unimelb 0 Nov 13 09:33 rat.1.fna.nhr   
+-rw-r--r-- 1 lev unimelb 0 Nov 13 09:33 rat.1.fna.nin   
+-rw-r--r-- 1 lev unimelb 0 Nov 13 09:33 rat.1.fna.ntm   
+-rw-r--r-- 1 lev unimelb 1 Nov 13 09:33 rat.1.fna.nsq   
+-rw-r--r-- 1 lev unimelb 4067346 Nov 13 09:36 rat.1.rna.fna.nsd   
+drwxr-xr-x 2 lev unimelb 4096 Nov 13 09:36 .   
+-rw-r--r-- 1 lev unimelb 86416 Nov 13 09:36 rat.1.rna.fna.nsi   
+-rw-r--r-- 1 lev unimelb 13032873 Nov 13 09:36 rat.1.rna.fna.nhr   
+-rw-r--r-- 1 lev unimelb 1094580 Nov 13 09:36 rat.1.rna.fna.nin   
+-rw-r--r-- 1 lev unimelb 73425470 Nov 13 09:36 rat.1.rna.fna.nsq   
+-rw-r--r-- 1 lev unimelb 765 Nov 13 09:36 formatdb.log   
 ```
 
 The next step to acquire the Express Sequence Tags, a short sub-sequence of cDNA sequence used to identify gene transcripts, used for gene discovery and gene-sequence determination. Create the directory, download, and extract.
 
 ```
-mkdir -r ~/applicationtests/BLAST/rat-ests
-cd ~/applicationtests/BLAST/rat-ests
-wget http://mirrors.vbi.vt.edu/mirrors/ftp.ncbi.nih.gov/genomes/Rattus_norveg...
-gunzip rn_est
+mkdir -r ~/applicationtests/BLAST/rat-ests   
+cd ~/applicationtests/BLAST/rat-ests   
+wget http://mirrors.vbi.vt.edu/mirrors/ftp.ncbi.nih.gov/genomes/Rattus_norvegicus/ARCHIVE/2002/rn_est.gz   
+gunzip rn_est   
 ```
+
 A sample header takes the following format:
 
 `gi|1154902|emb|X94495.1|X94495 RNSAP11G Rat brain, postnatal day 25 Rattus norvegicus cDNA clone sap11g, mRNA sequence /len=231`
 
-The final step is to run the Slurm script. The following example uses the default queue, a single node, eight cores in the node (each with one task each each), and for ten hours.
+The final step is to run the SLURM script. The following example uses the default queue, a single node, eight cores in the node (each with one task each each), and for ten hours.
 
 ```
-cd ~/applicationtests/BLAST/
-sbatch blast.slurm
+cd ~/applicationtests/BLAST/   
+sbatch blast.slurm   
 ```
 
-The script load the BLAST module and runs the blastall command, taking in the `rn_est` as input query file, the `rat.1.rna.fna` file as the database, running a `blastn` (nucleotide vs. nucleotide) search with a 0.05 expectation value, seaching for five database sequences (this is a test), outputting a tabular alignment with comment lines, with the output file name `rat_blast_tab.txt`, and using 8 processor cores. Note that this must be specified even though it has been allocated by the Slurm script. Just because one allocates cores, the program doesn't automatically scale unless it is explicitly told to do so!
+The script load the BLAST module and runs the blastall command, taking in the `rn_est` as input query file, the `rat.1.rna.fna` file as the database, running a `blastn` (nucleotide vs. nucleotide) search with a 0.05 expectation value, searching for five database sequences (this is a test), outputting a tabular alignment with comment lines, with the output file name `rat_blast_tab.txt`, and using 8 processor cores. Note that this must be specified even though it has been allocated by the Slurm script. Just because one allocates cores, the program doesn't automatically scale unless it is explicitly told to do so!
 
 ```
-#!/bin/bash
-#SBATCH --nodes=1
-#SBATCH --ntasks-per-node=8
-#SBATCH --time=10:00:00
-module load BLAST/2.2.26-Linux_x86_64
-blastall -i ./rat-ests/rn_est -d ./dbs/rat.1.rna.fna -p blastn -e 0.05 -v 5 -b 5 -T F -m 9 -o rat_blast_tab.txt -a 8
+#!/bin/bash   
+#SBATCH --nodes=1    
+#SBATCH --ntasks-per-node=8   
+#SBATCH --time=10:00:00    
+module load BLAST/2.2.26-Linux_x86_64   
+blastall -i ./rat-ests/rn_est -d ./dbs/rat.1.rna.fna -p blastn -e 0.05 -v 5 -b 5 -T F -m 9 -o rat_blast_tab.txt -a 8    
 ```
 
 In addition to the output file specified, there will elso be an `error.log` file and a Slurm output file (e.g., `slurm-1405519.out`). The output head of `rat_blast_tab.txt` takes the following format:
 
 ```
-# BLASTN 2.2.26 [Sep-21-2011]
-# Query: gi|1154902|emb|X94495.1|X94495 RNSAP11G Rat brain, postnatal day 25 Rattus norvegicus cDNA clone sap11g, mRNA sequence /len=231
+# BLASTN 2.2.26 [Sep-21-2011]     
+# Query: gi|1154902|emb|X94495.1|X94495 RNSAP11G Rat brain, postnatal day 25 Rattus norvegicus cDNA clone sap11g, mRNA sequence /len=231   
 ```
-
 
 ## 3.9 Parallel Job with License : ANSYS Finite Element Analysis
 
@@ -1397,13 +1413,14 @@ The following procedure can be used to plot the crash models deformed shape:
  * Select [Plot Deformed Shape] in the Toolbox area. By default, the final step is displayed. It should be noted that the Deformation Scale Factor is 1 by default in explicit analyses.
 * Select [Animate: Time History] to animate the crash event. The frame rate can be adjusted by clicking [Animation Options] and moving the slider in the Player tab to the desired speed.
 
+![Deformed Door](https://github.com/VPAC/superlinux/blob/master/images/deformed_door.png)
+
 ## 3.11 Standard Job With Local Visualisation : NAMD and VMD
 
 NAMD is a parallel, molecular dynamics simulation program used to model large biomolecular systems using high performance computing clusters which is freely available for academic work.  If one is interested in running NAMD simulations they should also install a local copy of VMD on their own computer.  VMD is a molecular viewer program that can be used to help set up NAMD simulation and to help analyse and visualize NAMD output. 
 
-NAMD can be freely obtained from: `http://www.ks.uiuc.edu/Research/namd/`
-VMD can be freely obtained from:  `http://www.ks.uiuc.edu/Research/vmd/`
-
+NAMD can be freely obtained from: `http://www.ks.uiuc.edu/Research/namd/`   
+VMD can be freely obtained from:  `http://www.ks.uiuc.edu/Research/vmd/`   
 Additional tutorials and information about NAMD are available at: `http://www.ks.uiuc.edu/Research/namd/`
 
 **Molecular Dynamics Simulation**
@@ -1414,162 +1431,133 @@ This particular job is very short compared to a regular NAMD simulation and shou
 
 `mpiexec namd2  Ubiquitin_example.conf` 
 
-This is saying use the program "mpiexec" to launch the parallel program "namd2" passing the configuration file "Ubiquitin_example.conf"
-
-Let's have a look at the NAMD configuration script: 
+This is saying use the program "mpiexec" to launch the parallel program "namd2" passing the configuration file "Ubiquitin_example.conf". The configuration script can be viewed as follows:
 
 `less Ubiquitin_example.conf`
 
-The lines near the top define the input files, (the protein structure file .psf, and the coordinate file, .pdb) and also the name of the output files.:
+The lines near the top define the input files, (the protein structure file .psf, and the coordinate file, .pdb) and also the name of the output files. Further down is the setting the temperature to 310 K ( 37 C), and below that which parameter file will be used. A copy of the parameter file is in the NAMD_example directory.
 
 ```
-structure		1ubq_example.psf
-coordinates		1ubq_example.pdb
-outputName		1ubq_example_output_01
+structure		1ubq_example.psf   
+coordinates		1ubq_example.pdb   
+outputName		1ubq_example_output_01   
+...    
+set temp           310   
+temperature      $temp   
+...   
+paraTypeCharmm      	on   
+parameters		par_all27_prot_na.inp    
 ```
 
-Further down you will see: 
+Also included are boundary conditions which is used simulate an infinite system, where a molecule coming off one side of the boundary will reappear on the other. Following this are the paramters which determine how often to write out to the output files.  The most important is the dcdfreq, (here set to 50), or how often to save a frame of the dynamics trajectory.  Usually this is set around 5,000 to 10,000. 
+
+The last few line in the configuration file establish that the simulation is first minimized for 100 steps,  (a good idea to iron out bad contacts and steric clashes, but usually set to 1000 steps or more), followed by resetting the velocities to $temp, (310 K, remember?), and then told to run only a mere 1000 steps.  This is a very short example; typically you might set "run" to  10000000 or more!
 
 ```
-set temp           310
-temperature      $temp
+## Periodic Boundary Conditions    
+cellBasisVector1    42.      0.       0.   
+cellBasisVector2     0.     42.       0.   
+cellBasisVector3     0.       0.     42.   
+cellOrigin           0        0        0   
+wrapAll              on   
+wrapWater            on   
+...    
+## Output files:    
+restartfreq         20000    
+dcdfreq             50    
+xstFreq             20000   
+outputEnergies      20000   
+outputPressure      20000   
+...   
+## Minimize, reinitialize velocities,  run dynamics:   
+minimize           100   
+reinitvels         $temp   
+run                5000    
 ```
-
-Which is setting the temperature to 310 K ( 37 C) while below that we have:
-
-```
-## Parameter file:
-paraTypeCharmm      	on
-parameters			par_all27_prot_na.inp 
-```
-
-This tells NAMD which parameter file to use; you'll see a copy of the parameter file in the NAMD_example directory.  Depending on what molecules you have in you simulation, you may need to use a more detailed parameter file.
-
-Somewhere in the middle you will see these lines: 
-
-```
-## Periodic Boundary Conditions
-cellBasisVector1    42.      0.       0.
-cellBasisVector2     0.     42.       0.
-cellBasisVector3     0.       0.     42.
-cellOrigin           0        0        0
-wrapAll              on
-wrapWater            on
-```
-
-This defines the boundary conditions, a trick to simulate an infinite system, where a molecule coming off one side of the boundary will reappear on the other. 
-
-Near the bottom we have the lines: 
-
-```
-## Output files:
-restartfreq         20000 
-dcdfreq             50
-xstFreq             20000
-outputEnergies      20000
-outputPressure      20000
-```
-
-These lines tell us how often to write out to the output files.  The most important is the dcdfreq, (here set to 50), or how often to save a frame of the dynamics trajectory.  Usually this is set around 5,000 to 10,000. 
-
-The last few line in the configuration file: 
-
-```
-## Minimize, reinitialize velocities,  run dynamics:
-minimize           100
-reinitvels         $temp
-run                5000 
-```
-
-These tell us that the simulation is first minimized for 100 steps,  (a good idea to iron out bad contacts and steric clashes, but usually set to 1000 steps or more), followed by resetting the velocities to $temp, (310 K, remember?), and then told to run only a mere 1000 steps.  This is a very short example; typically you might set "run" to  10000000 or more!
 
 When the job finishes, the output directory should have something like the following:
 
 ```
-ls -lrt    
--rw-r--r-- 1 joe vpac  199275 Feb 20 12:54 par_all27_prot_na.inp 
--rw-r--r-- 1 joe vpac   97324 Feb 20 12:54 1ubq_example.pdb 
--rw-r--r-- 1 joe vpac  286622 Feb 20 12:54 1ubq_example.psf 
--rw-r--r-- 1 joe vpac     471 Feb 20 12:58 pbs_example_script 
--rw-r--r-- 1 joe vpac    2614 Feb 20 13:02 Ubiquitin_example.conf 
--rw------- 1 joe vpac       0 Feb 20 13:02 namd_example_job_01.e131657 
--rw------- 1 joe vpac     166 Feb 20 13:03 1ubq_example_output_01.xst 
--rw------- 1 joe vpac  141418 Feb 20 13:03 Namd_1ubq_example_output.txt 
--rw------- 1 joe vpac     224 Feb 20 13:03 1ubq_example_output_01.xsc 
--rw------- 1 joe vpac   29548 Feb 20 13:03 1ubq_example_output_01.coor 
--rw------- 1 joe vpac   29548 Feb 20 13:03 1ubq_example_output_01.vel 
--rw------- 1 joe vpac 1515180 Feb 20 13:03 1ubq_example_output_01.dcd 
+-rw-r--r-- 1 joe vpac  199275 Feb 20 12:54 par_all27_prot_na.inp    
+-rw-r--r-- 1 joe vpac   97324 Feb 20 12:54 1ubq_example.pdb    
+-rw-r--r-- 1 joe vpac  286622 Feb 20 12:54 1ubq_example.psf    
+-rw-r--r-- 1 joe vpac     471 Feb 20 12:58 pbs_example_script    
+-rw-r--r-- 1 joe vpac    2614 Feb 20 13:02 Ubiquitin_example.conf    
+-rw------- 1 joe vpac       0 Feb 20 13:02 namd_example_job_01.e131657    
+-rw------- 1 joe vpac     166 Feb 20 13:03 1ubq_example_output_01.xst    
+-rw------- 1 joe vpac  141418 Feb 20 13:03 Namd_1ubq_example_output.txt    
+-rw------- 1 joe vpac     224 Feb 20 13:03 1ubq_example_output_01.xsc    
+-rw------- 1 joe vpac   29548 Feb 20 13:03 1ubq_example_output_01.coor    
+-rw------- 1 joe vpac   29548 Feb 20 13:03 1ubq_example_output_01.vel    
+-rw------- 1 joe vpac 1515180 Feb 20 13:03 1ubq_example_output_01.dcd   
 ```
 
 The main output file is .dcd while the .xsc, .coor, .vel files all have to do with being able to restart the simulation at a later date, while the Namd_1ubq_example_output.txt file contains the text output from the simulation. 
 
-Copy that information back to your local computer and use VMD to visualize the results – remember it is nearly always preferable to do visualisation on the local system and computation on the HPC cluster.
 									
 **Visualizing NAMD results with VMD**
 
-In part 2 of this tutorial, you will be using the molecular visualization program, VMD to look at the trajectory data of the ubiquitin protein you generated in part I of the tutorial. 
+In part 2 of this tutorial, the molecular visualization program, VMD, is used to look at the trajectory data of the ubiquitin protein you generated in part I of the tutorial. 
 
-Download the entire NAMD example directory back to your local computer. For example:
+These results should be copied to the local computer and use VMD to visualize the results, remembering it is nearly always preferable to do visualisation on the local system and computation on the HPC cluster. 
 
 `scp  -r [your account name]@trifid.vpac.org:namd .` 
 
-You can now start VMD and load up the trajectory data.  In a new terminal type: `vmd` 
+VMD can be started and the trajectory data loaded.  In a new terminal type: `vmd` 
 
 Three windows will appear: 
  
 The Main panel
 
+![VMD Main](https://github.com/VPAC/superlinux/blob/master/images/vmd_main.png)
+
 The Display
+
+![VMD Display](https://github.com/VPAC/superlinux/blob/master/images/vmd_display.png)
 
 The Console
 
-The first file you need to read into VMD is the protein structure file, (1ubq_example.psf in this case). The .psf file contains important information about the system such as which atoms are bonded together, what charge they are, and the mass of each atom type, but does not contain any spacial information. 
+![VMD Console](https://github.com/VPAC/superlinux/blob/master/images/vmd_console.png)
 
-From the Main panel: 
-File - New molecule - (browse: `1ubq_example.psf`) - load
+The first file that needs to read into VMD is the protein structure file, (`1ubq_example.psf` in this case). The .psf file contains important information about the system such as which atoms are bonded together, what charge they are, and the mass of each atom type, but does not contain any spacial information. 
 
-Next load the coordinates from the pdb file:
+From the Main panel:  File - New molecule - (browse: `1ubq_example.psf`) - load
 
-File - Load data onto molecule - (browse:  `1ubq_example.pdb`) - load 
+Next load the coordinates from the pdb file: File - Load data onto molecule - (browse:  `1ubq_example.pdb`) - load 
 
-Now you should have the model in the display that  can be moved around with the mouse. 
+The main display will now illustrate the molecule.  This is the initial starting position of the simulation.   
 
-This is the initial starting position of the simulation.   Next load in the trajectory data into VMD:
+Next load in the trajectory data into VMD:
 
 File - Load data onto molecule - (browse: `1ubq_example_output_01.dcd`) - load
 
 To summarise, load structure, then data, then trajectory.
 
-This data is shows how the atoms in the model moved around during the course of the NAMD simulation.  You can play the trajectory by pressing the bottom right arrow of the Main panel. Use the speed scroll bar to the left of that button to slow it down.
+This data is shows how the atoms in the model moved around during the course of the NAMD simulation.  The trajectory can be modified by selecting the bottom right arrow of the Main panel and the speed scroll bar to the left of that button to slow it down. What is being visualised represents the molecular motion of the protein on an extremely small time scale. The NAMD program calculates how the molecule moves over time given certain parameters such as temperature. These models and simulations can give insight into how proteins behave and their role in biological function and certain diseases.
 
-What you are seeing is supposed to represent is the molecular motion of the protein on an extremely small time scale.   The NAMD program calculates how the molecule moves over time given certain parameters such as temperature.  These models and simulations can give insight into how proteins behave and their role in biological function and certain diseases.
-
-From the main panel you can bring up the Representations dialog to play with more rendering types: 
-
-Graphics - Representations   
+From the main panel one can bring up the Representations dialog to play with more rendering types:  Graphics - Representations   
 
 **Comparison of Job Time from NAMD**
 
 The default pbs script for NAMD is 4 nodes (i.e., 4 cores), which are sourced from anywhere on the cluster. The output file also describes the time that this took, along with other resources used:
 
 ```
-tail Namd_1ubq_example_output.txt
+tail Namd_1ubq_example_output.txt   
 WallClock: 20.340076  CPUTime: 20.340076  Memory: 279.839844 MB
 ```
 
-It is worthwhile experimenting with different configurations to determine the best combination of processors (and memory) to suit each task or group of tasks. For example, consider the results from the following (using TORQUE's descriptions):
+It is worthwhile experimenting with different configurations to determine the best combination of processors (and memory) to suit each task or group of tasks. For example, consider the results from the following (using TORQUE's descriptions) and running each of these jobs in succession and noting the walltime results.
 
-| Resource Request		| Description					|
-|-------------------------------|-----------------------------------------------|
-| #PBS -l nodes=4		| 4 cores from anywhere on the cluster		|
-| #PBS -l nodes=1:ppn=4		| 4 cores from one specific system unit		|
-| #PBS -l nodes=2		| 2 cores from anywhere on the cluster		|
-| #PBS -l nodes=8		| 8 cores from anywhere on the cluster		|
-| #PBS -l nodes=2:ppn=4		| 8 cores, 4 from two nodes each		|
-| #PBS -l nodes=16		| 16 cores from anywhere on the cluster		|
-| #PBS -l nodes=1:ppn=16	| 16 cores from one system unit			|
+| Resource Request		| Description					| Results	|
+|-------------------------------|-----------------------------------------------|---------------|
+| #PBS -l nodes=4		| 4 cores from anywhere on the cluster		|               |
+| #PBS -l nodes=1:ppn=4		| 4 cores from one specific system unit		|               |
+| #PBS -l nodes=2		| 2 cores from anywhere on the cluster		|               |
+| #PBS -l nodes=8		| 8 cores from anywhere on the cluster		|               |
+| #PBS -l nodes=2:ppn=4		| 8 cores, 4 from two nodes each		|               |
+| #PBS -l nodes=16		| 16 cores from anywhere on the cluster		|               |
+| #PBS -l nodes=1:ppn=16	| 16 cores from one system unit			|               |
 
-It is worth running each of these jobs in succession and noting the walltime results.
 
 All parallel tasks have some sequential overhead which means that doubling the number of cores does not always equate with a halving of time for completion and jobs that are launched with tighter coupling will usually run faster than those are are distributed, but may have to wait in the queue. 
 
@@ -1579,49 +1567,47 @@ Overall, when submitting jobs it really is a case of trial and error initially f
 
 ## 4.1 Logins and Login Files
 
-To this point all Linux logins have been through a username and password combination. Two common extensions to a standard login are *passwordless* SSH and an SSH *configuration*. 
-
-For the former, as the name indicates, it allows logins without a password by providing a pair of authentication keys. Firstly on the local machine, a public/private key is generated. The passphrase should be secure. The private key is kept on the local machine and not shared with anyone, ever. The public key however is appended to the the supercomputer's authorized keys list for that account.
+To this point all Linux logins have been through a username and password combination. Two common extensions to a standard login are *passwordless* SSH and an SSH *configuration*. For the former, as the name indicates, it allows logins without a password by providing a pair of authentication keys. Firstly on the local machine, a public/private key is generated. The passphrase should be secure. The private key is kept on the local machine and not shared with anyone, ever. The public key however is appended to the the supercomputer's authorized keys list for that account.
 
 ```
-lev@localhost:~> ssh-keygen -t rsa
-Generating public/private rsa key pair.
-Enter file in which to save the key (/home/lev/.ssh/id_rsa): 
-Enter passphrase (empty for no passphrase): 
-Enter same passphrase again: 
-Your identification has been saved in /home/a/.ssh/id_rsa.
-Your public key has been saved in /home/a/.ssh/id_rsa.pub.
-lev@local:~> ssh lev@trifid.vpac.org mkdir -p .ssh
-lev@trifid.vpac.org's password: 
-lev@localhost:~> cat .ssh/id_rsa.pub | ssh lev@trifid.vpac.org 'cat >> .ssh/authorized_keys'
-lev@trifid.vpac.org's password: 
+lev@localhost:~> ssh-keygen -t rsa   
+Generating public/private rsa key pair.   
+Enter file in which to save the key (/home/lev/.ssh/id_rsa):    
+Enter passphrase (empty for no passphrase):    
+Enter same passphrase again:    
+Your identification has been saved in /home/a/.ssh/id_rsa.   
+Your public key has been saved in /home/a/.ssh/id_rsa.pub.   
+lev@local:~> ssh lev@trifid.vpac.org mkdir -p .ssh   
+lev@trifid.vpac.org's password:    
+lev@localhost:~> cat .ssh/id_rsa.pub | ssh lev@trifid.vpac.org 'cat >> .ssh/authorized_keys'   
+lev@trifid.vpac.org's password:    
 ```
 
 An SSH configuration file is even simpler. This is rather lika an alias to a name which can, among other things, provide a shortcut to a username and hostname combination. This is particularly useful if one has several user names and complex hostnames. An SSH configuration is stored in the home directory of the host machine. The following is a sample snippet:
 
 ```
-cat ~/.ssh/config
-Host edward
-	Hostanme edward.hpc.unimelb.edu.au
-	User lev 
-Host nci
-	Hostname raijin.nci.org.au
-	User ll7341
-Host ninjadan
-    	Hostname 128.250.116.168
-    	User lev
-...
-Host spartan
-	Hostname spartan.hpc.unimelb.edu.au
-	User lev
-Host trifid
-	Hostname trifid.vpac.org
-	User lev
+cat ~/.ssh/config   
+Host edward   
+	Hostanme edward.hpc.unimelb.edu.au   
+	User lev    
+Host nci   
+	Hostname raijin.nci.org.au   
+	User ll7341   
+Host ninjadan   
+    	Hostname 128.250.116.168   
+    	User lev   
+...  
+Host spartan   
+	Hostname spartan.hpc.unimelb.edu.au   
+	User lev   
+Host trifid   
+	Hostname trifid.vpac.org   
+	User lev   
 ```	
 
-One of the first commands introduced was how to generate directory listing when a user logged in on the command line i.e., ls. We also learned how to get a more complete directory listing by applying options to a basic command, for example one which is ls -lart (list with long format, including file permissions (l), all files (a), sorted in reverse order (r), by modification time (t).  Start up a terminal window, login to the supercomputer and run a long directory listing: `ls -lart`. In some cases files are many years old and there may be confusion over which *year* is being described in the modification time. In these situations use `ls -alr --full-time` 
+One of the first commands introduced was how to generate directory listing when a user logged in on the command line i.e., `ls`. We also learned how to get a more complete directory listing by applying options to a basic command, for example one which is `ls -lart` (list with long format, including file permissions (l), all files (a), sorted in reverse order (r), by modification time (t).  Start up a terminal window, login to the supercomputer and run a long directory listing: `ls -lart`. In some cases files are many years old and there may be confusion over which *year* is being described in the modification time. In these situations use `ls -alr --full-time` 
 
-Two of the hidden files are .bash_profile and .bashrc . These are startup files for the Bash shell (Bourne-again shell). The shell is a program that acts as command interpreter between the user and the operating system. Users can interact directly with the shell, or with an application which interacts with the shell as the image portrays (image from opensuse.org). A user submits their commands to the shell, which then either executes them directly or passes them on to other programs. These programs in turn request lower-level services from the kernel. Unlike some operating systems, Linux has a number of different shells available to users some of which we'll briefly explore in this course; the default most of these days is bash. 
+Two of the hidden files are `.bash_profile` and `.bashrc`. These are startup files for the Bash shell (Bourne-again shell). The shell is a program that acts as command interpreter between the user and the operating system. Users can interact directly with the shell, or with an application which interacts with the shell as the image portrays (image from opensuse.org). A user submits their commands to the shell, which then either executes them directly or passes them on to other programs. These programs in turn request lower-level services from the kernel. Unlike some operating systems, Linux has a number of different shells available to users some of which we'll briefly explore in this course; the default most of these days is bash. 
 
 The `.bash_profile` file is executed when you login. This is a good place to include configurations for the user. The `.bashrc` is used for nonlogin shells and typically used for configurations to the bash environment itself. For example if a second-bash process is initiated after a user has already logged in. The "rc" is a historic term for "run control".
 
@@ -1634,110 +1620,110 @@ Usually a `~/.bash_profile` contains a line to ensure that options in `.bashrc` 
 `if  [ -f ~/.bashrc ]; then . ~/.bashrc; fi` 
 
 ```
-[root@trifid-m train01]# cat .bash_profile 
-# .bash_profile 
-# This file can be edited by the user to set up their system as they like. 
-# Its copied to a users dir when their account is first created. 
-# SYSADMIN : don't edit the one in /etc/skel, it gets overwritten, play 
-# with the one in /common/skel if necessary. 
-# David Bannon, 23/4/03 
-# Get the aliases and functions 
-if [ -f ~/.bashrc ]; then 
-	. ~/.bashrc 
-fi 
-# User specific environment and startup programs 
-module load vpac 
-alias d='ls -F --color' 
-# Override some of the silly colours Linux gives ls : 
-# alias ls=ls --color=never 
-#LS_COLORS='di=33' 
-# Like to play safe? comment out or override when sure with -f ? 
-alias rm='rm -i' 
-alias cp='cp -i' 
-PATH=$PATH:$HOME/bin 
-export PATH 
-unset USERNAME 
+[root@trifid-m train01]# cat .bash_profile    
+# .bash_profile    
+# This file can be edited by the user to set up their system as they like.    
+# Its copied to a users dir when their account is first created.    
+# SYSADMIN : don't edit the one in /etc/skel, it gets overwritten, play    
+# with the one in /common/skel if necessary.    
+# David Bannon, 23/4/03    
+# Get the aliases and functions    
+if [ -f ~/.bashrc ]; then    
+	. ~/.bashrc    
+fi    
+# User specific environment and startup programs    
+module load vpac    
+alias ls='ls -F --color'    
+# Override some of the silly colours Linux gives ls :    
+# alias ls=ls --color=never       
+#LS_COLORS='di=33'    
+# Like to play safe? comment out or override when sure with -f ?    
+alias rm='rm -i'    
+alias cp='cp -i'    
+PATH=$PATH:$HOME/bin    
+export PATH    
+unset USERNAME    
 ```
 
-Once you get past the comments (which are always a good idea) there isn't too much in .bash_profile; the most important things are loading a set of default environment variables (module load vpac), two cautious aliases for the rm and cp commands and setting some paths. Any aliases can be added there according to whatever the individual user wants. Some people, who are familiar working alongside MS-DOS machines, will add an alias that "dir='ls'" for example. The following is a snippet from the author's .bash_profile:
+Once you get past the comments (which are always a good idea) there isn't too much in `.bash_profile`; the most important things are loading a set of default environment variables (module load vpac), two cautious aliases for the `rm` and `cp` commands and setting some paths. Any aliases can be added there according to whatever the individual user wants. Some people, who are familiar working alongside MS-DOS machines, will add an alias that `dir='ls'` for example. The following is a snippet from the author's `.bash_profile`:
 
 ```
-alias ls='ls -F' 
-alias cp='cp -i' 
-alias rm='rm -i'
-alias mv='mv -i'
-alias ln='ln -i'
-alias ll='ls -lashrt' 
-alias lo='exit' 
-alias mount='mount |column -t'
-alias now='date +"%Y-%m-%d-%T"'
-# --------------------- 
-# Undocumented feature which sets the size to "unlimited". 
-# http://stackoverflow.com/questions/9457233/unlimited-bash-history 
-export HISTFILESIZE= 
-export HISTSIZE= 
-export HISTTIMEFORMAT="[%F %T] " 
-# Change the file location because certain bash sessions truncate .bash_history file upon close. 
-# http://superuser.com/questions/575479/bash-history-truncated-to-500-lines-on-each-login 
-export HISTFILE=~/.bash_eternal_history 
-# Force prompt to write history after every command. 
-# http://superuser.com/questions/20900/bash-history-loss 
-PROMPT_COMMAND="history -a; $PROMPT_COMMAND" 
+alias ls='ls -F'    
+alias cp='cp -i'    
+alias rm='rm -i'   
+alias mv='mv -i'   
+alias ln='ln -i'   
+alias ll='ls -lashrt'   
+alias lo='exit'   
+alias mount='mount |column -t'   
+alias now='date +"%Y-%m-%d-%T"'   
+# ---------------------    
+# Undocumented feature which sets the size to "unlimited".    
+# http://stackoverflow.com/questions/9457233/unlimited-bash-history    
+export HISTFILESIZE=    
+export HISTSIZE=    
+export HISTTIMEFORMAT="[%F %T] "    
+# Change the file location because certain bash sessions truncate .bash_history file upon close.    
+# http://superuser.com/questions/575479/bash-history-truncated-to-500-lines-on-each-login    
+export HISTFILE=~/.bash_eternal_history    
+# Force prompt to write history after every command.    
+# http://superuser.com/questions/20900/bash-history-loss    
+PROMPT_COMMAND="history -a; $PROMPT_COMMAND"    
 ```
 
 It should be mentioned that aliases don't have to established in such files; a temporary alias can be estabslished as part of a bash process using the same command structure. An alias can be removed from a process with the `unalias` command.
 
-Apart from some extra aliases, this bash_profile also adds commands to a .bash_eternal_history file, so that there is a record of every command typed, dating back years.  Given that quite often a complex command desired is often similar to a command that has been typed in the past, the eternal history allows for a search for this archive. It will grow over time of course, but as a pure text document, it's going to be a long time before the space it takes up is too much.
+Apart from some extra aliases, this `bash_profile` also adds commands to a `.bash_eternal_history` file, so that there is a record of every command typed, dating back years.  Given that quite often a complex command desired is often similar to a command that has been typed in the past, the eternal history allows for a search for this archive. It will grow over time of course, but as a pure text document, it's going to be a long time before the space it takes up is too much.
 
-The search path is stored in the environment variable PATH; in addition to the existing path .bash_profile adds any binaries the user has created ($HOME/bin). When using a UNIX-like operating system, some commands are built internally to the shell (e.g., cd). Others are external and require the shell to start a new subprocesses (e.g., /bin/ls) with two low-level system calls called fork and exec. The search path is a list of directories that the shell will search through to find a command which matches the user's request. The path is searched in order, so if there are two commands with the same name, the first in the path will be executed.
+The search path is stored in the environment variable PATH; in addition to the existing path `.bash_profile` adds any binaries the user has created (`$HOME/bin`). When using a UNIX-like operating system, some commands are built internally to the shell (e.g., `cd`). Others are external and require the shell to start a new subprocesses (e.g., `/bin/ls`) with two low-level system calls called fork and exec. The search path is a list of directories that the shell will search through to find a command which matches the user's request. The path is searched in order, so if there are two commands with the same name, the first in the path will be executed.
 
 The default environment variables are for the following:
 
 ```
-[lev@trifid ~]$ module list 
-Currently Loaded Modulefiles: 
-1) intel/12.1.3          3) modules               5) gmp/5.0.5             7) mpc/1.0               9) vpac/config 
-2) openmpi-intel/1.6.3   4) pgi/12.10             6) mpfr/3.1.1            8) gcc/4.7.2 
+[lev@trifid ~]$ module list    
+Currently Loaded Modulefiles:    
+1) intel/12.1.3          3) modules               5) gmp/5.0.5             7) mpc/1.0               9) vpac/config    
+2) openmpi-intel/1.6.3   4) pgi/12.10             6) mpfr/3.1.1            8) gcc/4.7.2    
 ```
 
-What about `.bashrc`?
+In .bashrc the following is noted:
 
 ```
-[root@trifid-m train01]# cat .bashrc# .bashrc 
-# User specific aliases and functions 
-# Source global definitions 
-if [ -f /etc/bashrc ]; then 
-	. /etc/bashrc 
-fi 
+[root@trifid-m train01]# cat .bashrc# .bashrc   
+# User specific aliases and functions    
+# Source global definitions    
+if [ -f /etc/bashrc ]; then    
+	. /etc/bashrc    
+fi    
 ```
 
 Here there's a another link in the home directory for `.bashrc` for global definitions sourced in `/etc/bashrc`
 
 ```
-$ less /etc/bashrc 
-$ /etc/bashrc 
-<output snipped>
-...
+$ less /etc/bashrc    
+$ /etc/bashrc    
+<output snipped>   
+...   
 ```
 
-There's also a reference to /etc/profile. What's there?
+Plus there's also a reference to /etc/profile.
 
 ```
-$ less /etc/profile
-<output snipped>
+$ less /etc/profile   
+<output snipped>  
 ```
 
 The main point of this is to illustrate how much of an environment is determined as a user's session is invoked. It also illustrates a hierarchy from general rules and specific rules. As can be expected, where there is a conflict, the specific rule applies, if permissions allow it. For example, a user can set their own `umask` that differs their `.bashrc` from the default from `/etc/bashrc`.
 
-When a login shell exits, Bash reads and executes commands from the file ~/.bash_logout, if it exists. 
+When a login shell exits, Bash reads and executes commands from the file `~/.bash_logout`, if it exists. 
 
 ```
-$ more .bash_logout 
-$ ~/.bash_logout 
-/usr/bin/clear 
+$ more .bash_logout    
+$ ~/.bash_logout    
+/usr/bin/clear    
 ```
 
-This command simply clears the terminal screen. Why do we have this? One reason is so that when a user exits the terminal in a public environment their work isn't left behind for anyone to see. Certainly this is less of an issue these days given that most systems use virtual terminals, but nevertheless anything could be placed in the .bash_logout, according to what the individual wants. It's about users having the opportunity to control their environment, and to script activities for that environment.
+This command simply clears the terminal screen. Why do we have this? One reason is so that when a user exits the terminal in a public environment their work isn't left behind for anyone to see. Certainly this is less of an issue these days given that most systems use virtual terminals, but nevertheless anything could be placed in the `.bash_logout`, according to what the individual wants. It's about users having the opportunity to control their environment, and to script activities for that environment.
 
 The name of the shell, by the way, is a bit of a pun (as are quite a few commands). In part is recognition of the popular early Unix shells (authored by Stephen Bourne in 1977). Over time a number of other shells were developed, some with some excellent features. Bash took up these features to create a superset of the original Bourne shell (they were "bashed together"). Also, indicating the popularity and joy from using this new shell, it is expressed in the full name – the Bourne-again shell.
 
@@ -1760,7 +1746,7 @@ Relative movement can be prefixed with a count, to tell vim to repeat the motion
 | h j k l	| Move the cursor to the left, down, up, right, respectively. These also take a count: '8l' moves the cursor 8 letters to the right.						| 
 | Return + - 	| Move the cursor down (Return and '+') or up ('-').			| 
 | w W b B	| Move forward ('w' and 'W') or back ('b' and 'B') by a word. 'w' and 'b' treat anything non-alphanumeric as a word delimiter; 'W' and 'B' honor only white space. Can be combined with quantity e.g., 2w, move forward two words.							|
-| } {		| Move to end of current o r previous paragraph, respectively.		| 
+| } {		| Move to end of current or previous paragraph, respectively.		| 
 | ) (		| Move to end of current or previous sentence, respectively. 		|
 
 **Absolute movement**
@@ -1774,7 +1760,7 @@ Relative movement can be prefixed with a count, to tell vim to repeat the motion
 
 **Operators**
 
-Many text modification commands are known as operators. They can be prefixed with a count (to repeat the operator), and are suffixed with a motion command. The text between the current position and the final position (after the motion) is called a region. Ensure that you're in 'command mode'.
+Many text modification commands are known as operators. They can be prefixed with a count (to repeat the operator), and are suffixed with a motion command. The text between the current position and the final position (after the motion) is called a region. Command mode is necessary.
 
 These are examples of operators: 
 
@@ -1824,22 +1810,22 @@ For example, to change the contents in a column of text, select the column with 
 Like .bash_profile and .bashrc an equivalent can be created with a .vimrc.  The following is a small and simple example; you will note that " is a comment marker.  Other options  can be found by going to :help options in vim itself.
 
 ```
-color desert "List of colour options at /usr/share/vim/vim74/colors/
-set nocompatible "use vim defaults rather than force compatibility with vi
-set incsearch  "Incremental searching; vim will search for text as you enter it
-set tabstop=4 "Sets tabs to four characters (default is eight)
-set number "Sets line numbers automatically
-au BufWritePost   *.sh !chmod +x % "Converts .sh files to executable 
-au BufWritePost   *.pl !chmod +x % "Converts .pl files to executable 
-map <F7> :tabn <ENTER> 
-map <F8> :tabp <ENTER>
+color desert "List of colour options at /usr/share/vim/vim74/colors/   
+set nocompatible "use vim defaults rather than force compatibility with vi   
+set incsearch  "Incremental searching; vim will search for text as you enter it   
+set tabstop=4 "Sets tabs to four characters (default is eight)   
+set number "Sets line numbers automatically   
+au BufWritePost   *.sh !chmod +x % "Converts .sh files to executable    
+au BufWritePost   *.pl !chmod +x % "Converts .pl files to executable    
+map <F7> :tabn <ENTER>    
+map <F8> :tabp <ENTER>   
 ```
 
 Of particular note is the commands to automatically turn files that end in .sh or .pl into executables when on writes out from the buffer, and the keyboard bindings for tabbed editing.
 
 **Tabs and Windows**
 
-The map command, for example, turns the keys F7 and F8 to tabn and tabp respectively; this allows a user who is using tabbed vim (invoke with vim -p filename1 filename2 etc) to quickly cycle between the different tabs rather than type tabn, tabp etc. A command can be run across multiple tabbed files with tabdo, for example tabdo %s/foo/bar/g will replace 'foo' with 'bar' across all files.
+The map command, for example, turns the keys F7 and F8 to tabn and tabp respectively; this allows a user who is using tabbed vim (invoke with `vim -p filename1 filename2` etc) to quickly cycle between the different tabs rather than type tabn, tabp etc. A command can be run across multiple tabbed files with tabdo, for example `tabdo %s/foo/bar/g` will replace 'foo' with 'bar' across all files.
 
 As an alternative for working with multiple windows and files simultaneously, new windows can be created in vim with the following commands
 
@@ -1852,9 +1838,9 @@ As an alternative for working with multiple windows and files simultaneously, ne
 
 **Vimtutorial and Vimgolf**
 
-An interactive tutorial is typically installed alongside vim and can be invoked with the command vimtutor. It's worth running through this a few times to gain mastery over the basic commands. 
+An interactive tutorial is typically installed alongside vim and can be invoked with the command `vimtutor`. For a novice it's worth running through this a few times to gain mastery over the basic commands. 
 
-A lot of the vim attitude is about saving keystrokes and becoming incredibly efficient at making changes to text files.  It is recommended that you visit sites like vimgolf (http://vimgolf.com) to see how some challenges on how major changes to files can be achieved with minimal effort. Whilst some of the examples may seem short and even contrived, consider the same sort of changes being required over files that are tens of thousands of lines – the fact that such editing can be carried out with a handful of keystrokes should illustrate the power of vim.
+A lot of the vim attitude is about saving keystrokes and becoming incredibly efficient at making changes to text files.  It is recommended that you visit sites like vimgolf (`http://vimgolf.com`) to see how some challenges on how major changes to files can be achieved with minimal effort. Whilst some of the examples may seem short and even contrived, consider the same sort of changes being required over files that are tens of thousands of lines – the fact that such editing can be carried out with a handful of keystrokes should illustrate the power of vim.
 
 ## 4.3 Editing with Emacs
 
@@ -1862,9 +1848,7 @@ Emacs is one of the oldest continuous software applications available, first wri
 
 The big features of Emacs is the extremely high level of built-in commands, customisation, and extensions, so extensive that those explored here only begin to touch the extraordinary diverse world that is Emacs. Indeed, Eric Raymond, notes "[i]t is a common joke, both among fans and detractors of Emacs, to describe it as an operating system masquerading as an editor". 
 
-With extensions, Emacs includes LaTex formatted documents, syntax highlighting for major programming and scripting languages, a calculator, a calender and planner, a text-based adventure, a web-browser, a news-reader and email client, and an ftp client. It provides file difference, merging, and version control, a text-based adventure game, and even a Rogerian psychotherapist. 
-
-Try doing that with Notepad!
+With extensions, Emacs includes LaTex formatted documents, syntax highlighting for major programming and scripting languages, a calculator, a calender and planner, a text-based adventure, a web-browser, a news-reader and email client, and an ftp client. It provides file difference, merging, and version control, a text-based adventure game, and even a Rogerian psychotherapist. Try doing that with Notepad!
 
 This all said, Emacs is not easily to learn for beginners. The level of customisation and the detailed use of meta- and control- characters does serve as a barrier to immediate entry.
 
@@ -1878,15 +1862,9 @@ Emacs is launched by simply typing 'emacs' on the command line. Commands are inv
 
 **Basic Commands**
 
-To quit emacs use `C-x C-c` – you'll use this a lot as a beginner! Note that with all Emacs commands this represents two sets of keystrokes. The space is not actually typed. 
+To quit emacs use `C-x C-c` – you'll use this a lot as a beginner! Note that with all Emacs commands this represents two sets of keystrokes. The space is not actually typed.  To "break" from a partially entered command, `C-g`. If an Emacs session crashed recently, `M-x` recover-session can recover the files that were being edited. 
 
-To "break" from a partially entered command, `C-g`.
-
-If an Emacs session crashed recently, `M-x` recover-session can recover the files that were being edited. 
-
-The menubar can be activated with `M-/`` 
-
-The help files are accessed with `C-h` and the manual with `C-h r`.
+The menubar can be activated with `M-/``. The help files are accessed with `C-h` and the manual with `C-h r`.
 
 **Files, Buffers, and Windows**
 
@@ -1904,24 +1882,23 @@ Emacs also has a blank line below the mode line to display messages, and for inp
 
 Cursor keys can be used to mover around the text, along with Page Up and Page Down, if the terminal uses them. However Emacs aficionados will recommend the use of the control key for speed. Common commands include the following; you may notice a pattern in the command logic:
 
-<pre>
-C-v (move page down), M-v (move page up)
-C-p (move previous line), C-n (move next line), 
-C-f (move forward, one character), C-b (move backward, one character)
-M-f (move forward, one word), M-b (move backward, one word)
-C-a (move to beginning of a line), C-e (move to end of a line)
-M-a (move forward, beginning of a sentence)
-M-e (move backward, beginning of a sentence)
-M-{ (move backward, beginning of a paragraph), M-} (end of paragraph)
-M-< (move to the beginning of a text), M-> (move end of a text). 
-<backspace>  (delete the character just before the cursor )
-C-d (delete the character on the cursor) 
-M-<backspace> (cut the word before the cursor)
-M-d (cut the word after the cursor )
-C-k  (cut from the cursor position to end of line )
-M-k  (cut to the end of the current sentence )
-C-q (prefix command; use when you want to enter a control key into the buffer  e.g,. C-q ESC inserts an Escape)
-</pre>
+
+C-v (move page down), M-v (move page up)   
+C-p (move previous line), C-n (move next line)    
+C-f (move forward, one character), C-b (move backward, one character)   
+M-f (move forward, one word), M-b (move backward, one word)   
+C-a (move to beginning of a line), C-e (move to end of a line)   
+M-a (move forward, beginning of a sentence)   
+M-e (move backward, beginning of a sentence)   
+M-{ (move backward, beginning of a paragraph), M-} (end of paragraph)   
+M-< (move to the beginning of a text), M-> (move end of a text).    
+<backspace>  (delete the character just before the cursor)   
+C-d (delete the character on the cursor)    
+M-<backspace> (cut the word before the cursor)   
+M-d (cut the word after the cursor)   
+C-k  (cut from the cursor position to end of line)   
+M-k  (cut to the end of the current sentence)   
+C-q (prefix command; use when you want to enter a control key into the buffer  e.g,. C-q ESC inserts an Escape)   
 
 Like the page-up and page-down keys on a standard keyboard you will discover that Emacs also interprets the Backspace and Delete key as expected.
 
@@ -1957,16 +1934,14 @@ Emacs has it's own windowing system, consisting of several areas of framed text.
 
 Commonly used window commands include: 
 
-<pre>
-C-x 0 delete the current window 
-C-x 1 delete all windows except the selected window 
-C-x 2 split the current window horizontally 
-C-x 3 split the current window vertically 
-C-x ^ make selected window taller 
-C-x } make selected window wider 
-C-x { make selected window narrower
-C-x + make all windows the same height
-</pre>
+C-x 0 delete the current window    
+C-x 1 delete all windows except the selected window    
+C-x 2 split the current window horizontally    
+C-x 3 split the current window vertically    
+C-x ^ make selected window taller    
+C-x } make selected window wider    
+C-x { make selected window narrower   
+C-x + make all windows the same height   
 
 A command use is to bring up other documents or menus. For example, with the key sequence `C-h` one usually calls for help files. If this is followed by `k`, it will open a new vertical window, and with `C-f`, it will display the help information for the command `C-f` (i.e., `C-h k C-f`). This new window can be closed with `C-x 1`. 
 
@@ -1980,86 +1955,88 @@ Emacs can make it easier to read C and C++  by colour-coding such files, through
 
 ## 4.4 Archiving Files
 
-As you've probably guessed by now there are a number of utilities available to archive and compress files in Linux and often they can be combined. Here we'll have a look at some of the most common such as tar, gz and bz, along with brief mention (and script) of some of the others. 
+There are a number of utilities available to archive and compress files in Linux and often they can be combined. Some of the most common such as `tar`, `gz` and `bz`, are reviewed here, along with brief mention (and script) of some of the others. 
 
-Let's begin with the file `class.tar.gz` You'll notice the file has a double-barrelled suffix, `.tar.gz`. This is because it was archived with tar and compressed with gz. The former, as the name suggests, was originally designed for tape archives. That program concatenates  one or more files with a header that and preserves file system information such as user and group permissions, dates, and directory structures. The latter (gzip) is any of several software applications used for file compression and decompression, in this case meaning the GNU Project's implementation ("GNU Zip"). 
+Beginning with the file `class.tar.gz` it is notable the file has a double-barrelled suffix, `.tar.gz`. This is because it was archived with `tar` and compressed with `gz`. The former, as the name suggests, was originally designed for tape archives. That program concatenates one or more files with a header that and preserves file system information such as user and group permissions, dates, and directory structures. The latter (`gzip`) is any of several software applications used for file compression and decompression, in this case meaning the GNU Project's implementation ("GNU Zip"). 
 
-Typically both tar and gzip are used in conjunction with each other. A group of files is concatenated with tar, and then the (new, single) file is compressed. This is often represented as a `*.tar.gz` file, although it can also appear as a `*.tgz` file. Both `*.tar` or `*.tar.gz` (or `*.tgz`) are often referred to as 'tarballs'. The type of a file can often be determined by the `file` command: `file class.tar.gz`
+Typically both `tar` and `gzip` are used in conjunction with each other. A group of files is concatenated with tar, and then the (new, single) file is compressed. This is often represented as a `*.tar.gz` file, although it can also appear as a `*.tgz` file. Both `*.tar` or `*.tar.gz` (or `*.tgz`) are often referred to as 'tarballs'. The type of a file can often be determined by the `file` command: `file class.tar.gz`
 
-To illustrate the difference between archiving and compression let's uncompress the class.tar.gz file and have a look at its size. First however let's see what is inside it; as it is both an archived and compressed file we need the `t` option (table of contents), the `z` option (for compression), and the `f` option (file). If it was just a tar file we wouldn't need the `z`.
+To illustrate the difference between archiving and compression uncompress the `class.tar.gz` file and review size. Before extracting review the contents with the `t` option (table of contents), the `z` option (for compression), and the `f` option (file). 
 
 `tar -tzf class.tar.gz`
 
-As you can see, the tar file is quite big compared to the sum of the component files (`mping.c`, `mpi-pong.c`, `msum.c`), whereas the tar.gz file is much smaller. The tar larger file's size is because of the file information system material.
+The sum of the component files (`mping.c`, `mpi-pong.c`, `msum.c`), is around four times larger than the compressed and archived tar.gz file is much smaller. 
 
-> As an aside, these files are small sample MPI programs.
+> As an aside, these files are small sample MPI programs which are reviewed in the VPAC book, "Sequential and Parallel Programming".
 
-To extract a tar file the command `tar xvf filename.tar.gz` can be used. The options stand for extract (x), verbose (v), and file (f). The `f` option is another relic of the past - the default is a tape machine! Note that this command works for files that are in a tar or a combined tar and gz. To create a tar archive the command `tar -cvf archive.tar $directory`, where the options stand for create (c), verbose (v) and files (f). Note that there is no `untar` command for extraction. To extract a gz file, use the command illustrated above (`gunzip filename.gz`). To compress a file in the gz format simply use `gzip $directory`).
+To extract a tar file the command `tar -xvf filename.tar.gz` can be used. The options stand for extract (x), verbose (v), and file (f) archive. The `f` option is another relic of the past - the default is a tape machine. Note that this command works for files that are in a tar or a combined `tar` and `gz`. If an extraction is taking a particularly long time remove the verbose flag.
 
-As mentioned tar and gz are often combined. To create a tar archive and compress it use something like `tar cvzf comressedarchive.tar.gz $directory`, where the 'z' option represents the gz compression. For example to create such an archive of the `class` directory, the following command would be used:
+To create a tar archive the command `tar -cvf archive.tar $directory`, where the options stand for create (c), verbose (v) and files (f). Note that there is no `untar` command for extraction. To extract a gz file, use the command illustrated above (`gunzip filename.gz`). To compress a file in the gz format simply use `gzip $directory`).
 
-`tar cvfz class.tgz class/`
+As mentioned `tar` and `gz` are often combined. To create a tar archive and compress it use something like `tar cvzf comressedarchive.tar.gz $directory`, where the 'z' option represents the gz compression. For example to create such an archive of the `class` directory, the following command would be used:
 
-Perhaps, for backup purposes you might want to archive and compress and entire directory (e.g., a home directory). In that case the command would be:
+`tar -cvfz class.tgz class/`
 
-`tar cvfz homeuser.tar.gz /home/$user`
+Perhaps, for backup purposes, one might want to archive and compress and entire directory (e.g., a home directory). In that case the command would be:
 
-Note that when directories are archived they are also extracted in the order that they were put in. This can create an annoying "tarbomb", which extracts all the directories within the tarball in the current working directory. To check whether this is the case, run a table of contents check - tar -tzf <<filename>>.tar.(gz) - to see where it will be extracted to. If it is less than ideal, create another directory, move the tarball, and extract and decompress there instead. To recover from a tarbomb, use the command xargs; it takes the input from the standard input (or file) and uses that as the arguments for another command. So if your carefully designed directory has been littered by a thousand files and folders from a badly designed tarball, you can run the following: 
+`tar -cvfz homeuser.tar.gz /home/$user`
+
+Note that when directories are archived they are also extracted in the order that they were put in. This can create an annoying "tarbomb", which extracts all the directories within the tarball in the current working directory. To check whether this is the case, run a table of contents check - `tar -tzf <<filename>>.tar.(gz)` - to see where it will be extracted to. If it is less than ideal, create another directory, move the tarball, and extract and decompress there instead. To recover from a tarbomb, use the command xargs; it takes the input from the standard input (or file) and uses that as the arguments for another command. So if your carefully designed directory has been littered by a thousand files and folders from a badly designed tarball, you can run the following: 
 
 `tar tf tarbomb.tar | xargs rm -rf`
 
-This `xargs` command takes the output of *all* the results in the tar table of contents and uses that as an input for the `rm -rf` command. Usual caveats apply with using 'rm' - be very careful that you don't delete something that you actually want to keep! 
+This `xargs` command takes the output of *all* the results in the tar table of contents and uses that as an input for the `rm -rf` command.
 
-Another common compression algorithm that Linux users are likely to encounter with regularity is bzip2. It is particularly notable for the efficiency of the files it compresses, but at a cost of decompression speed. Like gzip, bzip2 is not an archiver; again you have to use tar for that. The commands however are remarkably similar. Drawing from the previous examples just provided you would have commands like the following;
+Another common compression algorithm that Linux users are likely to encounter with regularity is `bzip2`. It is particularly notable for the efficiency of the files it compresses, but at a cost of decompression speed. Like `gzip`, `bzip2` is not an archiver; again tar has to be used for that. The commands however are remarkably similar. Drawing from the previous examples just provided;
 
 ```
-tar xvf <<filename.tar.bz2>>
-tar -tjf class.tar.gz 
-tar cvfj class.tar.bz2 *.class
-tar cvfj homeuser.tar.bz2 /home/user
+tar xvf <<filename.tar.bz2>>   
+tar -tjf class.tar.gz    
+tar cvfj class.tar.bz2 *.class   
+tar cvfj homeuser.tar.bz2 /home/user   
 ```
+
+![Tar bomb](https://github.com/VPAC/superlinux/blob/master/images/tar.png)
 
 ## 4.5 Redirection, Process Substitution, and Tee
 
-Earlier, we learned the basic commands for redirection and piping. To redirect output use the '>' symbol. To redirect input (for example, to feed data to a command) use the '<'. Concatenation is achieved through the use of '>>' symbol. Like other Linux commands, redirects can be used multiple times for useful effects. 
+The basic commands for redirection and piping have been provided. To redirect output use the '>' symbol. To redirect input (for example, to feed data to a command) use the '<'. Concatenation is achieved through the use of '>>' symbol. Like other Linux commands, redirects can be used multiple times for useful effects. 
 
 A core principle of UNIX-like operating systems is that the output of one program should be usable as the input to another. In most cases this means that the operating system design shows a preference to plain-text files. This includes process streams as well as data streams. For example run the following set of commands:
 
 ```
-cd ~
-mkdir dir1; mkdir dir2
-touch dir1/file1; touch dir1/file2; touch dir1/file3
-touch dir2/file3; touch dir2/file4; touch dir2/file5
-diff -u <(ls dir1) <(ls dir2) 
+cd ~   
+mkdir dir1; mkdir dir2   
+touch dir1/file1; touch dir1/file2; touch dir1/file3   
+touch dir2/file3; touch dir2/file4; touch dir2/file5   
+diff -u <(ls dir1) <(ls dir2)    
 ```
 
 This use of redirection symbols is process substitution. It will display a diff of files in the root of dir1 and dir2 . It is the results of the ls commands that have been redirected. Note that modern implementations of diff will be able to carry this out automatically with simply `diff dir1 dir2`, or with subdirectories, `diff -r dir1 dir2`. However process substitution is required if the diff is being carried out over ssh, for example comparing a locate and remote data directory.
 
 `diff <(ssh user@trifid.vpac.org ls -R /home/lev/data) <(ls -R /home/lev/workdata)`
 
-Redirections require some grounding in theory; the concept of terminal as a file and as standard input and output. We are by now familiar with the concept of ordinary files and directories. In UNIX-like operating systems devices are a type of file as well, and are structured under the /dev directory. For example, a directory listing of /dev will list as files internals like cpu and ram, peripherals like disk and dvd, and terminal connections tty, tty0, tty1 etc. For example simply run ls /dev on your desktop or on the cluster. 
+Redirections require some grounding in theory; the concept of terminal as a file and as standard input and output. Ordinary files and directories have already been illustrated. In UNIX-like operating systems devices are a type of file as well, and are structured under the `/dev` directory. For example, a directory listing of `/dev` will list as files internals like cpu and ram, peripherals like disk and dvd, and terminal connections tty, tty0, tty1 etc. For example simply run `ls /dev` on your desktop or on the cluster. 
 
-The default behaviour is to accept inputs from the terminal (standard input) and display the results, either output or errors, to the terminal (standard output). With a redirection, input, output or errors can be redirected. In the previous tutorial we did this with a simple redirect to a file. 
+The default behaviour is to accept inputs from the terminal (standard input) and display the results, either output or errors, to the terminal (standard output). With a redirection, input, output or errors can be redirected. For example:
 
 `grep 3639992 < quakes.csv > 3639992.txt`
 
-Which is, of course, identical to the command `grep -i 3639992 quakes.csv > 3639992.txt`, but it illustrates the use of multiple redirection. 
+Which is, of course, identical to the command `grep 3639992 quakes.csv > 3639992.txt`, but it illustrates the use of multiple redirection. 
 
 In any shell derived from the original Bourne shell (such as bash), redirections can be further modified by placing a number next immediately before the redirector, which affects which stream is being used for redirection. These numbers are 0 for standard input, 1 for standard output and 2 for standard error. There other file descriptors optionally available (from 3 to 9) which are rarely used (e.g., assigning one of these additional file descriptors to stdin, stdout, or stderr as a temporary duplicate link).
 
 Standard error is just another output stream. Unlike standard output, it provides error messages rather than results. Like standard output it is typically sent to the terminal by default, but it can be redirected to a file. e.g., run the ifconfig command on tango, then run it again with the error message redirected. As an example, let us try to list a directory that doesn't exist.
 
 ```
-ls -d /home/train01/seismic
-ls: cannot access /home/train01/seismic: No such file or directory`
-ls -d /home/train01/seismic 2> error.txt 
-cat error.txt 
-ls: cannot access /home/train01/seismic: No such file or directory 
+ls -d /home/train01/seismic   
+ls: cannot access /home/train01/seismic: No such file or directory`    
+ls -d /home/train01/seismic 2> error.txt    
+cat error.txt    
+ls: cannot access /home/train01/seismic: No such file or directory    
 ```
 
-Redirections of this sort are common, for example, among programmers who wish to capture the errors of compilation to a file for further analysis (e.g., ./configure 2> errors.log)
-
-Standard error can also to be redirected to the same destination that standard output is directed to using `2>&1`; it merges stderr (2) into stdout (1). This has one very useful application on tango - because the environment modules program is written so that the command module avail outputs to error, we cannot run module avail | less with the results that we would expect. 
+Redirections of this sort are common, for example, among programmers who wish to capture the errors of compilation to a file for further analysis (e.g., `./configure 2> errors.log`). Standard error can also to be redirected to the same destination that standard output is directed to using `2>&1`; it merges stderr (2) into stdout (1). This has one very useful application on tango - because the environment modules program is written so that the command module avail outputs to error, we cannot run module avail | less with the results that we would expect. 
 
 `module avail | less` 
 `module avail 2>&1 | less`
@@ -2075,7 +2052,7 @@ Pipes are especially good for creating custom commands on the fly for example
 
 `who -u | sort | less`
 
-The tee command copies standard input to standard output and also to any files included in the tee. The 'tee' indicates that it acts like the letter, or like a tee-pipe used in plumbing. When combined with pipes it takes input from a single direction and outputs it two directions.  This is particularly handy if one wishes to see and save information from a command.
+A different sort of pipe action occurs with the `tee` command. This copies standard input to standard output and also to any files included in the tee. The 'tee' indicates that it acts like the letter, or like a tee-pipe used in plumbing. When combined with pipes it takes input from a single direction and outputs it two directions.  This is particularly handy if one wishes to see and save information from a command.
 
 For example, the following will give an output file of the command who -u (who.txt) and pipes grep over the who -u command;
 
@@ -2085,7 +2062,7 @@ Another example would be to display a system's IP address and write that to a fi
 
 `/sbin/ifconfig | tee ipaddress.txt | less`
 
-So, in summary:
+In summary:
  
 | Redirects and Pipes				| bash command			|
 |:----------------------------------------------|:------------------------------|
@@ -2131,28 +2108,28 @@ One final mode permission is `X` (exclusive execute) which sets execute only if 
 `chmod -R a+rx .`     
 `chmod -R a+rX .`
 
-As an example, let's make a file read-only. Again, note that if there is no user reference it applies to all users.
+As an example, make a file read-only. Again, note that if there is no user reference it applies to all users.
 
 ```
-[train01@trifid ~] chmod -r quakes.csv 
-[train01@trifid ~] ls -l
---w------- 2 lev vpac  379 Jul  1 10:32 quakes.csv
-[train01@trifid ~] vim quakes.csv
+[train01@trifid ~] chmod -r quakes.csv    
+[train01@trifid ~] ls -l   
+--w------- 2 lev vpac  379 Jul  1 10:32 quakes.csv   
+[train01@trifid ~] vim quakes.csv   
 ```
 
-What would happen if we took the execute bit off the directory?
+What would happen if one took the execute bit off the directory?
 
 ```
-[train01@trifid ~] chmod -x class
-[train01@trifid ~] cd class 
--bash: cd: class: Permission denied
-[train01@trifid ~] ls -l class 
+[train01@trifid ~] chmod -x class   
+[train01@trifid ~] cd class    
+-bash: cd: class: Permission denied   
+[train01@trifid ~] ls -l class    
 ```
 
-You can see how problematic that could be! Perhaps we'd better return that to it's normal state.
+Perhaps it's best to return it to its original state:
 
 ```
-[train01@trifid ~] chmod +x class
+[train01@trifid ~] chmod +x class   
 [train01@trifid ~] cd class
 ```
 
@@ -2174,29 +2151,31 @@ A summary of the octal mode permissions is expressed in the following table:
 | Write		| 2	| 2	| 2	 |
 | Execute	| 1	| 1	| 1	 |
 
+![James Bond 007](https://github.com/VPAC/superlinux/blob/master/images/jamesbond007.png)
+
 Usually, only those with superuser (root) access make use of the chown (change owner) command. The general syntax for this is `chown [option] [user:group] [file | directory]`. Usually group is optional on the grounds that users are usually provided ownership. A common use is to provide ownership to web-writeable directories e.g., (`chown -R www-data:www-data /var/www/files`). In contrast regular users can use `chgrp` ("change group") change the group associated with a file and directory with the same syntax, but only to one of which they are a member. 
 
 Finally there is one other relevant command for this section; umask ("user mask") which we encountered in the `.bashrc` for global definitions sourced in `/etc/bashrc` in the section entitled "Login Files". The relevant section had the following:
 
 ```
-# By default, we want this to get set. 
-# Even for non-interactive, non-login shells. 
-if [ $UID -gt 99 ] && [ "`id -gn`" = "`id -un`" ]; then 
-	umask 002 
-else 
-	umask 022 
-fi 
+# By default, we want this to get set.    
+# Even for non-interactive, non-login shells.    
+if [ $UID -gt 99 ] && [ "`id -gn`" = "`id -un`" ]; then    
+	umask 002    
+else    
+	umask 022    
+fi    
 ```
 
 What this command does is sets a file mode creation mask, limiting the permission modes for files and directories created by a process. When a program or script creates a file or directory, it specifies  permissions. The operating system then removes from those the permissions that the file mode creation mask does not allow. Typical umask values are 022 (removing the write permission for the group and others) and 002 (removing the write permission for others). 
 
 ## 4.7 Hard and Symbolic Links
 
-The ln command creates a link, associating one file with another. There are two basic types; a hard link (the default) and a symbolic link. The core difference is that a hard link is a specific location of physical data, whereas a symbolic link is an abstract location of another file. Hard links cannot link directories and nor can they cross system boundaries; soft links can do both of these. Hard links always refer to the source, even if moved or deleted, whereas symbolic links are never updated. 
+The `ln` command creates a link, associating one file with another. There are two basic types; a hard link (the default) and a symbolic link. The core difference is that a hard link is a specific location of physical data, whereas a symbolic link is an abstract location of another file. Hard links cannot link directories and nor can they cross system boundaries; soft links can do both of these. Hard links always refer to the source, even if moved or deleted, whereas symbolic links are never updated. 
 
 The general syntax for links is:  `ln [option] source destination` 
 
-This most common option is -s, to create a symbolic link. The source is the original file. The destination is the new symbolic link.  Without a symbolic option, a hard link is created. In this case the link and the original are pointing to the same file. To illustrate;
+This most common option is `-s`, to create a symbolic link. The source is the original file. The destination is the new symbolic link.  Without a symbolic option, a hard link is created. In this case the link and the original are pointing to the same file. To illustrate;
 
 With a hard link: File1 -> Data1 and File2 -> Data1    
 With a symbolic link: File2 -> File1 -> Data1
@@ -2229,7 +2208,7 @@ Now the important think to realise is that /home/train01/quakes.csv and home/tra
 
 When this is completed on the quakes.csv file add the following at the end of the file.
 
-http://info.geonet.org.nz/display/appdata/Earthquake+Resources
+`From: http://info.geonet.org.nz/display/appdata/Earthquake+Resources`
 
 When a file is created a link is associated to it. When a hard link is removed with the rm command you can still access the file from any other links. 
 
@@ -2251,13 +2230,9 @@ Earlier we introduced some fairly simple file manipulation commands such as copy
 
 **Rename**
 
-Rename is a command which has some variations on Linux systems depending on its origin. On RedHat derived systems, the rename command is part of the util-linux-ng package; to change all `*.txt` files to `*.bak`, one would use the command 
+Rename is a command which has some variations on Linux systems depending on its origin. On RedHat derived systems, the rename command is part of the util-linux-ng package; to change all `*.txt` files to `*.bak`, one would use the command : `rename .txt .bak *.txt` 
 
-`rename .txt .bak *.txt` 
-
-However on Debian derived it is part of the Perl programming language, which would use a regular expression to conduct the same command. 
-
-`rename 's/\.txt$/\.bak'/' *.txt`
+However on Debian derived it is part of the Perl programming language, which would use a regular expression to conduct the same command: `rename 's/\.txt$/\.bak'/' *.txt`
 
 **Split and CSplit**
 
@@ -2315,7 +2290,7 @@ The command `head` and `tail` print the first and last ten lines of a file by de
 A typical command to access system information is `uname` (unix name), with the simple syntax `uname [options]`. The most common command is `uname -a` (all) which provides, in order, kernel name, network node name, kernel release and version, machine hardware name, processor and hardware platform (if known), and operating system. You can test this on tango;
 
 ```
-[train01@trifid ~]$ uname -a 
+[train01@trifid ~]$ uname -a     
 Linux tango.vpac.org 2.6.32.23edac #1 SMP Thu Sep 30 12:14:41 EST 2010 x86_64 x86_64 x86_64 GNU/Linux
 ```
 
@@ -2347,7 +2322,7 @@ In the previous course we did not include any program manipulation commands. In 
 The `at` command is used to schedule commands to be executed once at a specified time; it is distinct from a sysadmin's favourite, `cron`, which is used for recurring executions. The syntax is simply at [options] time. Typically it is piped with an echo statement which includes the command. The following trivial example will print a directory listing to the screen at 1145 on November 29. The output is mailed to the user (i.e., the owner of the training account).
 
 ```
-[train01@trifid ~]$ echo "ls" | at 1145 nov 29 
+[train01@trifid ~]$ echo "ls" | at 1145 nov 29    
 job 22 at 2010-11-29 11:45 
 ```
 
@@ -2358,24 +2333,24 @@ The commands `fg` (foreground) and `bg` (background) are complementary manipulat
 By way of illustration, the following evaluates a small script that prints the word "igneous"  to the file `rocks.txt` in the background. This can be checked by concatenating the `rocks.txt` file. The script can be run again in the foreground (with "sedimentary") which will block other input until suspended. Running the `jobs` command shows that there is now two jobs running, both of these are echoing terms to the same output file. A third command starts introducing "metamorphic" (which are of course, derived from the other two types). All these jobs can be terminated by the kill command.
 
 ```
-[train01@trifid ~]$ eval 'for i in {1..100}; do sleep 2; echo "Igneous" >> rocks.txt ; done' & 
-[train01@trifid ~]$ jobs 
-[train01@trifid ~]$ cat rocks.txt 
-[train01@trifid ~]$ fg %1 
-Ctrl-Z 
-[train01@trifid ~]$ cat rocks.txt 
-[train01@trifid ~]$ bg %1 
-[train01@trifid ~]$ eval 'for i in {1..100}; do sleep 2; echo "Sedimentary" >> rocks.txt ; done' 
-Ctrl-Z 
-[train01@trifid ~]$ jobs 
-[train01@trifid ~]$ cat rocks.txt 
-[train01@trifid ~]$ bg %2
-[train01@trifid ~]$ eval 'for i in {1..100}; do sleep 2; echo "Metamorphic" >> rocks.txt ; done' & 
-[train01@trifid ~]$ jobs 
-[train01@trifid ~]$ kill %1 
-[train01@trifid ~]$ kill %2 
-[train01@trifid ~]$ kill %3 
-[train01@trifid ~]$ cat rocks.txt
+[train01@trifid ~]$ eval 'for i in {1..100}; do sleep 2; echo "Igneous" >> rocks.txt ; done' &    
+[train01@trifid ~]$ jobs    
+[train01@trifid ~]$ cat rocks.txt     
+[train01@trifid ~]$ fg %1    
+Ctrl-Z    
+[train01@trifid ~]$ cat rocks.txt    
+[train01@trifid ~]$ bg %1    
+[train01@trifid ~]$ eval 'for i in {1..100}; do sleep 2; echo "Sedimentary" >> rocks.txt ; done'    
+Ctrl-Z    
+[train01@trifid ~]$ jobs    
+[train01@trifid ~]$ cat rocks.txt    
+[train01@trifid ~]$ bg %2   
+[train01@trifid ~]$ eval 'for i in {1..100}; do sleep 2; echo "Metamorphic" >> rocks.txt ; done' &    
+[train01@trifid ~]$ jobs    
+[train01@trifid ~]$ kill %1    
+[train01@trifid ~]$ kill %2    
+[train01@trifid ~]$ kill %3    
+[train01@trifid ~]$ cat rocks.txt   
 ```
 
 # 5.0 Regular Expressions, Shells, and Scripting
@@ -2428,6 +2403,7 @@ The caret symbol can also be used to call an exception to a class of characters.
 `grep -i "^[^a-z]" /usr/share/dict/words`
 `grep -v "[aeiou]" /usr/share/dict/words`
 
+![Regular Expressions](https://github.com/VPAC/superlinux/blob/master/images/regular_expressions.png)
 
 As mentioned `sed` is a stream-editor, of which the unstated important component is that it is non-interactive. The general form of a script is `Command/RegExp/Replacement/Flags`. The most common command is `s` for `substitute`, and the most common flags are `g` for global replacement thoughout each line and `I` to ignore case.  Some common options are `e` (multiple scripts per command), `-f` (add script file) and `-i` (in-place editing). The following is a basic example of of substitution, which makes up the most common use of the `sed` command.
 
@@ -2547,6 +2523,8 @@ Like `sed` a popular list of one-line awk commands is available. They are includ
 
 The core software to any operating system is the kernel, which provides a bridge between applications and the hardware and manages system resources. An operating system's "shell" is that software that provides an interface for users of the operating system to access the kernel, whether for interactive use, customisation or programming. Examples include the *nix-universal Bourne shell (sh) Bourne-Again shell (bash), Z shell (zsh), Korn shell (ksh), extended C shell (tcsh) and the friendly interactive shell (fish). There is even an amusing attempt to develop a shell into a text-based adventure game (Adventure shell, available at `http://nadvsh.sourceforge.net/`).
 
+![Shell space](https://github.com/VPAC/superlinux/blob/master/images/shellspace.png)
+
 To check what shells are available on VPAC's Trifid system, for example, the following is a directory listing. Note that `csh` is now a symlink to `tsch` (extended cshell) which was implemented due to a variety of problems with the former (see the document, Csh Programming Considered Harmful" `https://www-uxsup.csx.cam.ac.uk/misc/csh.html`) and that the original shell (`sh`) is now a symlink to `bash` given limitations to the former. The other shell systems listed include korn shell (`ksh`, `ksh93`) and Z shell (`zsh`).
 
 ```
@@ -2604,8 +2582,8 @@ Shell scripting is not as powerful as a complete programming language when cross
 The most basic form of scripting simply follows commands in sequence, such as this rather undeveloped backup script, which runs tar and gzip on the home directory. First we use a text editor to create the script (e.g., `vim backup.sh`), add a identifier for bash, the single script line, exit the editor, turn backup.sh into an executable (`chmod +x backup.sh`) and run the command. There should be a file called homeuser.tar.gz when the script is complete. 
 
 ```
-#!/bin/bash
-tar cvfz homeuser.tgz /home/train[01..12]
+#!/bin/bash   
+tar cvfz homeuser.tgz /home/train[01..12]   
 ```
 
 **Variables**
@@ -2617,9 +2595,9 @@ Also, note the lack of space between the variable name and the value. A rule of 
 All bash variables must begin with alphanumeric character or underscore character. If the variable starts with an underscore it must have at least one more alphanumeric character or underscore character. Like filenames, variable names in bash are case-sensitive. Unlike filenames, special characters (e.g., `?`, `*`, ` `, etc) cannot be used in bash variable names. They *shouldn't* be used in filenames either! 
 
 ```
-#!/bin/bash          
-BU=homeuser$(date +%Y%m%d).tgz 
-tar cvfz $BU /home/train[01..12]
+#!/bin/bash           
+BU=homeuser$(date +%Y%m%d).tgz    
+tar cvfz $BU /home/train[01..12]   
 ```
 
 Thus, a variable is prefaced by a dollar sign ($) to refer to its value. It can also be assigned with an equals sign, without whitespaces on either side. In bash variables are global by default unless explicitly declared as local in a function (see below). Variable names *should* be illusrative of their function, although for very simple assignment an equally simple illusration - or abbreviation - is enough.
@@ -2627,24 +2605,24 @@ Thus, a variable is prefaced by a dollar sign ($) to refer to its value. It can 
 The value of a variable can be checked with via the echo command (`echo $variable`). However, it should *only* be run if one is reasonably sure that the content of the variable is not harmful. Variables only have a scope in the bash process that they are declared in, unless exported. The command `export -p` will print all current exported variable values. The `unset` command will remove variable assignment.
 
 ```
-$ Ubh="Unbihexium"
-$ echo $Ubh 
-  Unbihexium
-$ bash
-$ echo $Ubh 
-
-$ exit
-$ echo $Ubh 
-  Unbihexium
-$ export Ubh="Unbihexium"
-$ bash
-$ echo $Ubh 
-  Unbihexium
-$ exit
-$ export -p
-$ unset Ubh
-$ echo $Ubh
-
+$ Ubh="Unbihexium"   
+$ echo $Ubh    
+  Unbihexium   
+$ bash   
+$ echo $Ubh    
+   
+$ exit   
+$ echo $Ubh    
+  Unbihexium   
+$ export Ubh="Unbihexium"   
+$ bash   
+$ echo $Ubh    
+  Unbihexium   
+$ exit   
+$ export -p   
+$ unset Ubh   
+$ echo $Ubh   
+   
 ```
 
 **Loops**
@@ -2653,16 +2631,15 @@ In addition to variable assignments, bash scripting allows for  loops (for/do, w
 
 The until/do loop conducts the same action, but with the count in reverse. The next until/do produces the same results as the first, but not the difference in the conditional test. The main difference between while/do and until/do is that the while/do loop repeats the code block while the conditional is true whilst the until/do loop repeats the block whilst the expression is false. In the first script, brace expansion is used to refer to file names, and the conversion from mp3 to ogg. The `./` before the glob `*` exists to prevent bad filenames causing problems.
 
-`for item in ./*.mp3 ; do ffmpeg -i "${item}" "${file/%mp3/ogg}" ; done`
+`for item in ./*.mp3 ; do ffmpeg -i "${item}" "${file/%mp3/ogg}" ; done`   
 `for item in ./*.jpeg ; do convert "$item" "${item%.*}.png" ; done`
 
-Note the use of command substitution by using $(command); sometimes you will find the use of backticks instead (e.g., `for item in ./* ; do mv $item \`echo $file | tr "A-Z" "a-z"` ; done);` this is *not* recommended. The use of backticks (a) not a POSIX standard, (b) can be difficult to read with deep escapes and (c) can be *very* dangerous if mistaken for strong quotes.
+Note the use of command substitution by using $(command); sometimes backticks will be found instead (e.g., `for item in ./* ; do mv $item \`echo $file | tr "A-Z" "a-z"` ; done);` this is *not* recommended. The use of backticks (a) not a POSIX standard, (b) can be difficult to read with deep escapes and (c) can be *very* dangerous if mistaken for strong quotes.
 
 Early in this book it was recommended that spaces should be avoided in filenames. Part of this is due to poorly designed scripts that make use of the `ls` command. In a nutshell, `ls` can't differentiate in a script what is a filename and what is a space. It is, of course, unnecessary. Worse still, if any of the directories have files the process will generate the files inside the directories as well.
 
-`touch "a file with lots of spaces in the name"`
+`touch "a file with lots of spaces in the name"`   
 `for item in $(ls ./*); do echo ${item}; done`
-`for item in *; do echo ${item}; done`
 
 Removing such characters can be achieved through scripts. The following examples remove spaces from filenames and apostrophes. The script is designed to prevent expansion from the wildcard, but remember that a `mv` command will overwrite existing files that have the same name.
 
@@ -2670,60 +2647,60 @@ Removing such characters can be achieved through scripts. The following examples
 
 The following are examples of loops with conditional tests. Also note the use of bash's integer arithmetic, and especially the use of spacing and bracketing. There is actually an astounding number of ways of doing arithmetic in bash; the version used here is a good combination of legibility and speed. These count can, of course, be varied to indicate step sizes.
 
-`x=1; while [ $x -le 5 ]; do echo "While-do count up $x"; x=$(($x+1)); done`
-`x=5; until [ $x -le 0 ]; do echo "Until-do count down $x"; x=$(($x-1)); done`
-`x=1; until [ $x = 6 ]; do echo "Until-do count up $x"; x=$(( $x+1)); done`
+`x=1; while [ $x -le 5 ]; do echo "While-do count up $x"; x=$(($x+1)); done`   
+`x=5; until [ $x -le 0 ]; do echo "Until-do count down $x"; x=$(($x-1)); done`    
+`x=1; until [ $x = 6 ]; do echo "Until-do count up $x"; x=$(( $x+1)); done`   
 
 A loop can be combined with other commands. For example, when searching for lines that contain a particular sequence in a file (e.g., from `grep`), reading those lines for processing can be accomplished with the something like the following:
 
 ```
-grep sequence datafile.dat | while read -r line ; do
-    echo "Processing $line"
-    # Processing code #
-done
+grep sequence datafile.dat | while read -r line ; do   
+    echo "Processing $line"   
+    # Processing code #   
+done   
 ```
 
 When dealing with large loops, shell expansion makes typing easier and is quicker to run. For example:
 
-`time for i in {1..1000}; do echo "Linux is the best operating system"; done`
-`time for i in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24... etc 996 997 998 999 1000; do echo "Linux is the best operating system"; done`
+`time for i in {1..1000}; do echo "Linux is the best operating system"; done`   
+`time for i in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24... etc 996 997 998 999 1000; do echo "Linux is the best operating system"; done`   
 
 To generate the numbers in the second example use: `printf "%d " {1..1000}`
 
 Even short, single line, scripts like these can be turned into permanent bashscripts if they are used regularly enough. It is good practise, for example, to convert them to executables and save them in a local `bin` directory (`/home/<username>/bin`) or similar in the user's PATH. For example, for a script `lowercase.sh`. 
 
 ```
-#!/bin/bash
-# Will change every file in the existing directory to lower-case.
-# Warning! Warning! Will overwrite *existing* files with the same lower-case name!
-for item
-do 
-	mv $item $(echo $item | tr "A-Z" "a-z")
-done
-exit
+#!/bin/bash   
+# Will change every file in the existing directory to lower-case.   
+# Warning! Warning! Will overwrite *existing* files with the same lower-case name!   
+for item   
+do    
+	mv $item $(echo $item | tr "A-Z" "a-z")   
+done   
+exit   
 ```
 
 The until/do loop can serve as a trigger for events. In the following script, access to a system is tested with ping every few minutes until a connection is made whereupon it opens an SSH session. 
 
 ```
-#! /bin/bash 
-read -p "Enter Hostname:" nethost 
-echo $nethost 
-until ping -c 1 $nethost 
-do 
-        sleep 180; 
-done 
-ssh $nethost 
+#! /bin/bash    
+read -p "Enter Hostname:" nethost    
+echo $nethost    
+until ping -c 1 $nethost    
+do    
+        sleep 180;    
+done    
+ssh $nethost    
 ```
 
 **Conditionals**
 
 Conditions may be expressed in different structures depending on the test of the conditionals. A single test of conditions and commands can be expressed through an if/then/fi structure. A single test with an alternative set of commands is expressed if/then/else/fi. Finally, a switch-like structure can be constructed through a series of elif statements in a if/then/elif/elif/.../else/fi structure. 
 
-1. if..then..fi statement (Simple) 
-2. if..then..else..fi statement (Optional) 
-3. if..elif..else..fi statement (Ladder) 
-4. if..then..else..if..then..fi..fi..(Nested) 
+1. if..then..fi statement (Simple)    
+2. if..then..else..fi statement (Optional)    
+3. if..elif..else..fi statement (Ladder)    
+4. if..then..else..if..then..fi..fi..(Nested)    
           
 There are several conditional expressions that could be used to test with the files. The following are few common examples; 
 
@@ -2739,97 +2716,95 @@ There are several conditional expressions that could be used to test with the fi
 
 There are also a number of special characters in bash scripting. Quoting disables these characters for the content within the quotes. Both single and double quotes can be used, and single quotes can be used to incorporate double quotes. Again, "backtick" quotation marks can be used for command substitution within the script for historical reasons but should be avoided. Special characters include `;` for command separators, `{}` for command blocks, `|` for a pipe, `< > &` as redirection symbols, `$` for variables, and `#` for comments. Compare the following:
 
-`echo 'The "Sedimentary" and the "Igneuous" argue about contributions to metamorphism'`
-`echo "There are $(ls | wc -l) files in $(pwd)"`
+`echo 'The "Sedimentary" and the "Igneuous" argue about contributions to metamorphism'`   
+`echo "There are $(ls | wc -l) files in $(pwd)"`    
 `echo 'There are $(ls | wc -l) files in $(pwd)'`
 
 Note that within a script, `pwd` will refer to wherever the action is occuring, not where the script is located. For the latter, consider using the `dirname` command, as follows:
 
 ```
-#!/bin/bash
-echo "The script you are running has basename `basename $0`, dirname `dirname $0`"
-echo "The present working directory is `pwd`"
+#!/bin/bash   
+echo "The script you are running has basename `basename $0`, dirname `dirname $0`"   
+echo "The present working directory is `pwd`"   
 ```
 
 The following simple example tests a conditional on whether a specified file exists at the location stated.
 
 ```
-#! /bin/bash 
-file=$1 
-if [ -e $file ] 
-then 
-	echo -e "File $file exists" 
-else 
-	echo -e "File $file doesn't exists" 
-fi 
+#! /bin/bash    
+file=$1    
+if [ -e $file ]    
+then    
+	echo -e "File $file exists"    
+else    
+	echo -e "File $file doesn't exists"    
+fi    
 ```
 
 Conditional with brace expansion can be used to search for multiple directories. For example, in the search for a specific image (bunny.jpg) which the user has unfortunately forgotten which directory it is in.
 
 ```
-#! /bin/bash 
-mypicture=bunny.jpg
-for file in /home/Pictures/{pets,family,unsorted}/"$the_file"; do 
-   if [[ -e $file ]]; then
-      printf '%s found in %s:\n' "$the_file" "${file%/*}"
-   fi
-done
+#! /bin/bash    
+mypicture=bunny.jpg   
+for file in /home/Pictures/{pets,family,unsorted}/"$the_file"; do    
+   if [[ -e $file ]]; then   
+      printf '%s found in %s:\n' "$the_file" "${file%/*}"   
+   fi   
+done   
 ```
 
 The following example was used by Mike Kuiper; a directory held a large number of data files which he wished to convert into .tga files using vmd. The conditional statement stepped through all files with *.plot.dat, creating a new file them with a *.tmp and then running the command. If the *.tmp already existed it skipped that file and went to the next one.
 
 ```
-#!/bin/bash 
- for item in ./*.plot.dat; do 
-	if [ -f $item.tmp ]; then 
-	  : 
- 	else 
-          	touch $item.tmp 
- 	"/usr/local/vmd/1.8.7-gcc/lib/tachyon_LINUXAMD64" -aasamples 2 -rescale_lights 0.38 -add_skylight 1.0 -res 1280 720 $i -format TARGA -o $file.tga 
-	fi; 
- done 
-```
+#!/bin/bash    
+ for item in ./*.plot.dat; do    
+	if [ -f $item.tmp ]; then    
+	  :    
+ 	else    
+          	touch $item.tmp    
+ 	"/usr/local/vmd/1.8.7-gcc/lib/tachyon_LINUXAMD64" -aasamples 2 -rescale_lights 0.38 -add_skylight 1.0 -res 1280 720 $i -format TARGA -o  $file.tga    
+	fi;    
+ done    
+``` 
 
 Conditionals can also be interrupted and resumed using the 'break' and 'continue' statements. The break command terminates the loop (breaks out of it), while continue causes a jump to the next iteration (repetition) of the loop, skipping all the remaining commands in that particular loop cycle. Both can optionally take a parameter. The following is a well-known example of break and continue;
 
 ```
-#!/bin/bash 
-LIMIT=19  # Upper limit 
-echo 
-echo "Printing Numbers 1 through 20 (but not 3 and 11)." 
-count=0 
-while [ "$count" -le "$LIMIT" ] 
-do 
- count=$(($count+1)) 
-
- if [ "$count" -eq 3 ] || [ "$count" -eq 11 ]  # Excludes 3 and 11. 
- then 
-   continue      # Skip rest of this particular loop iteration. 
- fi 
- echo -n "$count "   # This will not execute for 3 and 11. 
-done 
-echo;
-exit 0
-```
-
+#!/bin/bash    
+LIMIT=19  # Upper limit    
+echo    
+echo "Printing Numbers 1 through 20 (but not 3 and 11)."    
+count=0    
+while [ "$count" -le "$LIMIT" ]    
+do    
+ count=$(($count+1))    
+ if [ "$count" -eq 3 ] || [ "$count" -eq 11 ]  # Excludes 3 and 11.    
+ then    
+   continue      # Skip rest of this particular loop iteration.    
+ fi    
+ echo -n "$count "   # This will not execute for 3 and 11.    
+done    
+echo;   
+exit
+``` 
 The following is the same loop, but substituting 'break' for 'continue'.
 
 ```
-#!/bin/bash
-LIMIT=19  # Upper limit 
-echo "Printing Numbers 1 through 20 (but breaks loop at 3)." 
-count=0
-while [ "$count" -le "$LIMIT" ]
-do
- count=$(($count+1))
- if [ "$count" -gt 2 ]
- then
-   break  # Skip entire rest of loop.
- fi
- echo -n "$count "
-done
-echo;
-exit 0
+#!/bin/bash   
+LIMIT=19  # Upper limit    
+echo "Printing Numbers 1 through 20 (but breaks loop at 3)."    
+count=0   
+while [ "$count" -le "$LIMIT" ]   
+do   
+ count=$(($count+1))   
+ if [ "$count" -gt 2 ]   
+ then   
+   break  # Skip entire rest of loop.   
+ fi   
+ echo -n "$count "   
+done   
+echo;   
+exit   
 ```
 
 Earlier examples were given of common extraction and archiving programs available in Linux. There are plenty of others with a similar syntax and which can be explored as needed. The following is a "handy extract program", a small shell script that, when made executable, requires that one simply type `extract.sh filename`  and, for a variety of archive/compression methods used, it will extract the files. Unfortunately the original author is unknown; it has been used as an example in VPAC courses since at least 2008.
@@ -2837,69 +2812,69 @@ Earlier examples were given of common extraction and archiving programs availabl
 What `extract.sh` does is test whether a variable is a file and, if it is, runs a case a sort of select option, over various commands that can extract the file. If it cannot extract the file it states so (the final case switch). If it was not a file in the first place, it states so. It is far better to use `case` statements, as in this example, rather than the additional processing required for a ladder of if/else/elseif statements.
 
 ```
-#!/bin/bash
-# Handy Extract Program 
-    if [[ -f $1 ]]; then 
-        case $1 in 
-            *.tar.bz2) tar xvjf $1 ;; 
-            *.tar.gz) tar xvzf $1 ;; 
-            *.bz2) bunzip2 $1 ;; 
-            *.rar) unrar x $1 ;; 
-            *.gz) gunzip $1 ;; 
-            *.tar) tar xvf $1 ;; 
-            *.tbz2) tar xvjf $1 ;; 
-            *.tgz) tar xvzf $1 ;; 
-            *.zip) unzip $1 ;; 
-            *.Z) uncompress $1 ;; 
-            *.7z) 7z x $1 ;; 
-            *) echo "'$1' cannot be extracted via >extract<" ;; 
-        esac 
-    else 
-    echo "'$1' is not a valid file!" 
-    fi 
+#!/bin/bash   
+# Handy Extract Program    
+    if [[ -f $1 ]]; then    
+        case $1 in    
+            *.tar.bz2) tar xvjf $1 ;;    
+            *.tar.gz) tar xvzf $1 ;;    
+            *.bz2) bunzip2 $1 ;;    
+            *.rar) unrar x $1 ;;    
+            *.gz) gunzip $1 ;;    
+            *.tar) tar xvf $1 ;;    
+            *.tbz2) tar xvjf $1 ;;    
+            *.tgz) tar xvzf $1 ;;    
+            *.zip) unzip $1 ;;    
+            *.Z) uncompress $1 ;;    
+            *.7z) 7z x $1 ;;    
+            *) echo "'$1' cannot be extracted via >extract<" ;;    
+        esac    
+    else    
+    echo "'$1' is not a valid file!"    
+    fi    
 ```
 
 Finally, the select command with conditionals can be used to create simple menus for users which prompts them for their input. Tow examples are given here, one which provides a terse dictionary selection based on the choice, and another which simulates a multi-choices exam.
 
 ```
-#!/bin/bash 
-OPTIONS="Sedimentary Igneous Metamorphic Quit" 
-select opt in $OPTIONS; do 
-	if [ "$opt" = "Quit" ]; then 
-		echo done 
-	exit 
-	elif [ "$opt" = "Sedimentary" ]; then 
-	echo "Sedimentary rocks are formed by sedminentation of particles at or near the Earth's surface and within bodies of water." 
-	elif [ "$opt" = "Igneous" ]; then 
-	echo "Igneous rock forms through the cooling and solidification of magma or lava." 
-	elif [ "$opt" = "Metamorphic" ]; then 
-	echo "Metamorphic rocks are formed by subjecting any rock type -sedimentary rock, igneous rock or another older metamorphic rock - to different temperature and pressure conditions than those in which the original rock was formed." 
-	else 
-	echo "Select again; 1, 2, 3 or 4" 
-	fi 
-done 
-exit
+#!/bin/bash    
+OPTIONS="Sedimentary Igneous Metamorphic Quit"    
+select opt in $OPTIONS; do    
+	if [ "$opt" = "Quit" ]; then    
+		echo done    
+	exit    
+	elif [ "$opt" = "Sedimentary" ]; then    
+	echo "Sedimentary rocks are formed by sedminentation of particles at or near the Earth's surface and within bodies of water."    
+	elif [ "$opt" = "Igneous" ]; then    
+	echo "Igneous rock forms through the cooling and solidification of magma or lava."    
+	elif [ "$opt" = "Metamorphic" ]; then    
+	echo "Metamorphic rocks are formed by subjecting any rock type -sedimentary rock, igneous rock or another older metamorphic rock - to different temperature and pressure conditions than those in which the original rock was formed."    
+	else   
+	echo "Select again; 1, 2, 3 or 4"    
+	fi    
+done    
+exit   
 ```
 
 ```
-#!/bin/bash
-echo "Which of the following rocks is igneous?"
-select ANSWER in granite sandstone slate
-do
-	if [ "$ANSWER" == "" ]; then
-	echo -e "You need to enter an answer\n"
-		continue
-	elif [ "$ANSWER" != granite ]; then
-	echo -e "Sorry. Incorrect\n"
-	echo "1. Incorrect" >> rockexam.txt
-		break
-	elif [ "$ANSWER" == granite ]; then
-	echo -e "Congratulations! That is the correct answer\n"
-	echo "No. 1 - Correct" >> rockexam.txt
-		break
-	fi
-done
-exit
+#!/bin/bash   
+echo "Which of the following rocks is igneous?"   
+select ANSWER in granite sandstone slate   
+do   
+	if [ "$ANSWER" == "" ]; then   
+	echo -e "You need to enter an answer\n"   
+		continue   
+	elif [ "$ANSWER" != granite ]; then   
+	echo -e "Sorry. Incorrect\n"   
+	echo "1. Incorrect" >> rockexam.txt   
+		break  
+	elif [ "$ANSWER" == granite ]; then   
+	echo -e "Congratulations! That is the correct answer\n"   
+	echo "No. 1 - Correct" >> rockexam.txt   
+		break   
+	fi   
+done   
+exit   
 ```
 
 **Bash Arrays**
@@ -2909,26 +2884,26 @@ An bash array (not to be confused with a job array) can be thought of as a exten
 A very simple example would be a list of nodes in a cluster's partion, all of which in this example would be of the same string type. The elements of an array can be specified individually, but it is easier to state them using the `declare` statement; the `-a` option specifies an indexed array and `-A` for an associative array. The entire array can be specified with `@` or `*`, and the length of an array name with the special parameter `$#`; without an index it represents the first element of the array. 
 
 ```
-#!/bin/bash
-# An example of an array in bash
-ashley[0]='ashley00.edward.unimelb.edu.au'
-ashley[1]='ashley01.edward.unimelb.edu.au'
-ashley[2]='ashley02.edward.unimelb.edu.au'
-ashley[3]='ashley03.edward.unimelb.edu.au'
-ashley[4]='ashley04.edward.unimelb.edu.au'
-echo ${ashley[1]}
+#!/bin/bash   
+# An example of an array in bash   
+ashley[0]='ashley00.edward.unimelb.edu.au'   
+ashley[1]='ashley01.edward.unimelb.edu.au'   
+ashley[2]='ashley02.edward.unimelb.edu.au'   
+ashley[3]='ashley03.edward.unimelb.edu.au'   
+ashley[4]='ashley04.edward.unimelb.edu.au'   
+echo ${ashley[1]}   
 ```
 
 ```
-#!/bin/bash
-# An better example of an array in bash
-declare -a ashley=(ashley00.edward.unimelb.edu.au ashley01.edward.unimelb.edu.au ashley02.edward.unimelb.edu.au ashley03.edward.unimelb.edu.au ashley04.edward.unimelb.edu.au);
-echo ${ashley[1]}
-echo $(ashley[@]}
-echo ${#ashley[4]} 
+#!/bin/bash   
+# An better example of an array in bash   
+declare -a ashley=(ashley00.edward.unimelb.edu.au ashley01.edward.unimelb.edu.au ashley02.edward.unimelb.edu.au ashley03.edward.unimelb.edu.au ashley04.edward.unimelb.edu.au);   
+echo ${ashley[1]}   
+echo $(ashley[@]}   
+echo ${#ashley[4]}    
 ```
 
-The value can be extracted from an array with an index for the number of consective array elements with `[@]:index:increment}` e.g., `echo ${ashley[@]:1:2}`, will extract 2 elements starting from index 1. Always remember that indices start at 0. To extract characters from an array element, specifiy the index, the offset and the length. For example, `echo ${ashley[1]:0:8}` will result in `ashley01`. 
+The value can be extracted from an array with an index for the number of consective array elements with `[@]:index:increment}` e.g., `echo ${ashley[@]:1:2}`, will extract 2 elements starting from index 1. Always remember that indices start at 0. To extract characters from an array element, specifiy the index, the offset and the length. For example, `echo ${ashley[1]:0:8}` will result in `ashley01`.
 
 Elements can be appended to an array by evoking the entire array as a variable with new elements; for example `ashley=("${ashley[@]}" "ashley05.edward.unimelb.edu.au", "ashley06.edward.unimelb.edu.au")`, followed by `echo ${ashley[6]}` will result in `ashley06.edward.unimelb.edu.au`.
 Elements can be removed with the `unset` command; for example `unset ashley[6]` will clear the previously last element, whereas `unset ashley` would delete the entire array.
@@ -2938,17 +2913,17 @@ Elements can be removed with the `unset` command; for example `unset ashley[6]` 
 Functions are used to group code sections as a subroutine in a logical manner or for recursion. A function takes the form of `function name { codeblock }`. Parameters may be parsed to the function, either with the script or as variables when the script is run. For example, the `hellofunction.sh` script:
 
 ```
-#!/bin/bash
-# Enter two names when invoking script
-# Define your function here
-# Firstname and Surname are first two parameters.
-Hello () {
-   echo "Hello World ${1} ${2}"
-   return $(bc -l <<< ${#1}+${#2})
+#!/bin/bash    
+# Enter two names when invoking script   
+# Define your function here   
+# Firstname and Surname are first two parameters.   
+Hello () {   
+   echo "Hello World ${1} ${2}"   
+   return $(bc -l <<< ${#1}+${#2})   
 }
-# Capture value returned by last command
-echo The name has this many characters $?
-exit
+# Capture value returned by last command   
+echo The name has this many characters $?   
+exit   
 ```
 
 An interesting example of a function in use is the `/etc/profile` file which typically includes a `pathmunge` function which differentiates between the root user and other users, adding particular directories to the path of the former.
@@ -2956,19 +2931,19 @@ An interesting example of a function in use is the `/etc/profile` file which typ
 It is good practise to get into the habit of using functions to modularise a shell script (see "Functions" under the following section, "Better Bash Scripting"). Certainly if a script is short and only does one main action it is not entirely necessary. But as soon as a level of complexity is reached, it helps to break up a bash script into multiple functions - and to invoke those functions through a `main()` function. For example:
 
 ```
-#!/bin/bash
-subroutineA {
-    codeblock
-}
-subroutineB() {
-    codeblock
-}
-main() {
-    subroutineA
-    subroutineB
-}
-main
-exit 0
+#!/bin/bash   
+subroutineA {    
+    codeblock   
+}   
+subroutineB() {   
+    codeblock   
+}   
+main() {   
+    subroutineA   
+    subroutineB   
+}   
+main   
+exit   
 ```
 
 ## 5.5 Better Bash Scripting
@@ -2981,7 +2956,7 @@ exit 0
 The simplest script is simply one that runs a list of system commands. At least this saves the time of retyping the sequence each time it is used, and reduces the possibility of error. For example, the following script was recommended to calculate the disk use in a directory. It's a good script, very handy, but how often would you want to type it? Instead, type enter it once, make it executable (e.g., `chmod +x diskuse.sh`) and keep it. You will recall of course, that a script starts with an invocation of the shell, followed by commands.
 
 ```
-#!/bin/bash
+#!/bin/bash   
 du -sk ./* | sort -nr | cut -f2 | xargs -d "\n" du -sh  > diskuse.txt
 ```
 
@@ -2990,7 +2965,7 @@ The script runs a disk usage in summary, sorts in order of size, extracting the 
 Whilst sometimes making the script a little more complex, variables are usually better than hard-coded values. There are two potential variables in this script, the wildcard `*` and the exported filename `diskuse.txt`. In the former case, the wildcard can be kept as it allows a certain portibility of the script - it can run in any directory it is invoked from. For the latter case however, the date command can be used so that a history of diskuse can be created which can be reviewed for changes. It is good practise to alert the user when the script is completed and, although it is often necessary, it is also good practise to cleanly finish any script with with an `exit` statement. An `exit` statement can vary to indicate success (0) or failure (1) - in this case checking to see if the file was created.
 
 ```
-#!/bin/bash   
+#!/bin/bash      
 DU=diskuse$(date +%Y%m%d).txt   
 du -sk ./* | sort -nr | cut -f2 | xargs -d "\n" du -sh  > $DU   
 echo "Disk summary completed and sorted."   
@@ -3072,18 +3047,17 @@ Functions also have the advantage of providing variable scope, which should be u
 Signals can be send to processes. In job submission a recommended signal is TERM, which can be used to kill a process. This is typically carried out by a scheduling system when a job has exceeded walltime or a `qdel` has been issues on the job. This is another example of using a function for debugging, but within a job itself, as all jobscripts are also shell scripts.
 
 ``
-#!/bin/bash
-#PBS -l walltime=10:00:00
-#PBS -l nodes=2
-#PBS -l ppn=2
-terminator()
-{
-        echo "Terminator function called.  Exiting"
-        # Cleanup actions
-        exit -1
-}
-
-trap 'terminator' TERM
+#!/bin/bash   
+#PBS -l walltime=10:00:00   
+#PBS -l nodes=2   
+#PBS -l ppn=2   
+terminator()   
+{   
+        echo "Terminator function called.  Exiting"   
+        # Cleanup actions   
+        exit -1   
+}   
+trap 'terminator' TERM   
 ```
 
 **Metacharacters**
@@ -3095,14 +3069,14 @@ Comments are the most common special meaning. Any text following a # (with the e
 Another meta-characters includes the command seperator, a semicolon, which is used to permit two or more commands on the same line. This is already shown by the the various tests in the script (e.g., `if [ !$1 -o !$2 ]; then and if [ $? -eq 0 ]; then`). Note the space after the semicolon. In contrast a double semicolon (`;;`) represents a terminator in a case option, which was encountered in the extract script in the Intermediate course.
 
 ```
-..
-case $1 in 
-            *.tar.bz2)   tar xvjf $1     ;; 
-            *.tar.gz)    tar xvzf $1     ;; 
-            *.bz2)       bunzip2 $1      ;; 
-..
-..
-esac
+..   
+case $1 in    
+            *.tar.bz2)   tar xvjf $1     ;;    
+            *.tar.gz)    tar xvzf $1     ;;    
+            *.bz2)       bunzip2 $1      ;;   
+..  
+..   
+esac   
 ```
 
 In contrast, the colon acts as a null command. Whilst this obviously has a variety of uses (e.g., an alternative to the touch command, a really practical advantage of this is that comes with a true exit status, and as such it can be used as placeholder in if/then tests. An as prior illustrated example;
@@ -3235,10 +3209,10 @@ for var2 in "${k_array[@]}"
 do
 	for var3 in "${fit_array[@]}"	   		
 	do   
-		for var4 in "${bot_array[@]}"	   		
-		do
+		for var4 in "${bot_array[@]}"   	   		
+		do   
 #find line setting parameter value and replace it with new parameter value
-		sed -i "s/^n <-.*/n <- $var1/" $Rfilename
+		sed -i "s/^n <-.*/n <- $var1/" $Rfilename   
 		sed -i "s/^k <-.*/k <- $var2/" $Rfilename
 		sed -i "s/^fit_func <-.*/fit_func <- $var3/" $Rfilename
 		sed -i "s/^bot <-.*/bot <- $var4/" $Rfilename
@@ -3876,8 +3850,3 @@ Paul Sheer, *Linux: Rute User's Tutorial and Exposition*, Prentice-Hall, 2002
 
 Greg Wilson, *High Performance Computing Considered Harmful*, 22nd International Symposium on High Performance Computing Systems and Applications, 2008
 
-**Images**
-													
-Cray-1-deutsches-museum" by Clemens Pfeiffer. Licensed under CC BY 2.5 via Commons - https://commons.wikimedia.org/wiki/File:Cray-1-deutsches-museum.jpg#/media/File:Cray-1-deutsches-museum.jpg   
-
-"Structure of the BRAF protein" by Emw (Wikipedia User). Creative Commons Attribution-Share Alike 3.0 Unported license. https://commons.wikimedia.org/wiki/File:Protein_BRAF_PDB_1uwh.png 
