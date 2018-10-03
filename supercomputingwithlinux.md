@@ -882,6 +882,8 @@ The output should be something like the following:
 > ATEKSRWSGS HQFEQLSGSI LWMAPEVIRM QDKNPYSFQS DVYAFGIVLY 
 ```
 
+The output `4c4` indicates that line 4 of the first files needs to be changed to match line 4 of the second file. Other common ouput codes are `a` for add and `d` for delete.
+
 For a side-by-side representation use the command `sdiff` instead. If multiple files are being tested use the `-q` (quiet) option with `--from-file` (e.g., `diff -q --from-file file1 file2 file3 file4`).
 
 In addition, the `diff` command is often used by programmers to create a patch file between two programs. For example, if one wanted to a patch of `braf/gattaca.txt` to `gattaca.txt` one would generate the patch file like follows:
@@ -2633,10 +2635,11 @@ $ echo $Ubh
 
 In addition to variable assignments, bash scripting allows for  loops (for/do, while/do, util/do) and conditionals (if/then/else/fi, case). For example, the first for/do one-line script (which, like all scripts, can be run directly from the bash shell), moves all files in the working directory to lower case; a second example copies all .oga files to .ogg - the format is identical and recommended, but some music players might not recognise it. 
 
-The until/do loop conducts the same action, but with the count in reverse. The next until/do produces the same results as the first, but not the difference in the conditional test. The main difference between while/do and until/do is that the while/do loop repeats the code block while the conditional is true whilst the until/do loop repeats the block whilst the expression is false. In the first script, brace expansion is used to refer to file names, and the conversion from mp3 to ogg. The `./` before the glob `*` exists to prevent bad filenames causing problems.
+The until/do loop conducts the same action, but with the count in reverse. The next until/do produces the same results as the first, but not the difference in the conditional test. The main difference between while/do and until/do is that the while/do loop repeats the code block while the conditional is true whilst the until/do loop repeats the block whilst the expression is false. In the first script, brace expansion is used to refer to file names, and the conversion from mp3 to ogg. The third for loop converts a directory of images to a preferred size. The `./` before the glob `*` exists to prevent bad filenames causing problems.
 
 `for item in ./*.mp3 ; do ffmpeg -i "${item}" "${file/%mp3/ogg}" ; done`   
 `for item in ./*.jpeg ; do convert "$item" "${item%.*}.png" ; done`
+`for item in ./*; do convert "$i" -define jpeg:extent=512kb "${item%.*}.jpg" ; done`
 
 Note the use of command substitution by using $(command); sometimes backticks will be found instead (e.g., `for item in ./* ; do mv $item \`echo $file | tr "A-Z" "a-z"` ; done);` this is *not* recommended. The use of backticks (a) not a POSIX standard, (b) can be difficult to read with deep escapes and (c) can be *very* dangerous if mistaken for strong quotes.
 
@@ -3644,7 +3647,7 @@ Print release, codename, description, and version.
 Merges lines of corresponding lines of each file, separated by tabs, to standard output. Delimiters maybe specified.
 Example:
 `paste file1.lst file2.lst`
-Prints to standard output file1.lstand file2.lst separate by tabs.
+Prints to standard output file1.lst and file2.lst separate by tabs.
 												 
 `pwd`		 
 "Print working directory";  prints the directory where you're currently in.   	
