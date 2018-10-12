@@ -2645,7 +2645,7 @@ Note the use of command substitution by using $(command); sometimes backticks wi
 
 Early in this book it was recommended that spaces should be avoided in filenames. Part of this is due to poorly designed scripts that make use of the `ls` command. In a nutshell, `ls` can't differentiate in a script what is a filename and what is a space. It is, of course, unnecessary. Worse still, if any of the directories have files the process will generate the files inside the directories as well.
 
-`touch "a file with lots of spaces in the name"`   
+`touch "This is a long file name"`   
 `for item in $(ls ./*); do echo ${item}; done`
 
 Removing such characters can be achieved through scripts. The following examples remove spaces from filenames and apostrophes. The script is designed to prevent expansion from the wildcard, but remember that a `mv` command will overwrite existing files that have the same name.
