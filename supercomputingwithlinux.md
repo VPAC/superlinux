@@ -1154,8 +1154,8 @@ Many schedulers and resource managers use a backfilling algorithm to improve sys
 | qsub <pbsscript>	| sbatch <jobname>  | Submits job script			|
 | qsub -I 		| sinteractive	 | Submit an interactive batch job. SLURM command varies per installation.										|
 | qdel <jobid>		| scancel <jobid> | Deletes a job. SLURM allows one to delete all jobs belonging to a user wit the -u option.								|
-| qpeek jobid>		| not needed	|  Allows a partial output of a job while it is still running. SLURM produces output files in real time.|
-
+| qpeek <jobid>		| not needed	|  Allows a partial output of a job while it is still running. SLURM produces output files in real time.|
+| tracejob <jobid>	| sacct -j <jobid> | Job resources and events for jobdid	|
 
 The following are state definitions for a job.
 
