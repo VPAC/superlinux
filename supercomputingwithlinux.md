@@ -2658,6 +2658,10 @@ The following are examples of loops with conditional tests. Also note the use of
 `x=5; until [ $x -le 0 ]; do echo "Until-do count down $x"; x=$(($x-1)); done`    
 `x=1; until [ $x = 6 ]; do echo "Until-do count up $x"; x=$(( $x+1)); done`   
 
+A loop can be used to read in using lines from a file, making use of the `read` built-in command. The following example is used to read from a redirected file which is a list of users which calls a setquota script. 
+
+`while read line; do sleep 5; ./setquota.sh $line; done < quotalist.txt`
+
 A loop can be combined with other commands. For example, when searching for lines that contain a particular sequence in a file (e.g., from `grep`), reading those lines for processing can be accomplished with the something like the following:
 
 ```
@@ -2969,7 +2973,9 @@ du -sk ./* | sort -nr | cut -f2 | xargs -d "\n" du -sh  > diskuse.txt
 
 The script runs a disk usage in summary, sorts in order of size, extracting the second field, parses the values in delimited form to run as disk usage summary in human form, and then exports to the file `diskuse.txt`. The `\n` is to ignore spaces in filenames.
 
-Whilst sometimes making the script a little more complex, variables are usually better than hard-coded values. There are two potential variables in this script, the wildcard `*` and the exported filename `diskuse.txt`. In the former case, the wildcard can be kept as it allows a certain portibility of the script - it can run in any directory it is invoked from. For the latter case however, the date command can be used so that a history of diskuse can be created which can be reviewed for changes. It is good practise to alert the user when the script is completed and, although it is often necessary, it is also good practise to cleanly finish any script with with an `exit` statement. An `exit` statement can vary to indicate success (0) or failure (1) - in this case checking to see if the file was created.
+Whilst sometimes making the script a little more complex, variables are usually better than hard-coded values. There are two potential variables in this script, the wildcard `*` and the exported filename `diskuse.txt`. In the former case, the wildcard can be kept as it allows a certain portibility of the script - it can run in any directory it is invoked from. For the latter case however, the date command can be used so that a history of diskuse can be created which can be reviewed for changes. It is good practise to alert the user when the script is completed and, although it is often necessary, it is also good practise to cleanly finish any script with with an `exit` statement to clear variables and provide an exit code. Typically an `exit` statement can vary to indicate success (0) or failure (1 or more), with a range can be between 0 to 255. There is a few reserved values; 0 and 1, as mentioned, 2 for misuse of shell builtin, 126 for command cannot run, 127 for unknown command (try with a random string followed by `echo $?`), 128 for invalid argument, 128+n for fatal signal n, 130 for script terminated with Cntrl-C, and 255 for exit status out-of-range.
+
+In this example a check to see if the file was created. 
 
 ```
 #!/bin/bash      
