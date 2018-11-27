@@ -669,7 +669,7 @@ If you're using MS-Windows, download PuTTY or another SSH client. If PuTTY is be
 
 Generally, the other Putty settings will be fine as they are. One thing a MS-Windows user might need if they are going to be using XWindows (to display a graphical interface from the HPC cluster on the local system) is to turn on XForwarding. Note however that there is a general rule of thumb that X-forwarding is not usually recommended for a cluster, due to the latency of operating over a WAN link. The general rule is do computation on the cluster, copy the files, and do visualisation using local resources. However, if visualisation is necessary, the users will also need some sort of "XWindows Server" installed on your local system if they are using MS-Windows. A possible free option is XMing, `http://www.straightrunning.com/XmingNotes/`
 
-With Mac or Linux a user can simply open the terminal client and enter their username and the machine they wish to connect to, followed by the password when connected. For example;  `ssh <your username>@trifid.vpac.org`. Secure shell opens a connection to a remote system. If graphic forwarding is desired then one can use the -X or -Y (secure) options e.g., `ssh -Y <your username>@trifid.vpac.org`
+With Mac or Linux a user can simply open the terminal client and enter their username and the machine they wish to connect to, followed by the password when connected. For example;  `ssh <your username>@trifid.vpac.org`. Secure shell opens a connection to a remote system. If graphic forwarding is desired then one can use the -X (secure) or -Y (trusted) options e.g., `ssh -Y <your username>@trifid.vpac.org`. The secure mode is recommended on a shared system.
 
 Whilst stepping through the tutorial components of this publication it is best to have two terminal windows open, whether seperate or in tabbed form. One terminal client window will be for the remote system and one for the local system.
 
@@ -3474,10 +3474,10 @@ Take the opportunity to review the demo script for Gromacs; one will note ample 
 
 Some important aspects for interactive jobs is that the resource requests are made at the point of submission (e.g., the walltime, the number of  processors) along with the `-I` submission flag to indicate that it is interactive. In addition, once the user has been logged into the compute node, they are required to add the usual functional commands that they would have otherwise added into their job script, such as loading the modules that they want to use and changing to the working directory where the job was launched from.
 
-One can use graphical windowing forwarding to the login node and then launch an interactive job also with X forwarding and with the usual PBS requirements. An initial connection can be made with secure mode X-windows forwarding and a further connection through the usual method. Thus, starting from the desktop.
+One can use graphical windowing forwarding to the login node and then launch an interactive job also with X forwarding and with the usual PBS requirements. An initial connection can be made with secure mode X-windows forwarding. Thus, starting from the desktop.
 
 ```
-bash-4.2$ ssh -Y lev@trifid.vpac.org   
+bash-4.2$ ssh -X lev@trifid.vpac.org   
 [lev@trifid ~]$ qsub -l nodes=1:ppn=2,walltime=0:10:00 -X -I   
 qsub: waiting for job 223936.trifid-m.hpc.vpac.org to start   
 qsub: job 223936.trifid-m.hpc.vpac.org ready   
