@@ -2285,7 +2285,7 @@ The following is a handy use of xargs is to parse a directory list and output th
 
 `du -sk * | sort -nr | cut -f2 | xargs -d "\n" du -sh  > diskuse.txt`
 
-The command `df` will generate a report of file system disk space usage. If a filename is added it will generate a report just for the file system that the file is located on.
+The command `df` will generate a report of file system disk space usage. It also has options like, -h, --total )to provide the sum) etc. If a filename is added it will generate a report just for the file system that the file is located on.
 
 **head and tail**
 
