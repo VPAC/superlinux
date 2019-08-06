@@ -433,7 +433,7 @@ The following is a non-comprehensive list of the compiled software that's often 
 
 **IPRSCAN**: IntroProScan (iprscan) is a tool that combines different protein signature recognition methods into one resource. InterProScan is more than a simple wrapping of sequence analysis applications since it requires performing a considerable data look-ups from some databases and program outputs. 
 
-**ISP**: In-situ Partial Order (ISP) is a dynamic verifier for MPI Programs. ISP will help you debug your programs, and graphically show you all the possible send/receive matches, barrier synchronizations, etc. 
+**ISP**: In-situ Partial Order (ISP) is a dynamic verifier for MPI Programs. ISP will help debug programs, and graphically show all the possible send/receive matches, barrier synchronizations, etc. 
 
 **ITKSNAP**: ITK-SNAP is used to segment structures in 3D medical images, providing semi-automatic segmentation using active contour methods, as well as manual delineation and image navigation. 
 
@@ -641,9 +641,9 @@ An example license is that for Gaussian which was required for all VPAC users to
 
 Most HPC clusters will have a team of systems administrators to provided assistance to users and most of those will have some sort of ticketing system (e.g., Request Tracker) to manage those issue requests. This means that there will be one email address to contact for help (e.g., `help@vpac.org`)
 
-The importance of using this email address should not be underestimated. An issue raised through this address is seen by a number of systems administrators, so they may all act and comment on the issue, even if you are only in correspondence with a single person. It is best not to email a single systems administrator. Not only will the issue not receive the collective attention and knowledge of the team, the individual in question may be away or otherwise busy. Plus, it causes issues with the owning institutions record keeping, recall, and metrics. 
+The importance of using this email address should not be underestimated. An issue raised through this address is seen by a number of systems administrators, so they may all act and comment on the issue, even if the submitter is only in correspondence with a single person. It is best not to email a single systems administrator. Not only will the issue not receive the collective attention and knowledge of the team, the individual in question may be away or otherwise busy. Plus, it causes issues with the owning institutions record keeping, recall, and metrics. 
 
-When emailing the help desk use one correspondence thread per issue. If a user has distinctly different matters, they should initiate three separate tickets. This is because different people may take primary responsibility for different issues. Please note the term "distinctly different"; you can submit a ticket with multiple, but related issues. For example "When I submit this job across multiple nodes it crashes and I run it successfully on a single core, it generates an error", counts two related issues. The request "When I submit this job across multiple nodes it crashes, and can you book me in the next intermediate training course?" counts as "distinctly different" issues. On a related matter, when initiating a ticket do not go through an email archive and reopen a ticket unless it actually is the same issue. 
+When emailing the help desk use one correspondence thread per issue. If a user has distinctly different matters, they should initiate three separate tickets. This is because different people may take primary responsibility for different issues. Please note the term "distinctly different"; one can submit a ticket with multiple, but related issues. For example "When I submit this job across multiple nodes it crashes and I run it successfully on a single core, it generates an error", counts two related issues. The request "When I submit this job across multiple nodes it crashes, and can you book me in the next intermediate training course?" counts as "distinctly different" issues. On a related matter, when initiating a ticket do not go through an email archive and reopen a ticket unless it actually is the same issue. 
 
 When submitting a ticket be as clear and as informative as possible in the ticket. A ticket that says "My job died, why?" is difficult to diagnose. One that says "My job ID 28807 on trifid died. My PBS script is located in `~/openfoam/openfoam_par` and my input file was `simpleFoam`" tells the helpdesk operators a great deal! Also, as we'll learn later, jobs often produce useful diagnostic error information. These are worth checking. 
 
@@ -665,7 +665,7 @@ Linux distributions almost always include SSH as part of the default installatio
 
 If using Mac OS 10.x, a user will probably want to add a terminal alias to your dock. From the Macintosh HDD and go to the Applications folder, then Utilities from within that. Terminal is in the Utilities folder. Drag it to an empty space in the Dock, and the operating system will put an alias there. If graphic interface for Linux is being used, like GNOME or KDE, a similar shortcut can be implemented. 
 
-If you're using MS-Windows, download PuTTY or another SSH client. If PuTTY is being used, in the 'Host Name' box, enter the server (e.g., `trifid.vpac.org`) and select SSH from the 'Connection type' radio button. Verify the host key when connecting for the first time. Enabling X-forwarding enabled is recommended for any connections that require graphic forwarding. It is very useful to enter a session name, (e.g., "Trifid") in the above case and save it so the details are saved for future connections.
+If using MS-Windows, download PuTTY or another SSH client. If PuTTY is being used, in the 'Host Name' box, enter the server (e.g., `trifid.vpac.org`) and select SSH from the 'Connection type' radio button. Verify the host key when connecting for the first time. Enabling X-forwarding enabled is recommended for any connections that require graphic forwarding. It is very useful to enter a session name, (e.g., "Trifid") in the above case and save it so the details are saved for future connections.
 
 Generally, the other Putty settings will be fine as they are. One thing a MS-Windows user might need if they are going to be using XWindows (to display a graphical interface from the HPC cluster on the local system) is to turn on XForwarding. Note however that there is a general rule of thumb that X-forwarding is not usually recommended for a cluster, due to the latency of operating over a WAN link. The general rule is do computation on the cluster, copy the files, and do visualisation using local resources. However, if visualisation is necessary, the users will also need some sort of "XWindows Server" installed on your local system if they are using MS-Windows. A possible free option is XMing, `http://www.straightrunning.com/XmingNotes/`
 
@@ -746,7 +746,7 @@ If the command is run a second time, it will overwrite the first `list.txt`. If 
 
 Linux expresses its files as words made up of pretty much any characters, excepting the slash (/) which is used for directory navigation. In general however it is a *really* good idea to avoid filenames with punctuation marks, non-printing characters (including spaces, tabs etc) as these can lead to some difficulties and annoyances, especially on the command-line level. It is a convention to use underscores instead of spaces or CamelCase e.g., `this_is_a_long_name.txt` or `ThisIsALongFileName.txt`.
 
-Linux is case-sensitive with its filenames. This means that that list.txt is a different file to LIST.TXT, or even lisT.txT. Files do not usually require a program association suffix, although you may find this convenient (a C compiler like files to have .c in their suffix, for example). The file `list` can be opened by a text-editor just as easily as `list.txt`. The type of file can be determined with the `file` command. The type returned will usually be text, executable binaries, archives, or a catch-all "data" file. `file <filename>`. 
+Linux is case-sensitive with its filenames. This means that that list.txt is a different file to LIST.TXT, or even lisT.txT. Files do not usually require a program association suffix, although it is often convenient (a C compiler like files to have .c in their suffix, for example). The file `list` can be opened by a text-editor just as easily as `list.txt`. The type of file can be determined with the `file` command. The type returned will usually be text, executable binaries, archives, or a catch-all "data" file. `file <filename>`. 
 
 There are three text editors usually available on Linux systems. The first is `nano`, a very easy to use clone from the Pine email client that uses control keys with a the equivalent of a "shortcut bar". Others include `vim` (Vi improved) which is a series of enhancements build on the "screen orientated" text editor `vi`, which was first introduced in 1976. Vim is generally understood to be a modal editor, operating either in a insert mode (where typed text becomes part of the document) or command mode (where keystrokes are interpreted as commands that control the edit session). Typicall the default text editor is `vi` or `vim`. Also written in 1976, the hefty `emacs` (Editor Macros) editor and environment is a feature-rich program, to the extent that it is even considered by some to be a virtual machine in its own right. With appropriate plugins, it can act as an email client, web browser, IDE, and even comes with a Rogerian psychotherapist.
 
@@ -778,7 +778,7 @@ To copy a file from within a system use the `cp` command. The following is an ex
 
 There is a great deal of options that can are part of the `cp` command; some of the more common include a recursive copy for all files in a series of directories and sub-directories (e.g., `cp -r /common/introductory .`) and a copy as an archive, with permissions, recursive, and links (e.g., `cp -a /common/introductory .`) . To copy a long file name or directory, use the tab key for auto-completion of the path and options. The tab key for auto-completion is your friend. Use it a lot.
 
-To move files to and from the supercomputer and one's desktop you need to use an SCP (secure copy protocol) or SFTP (secure file transfer protocol) over SSH. If you are using Linux or Mac, you will be able to do this with the standard command-line interface with the general procedure of; 
+To move files to and from the supercomputer and a desktop one will need to use an SCP (secure copy protocol) or SFTP (secure file transfer protocol) over SSH. If one is using Linux or Mac, they will be able to do this with the standard command-line interface with the general procedure of; 
 `scp source destination`.
 
 This however doesn't quite give the full story. Both the source or the destination may include a username and address, although if one is running the command the source or destination machine the account information does not have to be entered for that machine. Often a path to the files and directories will be required as well. However remembering the order source then destination is good shorthand.
@@ -789,7 +789,7 @@ The following is a more elaborate version of scp:
 
 Note when typing out the address make use of the tab-completion feature, which provides suggested options for command and file completion, plus Cntl-R or direction keys to recursively search through a history of previously used commands.
 
-If you are using MS-Windows, we recommend using WinSCP, or, if using certain applications such as MATLAB, the PuTTY Secure Copy client PSCP.  WinSCP comes with a intuitive GUI that provides basic file management functionality in addition to Secure Shell and Secure Copy functions. Linux and Mac users can also use a GUI for secure file transfers. For Linux users this is typically inbuilt with the file browser application. For Mac users you might wish to consider Fugu or Cyberduck. Filezilla is a good GUI option for file transfers for all three operating systems because it has the same general "look and feel"! This is, of course, in addition to the suite of features it provides.
+If one is using MS-Windows, Filezilla or WinSCP is recommended, or, if using certain applications such as MATLAB, the PuTTY Secure Copy client PSCP.  WinSCP comes with a intuitive GUI that provides basic file management functionality in addition to Secure Shell and Secure Copy functions. Linux and Mac users can also use a GUI for secure file transfers. For Linux users this is typically inbuilt with the file browser application. For Mac users one might wish to consider Fugu or Cyberduck. Filezilla is a good GUI option for file transfers for all three operating systems because it has the same general "look and feel"! This is, of course, in addition to the suite of features it provides.
 
 An alternative transfer option is `rsync`. Rsync provides a way to keep two repositories of files "in sync", one of these repositories may be on your desktop, the other your home directory on the cluster. The nice feature of rsync is that it is very fast - after the initial backup. The reason for this is that it tracks changes. There is no point copying and re-writing an entire file when only a handful of characters have changed.
 
@@ -799,7 +799,7 @@ The following is the basic command for rsync between two Linux machines:
 
 `rsync -avz source/ username@remotemachine.com:/path/to/destination/`
 
-The -avz ensures that it is in archive mode (recursive, copies symlinks, preserves permissions), is verbose, and compresses on transmission. Note that rsync is "trailing slash sensitive". A trailing / on a source means "copy the contents of this directory". Without a trailing slash it means "copy the directory".  In many implementations rsync can be quite intelligent and work out which protocol you are using, so the following will suffice:
+The -avz ensures that it is in archive mode (recursive, copies symlinks, preserves permissions), is verbose, and compresses on transmission. Note that rsync is "trailing slash sensitive". A trailing / on a source means "copy the contents of this directory". Without a trailing slash it means "copy the directory".  In many implementations rsync can be quite intelligent and work out which protocol one is using, so the following will suffice:
 
 `rsync -avz source/ username@remotemachine:/path/to/destination`
 `rsync – avz username@remotemachine:/path/to/source/ .`
@@ -808,11 +808,11 @@ For greater  security in the transmission specify ssh encryption.
 
 `rsync -avze ssh username@remotemachine:/path/to/source .`
 
-Rsync can be used in a synchronise mode with the `--delete` flag. This will delete anything in the destination that is not in source directory. Handle with care! You may wish to also run `rsync` with the `-n` or `--dry-run` option to see what it will do first, before running the command for real.
+Rsync can be used in a synchronise mode with the `--delete` flag. This will delete anything in the destination that is not in source directory. Handle with care! It is suggested that one run `rsync` with the `-n` or `--dry-run` option to see what it will do first, before running the command for real.
 
 `rsync -avz --delete --dry-run source/ username@remotemachine:/path/to/destination`
 
-Another popular option is the `--update` flage which only changes files in the destination that are newer in the source. This will mean that one won't accidentally delete any files in the destination, but it it also means that one may end up with old files in the destination that you already have removed in the source.
+Another popular option is the `--update` flage which only changes files in the destination that are newer in the source. This will mean that one won't accidentally delete any files in the destination, but it it also means that one may end up with old files in the destination that one has already have removed in the source.
 
 `rsync -avz --update username@remotemachine:/path/to/src .`
 
@@ -822,11 +822,11 @@ Many people often use rsync on local machines as well, especially when copying l
 
 A GUI interface for rsync is also available, `grysnc`.
 
-One may wonder why we aren't running the command on the supercomputer (a "put", rather than a "get"). It must be remembered that in order for a copy of files to occur, both machines have to know where the other one is, translated from hostnames and Internet Protocol (IP) addresses. In most cases, local machines use private IP addresses, not public addresses. For example, if you were on the supercomputer and wanted to copy the file to a local machine you might think the following could work, as it follows the suggested format of source and destination and uses the correct command:
+One may wonder why we aren't running the command on the supercomputer (a "put", rather than a "get"). It must be remembered that in order for a copy of files to occur, both machines have to know where the other one is, translated from hostnames and Internet Protocol (IP) addresses. In most cases, local machines use private IP addresses, not public addresses. For example, if one were on the supercomputer and wanted to copy the file to a local machine one might think the following could work, as it follows the suggested format of source and destination and uses the correct command:
 
 `scp list.txt <username>@192.168.1.100`
 
-The problem is, which of the multitudes of computers out there with a private address of 192.168.1.100 do you want to copy list.txt to? How would the supercomputer know which machines have this private addresses? Even if it could find out, it would take a very long time to connect to all the switches in the world to find out!
+The problem is, which of the multitudes of computers out there with a private address of 192.168.1.100 does one want to copy list.txt to? How would the supercomputer know which machines have this private addresses? Even if it could find out, it would take a very long time to connect to all the switches in the world to find out!
 
 The applications mentioned in this discussion are available at the following URLs
 
@@ -863,7 +863,7 @@ The next step will be to copy the directory and its contents from the local comp
 
 `scp -r braf/ <username>@trifid.vpac.org:`
 
-Now on the supercomputer do a directory listing but specify the file with the long-listing option. The `gattaca.txt` file should be in the home directory (the original one) but there is also a `braf` directory. Change into the braf directory and run a directory listing again with the same options. There should be *another* `gattaca.txt` file, the one you just moved, but with a different timestamp.
+Now on the supercomputer do a directory listing but specify the file with the long-listing option. The `gattaca.txt` file should be in the home directory (the original one) but there is also a `braf` directory. Change into the braf directory and run a directory listing again with the same options. There should be *another* `gattaca.txt` file, the one just moved, but with a different timestamp.
 
 `ls -l gattaca.txt`
 `cd braf`
@@ -904,7 +904,7 @@ Note that the files being searched must be specified, even with a wildcard chara
 
 The `find` command can also be used with `grep` for a search for words in a particular selection of files, by using `xargs` which runs the second command over all results from the first. For example, to search for BRAF in all `.txt` files the following could be used: `find . -maxdepth 1 -name '*.txt' | xargs grep -i BRAF`. Or - to introduce the `sort` command - to count all the words in `.txt` files in a directory and order according to size use: `find . -maxdepth 1 -name '*.txt' | xargs wc -w | sort -g | less`. Another advanced example is to pipe `find` with GNU `parallel`; `find . -type f | parallel -j4 grep BRAF` which would start four multiple grep searches for the term. For simple searches this is not recommended because of the start up and conclusion overhead.
 
-The use of wildcards is known as *globbing*, or filename expansion.  The wildcard you see most often is `*` (asterisk). The `*` wildcard matches any character or group of zero or more characters. For example, `*.txt` matches all files whose names end with .txt, `*.c` matches all files whose names end with .c (by convention, source code for programs in the C language), and so on. Anther common alternative is the wildcard, `?`. When it appears in a filename, the `?` matches any single character. For example, letter? refers to any filename that begins with letter and has one character after that. This would include `letterA`, `letter1`, as well as filenames with a non-printing character as their last letter, like `letter^C`. However it will not expand to include "dotfiles", unless the dot is explicitly stated as literal character. 
+The use of wildcards is known as *globbing*, or filename expansion.  The wildcard that is seen most often is `*` (asterisk). The `*` wildcard matches any character or group of zero or more characters. For example, `*.txt` matches all files whose names end with .txt, `*.c` matches all files whose names end with .c (by convention, source code for programs in the C language), and so on. Anther common alternative is the wildcard, `?`. When it appears in a filename, the `?` matches any single character. For example, letter? refers to any filename that begins with letter and has one character after that. This would include `letterA`, `letter1`, as well as filenames with a non-printing character as their last letter, like `letter^C`. However it will not expand to include "dotfiles", unless the dot is explicitly stated as literal character. 
 
 | Wildcard	| Matches 	 				|
 |---------------|-----------------------------------------------|
@@ -1091,7 +1091,7 @@ The following is a sample PBS script for TORQUE and with comments for script for
 | # SBATCH -output		| |
 | # SBATCH -error		| The equivalent output and error filenames for SLURM. Where -o is specified without a -e SLURM assumes they are to be combined. |
 | module load namd/2.9-openmpi-gcc	| Load the NAMD module, version 2.9 compiled with GCC.		|
-| cd $PBS_O_WORKDIR		| For TORQUE and PBSPro, change to the directory where the job was launched; otherwise it will try to run it in the home directory. SLURM assumes that you want to run in the directory where you launched the job from, so this command is not necessary.		|
+| cd $PBS_O_WORKDIR		| For TORQUE and PBSPro, change to the directory where the job was launched; otherwise it will try to run it in the home directory. SLURM assumes that the user want to run in the directory that they launched the job from, so this command is not necessary.		|
 | # Launching the job!		| Another comment line. 					|
 | mpiexec namd2 configfile	| Launching the executable “namd2”  with the file “configfile”. |
 | # srun namd2 configfile	| Launching the executable “namd2”  with the file “configfile” using srun for Slurm. |
@@ -1355,18 +1355,18 @@ ANSYS is an engineering simulation for general-purpose finite element analysis a
 
 The geometry consists of a 2D closed cavity and a thin plate, 1 m high, that is anchored. An initial pressure of 100 Pa is applied to one side of the thin plate for 0.5 seconds in order to distort it. Once this pressure is released, the plate oscillates backwards and forwards as it attempts to regain its equilibrium (vertical) position. The surrounding fluid damps the plate oscillations, thereby decreasing the amplitude of oscillations with time. The CFX solver calculates how the fluid responds to the motion of the plate, and the ANSYS solver calculates how the plate deforms as a result of both the initial applied pressure and the pressure resulting from the presence of the fluid. Coupling between the two solvers is required since the structural deformation affects the fluid solution, and the fluid solution affects the structural deformation. 
 
-This is a quick start that bypasses the building of input files by copying them from two different samples directories. Normally, you would build your own input files using the ANSYS and CFX GUIs but this will demonstrate the scheduling process. 
+This is a quick start that bypasses the building of input files by copying them from two different samples directories. Normally, one would build your own input files using the ANSYS and CFX GUIs but this will demonstrate the scheduling process. 
 
 The input file, `OscillatingPlate.inp`, is a the step-by-step instructions that is sent to ansys. Normally this file has to be created from the Ansys Workbench, and the .def file is create the cfx.
 
 Under the standard tutorial there is the conclusion concludes with "Obtaining A Solution Using ANSYS CFX-Solver"; contrary to what the tutorial suggests don't press the "Start Run" button. There are two reasons for this: 
 
 * The job will run on only one cpu on the head node. That cpu will be shared with lots of other users so your job will run very badly. 
-* By doing so, you break a very important rule, by running a computational intensive process on the head node, you seriously inconvenience all the other users logged on. They will not like that! 
+* By doing so, a very important rule is broken. By running a computational intensive process on the head node, a user can  seriously inconvenience all the other users logged on. They will not like that! 
 
 **DON'T RUN JOBS ON THE HEAD NODE.**
 
-Instead, edit your pbs-script to reflect the .inp and .def files you have just created, adjust the number of CPUs and licenses.  Another file to check is the PBS script. In it you will notice the line:
+Instead, edit your pbs-script to reflect the .inp and .def files that have just been created, adjust the number of CPUs and licenses.  Another file to check is the PBS script. Notice the line:
 
 `#PBS -W x=GRES:aa_r+1%aa_r_hpc+12` 
 
@@ -1374,9 +1374,9 @@ An equivalent in Slurm is to specify the particular generic resource either in t
 
 `#SBATCH --gres=gpu` or `sbatch --gres="gpu" job.slurm`
 
-This is what sets the resources for an ANSYS job. It will not run without it. For the first 4 processors you only need to ask for aa_r+1, for every additional processor over 4 you need to ask for a single aa_r_hpc license as well.
+This is what sets the resources for an ANSYS job. It will not run without it. For the first 4 processors one only need to ask for aa_r+1, for every additional processor over 4 one needs to ask for a single aa_r_hpc license as well.
 
-You should be now able to check your output file, `OscillatingPlate.db`. Two other ANSYS jobs you can launch and view results include `pbs-script-pvm` and `pbs-cfx-benchmark`. 
+The output file, `OscillatingPlate.db`. Two other ANSYS jobs can be launched, `pbs-script-pvm` and `pbs-cfx-benchmark`. 
 
 ## 3.10 Standard Job with License : Abaqus Finite Element Analysis
 
@@ -1392,11 +1392,11 @@ Submit the job using the following command: `qsub pbs-abaqus`
 
 The status of the job can be queried using the following command: `tail -f door.sta` 
 
-Once the job has completed, all files, with the exception of the output database (.ODB) file can be deleted. By default, ABAQUS/CAE writes the results of the analysis to the ODB file. When you create a step, ABAQUS/CAE generates a default output request for the step, which in the case of this analysis is Energy Output. Check the output files for the job to ensure it has run correctly.
+Once the job has completed, all files, with the exception of the output database (.ODB) file can be deleted. By default, ABAQUS/CAE writes the results of the analysis to the ODB file. When one creates a step, ABAQUS/CAE generates a default output request for the step, which in the case of this analysis is Energy Output. Check the output files for the job to ensure it has run correctly.
 
-You use the Field Output Requests Manager to request output of variables that should be written at relatively low frequencies to the output database from the entire model or from a large portion of the model. You use the History Output Requests Manager to request output of variables that should be written to the output database at a high frequency from a small portion of the model; for example, the displacement of a single node.
+Use the Field Output Requests Manager to request output of variables that should be written at relatively low frequencies to the output database from the entire model or from a large portion of the model. The History Output Requests Manager is used to request output of variables that should be written to the output database at a high frequency from a small portion of the model; for example, the displacement of a single node.
 
-The results will be visualised using ABAQUS/CAE. It should be noted that ABAQUS/Viewer is a subset of ABAQUS/CAE that contains only the post-processing capabilities of the Visualization module. The procedure discussed in this tutorial also applies to ABAQUS/Viewer. Copy the files to your local machine and run the Abaqus CAE. Do not do this in Trifid itself if at all possible. You should have Abaqus on your desktop machine for ease of visualisation. 
+The results will be visualised using ABAQUS/CAE. It should be noted that ABAQUS/Viewer is a subset of ABAQUS/CAE that contains only the post-processing capabilities of the Visualization module. The procedure discussed in this tutorial also applies to ABAQUS/Viewer. Copy the files to your local machine and run the Abaqus CAE. Do not do this in Trifid itself if at all possible. One should have Abaqus on your desktop machine for ease of visualisation. 
 
 It is almost always better do conduct computational intensive tasks on the cluster, and visualisation locally.
 
@@ -1416,7 +1416,7 @@ By default, ABAQUS/CAE will plot the undeformed shape with exterior edges visibl
 
 The following procedure can be used to plot the crash models deformed shape:
 
- * Select [Plot Deformed Shape] in the Toolbox area. By default, the final step is displayed. It should be noted that the Deformation Scale Factor is 1 by default in explicit analyses.
+* Select [Plot Deformed Shape] in the Toolbox area. By default, the final step is displayed. It should be noted that the Deformation Scale Factor is 1 by default in explicit analyses.
 * Select [Animate: Time History] to animate the crash event. The frame rate can be adjusted by clicking [Animation Options] and moving the slider in the Player tab to the desired speed.
 
 ![Deformed Door](https://github.com/VPAC/superlinux/blob/master/images/deformed_door.png)
