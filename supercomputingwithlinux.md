@@ -3567,6 +3567,12 @@ Gives read/write access to the user, read access to the group and others.
 `chmod 0755 directory/`   
 Gives read/write/execute access to the user, read and execute to the group and others.
 
+`csplit`
+"context split". Will split a file into sections determined by context lines. Context can include regular expressions.
+Example:
+`csplit -f 45latitude shakes.csv /-45./ '{*}'`
+Splits shakes.csv into lines everytime it encounters "-45." with the prefix "45latitude".
+
 `cut` 
 Copies a secion from each line of a file, based on the arguments parsed to it (e.g., characters, delimiters etc) and prints to standard output.
 Example:
