@@ -3576,8 +3576,7 @@ Splits shakes.csv into lines everytime it encounters "-45." with the prefix "45l
 `cut` 
 Copies a secion from each line of a file, based on the arguments parsed to it (e.g., characters, delimiters etc) and prints to standard output.
 Example:
-`cut -f 1-2,4-5 data.dat`
-Prints to standard output fields 1-2, 4-5, of tab-separated data from data.dat
+``cut -d',' -f3 shakes.csv > latitude.txt` `cut -d',' -f4 shakes.csv > longitude.txt` `paste -d " " latitude.txt longitude.txt > shakeslist.txt``
 
 `date`    
 Print (or set for privileged users) the system date and time   
