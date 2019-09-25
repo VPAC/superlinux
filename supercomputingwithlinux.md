@@ -93,7 +93,6 @@ All trademarks are property of their respective owners.
 7.3 Queuing Commands
 7.4 References
 
-
 # 0.0 Introduction
 
 ## 0.1 Foreword
@@ -211,6 +210,7 @@ VisLab12 is one of a series of visualisation laboratories developed and custom-b
 In the course of its history, V3 Alliance (through VPAC) provided internal HPC systems for Victoria's research community along with deployment and maintenance of external systems. Internal systems named Grendel, Brecca, Edda, Wexstan, Tango, and lastly Trifid. Some of the earlier machines were ranked in the Top 500 as the most powerful systems at the time. For example, in June, 2001, VPAC's AlphaServer SC40 (Grendel), was ranked 150 in the world Top 500 list with a peak peformance of 0.21 Tflops. In June 2003 the Xeon xSeries (Brecca) ranked 124th position 1.075 TFlops. 
 
 The last in-house system, initially with Intel E5-2670 processors (Trifid), operated with 45.9 TFLOPS. It was then upgraded to close to 60 TFLOPS with additional E5-2660v2 processors. As an illustration of how far supercomputers have developed in the past decade, despite being 46 times faster than VPACs last entry in the top 500 at initial install, it would be lucky to be at the bottom of the top 1000!
+
 VPAC has also provided deployment and staff for three HPC systems at the AutoCRC (Windsor, Wembley, Karros), clusters at DEPI for the Victorian government, Swinburne University's Green HPC, La Trobe University's Hercules, University of Melbourne's Edward, Monash University and the Australian Synchroton's Massive, the Australian Institute for Health Innovation at the University of New South Wales and Macquarie University, the Popple cluster at the University of Western Australia, the Australian Institute for Marine Science, and staff for the initial VLSCI deployment.
 
 Reference and specifications for the Top 500 systems that have were housed at VPAC are available at the following URLs:
@@ -1167,6 +1167,8 @@ The following are state definitions for a job.
 | Running 		| Node is reporting status, currently is executing workload, and can accept additional workload. SLURM will use "Mixed" to describe this state			|
 | Drained 		| Node is reporting status, currently is not executing workload, and cannot accept additional workload due to administrative action.				|
 | Draining 		| Node is reporting status, currently is executing workload, and cannot accept additional workload due to administrative action.					|
+
+Whilst commands like qstat or squeue can be used to investigate the status of a job, many HPC systems allow users to login to compute nodes that they have jobs running on. From there they can display the running processes with the `top` command.
 
 ## 3.4 Standard Job DLPOLY: Molecullar Modelling
 
@@ -3658,7 +3660,7 @@ Print release, codename, description, and version.
 Merges lines of corresponding lines of each file, separated by tabs, to standard output. Delimiters maybe specified.
 Example:
 `paste file1.lst file2.lst`
-Prints to standard output file1.lst and file2.lst separate by tabs.
+Prints to standard output file1.lst and file2.lst separated by tabs.
 												 
 `pwd`		 
 "Print working directory";  prints the directory where you're currently in.   	
