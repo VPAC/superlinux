@@ -3301,7 +3301,7 @@ cat <<- EOF > job${a}
 #PBS -j oe   
 #PBS -o err_log${a}   
 #PBS -l nodes=1:ppn=1   
-#echo $(pwd) >> results.txt   
+echo $(pwd) >> results.txt   
 EOF   
 done   
 ```
